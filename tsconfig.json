@@ -21,7 +21,6 @@
     ],
     "files": [
         "output.d.ts",
-        "src/binding.ts",
         "src/node.d.ts",
         "src/script.ts"
     ],

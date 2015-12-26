@@ -1,5 +1,5 @@
-var GIRToTS;
-(function (GIRToTS) {
+var GIR2TS;
+(function (GIR2TS) {
     var js_reserved_words = "\n        abstract\n        else\n        instanceof\n        super\n        boolean\n        enum\n        int\n        switch\n        break\n        export\n        interface\n        synchronized\n        byte\n        extends\n        let\n        this\n        case\n        false\n        long\n        throw\n        catch\n        final\n        native\n        throws\n        char\n        finally\n        new\n        transient\n        class\n        float\n        null\n        true\n        const\n        for\n        package\n        try\n        continue\n        function\n        private\n        typeof\n        debugger\n        goto\n        protected\n        var\n        default\n        if\n        public\n        void\n        delete\n        implements\n        return\n        volatile\n        do\n        import\n        short\n        while\n        double\n        in\n        static\n        with\n    ";
     function convertToJSType(native_type) {
         switch (native_type) {
@@ -34,7 +34,7 @@ var GIRToTS;
     function renderProperty(prop_node) {
         return 'public ' + prop_node.$.name.replace(/-/g, '_') + ': ' + getTypeFromParameterNode(prop_node) + ';';
     }
-    GIRToTS.renderProperty = renderProperty;
+    GIR2TS.renderProperty = renderProperty;
     function renderMethod(method_node) {
         var method_name = method_node.$.name;
         var return_type = getTypeFromParameterNode(method_node['return-value'][0]);
@@ -66,7 +66,7 @@ var GIRToTS;
         str += ') : ' + return_type + ';';
         return str;
     }
-    GIRToTS.renderMethod = renderMethod;
+    GIR2TS.renderMethod = renderMethod;
     function renderClass(class_node) {
         var class_prop_nodes = [];
         if (class_node.property) {
@@ -121,7 +121,7 @@ var GIRToTS;
         str += '}\n';
         return str;
     }
-    GIRToTS.renderClass = renderClass;
+    GIR2TS.renderClass = renderClass;
     function parseGIR(file_path, cb) {
         var fs = require('fs');
         var xml2js = require('xml2js');
@@ -134,16 +134,16 @@ var GIRToTS;
             parser.parseString(data, cb);
         });
     }
-    GIRToTS.parseGIR = parseGIR;
-})(GIRToTS || (GIRToTS = {}));
+    GIR2TS.parseGIR = parseGIR;
+})(GIR2TS || (GIR2TS = {}));
 function main() {
     var file_path = '/../gir/Gtk-3.0.gir';
-    GIRToTS.parseGIR(file_path, function (err, res) {
+    GIR2TS.parseGIR(file_path, function (err, res) {
         exports.res = res;
         var output = '';
         for (var _i = 0, _a = res.repository.namespace[0].class; _i < _a.length; _i++) {
             var class_node = _a[_i];
-            output += GIRToTS.renderClass(class_node) + '\n\n';
+            output += GIR2TS.renderClass(class_node) + '\n\n';
         }
         var fs = require('fs');
         var out_file_name = 'output.d.ts';
@@ -158,4 +158,4 @@ function main() {
     });
 }
 main();
-exports.lib = GIRToTS;
+exports.lib = GIR2TS;

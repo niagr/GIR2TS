@@ -1,4 +1,4 @@
-# GIRtoTS
+# GIR2TS
 
 Reads [GObject Introspection][GI site] GIR files to produce [TypeScript][TS] declaration files aimed for use with [GJS][GJS]. It is a NodeJS script itself written in TypeScript.
 
