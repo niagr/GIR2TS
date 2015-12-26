@@ -1,4 +1,4 @@
-namespace GIRToTS {
+namespace GIR2TS {
 
     let js_reserved_words = `
         abstract
@@ -285,11 +285,11 @@ namespace GIRToTS {
 
 function main () {
     const file_path = '/../gir/Gtk-3.0.gir';
-    GIRToTS.parseGIR(file_path, function (err, res: GIRToTS.ParseGIRResult) {
+    GIR2TS.parseGIR(file_path, function (err, res: GIR2TS.ParseGIRResult) {
         exports.res = res;
         let output = ''
         for (let class_node of res.repository.namespace[0].class) {
-            output += GIRToTS.renderClass(class_node) + '\n\n';
+            output += GIR2TS.renderClass(class_node) + '\n\n';
         }
         let fs = require('fs');
         const out_file_name = 'output.d.ts';
@@ -304,4 +304,4 @@ function main () {
 }
 
 main();
-exports.lib = GIRToTS;
+exports.lib = GIR2TS;
