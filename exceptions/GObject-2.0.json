@@ -1,0 +1,12 @@
+{
+    "exclude": {
+        "class": {
+            "Object": [
+                "get_property",
+                "get_valist",
+                "set_property",
+                "set_valist"
+            ]
+        }
+    }
+}

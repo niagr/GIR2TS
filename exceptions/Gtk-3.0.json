@@ -1,0 +1,23 @@
+
+{
+    "exclude": {
+        "class": {
+            "Widget": [
+                "activate",
+                "child_notify",
+                "get_window",
+                "mnemonic_activate",
+                "get_direction",
+                "get_state",
+                "grab_focus",
+                "set_direction",
+                "set_state",
+                "set_style",
+                "get_style"
+            ],
+            "Container": [
+                "remove"
+            ]
+        }
+    }
+}

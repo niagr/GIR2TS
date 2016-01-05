@@ -1,0 +1,13 @@
+{
+    "exclude": {
+        "class": {
+            "NoOpObject": "self",
+            "Action": "all",
+            "Object": ["grab_focus", "get_description"],
+            "Component": ["grab_focus"]
+        },
+        "interface": {
+            "Action": "all"
+        }
+    }
+}

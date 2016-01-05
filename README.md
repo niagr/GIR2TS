@@ -2,7 +2,7 @@
 
 Reads [GObject Introspection][GI site] GIR files to produce [TypeScript][TS] declaration files aimed for use with [GJS][GJS]. It is a NodeJS script itself written in TypeScript.
 
-Current Status - nothing works at all.
+Current Status - WIP (nothing works at all :p)
 
 [GI site]: https://wiki.gnome.org/Projects/GObjectIntrospection
 [TS]: http://www.typescriptlang.org/
