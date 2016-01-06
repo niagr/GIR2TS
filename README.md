@@ -68,6 +68,7 @@ Map to typescript ```type``` declarations. For example:
 type Allocation = Gdk.Rectangle;
 ```
 
+
 Sometimes, since the GObject property names are computed dynamically, methods, signals and properties often end up having the same names and interfaces overload inherited methods which doesn't fly with TypeScript. For this reason, certain classes, methods, etc. are ommited manually. These are commented out in the declaration files.
 
 These manual overrides are specified in json files, one for each GIR file. The ```exceptions``` directory contains these files.
