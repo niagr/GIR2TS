@@ -19,7 +19,9 @@ node ./sctipt.js --excludedir=../exceptions --outdir=../typings --girdir=../gir
 
 ### Options:
 ```--outdir```      The directory to put the .d.ts files in.
+
 ```--girdir```      The directory to read the .gir files from
+
 ```--excludedir```  The directory from which to read the json files describing the manual overrides
 
 Currently applies the following mappings:
