@@ -17,7 +17,15 @@
             ],
             "Container": [
                 "remove"
+            ],
+            "CellAreaBox": [
+                "pack_end",
+                "pack_start"
             ]
-        }
+        },
+        "function": [
+            "false",
+            "true"
+        ]
     }
 }

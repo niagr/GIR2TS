@@ -34,7 +34,7 @@ class AsyncQueue {
 	public unlock () : void;
 	public unref () : void;
 	public unref_and_unlock () : void;
-} 
+}
 
 
 
@@ -2792,5 +2792,2169 @@ type VariantType_autoptr = any;
 
 
 type Variant_autoptr = any;
+
+
+
+function access (filename: string, mode: number): number;
+
+
+
+function ascii_digit_value (_c: string): number;
+
+
+
+function ascii_dtostr (buffer: string, buf_len: number, _d: number): string;
+
+
+
+function ascii_formatd (buffer: string, buf_len: number, format: string, _d: number): string;
+
+
+
+function ascii_strcasecmp (s1: string, s2: string): number;
+
+
+
+function ascii_strdown (_str: string, len: number): string;
+
+
+
+function ascii_strncasecmp (s1: string, s2: string, _n: number): number;
+
+
+
+function ascii_strtod (nptr: string, endptr: string): number;
+
+
+
+function ascii_strtoll (nptr: string, endptr: string, base: number): number;
+
+
+
+function ascii_strtoull (nptr: string, endptr: string, base: number): number;
+
+
+
+function ascii_strup (_str: string, len: number): string;
+
+
+
+function ascii_tolower (_c: string): string;
+
+
+
+function ascii_toupper (_c: string): string;
+
+
+
+function ascii_xdigit_value (_c: string): number;
+
+
+
+function assert_warning (log_domain: string, file: string, line: number, pretty_function: string, expression: string): void;
+
+
+
+function assertion_message (domain: string, file: string, line: number, _func: string, message: string): void;
+
+
+
+function assertion_message_cmpnum (domain: string, file: string, line: number, _func: string, expr: string, arg1: long double, cmp: string, arg2: long double, numtype: string): void;
+
+
+
+function assertion_message_cmpstr (domain: string, file: string, line: number, _func: string, expr: string, arg1: string, cmp: string, arg2: string): void;
+
+
+
+function assertion_message_error (domain: string, file: string, line: number, _func: string, expr: string, error: Error, error_domain: Quark, error_code: number): void;
+
+
+
+function assertion_message_expr (domain: string, file: string, line: number, _func: string, expr: string): void;
+
+
+
+function atexit (_func: VoidFunc): void;
+
+
+
+function atomic_int_add (atomic: number, _val: number): number;
+
+
+
+function atomic_int_and (atomic: number, _val: number): number;
+
+
+
+function atomic_int_compare_and_exchange (atomic: number, oldval: number, newval: number): boolean;
+
+
+
+function atomic_int_dec_and_test (atomic: number): boolean;
+
+
+
+function atomic_int_exchange_and_add (atomic: number, _val: number): number;
+
+
+
+function atomic_int_get (atomic: number): number;
+
+
+
+function atomic_int_inc (atomic: number): void;
+
+
+
+function atomic_int_or (atomic: number, _val: number): number;
+
+
+
+function atomic_int_set (atomic: number, newval: number): void;
+
+
+
+function atomic_int_xor (atomic: number, _val: number): number;
+
+
+
+function atomic_pointer_add (atomic: any, _val: number): number;
+
+
+
+function atomic_pointer_and (atomic: any, _val: number): number;
+
+
+
+function atomic_pointer_compare_and_exchange (atomic: any, oldval: any, newval: any): boolean;
+
+
+
+function atomic_pointer_get (atomic: any): any;
+
+
+
+function atomic_pointer_or (atomic: any, _val: number): number;
+
+
+
+function atomic_pointer_set (atomic: any, newval: any): void;
+
+
+
+function atomic_pointer_xor (atomic: any, _val: number): number;
+
+
+
+function base64_decode (text: string, out_len: number): number[];
+
+
+
+function base64_decode_inplace (text: number[], out_len: number): number;
+
+
+
+function base64_decode_step (_in: number[], len: number, out: number[], state: number, save: number): number;
+
+
+
+function base64_encode (data: number[], len: number): string;
+
+
+
+function base64_encode_close (break_lines: boolean, out: number[], state: number, save: number): number;
+
+
+
+function base64_encode_step (_in: number[], len: number, break_lines: boolean, out: number[], state: number, save: number): number;
+
+
+
+function basename (file_name: string): string;
+
+
+
+function bit_lock (address: number, lock_bit: number): void;
+
+
+
+function bit_nth_lsf (mask: number, nth_bit: number): number;
+
+
+
+function bit_nth_msf (mask: number, nth_bit: number): number;
+
+
+
+function bit_storage (number: number): number;
+
+
+
+function bit_trylock (address: number, lock_bit: number): boolean;
+
+
+
+function bit_unlock (address: number, lock_bit: number): void;
+
+
+
+function bookmark_file_error_quark (): Quark;
+
+
+
+function build_filename (first_element: string): string;
+
+
+
+function build_filenamev (args: string[]): string;
+
+
+
+function build_path (separator: string, first_element: string): string;
+
+
+
+function build_pathv (separator: string, args: string[]): string;
+
+
+
+function byte_array_free (array: number[], free_segment: boolean): number;
+
+
+
+function byte_array_free_to_bytes (array: number[]): Bytes;
+
+
+
+function byte_array_new (): number[];
+
+
+
+function byte_array_new_take (data: number[], len: number): number[];
+
+
+
+function byte_array_unref (array: number[]): void;
+
+
+
+function chdir (path: string): number;
+
+
+
+function check_version (required_major: number, required_minor: number, required_micro: number): string;
+
+
+
+function checksum_type_get_length (checksum_type: ChecksumType): number;
+
+
+
+function child_watch_add (pid: Pid, _function: ChildWatchFunc, data: any): number;
+
+
+
+function child_watch_add_full (priority: number, pid: Pid, _function: ChildWatchFunc, data: any, notify: DestroyNotify): number;
+
+
+
+function child_watch_source_new (pid: Pid): Source;
+
+
+
+function clear_error (): void;
+
+
+
+function clear_pointer (pp: any, destroy: DestroyNotify): void;
+
+
+
+function close (fd: number): boolean;
+
+
+
+function compute_checksum_for_bytes (checksum_type: ChecksumType, data: Bytes): string;
+
+
+
+function compute_checksum_for_data (checksum_type: ChecksumType, data: number[], length: number): string;
+
+
+
+function compute_checksum_for_string (checksum_type: ChecksumType, _str: string, length: number): string;
+
+
+
+function compute_hmac_for_data (digest_type: ChecksumType, key: number[], key_len: number, data: number, length: number): string;
+
+
+
+function compute_hmac_for_string (digest_type: ChecksumType, key: number[], key_len: number, _str: string, length: number): string;
+
+
+
+function convert (_str: string, len: number, to_codeset: string, from_codeset: string, bytes_read: number, bytes_written: number): string;
+
+
+
+function convert_error_quark (): Quark;
+
+
+
+function convert_with_fallback (_str: string, len: number, to_codeset: string, from_codeset: string, fallback: string, bytes_read: number, bytes_written: number): string;
+
+
+
+function convert_with_iconv (_str: string, len: number, converter: IConv, bytes_read: number, bytes_written: number): string;
+
+
+
+function datalist_clear (datalist: Data): void;
+
+
+
+function datalist_foreach (datalist: Data, _func: DataForeachFunc, user_data: any): void;
+
+
+
+function datalist_get_data (datalist: Data, key: string): any;
+
+
+
+function datalist_get_flags (datalist: Data): number;
+
+
+
+function datalist_id_dup_data (datalist: Data, key_id: Quark, dup_func: DuplicateFunc, user_data: any): any;
+
+
+
+function datalist_id_get_data (datalist: Data, key_id: Quark): any;
+
+
+
+function datalist_id_remove_no_notify (datalist: Data, key_id: Quark): any;
+
+
+
+function datalist_id_replace_data (datalist: Data, key_id: Quark, oldval: any, newval: any, destroy: DestroyNotify, old_destroy: DestroyNotify): boolean;
+
+
+
+function datalist_id_set_data_full (datalist: Data, key_id: Quark, data: any, destroy_func: DestroyNotify): void;
+
+
+
+function datalist_init (datalist: Data): void;
+
+
+
+function datalist_set_flags (datalist: Data, flags: number): void;
+
+
+
+function datalist_unset_flags (datalist: Data, flags: number): void;
+
+
+
+function dataset_destroy (dataset_location: any): void;
+
+
+
+function dataset_foreach (dataset_location: any, _func: DataForeachFunc, user_data: any): void;
+
+
+
+function dataset_id_get_data (dataset_location: any, key_id: Quark): any;
+
+
+
+function dataset_id_remove_no_notify (dataset_location: any, key_id: Quark): any;
+
+
+
+function dataset_id_set_data_full (dataset_location: any, key_id: Quark, data: any, destroy_func: DestroyNotify): void;
+
+
+
+function date_get_days_in_month (month: DateMonth, year: DateYear): number;
+
+
+
+function date_get_monday_weeks_in_year (year: DateYear): number;
+
+
+
+function date_get_sunday_weeks_in_year (year: DateYear): number;
+
+
+
+function date_is_leap_year (year: DateYear): boolean;
+
+
+
+function date_strftime (_s: string, slen: number, format: string, date: Date): number;
+
+
+
+function date_time_compare (dt1: any, dt2: any): number;
+
+
+
+function date_time_equal (dt1: any, dt2: any): boolean;
+
+
+
+function date_time_hash (datetime: any): number;
+
+
+
+function date_valid_day (day: DateDay): boolean;
+
+
+
+function date_valid_dmy (day: DateDay, month: DateMonth, year: DateYear): boolean;
+
+
+
+function date_valid_julian (julian_date: number): boolean;
+
+
+
+function date_valid_month (month: DateMonth): boolean;
+
+
+
+function date_valid_weekday (weekday: DateWeekday): boolean;
+
+
+
+function date_valid_year (year: DateYear): boolean;
+
+
+
+function dcgettext (domain: string, msgid: string, category: number): string;
+
+
+
+function dgettext (domain: string, msgid: string): string;
+
+
+
+function dir_make_tmp (tmpl: string): string;
+
+
+
+function direct_equal (v1: any, v2: any): boolean;
+
+
+
+function direct_hash (_v: any): number;
+
+
+
+function dngettext (domain: string, msgid: string, msgid_plural: string, _n: number): string;
+
+
+
+function double_equal (v1: any, v2: any): boolean;
+
+
+
+function double_hash (_v: any): number;
+
+
+
+function dpgettext (domain: string, msgctxtid: string, msgidoffset: number): string;
+
+
+
+function dpgettext2 (domain: string, context: string, msgid: string): string;
+
+
+
+function environ_getenv (envp: string[], variable: string): string;
+
+
+
+function environ_setenv (envp: string[], variable: string, value: string, overwrite: boolean): string[];
+
+
+
+function environ_unsetenv (envp: string[], variable: string): string[];
+
+
+
+function file_error_from_errno (err_no: number): FileError;
+
+
+
+function file_error_quark (): Quark;
+
+
+
+function file_get_contents (filename: string, contents: number[], length: number): boolean;
+
+
+
+function file_open_tmp (tmpl: string, name_used: string): number;
+
+
+
+function file_read_link (filename: string): string;
+
+
+
+function file_set_contents (filename: string, contents: number[], length: number): boolean;
+
+
+
+function file_test (filename: string, test: FileTest): boolean;
+
+
+
+function filename_display_basename (filename: string): string;
+
+
+
+function filename_display_name (filename: string): string;
+
+
+
+function filename_from_uri (uri: string, hostname: string): string;
+
+
+
+function filename_from_utf8 (utf8string: string, len: number, bytes_read: number, bytes_written: number): number[];
+
+
+
+function filename_to_uri (filename: string, hostname: string): string;
+
+
+
+function filename_to_utf8 (opsysstring: string, len: number, bytes_read: number, bytes_written: number): string;
+
+
+
+function find_program_in_path (program: string): string;
+
+
+
+function format_size (size: number): string;
+
+
+
+function format_size_for_display (size: number): string;
+
+
+
+function format_size_full (size: number, flags: FormatSizeFlags): string;
+
+
+
+function fprintf (file: any, format: string): number;
+
+
+
+function free (mem: any): void;
+
+
+
+function get_application_name (): string;
+
+
+
+function get_charset (charset: string): boolean;
+
+
+
+function get_codeset (): string;
+
+
+
+function get_current_dir (): string;
+
+
+
+function get_current_time (result: TimeVal): void;
+
+
+
+function get_environ (): string[];
+
+
+
+function get_filename_charsets (charsets: string): boolean;
+
+
+
+function get_home_dir (): string;
+
+
+
+function get_host_name (): string;
+
+
+
+function get_language_names (): string[];
+
+
+
+function get_locale_variants (locale: string): string[];
+
+
+
+function get_monotonic_time (): number;
+
+
+
+function get_num_processors (): number;
+
+
+
+function get_prgname (): string;
+
+
+
+function get_real_name (): string;
+
+
+
+function get_real_time (): number;
+
+
+
+function get_system_config_dirs (): string[];
+
+
+
+function get_system_data_dirs (): string[];
+
+
+
+function get_tmp_dir (): string;
+
+
+
+function get_user_cache_dir (): string;
+
+
+
+function get_user_config_dir (): string;
+
+
+
+function get_user_data_dir (): string;
+
+
+
+function get_user_name (): string;
+
+
+
+function get_user_runtime_dir (): string;
+
+
+
+function get_user_special_dir (directory: UserDirectory): string;
+
+
+
+function getenv (variable: string): string;
+
+
+
+function hash_table_add (hash_table: GLib.HashTable, key: any): boolean;
+
+
+
+function hash_table_contains (hash_table: GLib.HashTable, key: any): boolean;
+
+
+
+function hash_table_destroy (hash_table: GLib.HashTable): void;
+
+
+
+function hash_table_insert (hash_table: GLib.HashTable, key: any, value: any): boolean;
+
+
+
+function hash_table_lookup_extended (hash_table: GLib.HashTable, lookup_key: any, orig_key: any, value: any): boolean;
+
+
+
+function hash_table_remove (hash_table: GLib.HashTable, key: any): boolean;
+
+
+
+function hash_table_remove_all (hash_table: GLib.HashTable): void;
+
+
+
+function hash_table_replace (hash_table: GLib.HashTable, key: any, value: any): boolean;
+
+
+
+function hash_table_size (hash_table: GLib.HashTable): number;
+
+
+
+function hash_table_steal (hash_table: GLib.HashTable, key: any): boolean;
+
+
+
+function hash_table_steal_all (hash_table: GLib.HashTable): void;
+
+
+
+function hash_table_unref (hash_table: GLib.HashTable): void;
+
+
+
+function hook_destroy (hook_list: HookList, hook_id: number): boolean;
+
+
+
+function hook_destroy_link (hook_list: HookList, hook: Hook): void;
+
+
+
+function hook_free (hook_list: HookList, hook: Hook): void;
+
+
+
+function hook_insert_before (hook_list: HookList, sibling: Hook, hook: Hook): void;
+
+
+
+function hook_prepend (hook_list: HookList, hook: Hook): void;
+
+
+
+function hook_unref (hook_list: HookList, hook: Hook): void;
+
+
+
+function hostname_is_ascii_encoded (hostname: string): boolean;
+
+
+
+function hostname_is_ip_address (hostname: string): boolean;
+
+
+
+function hostname_is_non_ascii (hostname: string): boolean;
+
+
+
+function hostname_to_ascii (hostname: string): string;
+
+
+
+function hostname_to_unicode (hostname: string): string;
+
+
+
+function iconv (converter: IConv, inbuf: string, inbytes_left: number, outbuf: string, outbytes_left: number): number;
+
+
+
+function idle_add (_function: SourceFunc, data: any): number;
+
+
+
+function idle_add_full (priority: number, _function: SourceFunc, data: any, notify: DestroyNotify): number;
+
+
+
+function idle_remove_by_data (data: any): boolean;
+
+
+
+function idle_source_new (): Source;
+
+
+
+function int64_equal (v1: any, v2: any): boolean;
+
+
+
+function int64_hash (_v: any): number;
+
+
+
+function int_equal (v1: any, v2: any): boolean;
+
+
+
+function int_hash (_v: any): number;
+
+
+
+function intern_static_string (string: string): string;
+
+
+
+function intern_string (string: string): string;
+
+
+
+function io_add_watch (channel: IOChannel, condition: IOCondition, _func: IOFunc, user_data: any): number;
+
+
+
+function io_add_watch_full (channel: IOChannel, priority: number, condition: IOCondition, _func: IOFunc, user_data: any, notify: DestroyNotify): number;
+
+
+
+function io_channel_error_from_errno (_en: number): IOChannelError;
+
+
+
+function io_channel_error_quark (): Quark;
+
+
+
+function io_create_watch (channel: IOChannel, condition: IOCondition): Source;
+
+
+
+function key_file_error_quark (): Quark;
+
+
+
+function listenv (): string[];
+
+
+
+function locale_from_utf8 (utf8string: string, len: number, bytes_read: number, bytes_written: number): string;
+
+
+
+function locale_to_utf8 (opsysstring: string, len: number, bytes_read: number, bytes_written: number): string;
+
+
+
+function log (log_domain: string, log_level: LogLevelFlags, format: string): void;
+
+
+
+function log_default_handler (log_domain: string, log_level: LogLevelFlags, message: string, unused_data: any): void;
+
+
+
+function log_remove_handler (log_domain: string, handler_id: number): void;
+
+
+
+function log_set_always_fatal (fatal_mask: LogLevelFlags): LogLevelFlags;
+
+
+
+function log_set_default_handler (log_func: LogFunc, user_data: any): LogFunc;
+
+
+
+function log_set_fatal_mask (log_domain: string, fatal_mask: LogLevelFlags): LogLevelFlags;
+
+
+
+function log_set_handler (log_domain: string, log_levels: LogLevelFlags, log_func: LogFunc, user_data: any): number;
+
+
+
+function logv (log_domain: string, log_level: LogLevelFlags, format: string, args: any[]): void;
+
+
+
+function main_context_default (): MainContext;
+
+
+
+function main_context_get_thread_default (): MainContext;
+
+
+
+function main_context_ref_thread_default (): MainContext;
+
+
+
+function main_current_source (): Source;
+
+
+
+function main_depth (): number;
+
+
+
+function malloc (n_bytes: number): any;
+
+
+
+function malloc0 (n_bytes: number): any;
+
+
+
+function malloc0_n (n_blocks: number, n_block_bytes: number): any;
+
+
+
+function malloc_n (n_blocks: number, n_block_bytes: number): any;
+
+
+
+function markup_collect_attributes (element_name: string, attribute_names: string, attribute_values: string, error: Error, first_type: MarkupCollectType, first_attr: string): boolean;
+
+
+
+function markup_error_quark (): Quark;
+
+
+
+function markup_escape_text (text: string, length: number): string;
+
+
+
+function markup_printf_escaped (format: string): string;
+
+
+
+function markup_vprintf_escaped (format: string, args: any[]): string;
+
+
+
+function mem_is_system_malloc (): boolean;
+
+
+
+function mem_profile (): void;
+
+
+
+function mem_set_vtable (vtable: MemVTable): void;
+
+
+
+function memdup (mem: any, byte_size: number): any;
+
+
+
+function mkdir_with_parents (pathname: string, mode: number): number;
+
+
+
+function mkdtemp (tmpl: string): string;
+
+
+
+function mkdtemp_full (tmpl: string, mode: number): string;
+
+
+
+function mkstemp (tmpl: string): number;
+
+
+
+function mkstemp_full (tmpl: string, flags: number, mode: number): number;
+
+
+
+function nullify_pointer (nullify_location: any): void;
+
+
+
+function on_error_query (prg_name: string): void;
+
+
+
+function on_error_stack_trace (prg_name: string): void;
+
+
+
+function once_init_enter (location: any): boolean;
+
+
+
+function once_init_leave (location: any, result: number): void;
+
+
+
+function option_error_quark (): Quark;
+
+
+
+function parse_debug_string (string: string, keys: DebugKey[], nkeys: number): number;
+
+
+
+function path_get_basename (file_name: string): string;
+
+
+
+function path_get_dirname (file_name: string): string;
+
+
+
+function path_is_absolute (file_name: string): boolean;
+
+
+
+function path_skip_root (file_name: string): string;
+
+
+
+function pattern_match (pspec: PatternSpec, string_length: number, string: string, string_reversed: string): boolean;
+
+
+
+function pattern_match_simple (pattern: string, string: string): boolean;
+
+
+
+function pattern_match_string (pspec: PatternSpec, string: string): boolean;
+
+
+
+function pointer_bit_lock (address: any, lock_bit: number): void;
+
+
+
+function pointer_bit_trylock (address: any, lock_bit: number): boolean;
+
+
+
+function pointer_bit_unlock (address: any, lock_bit: number): void;
+
+
+
+function poll (fds: PollFD, nfds: number, timeout: number): number;
+
+
+
+function prefix_error (err: Error, format: string): void;
+
+
+
+function print (format: string): void;
+
+
+
+function printerr (format: string): void;
+
+
+
+function printf (format: string): number;
+
+
+
+function printf_string_upper_bound (format: string, args: any[]): number;
+
+
+
+function propagate_error (dest: Error, src: Error): void;
+
+
+
+function propagate_prefixed_error (dest: Error, src: Error, format: string): void;
+
+
+
+function qsort_with_data (pbase: any, total_elems: number, size: number, compare_func: CompareDataFunc, user_data: any): void;
+
+
+
+function quark_from_static_string (string: string): Quark;
+
+
+
+function quark_from_string (string: string): Quark;
+
+
+
+function quark_to_string (quark: Quark): string;
+
+
+
+function quark_try_string (string: string): Quark;
+
+
+
+function random_double (): number;
+
+
+
+function random_double_range (begin: number, _end: number): number;
+
+
+
+function random_int (): number;
+
+
+
+function random_int_range (begin: number, _end: number): number;
+
+
+
+function random_set_seed (seed: number): void;
+
+
+
+function realloc (mem: any, n_bytes: number): any;
+
+
+
+function realloc_n (mem: any, n_blocks: number, n_block_bytes: number): any;
+
+
+
+function regex_check_replacement (replacement: string, has_references: boolean): boolean;
+
+
+
+function regex_error_quark (): Quark;
+
+
+
+function regex_escape_nul (string: string, length: number): string;
+
+
+
+function regex_escape_string (string: string[], length: number): string;
+
+
+
+function regex_match_simple (pattern: string, string: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags): boolean;
+
+
+
+function regex_split_simple (pattern: string, string: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags): string[];
+
+
+
+function reload_user_special_dirs_cache (): void;
+
+
+
+function return_if_fail_warning (log_domain: string, pretty_function: string, expression: string): void;
+
+
+
+function rmdir (filename: string): number;
+
+
+
+function sequence_move (src: SequenceIter, dest: SequenceIter): void;
+
+
+
+function sequence_move_range (dest: SequenceIter, begin: SequenceIter, _end: SequenceIter): void;
+
+
+
+function sequence_remove (iter: SequenceIter): void;
+
+
+
+function sequence_remove_range (begin: SequenceIter, _end: SequenceIter): void;
+
+
+
+function sequence_set (iter: SequenceIter, data: any): void;
+
+
+
+function sequence_swap (_a: SequenceIter, _b: SequenceIter): void;
+
+
+
+function set_application_name (application_name: string): void;
+
+
+
+function set_error (err: Error, domain: Quark, code: number, format: string): void;
+
+
+
+function set_error_literal (err: Error, domain: Quark, code: number, message: string): void;
+
+
+
+function set_prgname (prgname: string): void;
+
+
+
+function set_print_handler (_func: PrintFunc): PrintFunc;
+
+
+
+function set_printerr_handler (_func: PrintFunc): PrintFunc;
+
+
+
+function setenv (variable: string, value: string, overwrite: boolean): boolean;
+
+
+
+function shell_error_quark (): Quark;
+
+
+
+function shell_parse_argv (command_line: string, argcp: number, argvp: string[]): boolean;
+
+
+
+function shell_quote (unquoted_string: string): string;
+
+
+
+function shell_unquote (quoted_string: string): string;
+
+
+
+function slice_alloc (block_size: number): any;
+
+
+
+function slice_alloc0 (block_size: number): any;
+
+
+
+function slice_copy (block_size: number, mem_block: any): any;
+
+
+
+function slice_free1 (block_size: number, mem_block: any): void;
+
+
+
+function slice_free_chain_with_offset (block_size: number, mem_chain: any, next_offset: number): void;
+
+
+
+function slice_get_config (ckey: SliceConfig): number;
+
+
+
+function slice_get_config_state (ckey: SliceConfig, address: number, n_values: number): number;
+
+
+
+function slice_set_config (ckey: SliceConfig, value: number): void;
+
+
+
+function snprintf (string: string, _n: number, format: string): number;
+
+
+
+function source_remove (tag: number): boolean;
+
+
+
+function source_remove_by_funcs_user_data (funcs: SourceFuncs, user_data: any): boolean;
+
+
+
+function source_remove_by_user_data (user_data: any): boolean;
+
+
+
+function source_set_name_by_id (tag: number, name: string): void;
+
+
+
+function spaced_primes_closest (_num: number): number;
+
+
+
+function spawn_async (working_directory: string, argv: string[], envp: string[], flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, child_pid: Pid): boolean;
+
+
+
+function spawn_async_with_pipes (working_directory: string, argv: string[], envp: string[], flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, child_pid: Pid, standard_input: number, standard_output: number, standard_error: number): boolean;
+
+
+
+function spawn_check_exit_status (exit_status: number): boolean;
+
+
+
+function spawn_close_pid (pid: Pid): void;
+
+
+
+function spawn_command_line_async (command_line: string): boolean;
+
+
+
+function spawn_command_line_sync (command_line: string, standard_output: number[], standard_error: number[], exit_status: number): boolean;
+
+
+
+function spawn_error_quark (): Quark;
+
+
+
+function spawn_exit_error_quark (): Quark;
+
+
+
+function spawn_sync (working_directory: string, argv: string[], envp: string[], flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, standard_output: number[], standard_error: number[], exit_status: number): boolean;
+
+
+
+function sprintf (string: string, format: string): number;
+
+
+
+function stpcpy (dest: string, src: string): string;
+
+
+
+function str_equal (v1: any, v2: any): boolean;
+
+
+
+function str_has_prefix (_str: string, prefix: string): boolean;
+
+
+
+function str_has_suffix (_str: string, suffix: string): boolean;
+
+
+
+function str_hash (_v: any): number;
+
+
+
+function str_is_ascii (_str: string): boolean;
+
+
+
+function str_match_string (search_term: string, potential_hit: string, accept_alternates: boolean): boolean;
+
+
+
+function str_to_ascii (_str: string, from_locale: string): string;
+
+
+
+function str_tokenize_and_fold (string: string, translit_locale: string, ascii_alternates: string[]): string[];
+
+
+
+function strcanon (string: string, valid_chars: string, substitutor: string): string;
+
+
+
+function strcasecmp (s1: string, s2: string): number;
+
+
+
+function strchomp (string: string): string;
+
+
+
+function strchug (string: string): string;
+
+
+
+function strcmp0 (str1: string, str2: string): number;
+
+
+
+function strcompress (source: string): string;
+
+
+
+function strconcat (string1: string): string;
+
+
+
+function strdelimit (string: string, delimiters: string, new_delimiter: string): string;
+
+
+
+function strdown (string: string): string;
+
+
+
+function strdup (_str: string): string;
+
+
+
+function strdup_printf (format: string): string;
+
+
+
+function strdup_vprintf (format: string, args: any[]): string;
+
+
+
+function strdupv (str_array: string): string[];
+
+
+
+function strerror (errnum: number): string;
+
+
+
+function strescape (source: string, exceptions: string): string;
+
+
+
+function strfreev (str_array: string): void;
+
+
+
+function string_new (init: string): String;
+
+
+
+function string_new_len (init: string, len: number): String;
+
+
+
+function string_sized_new (dfl_size: number): String;
+
+
+
+function strip_context (msgid: string, msgval: string): string;
+
+
+
+function strjoin (separator: string): string;
+
+
+
+function strjoinv (separator: string, str_array: string): string;
+
+
+
+function strlcat (dest: string, src: string, dest_size: number): number;
+
+
+
+function strlcpy (dest: string, src: string, dest_size: number): number;
+
+
+
+function strncasecmp (s1: string, s2: string, _n: number): number;
+
+
+
+function strndup (_str: string, _n: number): string;
+
+
+
+function strnfill (length: number, fill_char: string): string;
+
+
+
+function strreverse (string: string): string;
+
+
+
+function strrstr (haystack: string, needle: string): string;
+
+
+
+function strrstr_len (haystack: string, haystack_len: number, needle: string): string;
+
+
+
+function strsignal (signum: number): string;
+
+
+
+function strsplit (string: string, delimiter: string, max_tokens: number): string[];
+
+
+
+function strsplit_set (string: string, delimiters: string, max_tokens: number): string[];
+
+
+
+function strstr_len (haystack: string, haystack_len: number, needle: string): string;
+
+
+
+function strtod (nptr: string, endptr: string): number;
+
+
+
+function strup (string: string): string;
+
+
+
+function strv_contains (strv: string, _str: string): boolean;
+
+
+
+function strv_get_type (): GObject.Type;
+
+
+
+function strv_length (str_array: string): number;
+
+
+
+function test_add_data_func (testpath: string, test_data: any, test_func: TestDataFunc): void;
+
+
+
+function test_add_data_func_full (testpath: string, test_data: any, test_func: TestDataFunc, data_free_func: DestroyNotify): void;
+
+
+
+function test_add_func (testpath: string, test_func: TestFunc): void;
+
+
+
+function test_add_vtable (testpath: string, data_size: number, test_data: any, data_setup: TestFixtureFunc, data_test: TestFixtureFunc, data_teardown: TestFixtureFunc): void;
+
+
+
+function test_assert_expected_messages_internal (domain: string, file: string, line: number, _func: string): void;
+
+
+
+function test_bug (bug_uri_snippet: string): void;
+
+
+
+function test_bug_base (uri_pattern: string): void;
+
+
+
+function test_build_filename (file_type: TestFileType, first_path: string): string;
+
+
+
+function test_create_case (test_name: string, data_size: number, test_data: any, data_setup: TestFixtureFunc, data_test: TestFixtureFunc, data_teardown: TestFixtureFunc): TestCase;
+
+
+
+function test_create_suite (suite_name: string): TestSuite;
+
+
+
+function test_expect_message (log_domain: string, log_level: LogLevelFlags, pattern: string): void;
+
+
+
+function test_fail (): void;
+
+
+
+function test_failed (): boolean;
+
+
+
+function test_get_dir (file_type: TestFileType): string;
+
+
+
+function test_get_filename (file_type: TestFileType, first_path: string): string;
+
+
+
+function test_get_root (): TestSuite;
+
+
+
+function test_incomplete (msg: string): void;
+
+
+
+function test_init (argc: number, argv: string): void;
+
+
+
+function test_log_set_fatal_handler (log_func: TestLogFatalFunc, user_data: any): void;
+
+
+
+function test_log_type_name (log_type: TestLogType): string;
+
+
+
+function test_maximized_result (maximized_quantity: number, format: string): void;
+
+
+
+function test_message (format: string): void;
+
+
+
+function test_minimized_result (minimized_quantity: number, format: string): void;
+
+
+
+function test_queue_destroy (destroy_func: DestroyNotify, destroy_data: any): void;
+
+
+
+function test_queue_free (gfree_pointer: any): void;
+
+
+
+function test_rand_double (): number;
+
+
+
+function test_rand_double_range (range_start: number, range_end: number): number;
+
+
+
+function test_rand_int (): number;
+
+
+
+function test_rand_int_range (begin: number, _end: number): number;
+
+
+
+function test_run (): number;
+
+
+
+function test_run_suite (suite: TestSuite): number;
+
+
+
+function test_set_nonfatal_assertions (): void;
+
+
+
+function test_skip (msg: string): void;
+
+
+
+function test_subprocess (): boolean;
+
+
+
+function test_timer_elapsed (): number;
+
+
+
+function test_timer_last (): number;
+
+
+
+function test_timer_start (): void;
+
+
+
+function test_trap_assertions (domain: string, file: string, line: number, _func: string, assertion_flags: number, pattern: string): void;
+
+
+
+function test_trap_fork (usec_timeout: number, test_trap_flags: TestTrapFlags): boolean;
+
+
+
+function test_trap_has_passed (): boolean;
+
+
+
+function test_trap_reached_timeout (): boolean;
+
+
+
+function test_trap_subprocess (test_path: string, usec_timeout: number, test_flags: TestSubprocessFlags): void;
+
+
+
+function thread_error_quark (): Quark;
+
+
+
+function thread_exit (retval: any): void;
+
+
+
+function thread_pool_get_max_idle_time (): number;
+
+
+
+function thread_pool_get_max_unused_threads (): number;
+
+
+
+function thread_pool_get_num_unused_threads (): number;
+
+
+
+function thread_pool_set_max_idle_time (interval: number): void;
+
+
+
+function thread_pool_set_max_unused_threads (max_threads: number): void;
+
+
+
+function thread_pool_stop_unused_threads (): void;
+
+
+
+function thread_self (): Thread;
+
+
+
+function thread_yield (): void;
+
+
+
+function time_val_from_iso8601 (iso_date: string, time_: TimeVal): boolean;
+
+
+
+function timeout_add (interval: number, _function: SourceFunc, data: any): number;
+
+
+
+function timeout_add_full (priority: number, interval: number, _function: SourceFunc, data: any, notify: DestroyNotify): number;
+
+
+
+function timeout_add_seconds (interval: number, _function: SourceFunc, data: any): number;
+
+
+
+function timeout_add_seconds_full (priority: number, interval: number, _function: SourceFunc, data: any, notify: DestroyNotify): number;
+
+
+
+function timeout_source_new (interval: number): Source;
+
+
+
+function timeout_source_new_seconds (interval: number): Source;
+
+
+
+function trash_stack_height (stack_p: TrashStack): number;
+
+
+
+function trash_stack_push (stack_p: TrashStack, data_p: any): void;
+
+
+
+function try_malloc (n_bytes: number): any;
+
+
+
+function try_malloc0 (n_bytes: number): any;
+
+
+
+function try_malloc0_n (n_blocks: number, n_block_bytes: number): any;
+
+
+
+function try_malloc_n (n_blocks: number, n_block_bytes: number): any;
+
+
+
+function try_realloc (mem: any, n_bytes: number): any;
+
+
+
+function try_realloc_n (mem: any, n_blocks: number, n_block_bytes: number): any;
+
+
+
+function ucs4_to_utf16 (_str: string, len: number, items_read: number, items_written: number): number;
+
+
+
+function ucs4_to_utf8 (_str: string, len: number, items_read: number, items_written: number): string;
+
+
+
+function unichar_break_type (_c: string): UnicodeBreakType;
+
+
+
+function unichar_combining_class (_uc: string): number;
+
+
+
+function unichar_compose (_a: string, _b: string, _ch: string): boolean;
+
+
+
+function unichar_decompose (_ch: string, _a: string, _b: string): boolean;
+
+
+
+function unichar_digit_value (_c: string): number;
+
+
+
+function unichar_fully_decompose (_ch: string, compat: boolean, result: string, result_len: number): number;
+
+
+
+function unichar_get_mirror_char (_ch: string, mirrored_ch: string): boolean;
+
+
+
+function unichar_get_script (_ch: string): UnicodeScript;
+
+
+
+function unichar_isalnum (_c: string): boolean;
+
+
+
+function unichar_isalpha (_c: string): boolean;
+
+
+
+function unichar_iscntrl (_c: string): boolean;
+
+
+
+function unichar_isdefined (_c: string): boolean;
+
+
+
+function unichar_isdigit (_c: string): boolean;
+
+
+
+function unichar_isgraph (_c: string): boolean;
+
+
+
+function unichar_islower (_c: string): boolean;
+
+
+
+function unichar_ismark (_c: string): boolean;
+
+
+
+function unichar_isprint (_c: string): boolean;
+
+
+
+function unichar_ispunct (_c: string): boolean;
+
+
+
+function unichar_isspace (_c: string): boolean;
+
+
+
+function unichar_istitle (_c: string): boolean;
+
+
+
+function unichar_isupper (_c: string): boolean;
+
+
+
+function unichar_iswide (_c: string): boolean;
+
+
+
+function unichar_iswide_cjk (_c: string): boolean;
+
+
+
+function unichar_isxdigit (_c: string): boolean;
+
+
+
+function unichar_iszerowidth (_c: string): boolean;
+
+
+
+function unichar_to_utf8 (_c: string, outbuf: string): number;
+
+
+
+function unichar_tolower (_c: string): string;
+
+
+
+function unichar_totitle (_c: string): string;
+
+
+
+function unichar_toupper (_c: string): string;
+
+
+
+function unichar_type (_c: string): UnicodeType;
+
+
+
+function unichar_validate (_ch: string): boolean;
+
+
+
+function unichar_xdigit_value (_c: string): number;
+
+
+
+function unicode_canonical_decomposition (_ch: string, result_len: number): string;
+
+
+
+function unicode_canonical_ordering (string: string, len: number): void;
+
+
+
+function unicode_script_from_iso15924 (iso15924: number): UnicodeScript;
+
+
+
+function unicode_script_to_iso15924 (script: UnicodeScript): number;
+
+
+
+function unix_error_quark (): Quark;
+
+
+
+function unix_fd_add (fd: number, condition: IOCondition, _function: UnixFDSourceFunc, user_data: any): number;
+
+
+
+function unix_fd_add_full (priority: number, fd: number, condition: IOCondition, _function: UnixFDSourceFunc, user_data: any, notify: DestroyNotify): number;
+
+
+
+function unix_fd_source_new (fd: number, condition: IOCondition): Source;
+
+
+
+function unix_open_pipe (fds: number, flags: number): boolean;
+
+
+
+function unix_set_fd_nonblocking (fd: number, nonblock: boolean): boolean;
+
+
+
+function unix_signal_add (signum: number, handler: SourceFunc, user_data: any): number;
+
+
+
+function unix_signal_add_full (priority: number, signum: number, handler: SourceFunc, user_data: any, notify: DestroyNotify): number;
+
+
+
+function unix_signal_source_new (signum: number): Source;
+
+
+
+function unlink (filename: string): number;
+
+
+
+function unsetenv (variable: string): void;
+
+
+
+function uri_escape_string (unescaped: string, reserved_chars_allowed: string, allow_utf8: boolean): string;
+
+
+
+function uri_list_extract_uris (uri_list: string): string[];
+
+
+
+function uri_parse_scheme (uri: string): string;
+
+
+
+function uri_unescape_segment (escaped_string: string, escaped_string_end: string, illegal_characters: string): string;
+
+
+
+function uri_unescape_string (escaped_string: string, illegal_characters: string): string;
+
+
+
+function usleep (microseconds: number): void;
+
+
+
+function utf16_to_ucs4 (_str: number, len: number, items_read: number, items_written: number): string;
+
+
+
+function utf16_to_utf8 (_str: number, len: number, items_read: number, items_written: number): string;
+
+
+
+function utf8_casefold (_str: string, len: number): string;
+
+
+
+function utf8_collate (str1: string, str2: string): number;
+
+
+
+function utf8_collate_key (_str: string, len: number): string;
+
+
+
+function utf8_collate_key_for_filename (_str: string, len: number): string;
+
+
+
+function utf8_find_next_char (_p: string, _end: string): string;
+
+
+
+function utf8_find_prev_char (_str: string, _p: string): string;
+
+
+
+function utf8_get_char (_p: string): string;
+
+
+
+function utf8_get_char_validated (_p: string, max_len: number): string;
+
+
+
+function utf8_normalize (_str: string, len: number, mode: NormalizeMode): string;
+
+
+
+function utf8_offset_to_pointer (_str: string, offset: number): string;
+
+
+
+function utf8_pointer_to_offset (_str: string, pos: string): number;
+
+
+
+function utf8_prev_char (_p: string): string;
+
+
+
+function utf8_strchr (_p: string, len: number, _c: string): string;
+
+
+
+function utf8_strdown (_str: string, len: number): string;
+
+
+
+function utf8_strlen (_p: string, max: number): number;
+
+
+
+function utf8_strncpy (dest: string, src: string, _n: number): string;
+
+
+
+function utf8_strrchr (_p: string, len: number, _c: string): string;
+
+
+
+function utf8_strreverse (_str: string, len: number): string;
+
+
+
+function utf8_strup (_str: string, len: number): string;
+
+
+
+function utf8_substring (_str: string, start_pos: number, end_pos: number): string;
+
+
+
+function utf8_to_ucs4 (_str: string, len: number, items_read: number, items_written: number): string;
+
+
+
+function utf8_to_ucs4_fast (_str: string, len: number, items_written: number): string;
+
+
+
+function utf8_to_utf16 (_str: string, len: number, items_read: number, items_written: number): number;
+
+
+
+function utf8_validate (_str: number[], max_len: number, _end: string): boolean;
+
+
+
+function variant_get_gtype (): GObject.Type;
+
+
+
+function variant_is_object_path (string: string): boolean;
+
+
+
+function variant_is_signature (string: string): boolean;
+
+
+
+function variant_parse (_type: VariantType, text: string, limit: string, endptr: string): Variant;
+
+
+
+function variant_parse_error_print_context (error: Error, source_str: string): string;
+
+
+
+function variant_parse_error_quark (): Quark;
+
+
+
+function variant_parser_get_error_quark (): Quark;
+
+
+
+function variant_type_checked_ (arg0: string): VariantType;
+
+
+
+function variant_type_string_is_valid (type_string: string): boolean;
+
+
+
+function variant_type_string_scan (string: string, limit: string, endptr: string): boolean;
+
+
+
+function vasprintf (string: string, format: string, args: any[]): number;
+
+
+
+function vfprintf (file: any, format: string, args: any[]): number;
+
+
+
+function vprintf (format: string, args: any[]): number;
+
+
+
+function vsnprintf (string: string, _n: number, format: string, args: any[]): number;
+
+
+
+function vsprintf (string: string, format: string, args: any[]): number;
+
+
+
+function warn_message (domain: string, file: string, line: number, _func: string, warnexpr: string): void;
 
 }

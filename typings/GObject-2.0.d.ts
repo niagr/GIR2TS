@@ -9,13 +9,23 @@ interface Binding extends Object {
 	unbind () : void;
 }
 
+var Binding: {       
+   new (): Binding;  
+}                          
+
+
 
 
 interface InitiallyUnowned extends Object {
-
+	
 }
 
- 
+var InitiallyUnowned: {       
+   new (): InitiallyUnowned;  
+}                          
+
+
+
 
 interface Object {
 	add_toggle_ref (notify: ToggleNotify, data: any) : void;
@@ -56,6 +66,11 @@ interface Object {
 	weak_unref (notify: WeakNotify, data: any) : void;
 }
 
+var Object: {       
+   new (): Object;  
+}                          
+
+
 
 
 interface ParamSpec {
@@ -74,143 +89,263 @@ interface ParamSpec {
 	unref () : void;
 }
 
+var ParamSpec: {       
+   new (): ParamSpec;  
+}                          
+
+
 
 
 interface ParamSpecBoolean extends ParamSpec {
-
+	
 }
+
+var ParamSpecBoolean: {       
+   new (): ParamSpecBoolean;  
+}                          
+
 
 
 
 interface ParamSpecBoxed extends ParamSpec {
-
+	
 }
+
+var ParamSpecBoxed: {       
+   new (): ParamSpecBoxed;  
+}                          
+
 
 
 
 interface ParamSpecChar extends ParamSpec {
-
+	
 }
+
+var ParamSpecChar: {       
+   new (): ParamSpecChar;  
+}                          
+
 
 
 
 interface ParamSpecDouble extends ParamSpec {
-
+	
 }
+
+var ParamSpecDouble: {       
+   new (): ParamSpecDouble;  
+}                          
+
 
 
 
 interface ParamSpecEnum extends ParamSpec {
-
+	
 }
+
+var ParamSpecEnum: {       
+   new (): ParamSpecEnum;  
+}                          
+
 
 
 
 interface ParamSpecFlags extends ParamSpec {
-
+	
 }
+
+var ParamSpecFlags: {       
+   new (): ParamSpecFlags;  
+}                          
+
 
 
 
 interface ParamSpecFloat extends ParamSpec {
-
+	
 }
+
+var ParamSpecFloat: {       
+   new (): ParamSpecFloat;  
+}                          
+
 
 
 
 interface ParamSpecGType extends ParamSpec {
-
+	
 }
+
+var ParamSpecGType: {       
+   new (): ParamSpecGType;  
+}                          
+
 
 
 
 interface ParamSpecInt extends ParamSpec {
-
+	
 }
+
+var ParamSpecInt: {       
+   new (): ParamSpecInt;  
+}                          
+
 
 
 
 interface ParamSpecInt64 extends ParamSpec {
-
+	
 }
+
+var ParamSpecInt64: {       
+   new (): ParamSpecInt64;  
+}                          
+
 
 
 
 interface ParamSpecLong extends ParamSpec {
-
+	
 }
+
+var ParamSpecLong: {       
+   new (): ParamSpecLong;  
+}                          
+
 
 
 
 interface ParamSpecObject extends ParamSpec {
-
+	
 }
+
+var ParamSpecObject: {       
+   new (): ParamSpecObject;  
+}                          
+
 
 
 
 interface ParamSpecOverride extends ParamSpec {
-
+	
 }
+
+var ParamSpecOverride: {       
+   new (): ParamSpecOverride;  
+}                          
+
 
 
 
 interface ParamSpecParam extends ParamSpec {
-
+	
 }
+
+var ParamSpecParam: {       
+   new (): ParamSpecParam;  
+}                          
+
 
 
 
 interface ParamSpecPointer extends ParamSpec {
-
+	
 }
+
+var ParamSpecPointer: {       
+   new (): ParamSpecPointer;  
+}                          
+
 
 
 
 interface ParamSpecString extends ParamSpec {
-
+	
 }
+
+var ParamSpecString: {       
+   new (): ParamSpecString;  
+}                          
+
 
 
 
 interface ParamSpecUChar extends ParamSpec {
-
+	
 }
+
+var ParamSpecUChar: {       
+   new (): ParamSpecUChar;  
+}                          
+
 
 
 
 interface ParamSpecUInt extends ParamSpec {
-
+	
 }
+
+var ParamSpecUInt: {       
+   new (): ParamSpecUInt;  
+}                          
+
 
 
 
 interface ParamSpecUInt64 extends ParamSpec {
-
+	
 }
+
+var ParamSpecUInt64: {       
+   new (): ParamSpecUInt64;  
+}                          
+
 
 
 
 interface ParamSpecULong extends ParamSpec {
-
+	
 }
+
+var ParamSpecULong: {       
+   new (): ParamSpecULong;  
+}                          
+
 
 
 
 interface ParamSpecUnichar extends ParamSpec {
-
+	
 }
+
+var ParamSpecUnichar: {       
+   new (): ParamSpecUnichar;  
+}                          
+
 
 
 
 interface ParamSpecValueArray extends ParamSpec {
-
+	
 }
+
+var ParamSpecValueArray: {       
+   new (): ParamSpecValueArray;  
+}                          
+
 
 
 
 interface ParamSpecVariant extends ParamSpec {
-
+	
 }
+
+var ParamSpecVariant: {       
+   new (): ParamSpecVariant;  
+}                          
+
 
 
 
@@ -223,6 +358,11 @@ interface TypeModule extends Object, TypePlugin {
 	unuse () : void;
 	use () : boolean;
 }
+
+var TypeModule: {       
+   new (): TypeModule;  
+}                          
+
 
 
 
@@ -676,6 +816,11 @@ interface TypePlugin {
 	use () : void;
 }
 
+var TypePlugin: {       
+   new (): TypePlugin;  
+}                          
+
+
 
 
 enum BindingFlags {
@@ -955,5 +1100,721 @@ type SignalCVaMarshaller = VaClosureMarshal;
 
 
 type Type = number;
+
+
+
+function boxed_copy (boxed_type: GObject.Type, src_boxed: any): any;
+
+
+
+function boxed_free (boxed_type: GObject.Type, boxed: any): void;
+
+
+
+function boxed_type_register_static (name: string, boxed_copy: BoxedCopyFunc, boxed_free: BoxedFreeFunc): GObject.Type;
+
+
+
+function cclosure_marshal_BOOLEAN__BOXED_BOXED (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_BOOLEAN__FLAGS (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_STRING__OBJECT_POINTER (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__BOOLEAN (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__BOXED (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__CHAR (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__DOUBLE (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__ENUM (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__FLAGS (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__FLOAT (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__INT (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__LONG (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__OBJECT (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__PARAM (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__POINTER (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__STRING (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__UCHAR (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__UINT (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__UINT_POINTER (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__ULONG (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__VARIANT (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_VOID__VOID (closure: Closure, return_value: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_marshal_generic (closure: Closure, return_gvalue: Value, n_param_values: number, param_values: Value, invocation_hint: any, marshal_data: any): void;
+
+
+
+function cclosure_new (callback_func: Callback, user_data: any, destroy_data: ClosureNotify): Closure;
+
+
+
+function cclosure_new_object (callback_func: Callback, object: Object): Closure;
+
+
+
+function cclosure_new_object_swap (callback_func: Callback, object: Object): Closure;
+
+
+
+function cclosure_new_swap (callback_func: Callback, user_data: any, destroy_data: ClosureNotify): Closure;
+
+
+
+function clear_object (object_ptr: Object): void;
+
+
+
+function enum_complete_type_info (g_enum_type: GObject.Type, info: TypeInfo, const_values: EnumValue): void;
+
+
+
+function enum_get_value (enum_class: EnumClass, value: number): EnumValue;
+
+
+
+function enum_get_value_by_name (enum_class: EnumClass, name: string): EnumValue;
+
+
+
+function enum_get_value_by_nick (enum_class: EnumClass, nick: string): EnumValue;
+
+
+
+function enum_register_static (name: string, const_static_values: EnumValue): GObject.Type;
+
+
+
+function flags_complete_type_info (g_flags_type: GObject.Type, info: TypeInfo, const_values: FlagsValue): void;
+
+
+
+function flags_get_first_value (flags_class: FlagsClass, value: number): FlagsValue;
+
+
+
+function flags_get_value_by_name (flags_class: FlagsClass, name: string): FlagsValue;
+
+
+
+function flags_get_value_by_nick (flags_class: FlagsClass, nick: string): FlagsValue;
+
+
+
+function flags_register_static (name: string, const_static_values: FlagsValue): GObject.Type;
+
+
+
+function gtype_get_type (): GObject.Type;
+
+
+
+function param_spec_boolean (name: string, nick: string, blurb: string, default_value: boolean, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_boxed (name: string, nick: string, blurb: string, boxed_type: GObject.Type, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_char (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_double (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_enum (name: string, nick: string, blurb: string, enum_type: GObject.Type, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_flags (name: string, nick: string, blurb: string, flags_type: GObject.Type, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_float (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_gtype (name: string, nick: string, blurb: string, is_a_type: GObject.Type, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_int (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_int64 (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_long (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_object (name: string, nick: string, blurb: string, object_type: GObject.Type, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_override (name: string, overridden: ParamSpec): ParamSpec;
+
+
+
+function param_spec_param (name: string, nick: string, blurb: string, param_type: GObject.Type, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_pointer (name: string, nick: string, blurb: string, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_pool_new (type_prefixing: boolean): ParamSpecPool;
+
+
+
+function param_spec_string (name: string, nick: string, blurb: string, default_value: string, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_uchar (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_uint (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_uint64 (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_ulong (name: string, nick: string, blurb: string, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_unichar (name: string, nick: string, blurb: string, default_value: string, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_value_array (name: string, nick: string, blurb: string, element_spec: ParamSpec, flags: ParamFlags): ParamSpec;
+
+
+
+function param_spec_variant (name: string, nick: string, blurb: string, _type: GLib.VariantType, default_value: GLib.Variant, flags: ParamFlags): ParamSpec;
+
+
+
+function param_type_register_static (name: string, pspec_info: ParamSpecTypeInfo): GObject.Type;
+
+
+
+function param_value_convert (pspec: ParamSpec, src_value: Value, dest_value: Value, strict_validation: boolean): boolean;
+
+
+
+function param_value_defaults (pspec: ParamSpec, value: Value): boolean;
+
+
+
+function param_value_set_default (pspec: ParamSpec, value: Value): void;
+
+
+
+function param_value_validate (pspec: ParamSpec, value: Value): boolean;
+
+
+
+function param_values_cmp (pspec: ParamSpec, value1: Value, value2: Value): number;
+
+
+
+function pointer_type_register_static (name: string): GObject.Type;
+
+
+
+function signal_accumulator_first_wins (ihint: SignalInvocationHint, return_accu: Value, handler_return: Value, dummy: any): boolean;
+
+
+
+function signal_accumulator_true_handled (ihint: SignalInvocationHint, return_accu: Value, handler_return: Value, dummy: any): boolean;
+
+
+
+function signal_add_emission_hook (signal_id: number, detail: GLib.Quark, hook_func: SignalEmissionHook, hook_data: any, data_destroy: GLib.DestroyNotify): number;
+
+
+
+function signal_chain_from_overridden (instance_and_params: Value[], return_value: Value): void;
+
+
+
+function signal_chain_from_overridden_handler (_instance: any): void;
+
+
+
+function signal_connect_closure (_instance: Object, detailed_signal: string, closure: Closure, after: boolean): number;
+
+
+
+function signal_connect_closure_by_id (_instance: Object, signal_id: number, detail: GLib.Quark, closure: Closure, after: boolean): number;
+
+
+
+function signal_connect_data (_instance: Object, detailed_signal: string, c_handler: Callback, data: any, destroy_data: ClosureNotify, connect_flags: ConnectFlags): number;
+
+
+
+function signal_connect_object (_instance: any, detailed_signal: string, c_handler: Callback, gobject: any, connect_flags: ConnectFlags): number;
+
+
+
+function signal_emit (_instance: Object, signal_id: number, detail: GLib.Quark): void;
+
+
+
+function signal_emit_by_name (_instance: Object, detailed_signal: string): void;
+
+
+
+function signal_emit_valist (_instance: any, signal_id: number, detail: GLib.Quark, var_args: any[]): void;
+
+
+
+function signal_emitv (instance_and_params: Value[], signal_id: number, detail: GLib.Quark, return_value: Value): void;
+
+
+
+function signal_get_invocation_hint (_instance: Object): SignalInvocationHint;
+
+
+
+function signal_handler_block (_instance: Object, handler_id: number): void;
+
+
+
+function signal_handler_disconnect (_instance: Object, handler_id: number): void;
+
+
+
+function signal_handler_find (_instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: Closure, _func: any, data: any): number;
+
+
+
+function signal_handler_is_connected (_instance: Object, handler_id: number): boolean;
+
+
+
+function signal_handler_unblock (_instance: Object, handler_id: number): void;
+
+
+
+function signal_handlers_block_matched (_instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: Closure, _func: any, data: any): number;
+
+
+
+function signal_handlers_destroy (_instance: Object): void;
+
+
+
+function signal_handlers_disconnect_matched (_instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: Closure, _func: any, data: any): number;
+
+
+
+function signal_handlers_unblock_matched (_instance: Object, mask: SignalMatchType, signal_id: number, detail: GLib.Quark, closure: Closure, _func: any, data: any): number;
+
+
+
+function signal_has_handler_pending (_instance: Object, signal_id: number, detail: GLib.Quark, may_be_blocked: boolean): boolean;
+
+
+
+function signal_list_ids (itype: GObject.Type, n_ids: number): number[];
+
+
+
+function signal_lookup (name: string, itype: GObject.Type): number;
+
+
+
+function signal_name (signal_id: number): string;
+
+
+
+function signal_new (signal_name: string, itype: GObject.Type, signal_flags: SignalFlags, class_offset: number, accumulator: SignalAccumulator, accu_data: any, c_marshaller: SignalCMarshaller, return_type: GObject.Type, n_params: number): number;
+
+
+
+function signal_new_class_handler (signal_name: string, itype: GObject.Type, signal_flags: SignalFlags, class_handler: Callback, accumulator: SignalAccumulator, accu_data: any, c_marshaller: SignalCMarshaller, return_type: GObject.Type, n_params: number): number;
+
+
+
+function signal_new_valist (signal_name: string, itype: GObject.Type, signal_flags: SignalFlags, class_closure: Closure, accumulator: SignalAccumulator, accu_data: any, c_marshaller: SignalCMarshaller, return_type: GObject.Type, n_params: number, args: any[]): number;
+
+
+
+function signal_newv (signal_name: string, itype: GObject.Type, signal_flags: SignalFlags, class_closure: Closure, accumulator: SignalAccumulator, accu_data: any, c_marshaller: SignalCMarshaller, return_type: GObject.Type, n_params: number, param_types: GObject.Type[]): number;
+
+
+
+function signal_override_class_closure (signal_id: number, instance_type: GObject.Type, class_closure: Closure): void;
+
+
+
+function signal_override_class_handler (signal_name: string, instance_type: GObject.Type, class_handler: Callback): void;
+
+
+
+function signal_parse_name (detailed_signal: string, itype: GObject.Type, signal_id_p: number, detail_p: GLib.Quark, force_detail_quark: boolean): boolean;
+
+
+
+function signal_query (signal_id: number, query: SignalQuery): void;
+
+
+
+function signal_remove_emission_hook (signal_id: number, hook_id: number): void;
+
+
+
+function signal_set_va_marshaller (signal_id: number, instance_type: GObject.Type, va_marshaller: SignalCVaMarshaller): void;
+
+
+
+function signal_stop_emission (_instance: Object, signal_id: number, detail: GLib.Quark): void;
+
+
+
+function signal_stop_emission_by_name (_instance: Object, detailed_signal: string): void;
+
+
+
+function signal_type_cclosure_new (itype: GObject.Type, struct_offset: number): Closure;
+
+
+
+function source_set_closure (source: GLib.Source, closure: Closure): void;
+
+
+
+function source_set_dummy_callback (source: GLib.Source): void;
+
+
+
+function strdup_value_contents (value: Value): string;
+
+
+
+function type_add_class_cache_func (cache_data: any, cache_func: TypeClassCacheFunc): void;
+
+
+
+function type_add_class_private (class_type: GObject.Type, private_size: number): void;
+
+
+
+function type_add_instance_private (class_type: GObject.Type, private_size: number): number;
+
+
+
+function type_add_interface_check (check_data: any, check_func: TypeInterfaceCheckFunc): void;
+
+
+
+function type_add_interface_dynamic (instance_type: GObject.Type, interface_type: GObject.Type, plugin: TypePlugin): void;
+
+
+
+function type_add_interface_static (instance_type: GObject.Type, interface_type: GObject.Type, info: InterfaceInfo): void;
+
+
+
+function type_check_class_cast (g_class: TypeClass, is_a_type: GObject.Type): TypeClass;
+
+
+
+function type_check_class_is_a (g_class: TypeClass, is_a_type: GObject.Type): boolean;
+
+
+
+function type_check_instance (_instance: TypeInstance): boolean;
+
+
+
+function type_check_instance_cast (_instance: TypeInstance, iface_type: GObject.Type): TypeInstance;
+
+
+
+function type_check_instance_is_a (_instance: TypeInstance, iface_type: GObject.Type): boolean;
+
+
+
+function type_check_instance_is_fundamentally_a (_instance: TypeInstance, fundamental_type: GObject.Type): boolean;
+
+
+
+function type_check_is_value_type (_type: GObject.Type): boolean;
+
+
+
+function type_check_value (value: Value): boolean;
+
+
+
+function type_check_value_holds (value: Value, _type: GObject.Type): boolean;
+
+
+
+function type_children (_type: GObject.Type, n_children: number): GObject.Type[];
+
+
+
+function type_class_add_private (g_class: any, private_size: number): void;
+
+
+
+function type_class_adjust_private_offset (g_class: any, private_size_or_offset: number): void;
+
+
+
+function type_class_get_instance_private_offset (g_class: any): number;
+
+
+
+function type_class_peek (_type: GObject.Type): TypeClass;
+
+
+
+function type_class_peek_static (_type: GObject.Type): TypeClass;
+
+
+
+function type_class_ref (_type: GObject.Type): TypeClass;
+
+
+
+function type_create_instance (_type: GObject.Type): TypeInstance;
+
+
+
+function type_default_interface_peek (g_type: GObject.Type): TypeInterface;
+
+
+
+function type_default_interface_ref (g_type: GObject.Type): TypeInterface;
+
+
+
+function type_default_interface_unref (g_iface: TypeInterface): void;
+
+
+
+function type_depth (_type: GObject.Type): number;
+
+
+
+function type_ensure (_type: GObject.Type): void;
+
+
+
+function type_free_instance (_instance: TypeInstance): void;
+
+
+
+function type_from_name (name: string): GObject.Type;
+
+
+
+function type_fundamental (type_id: GObject.Type): GObject.Type;
+
+
+
+function type_fundamental_next (): GObject.Type;
+
+
+
+function type_get_instance_count (_type: GObject.Type): number;
+
+
+
+function type_get_plugin (_type: GObject.Type): TypePlugin;
+
+
+
+function type_get_qdata (_type: GObject.Type, quark: GLib.Quark): any;
+
+
+
+function type_get_type_registration_serial (): number;
+
+
+
+function type_init (): void;
+
+
+
+function type_init_with_debug_flags (debug_flags: TypeDebugFlags): void;
+
+
+
+function type_interface_add_prerequisite (interface_type: GObject.Type, prerequisite_type: GObject.Type): void;
+
+
+
+function type_interface_get_plugin (instance_type: GObject.Type, interface_type: GObject.Type): TypePlugin;
+
+
+
+function type_interface_peek (instance_class: TypeClass, iface_type: GObject.Type): TypeInterface;
+
+
+
+function type_interface_prerequisites (interface_type: GObject.Type, n_prerequisites: number): GObject.Type[];
+
+
+
+function type_interfaces (_type: GObject.Type, n_interfaces: number): GObject.Type[];
+
+
+
+function type_is_a (_type: GObject.Type, is_a_type: GObject.Type): boolean;
+
+
+
+function type_name (_type: GObject.Type): string;
+
+
+
+function type_name_from_class (g_class: TypeClass): string;
+
+
+
+function type_name_from_instance (_instance: TypeInstance): string;
+
+
+
+function type_next_base (leaf_type: GObject.Type, root_type: GObject.Type): GObject.Type;
+
+
+
+function type_parent (_type: GObject.Type): GObject.Type;
+
+
+
+function type_qname (_type: GObject.Type): GLib.Quark;
+
+
+
+function type_query (_type: GObject.Type, query: TypeQuery): void;
+
+
+
+function type_register_dynamic (parent_type: GObject.Type, type_name: string, plugin: TypePlugin, flags: TypeFlags): GObject.Type;
+
+
+
+function type_register_fundamental (type_id: GObject.Type, type_name: string, info: TypeInfo, finfo: TypeFundamentalInfo, flags: TypeFlags): GObject.Type;
+
+
+
+function type_register_static (parent_type: GObject.Type, type_name: string, info: TypeInfo, flags: TypeFlags): GObject.Type;
+
+
+
+function type_register_static_simple (parent_type: GObject.Type, type_name: string, class_size: number, class_init: ClassInitFunc, instance_size: number, instance_init: InstanceInitFunc, flags: TypeFlags): GObject.Type;
+
+
+
+function type_remove_class_cache_func (cache_data: any, cache_func: TypeClassCacheFunc): void;
+
+
+
+function type_remove_interface_check (check_data: any, check_func: TypeInterfaceCheckFunc): void;
+
+
+
+function type_set_qdata (_type: GObject.Type, quark: GLib.Quark, data: any): void;
+
+
+
+function type_test_flags (_type: GObject.Type, flags: number): boolean;
+
+
+
+function type_value_table_peek (_type: GObject.Type): TypeValueTable;
+
+
+
+function value_register_transform_func (src_type: GObject.Type, dest_type: GObject.Type, transform_func: ValueTransform): void;
+
+
+
+function value_type_compatible (src_type: GObject.Type, dest_type: GObject.Type): boolean;
+
+
+
+function value_type_transformable (src_type: GObject.Type, dest_type: GObject.Type): boolean;
 
 }

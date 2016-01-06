@@ -20,9 +20,8 @@
         "!node_modules/**"
     ],
     "files": [
-        "sample.ts",
-        "src/es6.d.ts",
         "src/node.d.ts",
+        "src/sample.ts",
         "src/script.ts",
         "typings/Atk-1.0.d.ts",
         "typings/cairo-1.0.d.ts",
@@ -34,6 +33,9 @@
         "typings/Gtk-3.0.d.ts",
         "typings/Pango-1.0.d.ts",
         "typings/xlib-2.0.d.ts"
+    ],
+    "exclude": [
+        "src/es6.d.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

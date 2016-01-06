@@ -9,6 +9,11 @@ interface AppLaunchContext extends Gio.AppLaunchContext {
 	set_timestamp (timestamp: number) : void;
 }
 
+var AppLaunchContext: {       
+   new (): AppLaunchContext;  
+}                          
+
+
 
 
 interface Cursor extends GObject.Object {
@@ -19,6 +24,11 @@ interface Cursor extends GObject.Object {
 	ref () : Cursor;
 	unref () : void;
 }
+
+var Cursor: {       
+   new (): Cursor;  
+}                          
+
 
 
 
@@ -55,6 +65,11 @@ interface Device extends GObject.Object {
 	warp (screen: Screen, _x: number, _y: number) : void;
 }
 
+var Device: {       
+   new (): Device;  
+}                          
+
+
 
 
 interface DeviceManager extends GObject.Object {
@@ -62,6 +77,11 @@ interface DeviceManager extends GObject.Object {
 	get_display () : Display;
 	list_devices (_type: DeviceType) : GLib.List;
 }
+
+var DeviceManager: {       
+   new (): DeviceManager;  
+}                          
+
 
 
 
@@ -106,6 +126,11 @@ interface Display extends GObject.Object {
 	warp_pointer (screen: Screen, _x: number, _y: number) : void;
 }
 
+var Display: {       
+   new (): Display;  
+}                          
+
+
 
 
 interface DisplayManager extends GObject.Object {
@@ -114,6 +139,11 @@ interface DisplayManager extends GObject.Object {
 	open_display (name: string) : Display;
 	set_default_display (display: Display) : void;
 }
+
+var DisplayManager: {       
+   new (): DisplayManager;  
+}                          
+
 
 
 
@@ -129,6 +159,11 @@ interface DragContext extends GObject.Object {
 	set_device (device: Device) : void;
 }
 
+var DragContext: {       
+   new (): DragContext;  
+}                          
+
+
 
 
 interface FrameClock extends GObject.Object {
@@ -142,6 +177,11 @@ interface FrameClock extends GObject.Object {
 	get_timings (frame_counter: number) : FrameTimings;
 	request_phase (phase: FrameClockPhase) : void;
 }
+
+var FrameClock: {       
+   new (): FrameClock;  
+}                          
+
 
 
 
@@ -160,6 +200,11 @@ interface GLContext extends GObject.Object {
 	set_required_version (major: number, minor: number) : void;
 }
 
+var GLContext: {       
+   new (): GLContext;  
+}                          
+
+
 
 
 interface Keymap extends GObject.Object {
@@ -177,6 +222,11 @@ interface Keymap extends GObject.Object {
 	map_virtual_modifiers (state: ModifierType) : boolean;
 	translate_keyboard_state (hardware_keycode: number, state: ModifierType, group: number, keyval: number, effective_group: number, level: number, consumed_modifiers: ModifierType) : boolean;
 }
+
+var Keymap: {       
+   new (): Keymap;  
+}                          
+
 
 
 
@@ -213,6 +263,11 @@ interface Screen extends GObject.Object {
 	set_resolution (dpi: number) : void;
 }
 
+var Screen: {       
+   new (): Screen;  
+}                          
+
+
 
 
 interface Visual extends GObject.Object {
@@ -226,6 +281,11 @@ interface Visual extends GObject.Object {
 	get_screen () : Screen;
 	get_visual_type () : VisualType;
 }
+
+var Visual: {       
+   new (): Visual;  
+}                          
+
 
 
 
@@ -385,6 +445,11 @@ interface Window extends GObject.Object {
 	unstick () : void;
 	withdraw () : void;
 }
+
+var Window: {       
+   new (): Window;  
+}                          
+
 
 
 
@@ -1500,5 +1565,445 @@ interface Event {}
 
 
 type XEvent = any;
+
+
+
+function add_option_entries_libgtk_only (group: GLib.OptionGroup): void;
+
+
+
+function atom_intern (atom_name: string, only_if_exists: boolean): Atom;
+
+
+
+function atom_intern_static_string (atom_name: string): Atom;
+
+
+
+function beep (): void;
+
+
+
+function cairo_create (window: Window): cairo.Context;
+
+
+
+function cairo_draw_from_gl (cr: cairo.Context, window: Window, source: number, source_type: number, buffer_scale: number, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function cairo_get_clip_rectangle (cr: cairo.Context, rect: Rectangle): boolean;
+
+
+
+function cairo_rectangle (cr: cairo.Context, rectangle: Rectangle): void;
+
+
+
+function cairo_region (cr: cairo.Context, region: cairo.Region): void;
+
+
+
+function cairo_region_create_from_surface (surface: cairo.Surface): cairo.Region;
+
+
+
+function cairo_set_source_color (cr: cairo.Context, color: Color): void;
+
+
+
+function cairo_set_source_pixbuf (cr: cairo.Context, pixbuf: GdkPixbuf.Pixbuf, pixbuf_x: number, pixbuf_y: number): void;
+
+
+
+function cairo_set_source_rgba (cr: cairo.Context, rgba: RGBA): void;
+
+
+
+function cairo_set_source_window (cr: cairo.Context, window: Window, _x: number, _y: number): void;
+
+
+
+function cairo_surface_create_from_pixbuf (pixbuf: GdkPixbuf.Pixbuf, scale: number, for_window: Window): cairo.Surface;
+
+
+
+function color_parse (spec: string, color: Color): boolean;
+
+
+
+function disable_multidevice (): void;
+
+
+
+function drag_abort (context: DragContext, time_: number): void;
+
+
+
+function drag_begin (window: Window, targets: GLib.List): DragContext;
+
+
+
+function drag_begin_for_device (window: Window, device: Device, targets: GLib.List): DragContext;
+
+
+
+function drag_drop (context: DragContext, time_: number): void;
+
+
+
+function drag_drop_succeeded (context: DragContext): boolean;
+
+
+
+function drag_find_window_for_screen (context: DragContext, drag_window: Window, screen: Screen, x_root: number, y_root: number, dest_window: Window, protocol: DragProtocol): void;
+
+
+
+function drag_get_selection (context: DragContext): Atom;
+
+
+
+function drag_motion (context: DragContext, dest_window: Window, protocol: DragProtocol, x_root: number, y_root: number, suggested_action: DragAction, possible_actions: DragAction, time_: number): boolean;
+
+
+
+function drag_status (context: DragContext, action: DragAction, time_: number): void;
+
+
+
+function drop_finish (context: DragContext, success: boolean, time_: number): void;
+
+
+
+function drop_reply (context: DragContext, accepted: boolean, time_: number): void;
+
+
+
+function error_trap_pop (): number;
+
+
+
+function error_trap_pop_ignored (): void;
+
+
+
+function error_trap_push (): void;
+
+
+
+function event_get (): Event;
+
+
+
+function event_handler_set (_func: EventFunc, data: any, notify: GLib.DestroyNotify): void;
+
+
+
+function event_peek (): Event;
+
+
+
+function event_request_motions (event: EventMotion): void;
+
+
+
+function events_get_angle (event1: Event, event2: Event, angle: number): boolean;
+
+
+
+function events_get_center (event1: Event, event2: Event, _x: number, _y: number): boolean;
+
+
+
+function events_get_distance (event1: Event, event2: Event, distance: number): boolean;
+
+
+
+function events_pending (): boolean;
+
+
+
+function flush (): void;
+
+
+
+function get_default_root_window (): Window;
+
+
+
+function get_display (): string;
+
+
+
+function get_display_arg_name (): string;
+
+
+
+function get_program_class (): string;
+
+
+
+function get_show_events (): boolean;
+
+
+
+function gl_error_quark (): GLib.Quark;
+
+
+
+function init (argc: number, argv: string[]): void;
+
+
+
+function init_check (argc: number, argv: string[]): boolean;
+
+
+
+function keyboard_grab (window: Window, owner_events: boolean, time_: number): GrabStatus;
+
+
+
+function keyboard_ungrab (time_: number): void;
+
+
+
+function keyval_convert_case (symbol: number, lower: number, upper: number): void;
+
+
+
+function keyval_from_name (keyval_name: string): number;
+
+
+
+function keyval_is_lower (keyval: number): boolean;
+
+
+
+function keyval_is_upper (keyval: number): boolean;
+
+
+
+function keyval_name (keyval: number): string;
+
+
+
+function keyval_to_lower (keyval: number): number;
+
+
+
+function keyval_to_unicode (keyval: number): number;
+
+
+
+function keyval_to_upper (keyval: number): number;
+
+
+
+function list_visuals (): GLib.List;
+
+
+
+function notify_startup_complete (): void;
+
+
+
+function notify_startup_complete_with_id (startup_id: string): void;
+
+
+
+function offscreen_window_get_embedder (window: Window): Window;
+
+
+
+function offscreen_window_get_surface (window: Window): cairo.Surface;
+
+
+
+function offscreen_window_set_embedder (window: Window, embedder: Window): void;
+
+
+
+function pango_context_get (): Pango.Context;
+
+
+
+function pango_context_get_for_screen (screen: Screen): Pango.Context;
+
+
+
+function pango_layout_get_clip_region (layout: Pango.Layout, x_origin: number, y_origin: number, index_ranges: number, n_ranges: number): cairo.Region;
+
+
+
+function pango_layout_line_get_clip_region (line: Pango.LayoutLine, x_origin: number, y_origin: number, index_ranges: number[], n_ranges: number): cairo.Region;
+
+
+
+function parse_args (argc: number, argv: string[]): void;
+
+
+
+function pixbuf_get_from_surface (surface: cairo.Surface, src_x: number, src_y: number, width: number, height: number): GdkPixbuf.Pixbuf;
+
+
+
+function pixbuf_get_from_window (window: Window, src_x: number, src_y: number, width: number, height: number): GdkPixbuf.Pixbuf;
+
+
+
+function pointer_grab (window: Window, owner_events: boolean, event_mask: EventMask, confine_to: Window, cursor: Cursor, time_: number): GrabStatus;
+
+
+
+function pointer_is_grabbed (): boolean;
+
+
+
+function pointer_ungrab (time_: number): void;
+
+
+
+function pre_parse_libgtk_only (): void;
+
+
+
+function property_change (window: Window, property: Atom, _type: Atom, format: number, mode: PropMode, data: number, nelements: number): void;
+
+
+
+function property_delete (window: Window, property: Atom): void;
+
+
+
+function property_get (window: Window, property: Atom, _type: Atom, offset: number, length: number, pdelete: number, actual_property_type: Atom, actual_format: number, actual_length: number, data: number[]): boolean;
+
+
+
+function query_depths (depths: number[], count: number): void;
+
+
+
+function query_visual_types (visual_types: VisualType[], count: number): void;
+
+
+
+function selection_convert (requestor: Window, selection: Atom, target: Atom, time_: number): void;
+
+
+
+function selection_owner_get (selection: Atom): Window;
+
+
+
+function selection_owner_get_for_display (display: Display, selection: Atom): Window;
+
+
+
+function selection_owner_set (owner: Window, selection: Atom, time_: number, send_event: boolean): boolean;
+
+
+
+function selection_owner_set_for_display (display: Display, owner: Window, selection: Atom, time_: number, send_event: boolean): boolean;
+
+
+
+function selection_property_get (requestor: Window, data: number, prop_type: Atom, prop_format: number): number;
+
+
+
+function selection_send_notify (requestor: Window, selection: Atom, target: Atom, property: Atom, time_: number): void;
+
+
+
+function selection_send_notify_for_display (display: Display, requestor: Window, selection: Atom, target: Atom, property: Atom, time_: number): void;
+
+
+
+function set_allowed_backends (backends: string): void;
+
+
+
+function set_double_click_time (msec: number): void;
+
+
+
+function set_program_class (program_class: string): void;
+
+
+
+function set_show_events (show_events: boolean): void;
+
+
+
+function setting_get (name: string, value: GObject.Value): boolean;
+
+
+
+function synthesize_window_state (window: Window, unset_flags: WindowState, set_flags: WindowState): void;
+
+
+
+function test_render_sync (window: Window): void;
+
+
+
+function test_simulate_button (window: Window, _x: number, _y: number, button: number, modifiers: ModifierType, button_pressrelease: EventType): boolean;
+
+
+
+function test_simulate_key (window: Window, _x: number, _y: number, keyval: number, modifiers: ModifierType, key_pressrelease: EventType): boolean;
+
+
+
+function text_property_to_utf8_list_for_display (display: Display, encoding: Atom, format: number, text: number[], length: number, list: string[]): number;
+
+
+
+function threads_add_idle (_function: GLib.SourceFunc, data: any): number;
+
+
+
+function threads_add_idle_full (priority: number, _function: GLib.SourceFunc, data: any, notify: GLib.DestroyNotify): number;
+
+
+
+function threads_add_timeout (interval: number, _function: GLib.SourceFunc, data: any): number;
+
+
+
+function threads_add_timeout_full (priority: number, interval: number, _function: GLib.SourceFunc, data: any, notify: GLib.DestroyNotify): number;
+
+
+
+function threads_add_timeout_seconds (interval: number, _function: GLib.SourceFunc, data: any): number;
+
+
+
+function threads_add_timeout_seconds_full (priority: number, interval: number, _function: GLib.SourceFunc, data: any, notify: GLib.DestroyNotify): number;
+
+
+
+function threads_enter (): void;
+
+
+
+function threads_init (): void;
+
+
+
+function threads_leave (): void;
+
+
+
+function threads_set_lock_functions (enter_fn: GObject.Callback, leave_fn: GObject.Callback): void;
+
+
+
+function unicode_to_keyval (wc: number): number;
+
+
+
+function utf8_to_string_target (_str: string): string;
 
 }

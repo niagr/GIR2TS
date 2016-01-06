@@ -87,4 +87,8 @@ enum Content {
 	COLOR_ALPHA = 12288
 }
 
+
+
+function image_surface_create (): void;
+
 }

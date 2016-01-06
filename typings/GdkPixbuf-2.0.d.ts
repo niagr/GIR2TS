@@ -41,6 +41,11 @@ interface Pixbuf extends GObject.Object, Gio.Icon, Gio.LoadableIcon {
 	unref () : void;
 }
 
+var Pixbuf: {       
+   new (): Pixbuf;  
+}                          
+
+
 
 
 interface PixbufAnimation extends GObject.Object {
@@ -53,6 +58,11 @@ interface PixbufAnimation extends GObject.Object {
 	unref () : void;
 }
 
+var PixbufAnimation: {       
+   new (): PixbufAnimation;  
+}                          
+
+
 
 
 interface PixbufAnimationIter extends GObject.Object {
@@ -61,6 +71,11 @@ interface PixbufAnimationIter extends GObject.Object {
 	get_pixbuf () : Pixbuf;
 	on_currently_loading_frame () : boolean;
 }
+
+var PixbufAnimationIter: {       
+   new (): PixbufAnimationIter;  
+}                          
+
 
 
 
@@ -74,6 +89,11 @@ interface PixbufLoader extends GObject.Object {
 	write_bytes (buffer: GLib.Bytes) : boolean;
 }
 
+var PixbufLoader: {       
+   new (): PixbufLoader;  
+}                          
+
+
 
 
 interface PixbufSimpleAnim extends PixbufAnimation {
@@ -82,11 +102,21 @@ interface PixbufSimpleAnim extends PixbufAnimation {
 	set_loop (loop: boolean) : void;
 }
 
+var PixbufSimpleAnim: {       
+   new (): PixbufSimpleAnim;  
+}                          
+
+
 
 
 interface PixbufSimpleAnimIter extends PixbufAnimationIter {
 	
 }
+
+var PixbufSimpleAnimIter: {       
+   new (): PixbufSimpleAnimIter;  
+}                          
+
 
 
 
@@ -242,5 +272,9 @@ type PixbufSimpleAnim_autoptr = any;
 
 
 type Pixbuf_autoptr = any;
+
+
+
+function pixbuf_error_quark (): GLib.Quark;
 
 }

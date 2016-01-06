@@ -4,6 +4,11 @@ interface GObjectAccessible extends Object {
 	get_object () : GObject.Object;
 }
 
+var GObjectAccessible: {       
+   new (): GObjectAccessible;  
+}                          
+
+
 
 
 interface Hyperlink extends GObject.Object, Action {
@@ -17,6 +22,11 @@ interface Hyperlink extends GObject.Object, Action {
 	is_valid () : boolean;
 }
 
+var Hyperlink: {       
+   new (): Hyperlink;  
+}                          
+
+
 
 
 interface Misc extends GObject.Object {
@@ -24,17 +34,32 @@ interface Misc extends GObject.Object {
 	threads_leave () : void;
 }
 
+var Misc: {       
+   new (): Misc;  
+}                          
+
+
 
 
 // interface NoOpObject extends Object, Action, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value, Window {
 	
 // }
 
+var NoOpObject: {       
+   new (): NoOpObject;  
+}                          
+
+
 
 
 interface NoOpObjectFactory extends ObjectFactory {
 	
 }
+
+var NoOpObjectFactory: {       
+   new (): NoOpObjectFactory;  
+}                          
+
 
 
 
@@ -65,6 +90,11 @@ interface Object extends GObject.Object {
 	set_role (role: Role) : void;
 }
 
+var Object: {       
+   new (): Object;  
+}                          
+
+
 
 
 interface ObjectFactory extends GObject.Object {
@@ -73,11 +103,21 @@ interface ObjectFactory extends GObject.Object {
 	invalidate () : void;
 }
 
+var ObjectFactory: {       
+   new (): ObjectFactory;  
+}                          
+
+
 
 
 interface Plug extends Object, Component {
 	get_id () : string;
 }
+
+var Plug: {       
+   new (): Plug;  
+}                          
+
 
 
 
@@ -87,6 +127,11 @@ interface Registry extends GObject.Object {
 	set_factory_type (_type: GObject.Type, factory_type: GObject.Type) : void;
 }
 
+var Registry: {       
+   new (): Registry;  
+}                          
+
+
 
 
 interface Relation extends GObject.Object {
@@ -95,6 +140,11 @@ interface Relation extends GObject.Object {
 	get_target () : Object[];
 	remove_target (target: Object) : boolean;
 }
+
+var Relation: {       
+   new (): Relation;  
+}                          
+
 
 
 
@@ -109,12 +159,22 @@ interface RelationSet extends GObject.Object {
 	remove (relation: Relation) : void;
 }
 
+var RelationSet: {       
+   new (): RelationSet;  
+}                          
+
+
 
 
 interface Socket extends Object, Component {
 	embed (plug_id: string) : void;
 	is_occupied () : boolean;
 }
+
+var Socket: {       
+   new (): Socket;  
+}                          
+
 
 
 
@@ -131,11 +191,21 @@ interface StateSet extends GObject.Object {
 	xor_sets (compare_set: StateSet) : StateSet;
 }
 
+var StateSet: {       
+   new (): StateSet;  
+}                          
+
+
 
 
 interface Util extends GObject.Object {
 	
 }
+
+var Util: {       
+   new (): Util;  
+}                          
+
 
 
 
@@ -656,6 +726,11 @@ interface Action {
 	// set_description (_i: number, desc: string) : boolean;
 }
 
+var Action: {       
+   new (): Action;  
+}                          
+
+
 
 
 interface Component {
@@ -675,6 +750,11 @@ interface Component {
 	set_size (width: number, height: number) : boolean;
 }
 
+var Component: {       
+   new (): Component;  
+}                          
+
+
 
 
 interface Document {
@@ -688,6 +768,11 @@ interface Document {
 	set_attribute_value (attribute_name: string, attribute_value: string) : boolean;
 }
 
+var Document: {       
+   new (): Document;  
+}                          
+
+
 
 
 interface EditableText {
@@ -700,11 +785,21 @@ interface EditableText {
 	set_text_contents (string: string) : void;
 }
 
+var EditableText: {       
+   new (): EditableText;  
+}                          
+
+
 
 
 interface HyperlinkImpl {
 	get_hyperlink () : Hyperlink;
 }
+
+var HyperlinkImpl: {       
+   new (): HyperlinkImpl;  
+}                          
+
 
 
 
@@ -713,6 +808,11 @@ interface Hypertext {
 	get_link_index (char_index: number) : number;
 	get_n_links () : number;
 }
+
+var Hypertext: {       
+   new (): Hypertext;  
+}                          
+
 
 
 
@@ -724,11 +824,21 @@ interface Image {
 	set_image_description (description: string) : boolean;
 }
 
+var Image: {       
+   new (): Image;  
+}                          
+
+
 
 
 interface ImplementorIface {
 	
 }
+
+var ImplementorIface: {       
+   new (): ImplementorIface;  
+}                          
+
 
 
 
@@ -742,6 +852,11 @@ interface Selection {
 	select_all_selection () : boolean;
 }
 
+var Selection: {       
+   new (): Selection;  
+}                          
+
+
 
 
 interface StreamableContent {
@@ -750,6 +865,11 @@ interface StreamableContent {
 	get_stream (mime_type: string) : GLib.IOChannel;
 	get_uri (mime_type: string) : string;
 }
+
+var StreamableContent: {       
+   new (): StreamableContent;  
+}                          
+
 
 
 
@@ -785,6 +905,11 @@ interface Table {
 	set_summary (accessible: Object) : void;
 }
 
+var Table: {       
+   new (): Table;  
+}                          
+
+
 
 
 interface TableCell {
@@ -796,6 +921,11 @@ interface TableCell {
 	get_row_span () : number;
 	get_table () : Object;
 }
+
+var TableCell: {       
+   new (): TableCell;  
+}                          
+
 
 
 
@@ -822,6 +952,11 @@ interface Text {
 	set_selection (selection_num: number, start_offset: number, end_offset: number) : boolean;
 }
 
+var Text: {       
+   new (): Text;  
+}                          
+
+
 
 
 interface Value {
@@ -837,11 +972,21 @@ interface Value {
 	set_value (new_value: number) : void;
 }
 
+var Value: {       
+   new (): Value;  
+}                          
+
+
 
 
 interface Window {
 	
 }
+
+var Window: {       
+   new (): Window;  
+}                          
+
 
 
 
@@ -1206,5 +1351,153 @@ type AttributeSet = GLib.SList;
 
 
 type State = number;
+
+
+
+function add_focus_tracker (focus_tracker: EventListener): number;
+
+
+
+function add_global_event_listener (listener: GObject.SignalEmissionHook, event_type: string): number;
+
+
+
+function add_key_event_listener (listener: KeySnoopFunc, data: any): number;
+
+
+
+function attribute_set_free (attrib_set: AttributeSet): void;
+
+
+
+function focus_tracker_init (init: EventListenerInit): void;
+
+
+
+function focus_tracker_notify (object: Object): void;
+
+
+
+function get_binary_age (): number;
+
+
+
+function get_default_registry (): Registry;
+
+
+
+function get_focus_object (): Object;
+
+
+
+function get_interface_age (): number;
+
+
+
+function get_major_version (): number;
+
+
+
+function get_micro_version (): number;
+
+
+
+function get_minor_version (): number;
+
+
+
+function get_root (): Object;
+
+
+
+function get_toolkit_name (): string;
+
+
+
+function get_toolkit_version (): string;
+
+
+
+function get_version (): string;
+
+
+
+function relation_type_for_name (name: string): RelationType;
+
+
+
+function relation_type_get_name (_type: RelationType): string;
+
+
+
+function relation_type_register (name: string): RelationType;
+
+
+
+function remove_focus_tracker (tracker_id: number): void;
+
+
+
+function remove_global_event_listener (listener_id: number): void;
+
+
+
+function remove_key_event_listener (listener_id: number): void;
+
+
+
+function role_for_name (name: string): Role;
+
+
+
+function role_get_localized_name (role: Role): string;
+
+
+
+function role_get_name (role: Role): string;
+
+
+
+function role_register (name: string): Role;
+
+
+
+function state_type_for_name (name: string): StateType;
+
+
+
+function state_type_get_name (_type: StateType): string;
+
+
+
+function state_type_register (name: string): StateType;
+
+
+
+function text_attribute_for_name (name: string): TextAttribute;
+
+
+
+function text_attribute_get_name (attr: TextAttribute): string;
+
+
+
+function text_attribute_get_value (attr: TextAttribute, index_: number): string;
+
+
+
+function text_attribute_register (name: string): TextAttribute;
+
+
+
+function text_free_ranges (ranges: TextRange[]): void;
+
+
+
+function value_type_get_localized_name (value_type: ValueType): string;
+
+
+
+function value_type_get_name (value_type: ValueType): string;
 
 }

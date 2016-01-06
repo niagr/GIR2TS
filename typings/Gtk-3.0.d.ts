@@ -7,7 +7,7 @@ interface AboutDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	get_comments () : string;
 	get_copyright () : string;
 	get_documenters () : string[];
-	get_license () : string;  
+	get_license () : string;
 	get_license_type () : License;
 	get_logo () : GdkPixbuf.Pixbuf;
 	get_logo_icon_name () : string;
@@ -34,6 +34,11 @@ interface AboutDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	set_wrap_license (wrap_license: boolean) : void;
 }
 
+var AboutDialog: {       
+   new (): AboutDialog;  
+}                          
+
+
 
 
 interface AccelGroup extends GObject.Object {
@@ -50,6 +55,11 @@ interface AccelGroup extends GObject.Object {
 	unlock () : void;
 }
 
+var AccelGroup: {       
+   new (): AccelGroup;  
+}                          
+
+
 
 
 interface AccelLabel extends Label, Atk.ImplementorIface, Buildable {
@@ -62,11 +72,21 @@ interface AccelLabel extends Label, Atk.ImplementorIface, Buildable {
 	set_accel_widget (accel_widget: Widget) : void;
 }
 
+var AccelLabel: {       
+   new (): AccelLabel;  
+}                          
+
+
 
 
 interface AccelMap extends GObject.Object {
-
+	
 }
+
+var AccelMap: {       
+   new (): AccelMap;  
+}                          
+
 
 
 
@@ -75,6 +95,11 @@ interface Accessible extends Atk.Object {
 	get_widget () : Widget;
 	set_widget (widget: Widget) : void;
 }
+
+var Accessible: {       
+   new (): Accessible;  
+}                          
+
 
 
 
@@ -122,6 +147,11 @@ interface Action extends GObject.Object, Buildable {
 	unblock_activate () : void;
 }
 
+var Action: {       
+   new (): Action;  
+}                          
+
+
 
 
 interface ActionBar extends Bin, Atk.ImplementorIface, Buildable {
@@ -130,6 +160,11 @@ interface ActionBar extends Bin, Atk.ImplementorIface, Buildable {
 	pack_start (child: Widget) : void;
 	set_center_widget (center_widget: Widget) : void;
 }
+
+var ActionBar: {       
+   new (): ActionBar;  
+}                          
+
 
 
 
@@ -157,6 +192,11 @@ interface ActionGroup extends GObject.Object, Buildable {
 	translate_string (string: string) : string;
 }
 
+var ActionGroup: {       
+   new (): ActionGroup;  
+}                          
+
+
 
 
 interface Adjustment extends GObject.InitiallyUnowned {
@@ -179,6 +219,11 @@ interface Adjustment extends GObject.InitiallyUnowned {
 	value_changed () : void;
 }
 
+var Adjustment: {       
+   new (): Adjustment;  
+}                          
+
+
 
 
 interface Alignment extends Bin, Atk.ImplementorIface, Buildable {
@@ -186,6 +231,11 @@ interface Alignment extends Bin, Atk.ImplementorIface, Buildable {
 	set (xalign: number, yalign: number, xscale: number, yscale: number) : void;
 	set_padding (padding_top: number, padding_bottom: number, padding_left: number, padding_right: number) : void;
 }
+
+var Alignment: {       
+   new (): Alignment;  
+}                          
+
 
 
 
@@ -201,6 +251,11 @@ interface AppChooserButton extends ComboBox, Atk.ImplementorIface, AppChooser, B
 	set_show_dialog_item (setting: boolean) : void;
 }
 
+var AppChooserButton: {       
+   new (): AppChooserButton;  
+}                          
+
+
 
 
 interface AppChooserDialog extends Dialog, Atk.ImplementorIface, AppChooser, Buildable {
@@ -208,6 +263,11 @@ interface AppChooserDialog extends Dialog, Atk.ImplementorIface, AppChooser, Bui
 	get_widget () : Widget;
 	set_heading (heading: string) : void;
 }
+
+var AppChooserDialog: {       
+   new (): AppChooserDialog;  
+}                          
+
 
 
 
@@ -225,6 +285,11 @@ interface AppChooserWidget extends Box, Atk.ImplementorIface, AppChooser, Builda
 	set_show_other (setting: boolean) : void;
 	set_show_recommended (setting: boolean) : void;
 }
+
+var AppChooserWidget: {       
+   new (): AppChooserWidget;  
+}                          
+
 
 
 
@@ -251,6 +316,11 @@ interface Application extends Gio.Application, Gio.ActionGroup, Gio.ActionMap {
 	uninhibit (cookie: number) : void;
 }
 
+var Application: {       
+   new (): Application;  
+}                          
+
+
 
 
 interface ApplicationWindow extends Window, Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, Buildable {
@@ -259,23 +329,43 @@ interface ApplicationWindow extends Window, Atk.ImplementorIface, Gio.ActionGrou
 	set_show_menubar (show_menubar: boolean) : void;
 }
 
+var ApplicationWindow: {       
+   new (): ApplicationWindow;  
+}                          
+
+
 
 
 interface Arrow extends Misc, Atk.ImplementorIface, Buildable {
 	set (arrow_type: ArrowType, shadow_type: ShadowType) : void;
 }
 
+var Arrow: {       
+   new (): Arrow;  
+}                          
+
+
 
 
 interface ArrowAccessible extends WidgetAccessible, Atk.Component, Atk.Image {
-
+	
 }
+
+var ArrowAccessible: {       
+   new (): ArrowAccessible;  
+}                          
+
 
 
 
 interface AspectFrame extends Frame, Atk.ImplementorIface, Buildable {
 	set (xalign: number, yalign: number, ratio: number, obey_child: boolean) : void;
 }
+
+var AspectFrame: {       
+   new (): AspectFrame;  
+}                          
+
 
 
 
@@ -309,17 +399,32 @@ interface Assistant extends Window, Atk.ImplementorIface, Buildable {
 	update_buttons_state () : void;
 }
 
+var Assistant: {       
+   new (): Assistant;  
+}                          
+
+
 
 
 interface Bin extends Container, Atk.ImplementorIface, Buildable {
 	get_child () : Widget;
 }
 
+var Bin: {       
+   new (): Bin;  
+}                          
+
+
 
 
 interface BooleanCellAccessible extends RendererCellAccessible, Atk.Action, Atk.Component {
-
+	
 }
+
+var BooleanCellAccessible: {       
+   new (): BooleanCellAccessible;  
+}                          
+
 
 
 
@@ -338,6 +443,11 @@ interface Box extends Container, Atk.ImplementorIface, Buildable, Orientable {
 	set_homogeneous (homogeneous: boolean) : void;
 	set_spacing (spacing: number) : void;
 }
+
+var Box: {       
+   new (): Box;  
+}                          
+
 
 
 
@@ -364,6 +474,11 @@ interface Builder extends GObject.Object {
 	value_from_string (pspec: GObject.ParamSpec, string: string, value: GObject.Value) : boolean;
 	value_from_string_type (_type: GObject.Type, string: string, value: GObject.Value) : boolean;
 }
+
+var Builder: {       
+   new (): Builder;  
+}                          
+
 
 
 
@@ -394,11 +509,21 @@ interface Button extends Bin, Atk.ImplementorIface, Actionable, Activatable, Bui
 	set_use_underline (use_underline: boolean) : void;
 }
 
+var Button: {       
+   new (): Button;  
+}                          
+
+
 
 
 interface ButtonAccessible extends ContainerAccessible, Atk.Action, Atk.Component, Atk.Image {
-
+	
 }
+
+var ButtonAccessible: {       
+   new (): ButtonAccessible;  
+}                          
+
 
 
 
@@ -410,6 +535,11 @@ interface ButtonBox extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	set_child_secondary (child: Widget, is_secondary: boolean) : void;
 	set_layout (layout_style: ButtonBoxStyle) : void;
 }
+
+var ButtonBox: {       
+   new (): ButtonBox;  
+}                          
+
 
 
 
@@ -430,11 +560,21 @@ interface Calendar extends Widget, Atk.ImplementorIface, Buildable {
 	unmark_day (day: number) : void;
 }
 
+var Calendar: {       
+   new (): Calendar;  
+}                          
+
+
 
 
 interface CellAccessible extends Accessible, Atk.Action, Atk.Component {
-
+	
 }
+
+var CellAccessible: {       
+   new (): CellAccessible;  
+}                          
+
 
 
 
@@ -485,14 +625,24 @@ interface CellArea extends GObject.InitiallyUnowned, Buildable, CellLayout {
 	stop_editing (canceled: boolean) : void;
 }
 
+var CellArea: {       
+   new (): CellArea;  
+}                          
+
+
 
 
 interface CellAreaBox extends CellArea, Buildable, CellLayout, Orientable {
 	get_spacing () : number;
-	pack_end (renderer: CellRenderer, expand: boolean, align?: boolean, fixed?: boolean) : void;
-	pack_start (renderer: CellRenderer, expand: boolean, align?: boolean, fixed?: boolean) : void;
+	// pack_end (renderer: CellRenderer, expand: boolean, align: boolean, fixed: boolean) : void;
+	// pack_start (renderer: CellRenderer, expand: boolean, align: boolean, fixed: boolean) : void;
 	set_spacing (spacing: number) : void;
 }
+
+var CellAreaBox: {       
+   new (): CellAreaBox;  
+}                          
+
 
 
 
@@ -508,6 +658,11 @@ interface CellAreaContext extends GObject.Object {
 	push_preferred_width (minimum_width: number, natural_width: number) : void;
 	reset () : void;
 }
+
+var CellAreaContext: {       
+   new (): CellAreaContext;  
+}                          
+
 
 
 
@@ -538,47 +693,87 @@ interface CellRenderer extends GObject.InitiallyUnowned {
 	stop_editing (canceled: boolean) : void;
 }
 
+var CellRenderer: {       
+   new (): CellRenderer;  
+}                          
+
+
 
 
 interface CellRendererAccel extends CellRendererText {
-
+	
 }
+
+var CellRendererAccel: {       
+   new (): CellRendererAccel;  
+}                          
+
 
 
 
 interface CellRendererCombo extends CellRendererText {
-
+	
 }
+
+var CellRendererCombo: {       
+   new (): CellRendererCombo;  
+}                          
+
 
 
 
 interface CellRendererPixbuf extends CellRenderer {
-
+	
 }
+
+var CellRendererPixbuf: {       
+   new (): CellRendererPixbuf;  
+}                          
+
 
 
 
 interface CellRendererProgress extends CellRenderer, Orientable {
-
+	
 }
+
+var CellRendererProgress: {       
+   new (): CellRendererProgress;  
+}                          
+
 
 
 
 interface CellRendererSpin extends CellRendererText {
-
+	
 }
+
+var CellRendererSpin: {       
+   new (): CellRendererSpin;  
+}                          
+
 
 
 
 interface CellRendererSpinner extends CellRenderer {
-
+	
 }
+
+var CellRendererSpinner: {       
+   new (): CellRendererSpinner;  
+}                          
+
 
 
 
 interface CellRendererText extends CellRenderer {
 	set_fixed_height_from_font (number_of_rows: number) : void;
 }
+
+var CellRendererText: {       
+   new (): CellRendererText;  
+}                          
+
 
 
 
@@ -590,6 +785,11 @@ interface CellRendererToggle extends CellRenderer {
 	set_active (setting: boolean) : void;
 	set_radio (radio: boolean) : void;
 }
+
+var CellRendererToggle: {       
+   new (): CellRendererToggle;  
+}                          
+
 
 
 
@@ -607,11 +807,21 @@ interface CellView extends Widget, Atk.ImplementorIface, Buildable, CellLayout, 
 	set_model (model: TreeModel) : void;
 }
 
+var CellView: {       
+   new (): CellView;  
+}                          
+
+
 
 
 interface CheckButton extends ToggleButton, Atk.ImplementorIface, Actionable, Activatable, Buildable {
-
+	
 }
+
+var CheckButton: {       
+   new (): CheckButton;  
+}                          
+
 
 
 
@@ -625,11 +835,21 @@ interface CheckMenuItem extends MenuItem, Atk.ImplementorIface, Actionable, Acti
 	toggled () : void;
 }
 
+var CheckMenuItem: {       
+   new (): CheckMenuItem;  
+}                          
+
+
 
 
 interface CheckMenuItemAccessible extends MenuItemAccessible, Atk.Action, Atk.Component, Atk.Selection {
-
+	
 }
+
+var CheckMenuItemAccessible: {       
+   new (): CheckMenuItemAccessible;  
+}                          
+
 
 
 
@@ -662,6 +882,11 @@ interface Clipboard extends GObject.Object {
 	wait_is_uris_available () : boolean;
 }
 
+var Clipboard: {       
+   new (): Clipboard;  
+}                          
+
+
 
 
 interface ColorButton extends Button, Atk.ImplementorIface, Actionable, Activatable, Buildable, ColorChooser {
@@ -677,17 +902,32 @@ interface ColorButton extends Button, Atk.ImplementorIface, Actionable, Activata
 	set_use_alpha (use_alpha: boolean) : void;
 }
 
+var ColorButton: {       
+   new (): ColorButton;  
+}                          
+
+
 
 
 interface ColorChooserDialog extends Dialog, Atk.ImplementorIface, Buildable, ColorChooser {
-
+	
 }
+
+var ColorChooserDialog: {       
+   new (): ColorChooserDialog;  
+}                          
+
 
 
 
 interface ColorChooserWidget extends Box, Atk.ImplementorIface, Buildable, ColorChooser, Orientable {
-
+	
 }
+
+var ColorChooserWidget: {       
+   new (): ColorChooserWidget;  
+}                          
+
 
 
 
@@ -711,11 +951,21 @@ interface ColorSelection extends Box, Atk.ImplementorIface, Buildable, Orientabl
 	set_previous_rgba (rgba: Gdk.RGBA) : void;
 }
 
+var ColorSelection: {       
+   new (): ColorSelection;  
+}                          
+
+
 
 
 interface ColorSelectionDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	get_color_selection () : Widget;
 }
+
+var ColorSelectionDialog: {       
+   new (): ColorSelectionDialog;  
+}                          
+
 
 
 
@@ -757,11 +1007,21 @@ interface ComboBox extends Bin, Atk.ImplementorIface, Buildable, CellEditable, C
 	set_wrap_width (width: number) : void;
 }
 
+var ComboBox: {       
+   new (): ComboBox;  
+}                          
+
+
 
 
 interface ComboBoxAccessible extends ContainerAccessible, Atk.Action, Atk.Component, Atk.Selection {
-
+	
 }
+
+var ComboBoxAccessible: {       
+   new (): ComboBoxAccessible;  
+}                          
+
 
 
 
@@ -776,6 +1036,11 @@ interface ComboBoxText extends ComboBox, Atk.ImplementorIface, Buildable, CellEd
 	remove (position: number) : void;
 	remove_all () : void;
 }
+
+var ComboBoxText: {       
+   new (): ComboBoxText;  
+}                          
+
 
 
 
@@ -815,11 +1080,21 @@ interface Container extends Widget, Atk.ImplementorIface, Buildable {
 	unset_focus_chain () : void;
 }
 
+var Container: {       
+   new (): Container;  
+}                          
+
+
 
 
 interface ContainerAccessible extends WidgetAccessible, Atk.Component {
-
+	
 }
+
+var ContainerAccessible: {       
+   new (): ContainerAccessible;  
+}                          
+
 
 
 
@@ -828,6 +1103,11 @@ interface ContainerCellAccessible extends CellAccessible, Atk.Action, Atk.Compon
 	get_children () : GLib.List;
 	remove_child (child: CellAccessible) : void;
 }
+
+var ContainerCellAccessible: {       
+   new (): ContainerCellAccessible;  
+}                          
+
 
 
 
@@ -838,6 +1118,11 @@ interface CssProvider extends GObject.Object, StyleProvider {
 	load_from_resource (resource_path: string) : void;
 	to_string () : string;
 }
+
+var CssProvider: {       
+   new (): CssProvider;  
+}                          
+
 
 
 
@@ -858,11 +1143,21 @@ interface Dialog extends Window, Atk.ImplementorIface, Buildable {
 	set_response_sensitive (response_id: number, setting: boolean) : void;
 }
 
+var Dialog: {       
+   new (): Dialog;  
+}                          
+
+
 
 
 interface DrawingArea extends Widget, Atk.ImplementorIface, Buildable {
-
+	
 }
+
+var DrawingArea: {       
+   new (): DrawingArea;  
+}                          
+
 
 
 
@@ -943,11 +1238,21 @@ interface Entry extends Widget, Atk.ImplementorIface, Buildable, CellEditable, E
 	unset_invisible_char () : void;
 }
 
+var Entry: {       
+   new (): Entry;  
+}                          
+
+
 
 
 interface EntryAccessible extends WidgetAccessible, Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
-
+	
 }
+
+var EntryAccessible: {       
+   new (): EntryAccessible;  
+}                          
+
 
 
 
@@ -963,6 +1268,11 @@ interface EntryBuffer extends GObject.Object {
 	set_max_length (max_length: number) : void;
 	set_text (chars: string, n_chars: number) : void;
 }
+
+var EntryBuffer: {       
+   new (): EntryBuffer;  
+}                          
+
 
 
 
@@ -994,11 +1304,21 @@ interface EntryCompletion extends GObject.Object, Buildable, CellLayout {
 	set_text_column (column: number) : void;
 }
 
+var EntryCompletion: {       
+   new (): EntryCompletion;  
+}                          
+
+
 
 
 interface EntryIconAccessible extends Atk.Object, Atk.Action, Atk.Component {
-
+	
 }
+
+var EntryIconAccessible: {       
+   new (): EntryIconAccessible;  
+}                          
+
 
 
 
@@ -1009,6 +1329,11 @@ interface EventBox extends Bin, Atk.ImplementorIface, Buildable {
 	set_visible_window (visible_window: boolean) : void;
 }
 
+var EventBox: {       
+   new (): EventBox;  
+}                          
+
+
 
 
 interface EventController extends GObject.Object {
@@ -1018,6 +1343,11 @@ interface EventController extends GObject.Object {
 	reset () : void;
 	set_propagation_phase (phase: PropagationPhase) : void;
 }
+
+var EventController: {       
+   new (): EventController;  
+}                          
+
 
 
 
@@ -1040,11 +1370,21 @@ interface Expander extends Bin, Atk.ImplementorIface, Buildable {
 	set_use_underline (use_underline: boolean) : void;
 }
 
+var Expander: {       
+   new (): Expander;  
+}                          
+
+
 
 
 interface ExpanderAccessible extends ContainerAccessible, Atk.Action, Atk.Component {
-
+	
 }
+
+var ExpanderAccessible: {       
+   new (): ExpanderAccessible;  
+}                          
+
 
 
 
@@ -1057,17 +1397,32 @@ interface FileChooserButton extends Box, Atk.ImplementorIface, Buildable, FileCh
 	set_width_chars (n_chars: number) : void;
 }
 
+var FileChooserButton: {       
+   new (): FileChooserButton;  
+}                          
+
+
 
 
 interface FileChooserDialog extends Dialog, Atk.ImplementorIface, Buildable, FileChooser {
-
+	
 }
+
+var FileChooserDialog: {       
+   new (): FileChooserDialog;  
+}                          
+
 
 
 
 interface FileChooserWidget extends Box, Atk.ImplementorIface, Buildable, FileChooser, Orientable {
-
+	
 }
+
+var FileChooserWidget: {       
+   new (): FileChooserWidget;  
+}                          
+
 
 
 
@@ -1082,12 +1437,22 @@ interface FileFilter extends GObject.InitiallyUnowned, Buildable {
 	set_name (name: string) : void;
 }
 
+var FileFilter: {       
+   new (): FileFilter;  
+}                          
+
+
 
 
 interface Fixed extends Container, Atk.ImplementorIface, Buildable {
 	move (widget: Widget, _x: number, _y: number) : void;
 	put (widget: Widget, _x: number, _y: number) : void;
 }
+
+var Fixed: {       
+   new (): Fixed;  
+}                          
+
 
 
 
@@ -1123,11 +1488,21 @@ interface FlowBox extends Container, Atk.ImplementorIface, Buildable, Orientable
 	unselect_child (child: FlowBoxChild) : void;
 }
 
+var FlowBox: {       
+   new (): FlowBox;  
+}                          
+
+
 
 
 interface FlowBoxAccessible extends ContainerAccessible, Atk.Component, Atk.Selection {
-
+	
 }
+
+var FlowBoxAccessible: {       
+   new (): FlowBoxAccessible;  
+}                          
+
 
 
 
@@ -1137,11 +1512,21 @@ interface FlowBoxChild extends Bin, Atk.ImplementorIface, Buildable {
 	is_selected () : boolean;
 }
 
+var FlowBoxChild: {       
+   new (): FlowBoxChild;  
+}                          
+
+
 
 
 interface FlowBoxChildAccessible extends ContainerAccessible, Atk.Component {
-
+	
 }
+
+var FlowBoxChildAccessible: {       
+   new (): FlowBoxChildAccessible;  
+}                          
+
 
 
 
@@ -1160,17 +1545,32 @@ interface FontButton extends Button, Atk.ImplementorIface, Actionable, Activatab
 	set_use_size (use_size: boolean) : void;
 }
 
+var FontButton: {       
+   new (): FontButton;  
+}                          
+
+
 
 
 interface FontChooserDialog extends Dialog, Atk.ImplementorIface, Buildable, FontChooser {
-
+	
 }
+
+var FontChooserDialog: {       
+   new (): FontChooserDialog;  
+}                          
+
 
 
 
 interface FontChooserWidget extends Box, Atk.ImplementorIface, Buildable, FontChooser, Orientable {
-
+	
 }
+
+var FontChooserWidget: {       
+   new (): FontChooserWidget;  
+}                          
+
 
 
 
@@ -1189,6 +1589,11 @@ interface FontSelection extends Box, Atk.ImplementorIface, Buildable, Orientable
 	set_preview_text (text: string) : void;
 }
 
+var FontSelection: {       
+   new (): FontSelection;  
+}                          
+
+
 
 
 interface FontSelectionDialog extends Dialog, Atk.ImplementorIface, Buildable {
@@ -1200,6 +1605,11 @@ interface FontSelectionDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	set_font_name (fontname: string) : boolean;
 	set_preview_text (text: string) : void;
 }
+
+var FontSelectionDialog: {       
+   new (): FontSelectionDialog;  
+}                          
+
 
 
 
@@ -1214,11 +1624,21 @@ interface Frame extends Bin, Atk.ImplementorIface, Buildable {
 	set_shadow_type (_type: ShadowType) : void;
 }
 
+var Frame: {       
+   new (): Frame;  
+}                          
+
+
 
 
 interface FrameAccessible extends ContainerAccessible, Atk.Component {
-
+	
 }
+
+var FrameAccessible: {       
+   new (): FrameAccessible;  
+}                          
+
 
 
 
@@ -1240,6 +1660,11 @@ interface GLArea extends Widget, Atk.ImplementorIface, Buildable {
 	set_has_stencil_buffer (has_stencil_buffer: boolean) : void;
 	set_required_version (major: number, minor: number) : void;
 }
+
+var GLArea: {       
+   new (): GLArea;  
+}                          
+
 
 
 
@@ -1265,6 +1690,11 @@ interface Gesture extends EventController {
 	ungroup () : void;
 }
 
+var Gesture: {       
+   new (): Gesture;  
+}                          
+
+
 
 
 interface GestureDrag extends GestureSingle {
@@ -1272,11 +1702,21 @@ interface GestureDrag extends GestureSingle {
 	get_start_point (_x: number, _y: number) : boolean;
 }
 
+var GestureDrag: {       
+   new (): GestureDrag;  
+}                          
+
+
 
 
 interface GestureLongPress extends GestureSingle {
-
+	
 }
+
+var GestureLongPress: {       
+   new (): GestureLongPress;  
+}                          
+
 
 
 
@@ -1285,6 +1725,11 @@ interface GestureMultiPress extends GestureSingle {
 	set_area (rect: Gdk.Rectangle) : void;
 }
 
+var GestureMultiPress: {       
+   new (): GestureMultiPress;  
+}                          
+
+
 
 
 interface GesturePan extends GestureDrag {
@@ -1292,11 +1737,21 @@ interface GesturePan extends GestureDrag {
 	set_orientation (orientation: Orientation) : void;
 }
 
+var GesturePan: {       
+   new (): GesturePan;  
+}                          
+
+
 
 
 interface GestureRotate extends Gesture {
 	get_angle_delta () : number;
 }
+
+var GestureRotate: {       
+   new (): GestureRotate;  
+}                          
+
 
 
 
@@ -1311,17 +1766,32 @@ interface GestureSingle extends Gesture {
 	set_touch_only (touch_only: boolean) : void;
 }
 
+var GestureSingle: {       
+   new (): GestureSingle;  
+}                          
+
+
 
 
 interface GestureSwipe extends GestureSingle {
 	get_velocity (velocity_x: number, velocity_y: number) : boolean;
 }
 
+var GestureSwipe: {       
+   new (): GestureSwipe;  
+}                          
+
+
 
 
 interface GestureZoom extends Gesture {
 	get_scale_delta () : number;
 }
+
+var GestureZoom: {       
+   new (): GestureZoom;  
+}                          
+
 
 
 
@@ -1348,23 +1818,43 @@ interface Grid extends Container, Atk.ImplementorIface, Buildable, Orientable {
 	set_row_spacing (spacing: number) : void;
 }
 
+var Grid: {       
+   new (): Grid;  
+}                          
+
+
 
 
 interface HBox extends Box, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var HBox: {       
+   new (): HBox;  
+}                          
+
 
 
 
 interface HButtonBox extends ButtonBox, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var HButtonBox: {       
+   new (): HButtonBox;  
+}                          
+
 
 
 
 interface HPaned extends Paned, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var HPaned: {       
+   new (): HPaned;  
+}                          
+
 
 
 
@@ -1376,23 +1866,43 @@ interface HSV extends Widget, Atk.ImplementorIface, Buildable {
 	set_metrics (size: number, ring_width: number) : void;
 }
 
+var HSV: {       
+   new (): HSV;  
+}                          
+
+
 
 
 interface HScale extends Scale, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var HScale: {       
+   new (): HScale;  
+}                          
+
 
 
 
 interface HScrollbar extends Scrollbar, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var HScrollbar: {       
+   new (): HScrollbar;  
+}                          
+
 
 
 
 interface HSeparator extends Separator, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var HSeparator: {       
+   new (): HSeparator;  
+}                          
+
 
 
 
@@ -1405,6 +1915,11 @@ interface HandleBox extends Bin, Atk.ImplementorIface, Buildable {
 	set_shadow_type (_type: ShadowType) : void;
 	set_snap_edge (edge: PositionType) : void;
 }
+
+var HandleBox: {       
+   new (): HandleBox;  
+}                          
+
 
 
 
@@ -1425,6 +1940,11 @@ interface HeaderBar extends Container, Atk.ImplementorIface, Buildable {
 	set_title (title: string) : void;
 }
 
+var HeaderBar: {       
+   new (): HeaderBar;  
+}                          
+
+
 
 
 interface IMContext extends GObject.Object {
@@ -1441,11 +1961,21 @@ interface IMContext extends GObject.Object {
 	set_use_preedit (use_preedit: boolean) : void;
 }
 
+var IMContext: {       
+   new (): IMContext;  
+}                          
+
+
 
 
 interface IMContextSimple extends IMContext {
 	add_table (data: number[], max_seq_len: number, n_seqs: number) : void;
 }
+
+var IMContextSimple: {       
+   new (): IMContextSimple;  
+}                          
+
 
 
 
@@ -1455,6 +1985,11 @@ interface IMMulticontext extends IMContext {
 	set_context_id (context_id: string) : void;
 }
 
+var IMMulticontext: {       
+   new (): IMMulticontext;  
+}                          
+
+
 
 
 interface IconFactory extends GObject.Object, Buildable {
@@ -1463,6 +1998,11 @@ interface IconFactory extends GObject.Object, Buildable {
 	lookup (stock_id: string) : IconSet;
 	remove_default () : void;
 }
+
+var IconFactory: {       
+   new (): IconFactory;  
+}                          
+
 
 
 
@@ -1491,6 +2031,11 @@ interface IconInfo extends GObject.Object {
 	set_raw_coordinates (raw_coordinates: boolean) : void;
 }
 
+var IconInfo: {       
+   new (): IconInfo;  
+}                          
+
+
 
 
 interface IconTheme extends GObject.Object {
@@ -1517,6 +2062,11 @@ interface IconTheme extends GObject.Object {
 	set_screen (screen: Gdk.Screen) : void;
 	set_search_path (path: string[], n_elements: number) : void;
 }
+
+var IconTheme: {       
+   new (): IconTheme;  
+}                          
+
 
 
 
@@ -1584,11 +2134,21 @@ interface IconView extends Container, Atk.ImplementorIface, Buildable, CellLayou
 	unset_model_drag_source () : void;
 }
 
+var IconView: {       
+   new (): IconView;  
+}                          
+
+
 
 
 interface IconViewAccessible extends ContainerAccessible, Atk.Component, Atk.Selection {
-
+	
 }
+
+var IconViewAccessible: {       
+   new (): IconViewAccessible;  
+}                          
+
 
 
 
@@ -1614,17 +2174,32 @@ interface Image extends Misc, Atk.ImplementorIface, Buildable {
 	set_pixel_size (pixel_size: number) : void;
 }
 
+var Image: {       
+   new (): Image;  
+}                          
+
+
 
 
 interface ImageAccessible extends WidgetAccessible, Atk.Component, Atk.Image {
-
+	
 }
+
+var ImageAccessible: {       
+   new (): ImageAccessible;  
+}                          
+
 
 
 
 interface ImageCellAccessible extends RendererCellAccessible, Atk.Action, Atk.Component, Atk.Image {
-
+	
 }
+
+var ImageCellAccessible: {       
+   new (): ImageCellAccessible;  
+}                          
+
 
 
 
@@ -1637,6 +2212,11 @@ interface ImageMenuItem extends MenuItem, Atk.ImplementorIface, Actionable, Acti
 	set_image (image: Widget) : void;
 	set_use_stock (use_stock: boolean) : void;
 }
+
+var ImageMenuItem: {       
+   new (): ImageMenuItem;  
+}                          
+
 
 
 
@@ -1655,12 +2235,22 @@ interface InfoBar extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	set_show_close_button (setting: boolean) : void;
 }
 
+var InfoBar: {       
+   new (): InfoBar;  
+}                          
+
+
 
 
 interface Invisible extends Widget, Atk.ImplementorIface, Buildable {
 	get_screen () : Gdk.Screen;
 	set_screen (screen: Gdk.Screen) : void;
 }
+
+var Invisible: {       
+   new (): Invisible;  
+}                          
+
 
 
 
@@ -1715,11 +2305,21 @@ interface Label extends Misc, Atk.ImplementorIface, Buildable {
 	set_yalign (yalign: number) : void;
 }
 
+var Label: {       
+   new (): Label;  
+}                          
+
+
 
 
 interface LabelAccessible extends WidgetAccessible, Atk.Component, Atk.Hypertext, Atk.Text {
-
+	
 }
+
+var LabelAccessible: {       
+   new (): LabelAccessible;  
+}                          
+
 
 
 
@@ -1734,6 +2334,11 @@ interface Layout extends Container, Atk.ImplementorIface, Buildable, Scrollable 
 	set_size (width: number, height: number) : void;
 	set_vadjustment (adjustment: Adjustment) : void;
 }
+
+var Layout: {       
+   new (): Layout;  
+}                          
+
 
 
 
@@ -1753,11 +2358,21 @@ interface LevelBar extends Widget, Atk.ImplementorIface, Buildable, Orientable {
 	set_value (value: number) : void;
 }
 
+var LevelBar: {       
+   new (): LevelBar;  
+}                          
+
+
 
 
 interface LevelBarAccessible extends WidgetAccessible, Atk.Component, Atk.Value {
-
+	
 }
+
+var LevelBarAccessible: {       
+   new (): LevelBarAccessible;  
+}                          
+
 
 
 
@@ -1768,11 +2383,21 @@ interface LinkButton extends Button, Atk.ImplementorIface, Actionable, Activatab
 	set_visited (visited: boolean) : void;
 }
 
+var LinkButton: {       
+   new (): LinkButton;  
+}                          
+
+
 
 
 interface LinkButtonAccessible extends ButtonAccessible, Atk.Action, Atk.Component, Atk.HyperlinkImpl, Atk.Image {
-
+	
 }
+
+var LinkButtonAccessible: {       
+   new (): LinkButtonAccessible;  
+}                          
+
 
 
 
@@ -1806,11 +2431,21 @@ interface ListBox extends Container, Atk.ImplementorIface, Buildable {
 	unselect_row (_row: ListBoxRow) : void;
 }
 
+var ListBox: {       
+   new (): ListBox;  
+}                          
+
+
 
 
 interface ListBoxAccessible extends ContainerAccessible, Atk.Component, Atk.Selection {
-
+	
 }
+
+var ListBoxAccessible: {       
+   new (): ListBoxAccessible;  
+}                          
+
 
 
 
@@ -1826,11 +2461,21 @@ interface ListBoxRow extends Bin, Atk.ImplementorIface, Buildable {
 	set_selectable (selectable: boolean) : void;
 }
 
+var ListBoxRow: {       
+   new (): ListBoxRow;  
+}                          
+
+
 
 
 interface ListBoxRowAccessible extends ContainerAccessible, Atk.Component {
-
+	
 }
+
+var ListBoxRowAccessible: {       
+   new (): ListBoxRowAccessible;  
+}                          
+
 
 
 
@@ -1856,6 +2501,11 @@ interface ListStore extends GObject.Object, Buildable, TreeDragDest, TreeDragSou
 	swap (_a: TreeIter, _b: TreeIter) : void;
 }
 
+var ListStore: {       
+   new (): ListStore;  
+}                          
+
+
 
 
 interface LockButton extends Button, Atk.ImplementorIface, Actionable, Activatable, Buildable {
@@ -1863,11 +2513,21 @@ interface LockButton extends Button, Atk.ImplementorIface, Actionable, Activatab
 	set_permission (permission: Gio.Permission) : void;
 }
 
+var LockButton: {       
+   new (): LockButton;  
+}                          
+
+
 
 
 interface LockButtonAccessible extends ButtonAccessible, Atk.Action, Atk.Component, Atk.Image {
-
+	
 }
+
+var LockButtonAccessible: {       
+   new (): LockButtonAccessible;  
+}                          
+
 
 
 
@@ -1898,11 +2558,21 @@ interface Menu extends MenuShell, Atk.ImplementorIface, Buildable {
 	set_title (title: string) : void;
 }
 
+var Menu: {       
+   new (): Menu;  
+}                          
+
+
 
 
 interface MenuAccessible extends MenuShellAccessible, Atk.Component, Atk.Selection {
-
+	
 }
+
+var MenuAccessible: {       
+   new (): MenuAccessible;  
+}                          
+
 
 
 
@@ -1912,6 +2582,11 @@ interface MenuBar extends MenuShell, Atk.ImplementorIface, Buildable {
 	set_child_pack_direction (child_pack_dir: PackDirection) : void;
 	set_pack_direction (pack_dir: PackDirection) : void;
 }
+
+var MenuBar: {       
+   new (): MenuBar;  
+}                          
+
 
 
 
@@ -1930,11 +2605,21 @@ interface MenuButton extends ToggleButton, Atk.ImplementorIface, Actionable, Act
 	set_use_popover (use_popover: boolean) : void;
 }
 
+var MenuButton: {       
+   new (): MenuButton;  
+}                          
+
+
 
 
 interface MenuButtonAccessible extends ToggleButtonAccessible, Atk.Action, Atk.Component, Atk.Image {
-
+	
 }
+
+var MenuButtonAccessible: {       
+   new (): MenuButtonAccessible;  
+}                          
+
 
 
 
@@ -1958,11 +2643,21 @@ interface MenuItem extends Bin, Atk.ImplementorIface, Actionable, Activatable, B
 	toggle_size_request (requisition: number) : void;
 }
 
+var MenuItem: {       
+   new (): MenuItem;  
+}                          
+
+
 
 
 interface MenuItemAccessible extends ContainerAccessible, Atk.Action, Atk.Component, Atk.Selection {
-
+	
 }
+
+var MenuItemAccessible: {       
+   new (): MenuItemAccessible;  
+}                          
+
 
 
 
@@ -1983,11 +2678,21 @@ interface MenuShell extends Container, Atk.ImplementorIface, Buildable {
 	set_take_focus (take_focus: boolean) : void;
 }
 
+var MenuShell: {       
+   new (): MenuShell;  
+}                          
+
+
 
 
 interface MenuShellAccessible extends ContainerAccessible, Atk.Component, Atk.Selection {
-
+	
 }
+
+var MenuShellAccessible: {       
+   new (): MenuShellAccessible;  
+}                          
+
 
 
 
@@ -1997,6 +2702,11 @@ interface MenuToolButton extends ToolButton, Atk.ImplementorIface, Actionable, A
 	set_arrow_tooltip_text (text: string) : void;
 	set_menu (menu: Widget) : void;
 }
+
+var MenuToolButton: {       
+   new (): MenuToolButton;  
+}                          
+
 
 
 
@@ -2009,6 +2719,11 @@ interface MessageDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	set_markup (_str: string) : void;
 }
 
+var MessageDialog: {       
+   new (): MessageDialog;  
+}                          
+
+
 
 
 interface Misc extends Widget, Atk.ImplementorIface, Buildable {
@@ -2018,11 +2733,21 @@ interface Misc extends Widget, Atk.ImplementorIface, Buildable {
 	set_padding (xpad: number, ypad: number) : void;
 }
 
+var Misc: {       
+   new (): Misc;  
+}                          
+
+
 
 
 interface ModelButton extends Button, Atk.ImplementorIface, Actionable, Activatable, Buildable {
-
+	
 }
+
+var ModelButton: {       
+   new (): ModelButton;  
+}                          
+
 
 
 
@@ -2033,6 +2758,11 @@ interface MountOperation extends Gio.MountOperation {
 	set_parent (parent: Window) : void;
 	set_screen (screen: Gdk.Screen) : void;
 }
+
+var MountOperation: {       
+   new (): MountOperation;  
+}                          
+
 
 
 
@@ -2083,17 +2813,32 @@ interface Notebook extends Container, Atk.ImplementorIface, Buildable {
 	set_tab_reorderable (child: Widget, reorderable: boolean) : void;
 }
 
+var Notebook: {       
+   new (): Notebook;  
+}                          
+
+
 
 
 interface NotebookAccessible extends ContainerAccessible, Atk.Component, Atk.Selection {
-
+	
 }
+
+var NotebookAccessible: {       
+   new (): NotebookAccessible;  
+}                          
+
 
 
 
 interface NotebookPageAccessible extends Atk.Object, Atk.Component {
 	invalidate () : void;
 }
+
+var NotebookPageAccessible: {       
+   new (): NotebookPageAccessible;  
+}                          
+
 
 
 
@@ -2110,12 +2855,22 @@ interface NumerableIcon extends Gio.EmblemedIcon, Gio.Icon {
 	set_style_context (style: StyleContext) : void;
 }
 
+var NumerableIcon: {       
+   new (): NumerableIcon;  
+}                          
+
+
 
 
 interface OffscreenWindow extends Window, Atk.ImplementorIface, Buildable {
 	get_pixbuf () : GdkPixbuf.Pixbuf;
 	get_surface () : cairo.Surface;
 }
+
+var OffscreenWindow: {       
+   new (): OffscreenWindow;  
+}                          
+
 
 
 
@@ -2125,6 +2880,11 @@ interface Overlay extends Bin, Atk.ImplementorIface, Buildable {
 	reorder_overlay (child: Widget, position: number) : void;
 	set_overlay_pass_through (widget: Widget, pass_through: boolean) : void;
 }
+
+var Overlay: {       
+   new (): Overlay;  
+}                          
+
 
 
 
@@ -2153,6 +2913,11 @@ interface PageSetup extends GObject.Object {
 	to_key_file (key_file: GLib.KeyFile, group_name: string) : void;
 }
 
+var PageSetup: {       
+   new (): PageSetup;  
+}                          
+
+
 
 
 interface Paned extends Container, Atk.ImplementorIface, Buildable, Orientable {
@@ -2169,11 +2934,21 @@ interface Paned extends Container, Atk.ImplementorIface, Buildable, Orientable {
 	set_wide_handle (wide: boolean) : void;
 }
 
+var Paned: {       
+   new (): Paned;  
+}                          
+
+
 
 
 interface PanedAccessible extends ContainerAccessible, Atk.Component, Atk.Value {
-
+	
 }
+
+var PanedAccessible: {       
+   new (): PanedAccessible;  
+}                          
+
 
 
 
@@ -2203,6 +2978,11 @@ interface PlacesSidebar extends ScrolledWindow, Atk.ImplementorIface, Buildable 
 	set_show_trash (show_trash: boolean) : void;
 }
 
+var PlacesSidebar: {       
+   new (): PlacesSidebar;  
+}                          
+
+
 
 
 interface Plug extends Window, Atk.ImplementorIface, Buildable {
@@ -2212,6 +2992,11 @@ interface Plug extends Window, Atk.ImplementorIface, Buildable {
 	get_id () : xlib.Window;
 	get_socket_window () : Gdk.Window;
 }
+
+var Plug: {       
+   new (): Plug;  
+}                          
+
 
 
 
@@ -2231,17 +3016,32 @@ interface Popover extends Bin, Atk.ImplementorIface, Buildable {
 	set_transitions_enabled (transitions_enabled: boolean) : void;
 }
 
+var Popover: {       
+   new (): Popover;  
+}                          
+
+
 
 
 interface PopoverAccessible extends ContainerAccessible, Atk.Component {
-
+	
 }
+
+var PopoverAccessible: {       
+   new (): PopoverAccessible;  
+}                          
+
 
 
 
 interface PopoverMenu extends Popover, Atk.ImplementorIface, Buildable {
 	open_submenu (name: string) : void;
 }
+
+var PopoverMenu: {       
+   new (): PopoverMenu;  
+}                          
+
 
 
 
@@ -2258,6 +3058,11 @@ interface PrintContext extends GObject.Object {
 	get_width () : number;
 	set_cairo_context (cr: cairo.Context, dpi_x: number, dpi_y: number) : void;
 }
+
+var PrintContext: {       
+   new (): PrintContext;  
+}                          
+
 
 
 
@@ -2292,6 +3097,11 @@ interface PrintOperation extends GObject.Object, PrintOperationPreview {
 	set_unit (unit: Unit) : void;
 	set_use_full_page (full_page: boolean) : void;
 }
+
+var PrintOperation: {       
+   new (): PrintOperation;  
+}                          
+
 
 
 
@@ -2369,6 +3179,11 @@ interface PrintSettings extends GObject.Object {
 	unset (key: string) : void;
 }
 
+var PrintSettings: {       
+   new (): PrintSettings;  
+}                          
+
+
 
 
 interface ProgressBar extends Widget, Atk.ImplementorIface, Buildable, Orientable {
@@ -2387,11 +3202,21 @@ interface ProgressBar extends Widget, Atk.ImplementorIface, Buildable, Orientabl
 	set_text (text: string) : void;
 }
 
+var ProgressBar: {       
+   new (): ProgressBar;  
+}                          
+
+
 
 
 interface ProgressBarAccessible extends WidgetAccessible, Atk.Component, Atk.Value {
-
+	
 }
+
+var ProgressBarAccessible: {       
+   new (): ProgressBarAccessible;  
+}                          
+
 
 
 
@@ -2403,6 +3228,11 @@ interface RadioAction extends ToggleAction, Buildable {
 	set_group (group: GLib.SList) : void;
 }
 
+var RadioAction: {       
+   new (): RadioAction;  
+}                          
+
+
 
 
 interface RadioButton extends CheckButton, Atk.ImplementorIface, Actionable, Activatable, Buildable {
@@ -2411,11 +3241,21 @@ interface RadioButton extends CheckButton, Atk.ImplementorIface, Actionable, Act
 	set_group (group: GLib.SList) : void;
 }
 
+var RadioButton: {       
+   new (): RadioButton;  
+}                          
+
+
 
 
 interface RadioButtonAccessible extends ToggleButtonAccessible, Atk.Action, Atk.Component, Atk.Image {
-
+	
 }
+
+var RadioButtonAccessible: {       
+   new (): RadioButtonAccessible;  
+}                          
+
 
 
 
@@ -2425,11 +3265,21 @@ interface RadioMenuItem extends CheckMenuItem, Atk.ImplementorIface, Actionable,
 	set_group (group: GLib.SList) : void;
 }
 
+var RadioMenuItem: {       
+   new (): RadioMenuItem;  
+}                          
+
+
 
 
 interface RadioMenuItemAccessible extends CheckMenuItemAccessible, Atk.Action, Atk.Component, Atk.Selection {
-
+	
 }
+
+var RadioMenuItemAccessible: {       
+   new (): RadioMenuItemAccessible;  
+}                          
+
 
 
 
@@ -2437,6 +3287,11 @@ interface RadioToolButton extends ToggleToolButton, Atk.ImplementorIface, Action
 	get_group () : GLib.SList;
 	set_group (group: GLib.SList) : void;
 }
+
+var RadioToolButton: {       
+   new (): RadioToolButton;  
+}                          
+
 
 
 
@@ -2471,17 +3326,32 @@ interface Range extends Widget, Atk.ImplementorIface, Buildable, Orientable {
 	set_value (value: number) : void;
 }
 
+var Range: {       
+   new (): Range;  
+}                          
+
+
 
 
 interface RangeAccessible extends WidgetAccessible, Atk.Component, Atk.Value {
-
+	
 }
+
+var RangeAccessible: {       
+   new (): RangeAccessible;  
+}                          
+
 
 
 
 interface RcStyle extends GObject.Object {
 	copy () : RcStyle;
 }
+
+var RcStyle: {       
+   new (): RcStyle;  
+}                          
+
 
 
 
@@ -2490,11 +3360,21 @@ interface RecentAction extends Action, Buildable, RecentChooser {
 	set_show_numbers (show_numbers: boolean) : void;
 }
 
+var RecentAction: {       
+   new (): RecentAction;  
+}                          
+
+
 
 
 interface RecentChooserDialog extends Dialog, Atk.ImplementorIface, Buildable, RecentChooser {
-
+	
 }
+
+var RecentChooserDialog: {       
+   new (): RecentChooserDialog;  
+}                          
+
 
 
 
@@ -2503,11 +3383,21 @@ interface RecentChooserMenu extends Menu, Atk.ImplementorIface, Activatable, Bui
 	set_show_numbers (show_numbers: boolean) : void;
 }
 
+var RecentChooserMenu: {       
+   new (): RecentChooserMenu;  
+}                          
+
+
 
 
 interface RecentChooserWidget extends Box, Atk.ImplementorIface, Buildable, Orientable, RecentChooser {
-
+	
 }
+
+var RecentChooserWidget: {       
+   new (): RecentChooserWidget;  
+}                          
+
 
 
 
@@ -2525,6 +3415,11 @@ interface RecentFilter extends GObject.InitiallyUnowned, Buildable {
 	set_name (name: string) : void;
 }
 
+var RecentFilter: {       
+   new (): RecentFilter;  
+}                          
+
+
 
 
 interface RecentManager extends GObject.Object {
@@ -2538,11 +3433,21 @@ interface RecentManager extends GObject.Object {
 	remove_item (uri: string) : boolean;
 }
 
+var RecentManager: {       
+   new (): RecentManager;  
+}                          
+
+
 
 
 interface RendererCellAccessible extends CellAccessible, Atk.Action, Atk.Component {
-
+	
 }
+
+var RendererCellAccessible: {       
+   new (): RendererCellAccessible;  
+}                          
+
 
 
 
@@ -2555,6 +3460,11 @@ interface Revealer extends Bin, Atk.ImplementorIface, Buildable {
 	set_transition_duration (duration: number) : void;
 	set_transition_type (transition: RevealerTransitionType) : void;
 }
+
+var Revealer: {       
+   new (): Revealer;  
+}                          
+
 
 
 
@@ -2573,11 +3483,21 @@ interface Scale extends Range, Atk.ImplementorIface, Buildable, Orientable {
 	set_value_pos (pos: PositionType) : void;
 }
 
+var Scale: {       
+   new (): Scale;  
+}                          
+
+
 
 
 interface ScaleAccessible extends RangeAccessible, Atk.Component, Atk.Value {
-
+	
 }
+
+var ScaleAccessible: {       
+   new (): ScaleAccessible;  
+}                          
+
 
 
 
@@ -2592,17 +3512,32 @@ interface ScaleButton extends Button, Atk.ImplementorIface, Actionable, Activata
 	set_value (value: number) : void;
 }
 
+var ScaleButton: {       
+   new (): ScaleButton;  
+}                          
+
+
 
 
 interface ScaleButtonAccessible extends ButtonAccessible, Atk.Action, Atk.Component, Atk.Image, Atk.Value {
-
+	
 }
+
+var ScaleButtonAccessible: {       
+   new (): ScaleButtonAccessible;  
+}                          
+
 
 
 
 interface Scrollbar extends Range, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var Scrollbar: {       
+   new (): Scrollbar;  
+}                          
+
 
 
 
@@ -2633,11 +3568,21 @@ interface ScrolledWindow extends Bin, Atk.ImplementorIface, Buildable {
 	unset_placement () : void;
 }
 
+var ScrolledWindow: {       
+   new (): ScrolledWindow;  
+}                          
+
+
 
 
 interface ScrolledWindowAccessible extends ContainerAccessible, Atk.Component {
-
+	
 }
+
+var ScrolledWindowAccessible: {       
+   new (): ScrolledWindowAccessible;  
+}                          
+
 
 
 
@@ -2650,23 +3595,43 @@ interface SearchBar extends Bin, Atk.ImplementorIface, Buildable {
 	set_show_close_button (visible: boolean) : void;
 }
 
+var SearchBar: {       
+   new (): SearchBar;  
+}                          
+
+
 
 
 interface SearchEntry extends Entry, Atk.ImplementorIface, Buildable, CellEditable, Editable {
 	handle_event (event: Gdk.Event) : boolean;
 }
 
+var SearchEntry: {       
+   new (): SearchEntry;  
+}                          
+
+
 
 
 interface Separator extends Widget, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var Separator: {       
+   new (): Separator;  
+}                          
+
 
 
 
 interface SeparatorMenuItem extends MenuItem, Atk.ImplementorIface, Actionable, Activatable, Buildable {
-
+	
 }
+
+var SeparatorMenuItem: {       
+   new (): SeparatorMenuItem;  
+}                          
+
 
 
 
@@ -2674,6 +3639,11 @@ interface SeparatorToolItem extends ToolItem, Atk.ImplementorIface, Activatable,
 	get_draw () : boolean;
 	set_draw (draw: boolean) : void;
 }
+
+var SeparatorToolItem: {       
+   new (): SeparatorToolItem;  
+}                          
+
 
 
 
@@ -2683,6 +3653,11 @@ interface Settings extends GObject.Object, StyleProvider {
 	set_property_value (name: string, svalue: SettingsValue) : void;
 	set_string_property (name: string, v_string: string, origin: string) : void;
 }
+
+var Settings: {       
+   new (): Settings;  
+}                          
+
 
 
 
@@ -2696,6 +3671,11 @@ interface SizeGroup extends GObject.Object, Buildable {
 	set_mode (mode: SizeGroupMode) : void;
 }
 
+var SizeGroup: {       
+   new (): SizeGroup;  
+}                          
+
+
 
 
 interface Socket extends Container, Atk.ImplementorIface, Buildable {
@@ -2703,6 +3683,11 @@ interface Socket extends Container, Atk.ImplementorIface, Buildable {
 	get_id () : xlib.Window;
 	get_plug_window () : Gdk.Window;
 }
+
+var Socket: {       
+   new (): Socket;  
+}                          
+
 
 
 
@@ -2731,11 +3716,21 @@ interface SpinButton extends Entry, Atk.ImplementorIface, Buildable, CellEditabl
 	update () : void;
 }
 
+var SpinButton: {       
+   new (): SpinButton;  
+}                          
+
+
 
 
 interface SpinButtonAccessible extends EntryAccessible, Atk.Action, Atk.Component, Atk.EditableText, Atk.Text, Atk.Value {
-
+	
 }
+
+var SpinButtonAccessible: {       
+   new (): SpinButtonAccessible;  
+}                          
+
 
 
 
@@ -2744,11 +3739,21 @@ interface Spinner extends Widget, Atk.ImplementorIface, Buildable {
 	stop () : void;
 }
 
+var Spinner: {       
+   new (): Spinner;  
+}                          
+
+
 
 
 interface SpinnerAccessible extends WidgetAccessible, Atk.Component, Atk.Image {
-
+	
 }
+
+var SpinnerAccessible: {       
+   new (): SpinnerAccessible;  
+}                          
+
 
 
 
@@ -2776,6 +3781,11 @@ interface Stack extends Container, Atk.ImplementorIface, Buildable {
 	set_visible_child_name (name: string) : void;
 }
 
+var Stack: {       
+   new (): Stack;  
+}                          
+
+
 
 
 interface StackSidebar extends Bin, Atk.ImplementorIface, Buildable {
@@ -2783,12 +3793,22 @@ interface StackSidebar extends Bin, Atk.ImplementorIface, Buildable {
 	set_stack (stack: Stack) : void;
 }
 
+var StackSidebar: {       
+   new (): StackSidebar;  
+}                          
+
+
 
 
 interface StackSwitcher extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	get_stack () : Stack;
 	set_stack (stack: Stack) : void;
 }
+
+var StackSwitcher: {       
+   new (): StackSwitcher;  
+}                          
+
 
 
 
@@ -2822,6 +3842,11 @@ interface StatusIcon extends GObject.Object {
 	set_visible (visible: boolean) : void;
 }
 
+var StatusIcon: {       
+   new (): StatusIcon;  
+}                          
+
+
 
 
 interface Statusbar extends Box, Atk.ImplementorIface, Buildable, Orientable {
@@ -2833,11 +3858,21 @@ interface Statusbar extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	remove_all (context_id: number) : void;
 }
 
+var Statusbar: {       
+   new (): Statusbar;  
+}                          
+
+
 
 
 interface StatusbarAccessible extends ContainerAccessible, Atk.Component {
-
+	
 }
+
+var StatusbarAccessible: {       
+   new (): StatusbarAccessible;  
+}                          
+
 
 
 
@@ -2855,6 +3890,11 @@ interface Style extends GObject.Object {
 	render_icon (source: IconSource, direction: TextDirection, state: StateType, size: number, widget: Widget, detail: string) : GdkPixbuf.Pixbuf;
 	set_background (window: Gdk.Window, state_type: StateType) : void;
 }
+
+var Style: {       
+   new (): Style;  
+}                          
+
 
 
 
@@ -2913,6 +3953,11 @@ interface StyleContext extends GObject.Object {
 	state_is_running (state: StateType, progress: number) : boolean;
 }
 
+var StyleContext: {       
+   new (): StyleContext;  
+}                          
+
+
 
 
 interface StyleProperties extends GObject.Object, StyleProvider {
@@ -2929,6 +3974,11 @@ interface StyleProperties extends GObject.Object, StyleProvider {
 	unset_property (property: string, state: StateFlags) : void;
 }
 
+var StyleProperties: {       
+   new (): StyleProperties;  
+}                          
+
+
 
 
 interface Switch extends Widget, Atk.ImplementorIface, Actionable, Activatable, Buildable {
@@ -2938,11 +3988,21 @@ interface Switch extends Widget, Atk.ImplementorIface, Actionable, Activatable, 
 	set_state (state: boolean) : void;
 }
 
+var Switch: {       
+   new (): Switch;  
+}                          
+
+
 
 
 interface SwitchAccessible extends WidgetAccessible, Atk.Action, Atk.Component {
-
+	
 }
+
+var SwitchAccessible: {       
+   new (): SwitchAccessible;  
+}                          
+
 
 
 
@@ -2963,11 +4023,21 @@ interface Table extends Container, Atk.ImplementorIface, Buildable {
 	set_row_spacings (spacing: number) : void;
 }
 
+var Table: {       
+   new (): Table;  
+}                          
+
+
 
 
 interface TearoffMenuItem extends MenuItem, Atk.ImplementorIface, Actionable, Activatable, Buildable {
-
+	
 }
+
+var TearoffMenuItem: {       
+   new (): TearoffMenuItem;  
+}                          
+
 
 
 
@@ -3047,11 +4117,21 @@ interface TextBuffer extends GObject.Object {
 	unregister_serialize_format (format: Gdk.Atom) : void;
 }
 
+var TextBuffer: {       
+   new (): TextBuffer;  
+}                          
+
+
 
 
 interface TextCellAccessible extends RendererCellAccessible, Atk.Action, Atk.Component, Atk.Text {
-
+	
 }
+
+var TextCellAccessible: {       
+   new (): TextCellAccessible;  
+}                          
+
 
 
 
@@ -3059,6 +4139,11 @@ interface TextChildAnchor extends GObject.Object {
 	get_deleted () : boolean;
 	get_widgets () : GLib.List;
 }
+
+var TextChildAnchor: {       
+   new (): TextChildAnchor;  
+}                          
+
 
 
 
@@ -3071,6 +4156,11 @@ interface TextMark extends GObject.Object {
 	set_visible (setting: boolean) : void;
 }
 
+var TextMark: {       
+   new (): TextMark;  
+}                          
+
+
 
 
 interface TextTag extends GObject.Object {
@@ -3078,6 +4168,11 @@ interface TextTag extends GObject.Object {
 	get_priority () : number;
 	set_priority (priority: number) : void;
 }
+
+var TextTag: {       
+   new (): TextTag;  
+}                          
+
 
 
 
@@ -3088,6 +4183,11 @@ interface TextTagTable extends GObject.Object, Buildable {
 	lookup (name: string) : TextTag;
 	remove (tag: TextTag) : void;
 }
+
+var TextTagTable: {       
+   new (): TextTagTable;  
+}                          
+
 
 
 
@@ -3164,11 +4264,21 @@ interface TextView extends Container, Atk.ImplementorIface, Buildable, Scrollabl
 	window_to_buffer_coords (win: TextWindowType, window_x: number, window_y: number, buffer_x: number, buffer_y: number) : void;
 }
 
+var TextView: {       
+   new (): TextView;  
+}                          
+
+
 
 
 interface TextViewAccessible extends ContainerAccessible, Atk.Component, Atk.EditableText, Atk.StreamableContent, Atk.Text {
-
+	
 }
+
+var TextViewAccessible: {       
+   new (): TextViewAccessible;  
+}                          
+
 
 
 
@@ -3197,6 +4307,11 @@ interface ThemingEngine extends GObject.Object {
 	state_is_running (state: StateType, progress: number) : boolean;
 }
 
+var ThemingEngine: {       
+   new (): ThemingEngine;  
+}                          
+
+
 
 
 interface ToggleAction extends Action, Buildable {
@@ -3206,6 +4321,11 @@ interface ToggleAction extends Action, Buildable {
 	set_draw_as_radio (draw_as_radio: boolean) : void;
 	toggled () : void;
 }
+
+var ToggleAction: {       
+   new (): ToggleAction;  
+}                          
+
 
 
 
@@ -3219,11 +4339,21 @@ interface ToggleButton extends Button, Atk.ImplementorIface, Actionable, Activat
 	toggled () : void;
 }
 
+var ToggleButton: {       
+   new (): ToggleButton;  
+}                          
+
+
 
 
 interface ToggleButtonAccessible extends ButtonAccessible, Atk.Action, Atk.Component, Atk.Image {
-
+	
 }
+
+var ToggleButtonAccessible: {       
+   new (): ToggleButtonAccessible;  
+}                          
+
 
 
 
@@ -3231,6 +4361,11 @@ interface ToggleToolButton extends ToolButton, Atk.ImplementorIface, Actionable,
 	get_active () : boolean;
 	set_active (is_active: boolean) : void;
 }
+
+var ToggleToolButton: {       
+   new (): ToggleToolButton;  
+}                          
+
 
 
 
@@ -3248,6 +4383,11 @@ interface ToolButton extends ToolItem, Atk.ImplementorIface, Actionable, Activat
 	set_stock_id (stock_id: string) : void;
 	set_use_underline (use_underline: boolean) : void;
 }
+
+var ToolButton: {       
+   new (): ToolButton;  
+}                          
+
 
 
 
@@ -3281,6 +4421,11 @@ interface ToolItem extends Bin, Atk.ImplementorIface, Activatable, Buildable {
 	toolbar_reconfigured () : void;
 }
 
+var ToolItem: {       
+   new (): ToolItem;  
+}                          
+
+
 
 
 interface ToolItemGroup extends Container, Atk.ImplementorIface, Buildable, ToolShell {
@@ -3301,6 +4446,11 @@ interface ToolItemGroup extends Container, Atk.ImplementorIface, Buildable, Tool
 	set_label (label: string) : void;
 	set_label_widget (label_widget: Widget) : void;
 }
+
+var ToolItemGroup: {       
+   new (): ToolItemGroup;  
+}                          
+
 
 
 
@@ -3326,6 +4476,11 @@ interface ToolPalette extends Container, Atk.ImplementorIface, Buildable, Orient
 	unset_style () : void;
 }
 
+var ToolPalette: {       
+   new (): ToolPalette;  
+}                          
+
+
 
 
 interface Toolbar extends Container, Atk.ImplementorIface, Buildable, Orientable, ToolShell {
@@ -3346,6 +4501,11 @@ interface Toolbar extends Container, Atk.ImplementorIface, Buildable, Orientable
 	unset_style () : void;
 }
 
+var Toolbar: {       
+   new (): Toolbar;  
+}                          
+
+
 
 
 interface Tooltip extends GObject.Object {
@@ -3359,11 +4519,21 @@ interface Tooltip extends GObject.Object {
 	set_tip_area (rect: Gdk.Rectangle) : void;
 }
 
+var Tooltip: {       
+   new (): Tooltip;  
+}                          
+
+
 
 
 interface ToplevelAccessible extends Atk.Object {
 	get_children () : GLib.List;
 }
+
+var ToplevelAccessible: {       
+   new (): ToplevelAccessible;  
+}                          
+
 
 
 
@@ -3380,6 +4550,11 @@ interface TreeModelFilter extends GObject.Object, TreeDragSource, TreeModel {
 	set_visible_func (_func: TreeModelFilterVisibleFunc, data: any, destroy: GLib.DestroyNotify) : void;
 }
 
+var TreeModelFilter: {       
+   new (): TreeModelFilter;  
+}                          
+
+
 
 
 interface TreeModelSort extends GObject.Object, TreeDragSource, TreeModel, TreeSortable {
@@ -3392,6 +4567,11 @@ interface TreeModelSort extends GObject.Object, TreeDragSource, TreeModel, TreeS
 	iter_is_valid (iter: TreeIter) : boolean;
 	reset_default_sort_func () : void;
 }
+
+var TreeModelSort: {       
+   new (): TreeModelSort;  
+}                          
+
 
 
 
@@ -3418,6 +4598,11 @@ interface TreeSelection extends GObject.Object {
 	unselect_range (start_path: TreePath, end_path: TreePath) : void;
 }
 
+var TreeSelection: {       
+   new (): TreeSelection;  
+}                          
+
+
 
 
 interface TreeStore extends GObject.Object, Buildable, TreeDragDest, TreeDragSource, TreeModel, TreeSortable {
@@ -3443,6 +4628,11 @@ interface TreeStore extends GObject.Object, Buildable, TreeDragDest, TreeDragSou
 	set_valuesv (iter: TreeIter, columns: number[], values: GObject.Value[], n_values: number) : void;
 	swap (_a: TreeIter, _b: TreeIter) : void;
 }
+
+var TreeStore: {       
+   new (): TreeStore;  
+}                          
+
 
 
 
@@ -3548,11 +4738,21 @@ interface TreeView extends Container, Atk.ImplementorIface, Buildable, Scrollabl
 	unset_rows_drag_source () : void;
 }
 
+var TreeView: {       
+   new (): TreeView;  
+}                          
+
+
 
 
 interface TreeViewAccessible extends ContainerAccessible, Atk.Component, Atk.Selection, Atk.Table, CellAccessibleParent {
-
+	
 }
+
+var TreeViewAccessible: {       
+   new (): TreeViewAccessible;  
+}                          
+
 
 
 
@@ -3609,6 +4809,11 @@ interface TreeViewColumn extends GObject.InitiallyUnowned, Buildable, CellLayout
 	set_widget (widget: Widget) : void;
 }
 
+var TreeViewColumn: {       
+   new (): TreeViewColumn;  
+}                          
+
+
 
 
 interface UIManager extends GObject.Object, Buildable {
@@ -3631,41 +4836,76 @@ interface UIManager extends GObject.Object, Buildable {
 	set_add_tearoffs (add_tearoffs: boolean) : void;
 }
 
+var UIManager: {       
+   new (): UIManager;  
+}                          
+
+
 
 
 interface VBox extends Box, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var VBox: {       
+   new (): VBox;  
+}                          
+
 
 
 
 interface VButtonBox extends ButtonBox, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var VButtonBox: {       
+   new (): VButtonBox;  
+}                          
+
 
 
 
 interface VPaned extends Paned, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var VPaned: {       
+   new (): VPaned;  
+}                          
+
 
 
 
 interface VScale extends Scale, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var VScale: {       
+   new (): VScale;  
+}                          
+
 
 
 
 interface VScrollbar extends Scrollbar, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var VScrollbar: {       
+   new (): VScrollbar;  
+}                          
+
 
 
 
 interface VSeparator extends Separator, Atk.ImplementorIface, Buildable, Orientable {
-
+	
 }
+
+var VSeparator: {       
+   new (): VSeparator;  
+}                          
+
 
 
 
@@ -3680,11 +4920,21 @@ interface Viewport extends Bin, Atk.ImplementorIface, Buildable, Scrollable {
 	set_vadjustment (adjustment: Adjustment) : void;
 }
 
+var Viewport: {       
+   new (): Viewport;  
+}                          
+
+
 
 
 interface VolumeButton extends ScaleButton, Atk.ImplementorIface, Actionable, Activatable, Buildable, Orientable {
-
+	
 }
+
+var VolumeButton: {       
+   new (): VolumeButton;  
+}                          
+
 
 
 
@@ -3950,11 +5200,21 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	unset_state_flags (flags: StateFlags) : void;
 }
 
+var Widget: {       
+   new (): Widget;  
+}                          
+
+
 
 
 interface WidgetAccessible extends Accessible, Atk.Component {
-
+	
 }
+
+var WidgetAccessible: {       
+   new (): WidgetAccessible;  
+}                          
+
 
 
 
@@ -4070,11 +5330,21 @@ interface Window extends Bin, Atk.ImplementorIface, Buildable {
 	unstick () : void;
 }
 
+var Window: {       
+   new (): Window;  
+}                          
+
+
 
 
 interface WindowAccessible extends ContainerAccessible, Atk.Component, Atk.Window {
-
+	
 }
+
+var WindowAccessible: {       
+   new (): WindowAccessible;  
+}                          
+
 
 
 
@@ -4085,6 +5355,11 @@ interface WindowGroup extends GObject.Object {
 	list_windows () : GLib.List;
 	remove_window (window: Window) : void;
 }
+
+var WindowGroup: {       
+   new (): WindowGroup;  
+}                          
+
 
 
 
@@ -9699,6 +10974,11 @@ interface Actionable {
 	set_detailed_action_name (detailed_action_name: string) : void;
 }
 
+var Actionable: {       
+   new (): Actionable;  
+}                          
+
+
 
 
 interface Activatable {
@@ -9710,6 +10990,11 @@ interface Activatable {
 	sync_action_properties (action: Action) : void;
 }
 
+var Activatable: {       
+   new (): Activatable;  
+}                          
+
+
 
 
 interface AppChooser {
@@ -9717,6 +11002,11 @@ interface AppChooser {
 	get_content_type () : string;
 	refresh () : void;
 }
+
+var AppChooser: {       
+   new (): AppChooser;  
+}                          
+
 
 
 
@@ -9733,6 +11023,11 @@ interface Buildable {
 	set_name (name: string) : void;
 }
 
+var Buildable: {       
+   new (): Buildable;  
+}                          
+
+
 
 
 interface CellAccessibleParent {
@@ -9747,6 +11042,11 @@ interface CellAccessibleParent {
 	update_relationset (cell: CellAccessible, relationset: Atk.RelationSet) : void;
 }
 
+var CellAccessibleParent: {       
+   new (): CellAccessibleParent;  
+}                          
+
+
 
 
 interface CellEditable {
@@ -9754,6 +11054,11 @@ interface CellEditable {
 	remove_widget () : void;
 	start_editing (event: Gdk.Event) : void;
 }
+
+var CellEditable: {       
+   new (): CellEditable;  
+}                          
+
 
 
 
@@ -9770,6 +11075,11 @@ interface CellLayout {
 	set_cell_data_func (cell: CellRenderer, _func: CellLayoutDataFunc, func_data: any, destroy: GLib.DestroyNotify) : void;
 }
 
+var CellLayout: {       
+   new (): CellLayout;  
+}                          
+
+
 
 
 interface ColorChooser {
@@ -9779,6 +11089,11 @@ interface ColorChooser {
 	set_rgba (color: Gdk.RGBA) : void;
 	set_use_alpha (use_alpha: boolean) : void;
 }
+
+var ColorChooser: {       
+   new (): ColorChooser;  
+}                          
+
 
 
 
@@ -9797,6 +11112,11 @@ interface Editable {
 	set_editable (is_editable: boolean) : void;
 	set_position (position: number) : void;
 }
+
+var Editable: {       
+   new (): Editable;  
+}                          
+
 
 
 
@@ -9862,6 +11182,11 @@ interface FileChooser {
 	unselect_uri (uri: string) : void;
 }
 
+var FileChooser: {       
+   new (): FileChooser;  
+}                          
+
+
 
 
 interface FontChooser {
@@ -9881,12 +11206,22 @@ interface FontChooser {
 	set_show_preview_entry (show_preview_entry: boolean) : void;
 }
 
+var FontChooser: {       
+   new (): FontChooser;  
+}                          
+
+
 
 
 interface Orientable {
 	get_orientation () : Orientation;
 	set_orientation (orientation: Orientation) : void;
 }
+
+var Orientable: {       
+   new (): Orientable;  
+}                          
+
 
 
 
@@ -9895,6 +11230,11 @@ interface PrintOperationPreview {
 	is_selected (page_nr: number) : boolean;
 	render_page (page_nr: number) : void;
 }
+
+var PrintOperationPreview: {       
+   new (): PrintOperationPreview;  
+}                          
+
 
 
 
@@ -9932,6 +11272,11 @@ interface RecentChooser {
 	unselect_uri (uri: string) : void;
 }
 
+var RecentChooser: {       
+   new (): RecentChooser;  
+}                          
+
+
 
 
 interface Scrollable {
@@ -9946,6 +11291,11 @@ interface Scrollable {
 	set_vscroll_policy (policy: ScrollablePolicy) : void;
 }
 
+var Scrollable: {       
+   new (): Scrollable;  
+}                          
+
+
 
 
 interface StyleProvider {
@@ -9953,6 +11303,11 @@ interface StyleProvider {
 	get_style (path: WidgetPath) : StyleProperties;
 	get_style_property (path: WidgetPath, state: StateFlags, pspec: GObject.ParamSpec, value: GObject.Value) : boolean;
 }
+
+var StyleProvider: {       
+   new (): StyleProvider;  
+}                          
+
 
 
 
@@ -9968,12 +11323,22 @@ interface ToolShell {
 	rebuild_menu () : void;
 }
 
+var ToolShell: {       
+   new (): ToolShell;  
+}                          
+
+
 
 
 interface TreeDragDest {
 	drag_data_received (dest: TreePath, selection_data: SelectionData) : boolean;
 	row_drop_possible (dest_path: TreePath, selection_data: SelectionData) : boolean;
 }
+
+var TreeDragDest: {       
+   new (): TreeDragDest;  
+}                          
+
 
 
 
@@ -9982,6 +11347,11 @@ interface TreeDragSource {
 	drag_data_get (path: TreePath, selection_data: SelectionData) : boolean;
 	row_draggable (path: TreePath) : boolean;
 }
+
+var TreeDragSource: {       
+   new (): TreeDragSource;  
+}                          
+
 
 
 
@@ -10017,6 +11387,11 @@ interface TreeModel {
 	unref_node (iter: TreeIter) : void;
 }
 
+var TreeModel: {       
+   new (): TreeModel;  
+}                          
+
+
 
 
 interface TreeSortable {
@@ -10027,6 +11402,11 @@ interface TreeSortable {
 	set_sort_func (sort_column_id: number, sort_func: TreeIterCompareFunc, user_data: any, destroy: GLib.DestroyNotify) : void;
 	sort_column_changed () : void;
 }
+
+var TreeSortable: {       
+   new (): TreeSortable;  
+}                          
+
 
 
 
@@ -11616,5 +12996,785 @@ type Allocation = Gdk.Rectangle;
 
 
 type Stock = any;
+
+
+
+function accel_groups_activate (object: GObject.Object, accel_key: number, accel_mods: Gdk.ModifierType): boolean;
+
+
+
+function accel_groups_from_object (object: GObject.Object): GLib.SList;
+
+
+
+function accelerator_get_default_mod_mask (): Gdk.ModifierType;
+
+
+
+function accelerator_get_label (accelerator_key: number, accelerator_mods: Gdk.ModifierType): string;
+
+
+
+function accelerator_get_label_with_keycode (display: Gdk.Display, accelerator_key: number, keycode: number, accelerator_mods: Gdk.ModifierType): string;
+
+
+
+function accelerator_name (accelerator_key: number, accelerator_mods: Gdk.ModifierType): string;
+
+
+
+function accelerator_name_with_keycode (display: Gdk.Display, accelerator_key: number, keycode: number, accelerator_mods: Gdk.ModifierType): string;
+
+
+
+function accelerator_parse (accelerator: string, accelerator_key: number, accelerator_mods: Gdk.ModifierType): void;
+
+
+
+function accelerator_parse_with_keycode (accelerator: string, accelerator_key: number, accelerator_codes: number[], accelerator_mods: Gdk.ModifierType): void;
+
+
+
+function accelerator_set_default_mod_mask (default_mod_mask: Gdk.ModifierType): void;
+
+
+
+function accelerator_valid (keyval: number, modifiers: Gdk.ModifierType): boolean;
+
+
+
+function alternative_dialog_button_order (screen: Gdk.Screen): boolean;
+
+
+
+function binding_entry_add_signal_from_string (binding_set: BindingSet, signal_desc: string): GLib.TokenType;
+
+
+
+function binding_entry_add_signall (binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType, signal_name: string, binding_args: GLib.SList): void;
+
+
+
+function binding_entry_remove (binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType): void;
+
+
+
+function binding_entry_skip (binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType): void;
+
+
+
+function binding_set_by_class (object_class: any): BindingSet;
+
+
+
+function binding_set_find (set_name: string): BindingSet;
+
+
+
+function binding_set_new (set_name: string): BindingSet;
+
+
+
+function bindings_activate (object: GObject.Object, keyval: number, modifiers: Gdk.ModifierType): boolean;
+
+
+
+function bindings_activate_event (object: GObject.Object, event: Gdk.EventKey): boolean;
+
+
+
+function builder_error_quark (): GLib.Quark;
+
+
+
+function cairo_should_draw_window (cr: cairo.Context, window: Gdk.Window): boolean;
+
+
+
+function cairo_transform_to_window (cr: cairo.Context, widget: Widget, window: Gdk.Window): void;
+
+
+
+function check_version (required_major: number, required_minor: number, required_micro: number): string;
+
+
+
+function css_provider_error_quark (): GLib.Quark;
+
+
+
+function device_grab_add (widget: Widget, device: Gdk.Device, block_others: boolean): void;
+
+
+
+function device_grab_remove (widget: Widget, device: Gdk.Device): void;
+
+
+
+function disable_setlocale (): void;
+
+
+
+function distribute_natural_allocation (extra_space: number, n_requested_sizes: number, sizes: RequestedSize): number;
+
+
+
+function drag_cancel (context: Gdk.DragContext): void;
+
+
+
+function drag_finish (context: Gdk.DragContext, success: boolean, _del: boolean, time_: number): void;
+
+
+
+function drag_get_source_widget (context: Gdk.DragContext): Widget;
+
+
+
+function drag_set_icon_default (context: Gdk.DragContext): void;
+
+
+
+function drag_set_icon_gicon (context: Gdk.DragContext, icon: Gio.Icon, hot_x: number, hot_y: number): void;
+
+
+
+function drag_set_icon_name (context: Gdk.DragContext, icon_name: string, hot_x: number, hot_y: number): void;
+
+
+
+function drag_set_icon_pixbuf (context: Gdk.DragContext, pixbuf: GdkPixbuf.Pixbuf, hot_x: number, hot_y: number): void;
+
+
+
+function drag_set_icon_stock (context: Gdk.DragContext, stock_id: string, hot_x: number, hot_y: number): void;
+
+
+
+function drag_set_icon_surface (context: Gdk.DragContext, surface: cairo.Surface): void;
+
+
+
+function drag_set_icon_widget (context: Gdk.DragContext, widget: Widget, hot_x: number, hot_y: number): void;
+
+
+
+function draw_insertion_cursor (widget: Widget, cr: cairo.Context, location: Gdk.Rectangle, is_primary: boolean, direction: TextDirection, draw_arrow: boolean): void;
+
+
+
+function events_pending (): boolean;
+
+
+
+// function false (): boolean;
+
+
+
+function file_chooser_error_quark (): GLib.Quark;
+
+
+
+function get_binary_age (): number;
+
+
+
+function get_current_event (): Gdk.Event;
+
+
+
+function get_current_event_device (): Gdk.Device;
+
+
+
+function get_current_event_state (state: Gdk.ModifierType): boolean;
+
+
+
+function get_current_event_time (): number;
+
+
+
+function get_debug_flags (): number;
+
+
+
+function get_default_language (): Pango.Language;
+
+
+
+function get_event_widget (event: Gdk.Event): Widget;
+
+
+
+function get_interface_age (): number;
+
+
+
+function get_locale_direction (): TextDirection;
+
+
+
+function get_major_version (): number;
+
+
+
+function get_micro_version (): number;
+
+
+
+function get_minor_version (): number;
+
+
+
+function get_option_group (open_default_display: boolean): GLib.OptionGroup;
+
+
+
+function grab_get_current (): Widget;
+
+
+
+function icon_size_from_name (name: string): number;
+
+
+
+function icon_size_get_name (size: number): string;
+
+
+
+function icon_size_lookup (size: number, width: number, height: number): boolean;
+
+
+
+function icon_size_lookup_for_settings (settings: Settings, size: number, width: number, height: number): boolean;
+
+
+
+function icon_size_register (name: string, width: number, height: number): number;
+
+
+
+function icon_size_register_alias (alias: string, target: number): void;
+
+
+
+function icon_theme_error_quark (): GLib.Quark;
+
+
+
+function init (argc: number, argv: string[]): void;
+
+
+
+function init_check (argc: number, argv: string[]): boolean;
+
+
+
+function init_with_args (argc: number, argv: string[], parameter_string: string, entries: GLib.OptionEntry[], translation_domain: string): boolean;
+
+
+
+function key_snooper_install (snooper: KeySnoopFunc, func_data: any): number;
+
+
+
+function key_snooper_remove (snooper_handler_id: number): void;
+
+
+
+function main (): void;
+
+
+
+function main_do_event (event: Gdk.Event): void;
+
+
+
+function main_iteration (): boolean;
+
+
+
+function main_iteration_do (blocking: boolean): boolean;
+
+
+
+function main_level (): number;
+
+
+
+function main_quit (): void;
+
+
+
+function paint_arrow (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, arrow_type: ArrowType, fill: boolean, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_box (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_box_gap (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number): void;
+
+
+
+function paint_check (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_diamond (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_expander (style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, _x: number, _y: number, expander_style: ExpanderStyle): void;
+
+
+
+function paint_extension (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number, gap_side: PositionType): void;
+
+
+
+function paint_flat_box (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_focus (style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_handle (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number, orientation: Orientation): void;
+
+
+
+function paint_hline (style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, x1: number, x2: number, _y: number): void;
+
+
+
+function paint_layout (style: Style, cr: cairo.Context, state_type: StateType, use_text: boolean, widget: Widget, detail: string, _x: number, _y: number, layout: Pango.Layout): void;
+
+
+
+function paint_option (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_resize_grip (style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, edge: Gdk.WindowEdge, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_shadow (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_shadow_gap (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number): void;
+
+
+
+function paint_slider (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number, orientation: Orientation): void;
+
+
+
+function paint_spinner (style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, step: number, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_tab (style: Style, cr: cairo.Context, state_type: StateType, shadow_type: ShadowType, widget: Widget, detail: string, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function paint_vline (style: Style, cr: cairo.Context, state_type: StateType, widget: Widget, detail: string, y1_: number, y2_: number, _x: number): void;
+
+
+
+function paper_size_get_default (): string;
+
+
+
+function paper_size_get_paper_sizes (include_custom: boolean): GLib.List;
+
+
+
+function parse_args (argc: number, argv: string[]): boolean;
+
+
+
+function print_error_quark (): GLib.Quark;
+
+
+
+function print_run_page_setup_dialog (parent: Window, page_setup: PageSetup, settings: PrintSettings): PageSetup;
+
+
+
+function print_run_page_setup_dialog_async (parent: Window, page_setup: PageSetup, settings: PrintSettings, done_cb: PageSetupDoneFunc, data: any): void;
+
+
+
+function propagate_event (widget: Widget, event: Gdk.Event): void;
+
+
+
+function rc_add_default_file (filename: string): void;
+
+
+
+function rc_find_module_in_path (module_file: string): string;
+
+
+
+function rc_find_pixmap_in_path (settings: Settings, scanner: GLib.Scanner, pixmap_file: string): string;
+
+
+
+function rc_get_default_files (): string[];
+
+
+
+function rc_get_im_module_file (): string;
+
+
+
+function rc_get_im_module_path (): string;
+
+
+
+function rc_get_module_dir (): string;
+
+
+
+function rc_get_style (widget: Widget): Style;
+
+
+
+function rc_get_style_by_paths (settings: Settings, widget_path: string, class_path: string, _type: GObject.Type): Style;
+
+
+
+function rc_get_theme_dir (): string;
+
+
+
+function rc_parse (filename: string): void;
+
+
+
+function rc_parse_color (scanner: GLib.Scanner, color: Gdk.Color): number;
+
+
+
+function rc_parse_color_full (scanner: GLib.Scanner, style: RcStyle, color: Gdk.Color): number;
+
+
+
+function rc_parse_priority (scanner: GLib.Scanner, priority: PathPriorityType): number;
+
+
+
+function rc_parse_state (scanner: GLib.Scanner, state: StateType): number;
+
+
+
+function rc_parse_string (rc_string: string): void;
+
+
+
+function rc_property_parse_border (pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value): boolean;
+
+
+
+function rc_property_parse_color (pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value): boolean;
+
+
+
+function rc_property_parse_enum (pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value): boolean;
+
+
+
+function rc_property_parse_flags (pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value): boolean;
+
+
+
+function rc_property_parse_requisition (pspec: GObject.ParamSpec, gstring: GLib.String, property_value: GObject.Value): boolean;
+
+
+
+function rc_reparse_all (): boolean;
+
+
+
+function rc_reparse_all_for_settings (settings: Settings, force_load: boolean): boolean;
+
+
+
+function rc_reset_styles (settings: Settings): void;
+
+
+
+function rc_scanner_new (): GLib.Scanner;
+
+
+
+function rc_set_default_files (filenames: string[]): void;
+
+
+
+function recent_chooser_error_quark (): GLib.Quark;
+
+
+
+function recent_manager_error_quark (): GLib.Quark;
+
+
+
+function render_activity (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function render_arrow (context: StyleContext, cr: cairo.Context, angle: number, _x: number, _y: number, size: number): void;
+
+
+
+function render_background (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function render_check (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function render_expander (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function render_extension (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number, gap_side: PositionType): void;
+
+
+
+function render_focus (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function render_frame (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function render_frame_gap (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number, gap_side: PositionType, xy0_gap: number, xy1_gap: number): void;
+
+
+
+function render_handle (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function render_icon (context: StyleContext, cr: cairo.Context, pixbuf: GdkPixbuf.Pixbuf, _x: number, _y: number): void;
+
+
+
+function render_icon_pixbuf (context: StyleContext, source: IconSource, size: number): GdkPixbuf.Pixbuf;
+
+
+
+function render_icon_surface (context: StyleContext, cr: cairo.Context, surface: cairo.Surface, _x: number, _y: number): void;
+
+
+
+function render_insertion_cursor (context: StyleContext, cr: cairo.Context, _x: number, _y: number, layout: Pango.Layout, index: number, direction: Pango.Direction): void;
+
+
+
+function render_layout (context: StyleContext, cr: cairo.Context, _x: number, _y: number, layout: Pango.Layout): void;
+
+
+
+function render_line (context: StyleContext, cr: cairo.Context, x0: number, y0: number, x1: number, y1: number): void;
+
+
+
+function render_option (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number): void;
+
+
+
+function render_slider (context: StyleContext, cr: cairo.Context, _x: number, _y: number, width: number, height: number, orientation: Orientation): void;
+
+
+
+function rgb_to_hsv (_r: number, _g: number, _b: number, _h: number, _s: number, _v: number): void;
+
+
+
+function selection_add_target (widget: Widget, selection: Gdk.Atom, target: Gdk.Atom, info: number): void;
+
+
+
+function selection_add_targets (widget: Widget, selection: Gdk.Atom, targets: TargetEntry[], ntargets: number): void;
+
+
+
+function selection_clear_targets (widget: Widget, selection: Gdk.Atom): void;
+
+
+
+function selection_convert (widget: Widget, selection: Gdk.Atom, target: Gdk.Atom, time_: number): boolean;
+
+
+
+function selection_owner_set (widget: Widget, selection: Gdk.Atom, time_: number): boolean;
+
+
+
+function selection_owner_set_for_display (display: Gdk.Display, widget: Widget, selection: Gdk.Atom, time_: number): boolean;
+
+
+
+function selection_remove_all (widget: Widget): void;
+
+
+
+function set_debug_flags (flags: number): void;
+
+
+
+function show_about_dialog (parent: Window, first_property_name: string): void;
+
+
+
+function show_uri (screen: Gdk.Screen, uri: string, timestamp: number): boolean;
+
+
+
+function stock_add (items: StockItem[], n_items: number): void;
+
+
+
+function stock_add_static (items: StockItem[], n_items: number): void;
+
+
+
+function stock_list_ids (): GLib.SList;
+
+
+
+function stock_lookup (stock_id: string, item: StockItem): boolean;
+
+
+
+function stock_set_translate_func (domain: string, _func: TranslateFunc, data: any, notify: GLib.DestroyNotify): void;
+
+
+
+function target_table_free (targets: TargetEntry[], n_targets: number): void;
+
+
+
+function target_table_new_from_list (list: TargetList, n_targets: number): TargetEntry[];
+
+
+
+function targets_include_image (targets: Gdk.Atom[], n_targets: number, writable: boolean): boolean;
+
+
+
+function targets_include_rich_text (targets: Gdk.Atom[], n_targets: number, buffer: TextBuffer): boolean;
+
+
+
+function targets_include_text (targets: Gdk.Atom[], n_targets: number): boolean;
+
+
+
+function targets_include_uri (targets: Gdk.Atom[], n_targets: number): boolean;
+
+
+
+function test_create_simple_window (window_title: string, dialog_text: string): Widget;
+
+
+
+function test_create_widget (widget_type: GObject.Type, first_property_name: string): Widget;
+
+
+
+function test_display_button_window (window_title: string, dialog_text: string): Widget;
+
+
+
+function test_find_label (widget: Widget, label_pattern: string): Widget;
+
+
+
+function test_find_sibling (base_widget: Widget, widget_type: GObject.Type): Widget;
+
+
+
+function test_find_widget (widget: Widget, label_pattern: string, widget_type: GObject.Type): Widget;
+
+
+
+function test_init (argcp: number, argvp: string[]): void;
+
+
+
+function test_list_all_types (n_types: number): GObject.Type[];
+
+
+
+function test_register_all_types (): void;
+
+
+
+function test_slider_get_value (widget: Widget): number;
+
+
+
+function test_slider_set_perc (widget: Widget, percentage: number): void;
+
+
+
+function test_spin_button_click (spinner: SpinButton, button: number, upwards: boolean): boolean;
+
+
+
+function test_text_get (widget: Widget): string;
+
+
+
+function test_text_set (widget: Widget, string: string): void;
+
+
+
+function test_widget_click (widget: Widget, button: number, modifiers: Gdk.ModifierType): boolean;
+
+
+
+function test_widget_send_key (widget: Widget, keyval: number, modifiers: Gdk.ModifierType): boolean;
+
+
+
+function test_widget_wait_for_draw (widget: Widget): void;
+
+
+
+function tree_get_row_drag_data (selection_data: SelectionData, tree_model: TreeModel, path: TreePath): boolean;
+
+
+
+function tree_row_reference_deleted (proxy: GObject.Object, path: TreePath): void;
+
+
+
+function tree_row_reference_inserted (proxy: GObject.Object, path: TreePath): void;
+
+
+
+function tree_row_reference_reordered (proxy: GObject.Object, path: TreePath, iter: TreeIter, new_order: number[]): void;
+
+
+
+function tree_set_row_drag_data (selection_data: SelectionData, tree_model: TreeModel, path: TreePath): boolean;
+
+
+
+// function true (): boolean;
 
 }

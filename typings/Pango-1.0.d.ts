@@ -19,28 +19,48 @@ interface Context extends GObject.Object {
 	set_base_gravity (gravity: Gravity) : void;
 	set_font_description (desc: FontDescription) : void;
 	set_font_map (font_map: FontMap) : void;
-	set_gravity_hint (hint: GravityHint) : void; 
+	set_gravity_hint (hint: GravityHint) : void;
 	set_language (language: Language) : void;
 	set_matrix (matrix: Matrix) : void;
 }
 
+var Context: {       
+   new (): Context;  
+}                          
+
+
 
 
 interface Engine extends GObject.Object {
-
+	
 }
+
+var Engine: {       
+   new (): Engine;  
+}                          
+
 
 
 
 interface EngineLang extends Engine {
-
+	
 }
+
+var EngineLang: {       
+   new (): EngineLang;  
+}                          
+
 
 
 
 interface EngineShape extends Engine {
-
+	
 }
+
+var EngineShape: {       
+   new (): EngineShape;  
+}                          
+
 
 
 
@@ -54,6 +74,11 @@ interface Font extends GObject.Object {
 	get_metrics (language: Language) : FontMetrics;
 }
 
+var Font: {       
+   new (): Font;  
+}                          
+
+
 
 
 interface FontFace extends GObject.Object {
@@ -63,6 +88,11 @@ interface FontFace extends GObject.Object {
 	list_sizes (sizes: number[], n_sizes: number) : void;
 }
 
+var FontFace: {       
+   new (): FontFace;  
+}                          
+
+
 
 
 interface FontFamily extends GObject.Object {
@@ -70,6 +100,11 @@ interface FontFamily extends GObject.Object {
 	is_monospace () : boolean;
 	list_faces (faces: FontFace[], n_faces: number) : void;
 }
+
+var FontFamily: {       
+   new (): FontFamily;  
+}                          
+
 
 
 
@@ -83,6 +118,11 @@ interface FontMap extends GObject.Object {
 	load_fontset (context: Context, desc: FontDescription, language: Language) : Fontset;
 }
 
+var FontMap: {       
+   new (): FontMap;  
+}                          
+
+
 
 
 interface Fontset extends GObject.Object {
@@ -91,12 +131,22 @@ interface Fontset extends GObject.Object {
 	get_metrics () : FontMetrics;
 }
 
+var Fontset: {       
+   new (): Fontset;  
+}                          
+
+
 
 
 interface FontsetSimple extends Fontset {
 	append (font: Font) : void;
 	size () : number;
 }
+
+var FontsetSimple: {       
+   new (): FontsetSimple;  
+}                          
+
 
 
 
@@ -159,6 +209,11 @@ interface Layout extends GObject.Object {
 	xy_to_index (_x: number, _y: number, index_: number, trailing: number) : boolean;
 }
 
+var Layout: {       
+   new (): Layout;  
+}                          
+
+
 
 
 interface Renderer extends GObject.Object {
@@ -182,6 +237,11 @@ interface Renderer extends GObject.Object {
 	set_color (part: RenderPart, color: Color) : void;
 	set_matrix (matrix: Matrix) : void;
 }
+
+var Renderer: {       
+   new (): Renderer;  
+}                          
+
 
 
 
@@ -1204,5 +1264,301 @@ type GlyphUnit = number;
 
 
 type LayoutRun = GlyphItem;
+
+
+
+function attr_background_alpha_new (alpha: number): Attribute;
+
+
+
+function attr_background_new (red: number, green: number, blue: number): Attribute;
+
+
+
+function attr_fallback_new (enable_fallback: boolean): Attribute;
+
+
+
+function attr_family_new (family: string): Attribute;
+
+
+
+function attr_foreground_alpha_new (alpha: number): Attribute;
+
+
+
+function attr_foreground_new (red: number, green: number, blue: number): Attribute;
+
+
+
+function attr_gravity_hint_new (hint: GravityHint): Attribute;
+
+
+
+function attr_gravity_new (gravity: Gravity): Attribute;
+
+
+
+function attr_letter_spacing_new (letter_spacing: number): Attribute;
+
+
+
+function attr_rise_new (rise: number): Attribute;
+
+
+
+function attr_scale_new (scale_factor: number): Attribute;
+
+
+
+function attr_stretch_new (stretch: Stretch): Attribute;
+
+
+
+function attr_strikethrough_color_new (red: number, green: number, blue: number): Attribute;
+
+
+
+function attr_strikethrough_new (strikethrough: boolean): Attribute;
+
+
+
+function attr_style_new (style: Style): Attribute;
+
+
+
+function attr_type_get_name (_type: AttrType): string;
+
+
+
+function attr_type_register (name: string): AttrType;
+
+
+
+function attr_underline_color_new (red: number, green: number, blue: number): Attribute;
+
+
+
+function attr_underline_new (underline: Underline): Attribute;
+
+
+
+function attr_variant_new (variant: Variant): Attribute;
+
+
+
+function attr_weight_new (weight: Weight): Attribute;
+
+
+
+function bidi_type_for_unichar (_ch: string): BidiType;
+
+
+
+function break (text: string, length: number, analysis: Analysis, attrs: LogAttr[], attrs_len: number): void;
+
+
+
+function config_key_get (key: string): string;
+
+
+
+function config_key_get_system (key: string): string;
+
+
+
+function default_break (text: string, length: number, analysis: Analysis, attrs: LogAttr, attrs_len: number): void;
+
+
+
+function extents_to_pixels (inclusive: Rectangle, nearest: Rectangle): void;
+
+
+
+function find_base_dir (text: string, length: number): Direction;
+
+
+
+function find_map (language: Language, engine_type_id: number, render_type_id: number): Map;
+
+
+
+function find_paragraph_boundary (text: string, length: number, paragraph_delimiter_index: number, next_paragraph_start: number): void;
+
+
+
+function font_description_from_string (_str: string): FontDescription;
+
+
+
+function get_lib_subdirectory (): string;
+
+
+
+function get_log_attrs (text: string, length: number, level: number, language: Language, log_attrs: LogAttr[], attrs_len: number): void;
+
+
+
+function get_mirror_char (_ch: string, mirrored_ch: string): boolean;
+
+
+
+function get_sysconf_subdirectory (): string;
+
+
+
+function gravity_get_for_matrix (matrix: Matrix): Gravity;
+
+
+
+function gravity_get_for_script (script: Script, base_gravity: Gravity, hint: GravityHint): Gravity;
+
+
+
+function gravity_get_for_script_and_width (script: Script, wide: boolean, base_gravity: Gravity, hint: GravityHint): Gravity;
+
+
+
+function gravity_to_rotation (gravity: Gravity): number;
+
+
+
+function is_zero_width (_ch: string): boolean;
+
+
+
+function itemize (context: Context, text: string, start_index: number, length: number, attrs: AttrList, cached_iter: AttrIterator): GLib.List;
+
+
+
+function itemize_with_base_dir (context: Context, base_dir: Direction, text: string, start_index: number, length: number, attrs: AttrList, cached_iter: AttrIterator): GLib.List;
+
+
+
+function language_from_string (language: string): Language;
+
+
+
+function language_get_default (): Language;
+
+
+
+function log2vis_get_embedding_levels (text: string, length: number, pbase_dir: Direction): number;
+
+
+
+function lookup_aliases (fontname: string, families: string[], n_families: number): void;
+
+
+
+function markup_parser_finish (context: GLib.MarkupParseContext, attr_list: AttrList, text: string, accel_char: string): boolean;
+
+
+
+function markup_parser_new (accel_marker: string): GLib.MarkupParseContext;
+
+
+
+function module_register (module: IncludedModule): void;
+
+
+
+function parse_enum (_type: GObject.Type, _str: string, value: number, warn: boolean, possible_values: string): boolean;
+
+
+
+function parse_markup (markup_text: string, length: number, accel_marker: string, attr_list: AttrList, text: string, accel_char: string): boolean;
+
+
+
+function parse_stretch (_str: string, stretch: Stretch, warn: boolean): boolean;
+
+
+
+function parse_style (_str: string, style: Style, warn: boolean): boolean;
+
+
+
+function parse_variant (_str: string, variant: Variant, warn: boolean): boolean;
+
+
+
+function parse_weight (_str: string, weight: Weight, warn: boolean): boolean;
+
+
+
+function quantize_line_geometry (thickness: number, position: number): void;
+
+
+
+function read_line (stream: any, _str: GLib.String): number;
+
+
+
+function reorder_items (logical_items: GLib.List): GLib.List;
+
+
+
+function scan_int (pos: string, out: number): boolean;
+
+
+
+function scan_string (pos: string, out: GLib.String): boolean;
+
+
+
+function scan_word (pos: string, out: GLib.String): boolean;
+
+
+
+function script_for_unichar (_ch: string): Script;
+
+
+
+function script_get_sample_language (script: Script): Language;
+
+
+
+function shape (text: string, length: number, analysis: Analysis, glyphs: GlyphString): void;
+
+
+
+function shape_full (item_text: string, item_length: number, paragraph_text: string, paragraph_length: number, analysis: Analysis, glyphs: GlyphString): void;
+
+
+
+function skip_space (pos: string): boolean;
+
+
+
+function split_file_list (_str: string): string[];
+
+
+
+function trim_string (_str: string): string;
+
+
+
+function unichar_direction (_ch: string): Direction;
+
+
+
+function units_from_double (_d: number): number;
+
+
+
+function units_to_double (_i: number): number;
+
+
+
+function version (): number;
+
+
+
+function version_check (required_major: number, required_minor: number, required_micro: number): string;
+
+
+
+function version_string (): string;
 
 }

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var GIR2TS;
 (function (GIR2TS) {
     var js_reserved_words = "\n        abstract else instanceof super boolean enum int switch break export\n        arguments\n        eval\n        interface\n        constructor\n        synchronized\n        byte\n        extends\n        let\n        this\n        case\n        false\n        long\n        throw\n        catch\n        final\n        native\n        throws\n        char\n        finally\n        new\n        transient\n        class\n        float\n        null\n        true\n        const\n        for\n        package\n        try\n        continue\n        function\n        private\n        typeof\n        debugger\n        goto\n        protected\n        var\n        default\n        if\n        public\n        void\n        delete\n        implements\n        return\n        volatile\n        do\n        import\n        short\n        while\n        double\n        in\n        static\n        with\n    ";
@@ -70,6 +70,41 @@ var GIR2TS;
         return (include_access_modifier ? 'public ' : '') + prop_name.replace(/-/g, '_') + ': ' + getTypeFromParameterNode(prop_node)[0] + ';';
     }
     GIR2TS.renderProperty = renderProperty;
+    function getFunctionInfo(func_node) {
+        var func_name = func_node.$.name;
+        var return_type = getTypeFromParameterNode(func_node['return-value'][0])[0];
+        var params = [];
+        if (func_node.parameters && func_node.parameters[0].parameter) {
+            for (var _i = 0, _a = func_node.parameters[0].parameter; _i < _a.length; _i++) {
+                var param_node = _a[_i];
+                if (param_node.$.name === '...')
+                    continue;
+                var param_name = param_node.$.name;
+                if (js_reserved_words.indexOf(param_name) !== -1) {
+                    param_name = '_' + param_name;
+                }
+                var _b = getTypeFromParameterNode(param_node), type = _b[0], is_primitive = _b[1];
+                params.push({
+                    name: param_name,
+                    type: type
+                });
+            }
+        }
+        return {
+            name: func_name,
+            return_type: return_type,
+            params: params
+        };
+    }
+    function renderFreeFunction(func_node, exclude_list) {
+        if (exclude_list === void 0) { exclude_list = null; }
+        var _a = getFunctionInfo(func_node), name = _a.name, return_type = _a.return_type, params = _a.params;
+        var str = "function " + name + " (" + params.map(function (p) { return (p.name + ": " + p.type); }).join(', ') + "): " + return_type + ";";
+        if (exclude_list && exclude_list.indexOf(name) !== -1) {
+            str = '// ' + str;
+        }
+        return str;
+    }
     function renderMethod(method_node, include_access_modifier, include_name, forExternalInterfaceInNamespace) {
         if (include_access_modifier === void 0) { include_access_modifier = true; }
         if (include_name === void 0) { include_name = true; }
@@ -105,8 +140,8 @@ var GIR2TS;
         }
         str += '(';
         if (params.length > 0) {
-            for (var _c = 0, params_1 = params; _c < params_1.length; _c++) {
-                var param = params_1[_c];
+            for (var _c = 0; _c < params.length; _c++) {
+                var param = params[_c];
                 str += param.name + ': ' + param.type + ', ';
             }
             str = str.slice(0, -2);
@@ -123,8 +158,8 @@ var GIR2TS;
     GIR2TS.renderCallback = renderCallback;
     function arrayMinus(first, second, equals) {
         return first.filter(function (a) {
-            for (var _i = 0, second_1 = second; _i < second_1.length; _i++) {
-                var b = second_1[_i];
+            for (var _i = 0; _i < second.length; _i++) {
+                var b = second[_i];
                 if (equals(a, b)) {
                     return false;
                 }
@@ -136,8 +171,8 @@ var GIR2TS;
         var unique_arr = [];
         arr.forEach(function (elem) {
             var dup = false;
-            for (var _i = 0, unique_arr_1 = unique_arr; _i < unique_arr_1.length; _i++) {
-                var e = unique_arr_1[_i];
+            for (var _i = 0; _i < unique_arr.length; _i++) {
+                var e = unique_arr[_i];
                 if (equals(e, elem)) {
                     dup = true;
                     break;
@@ -150,8 +185,8 @@ var GIR2TS;
     }
     GIR2TS.removeDuplicates = removeDuplicates;
     function searchNodeByName(nodes, name) {
-        for (var _i = 0, nodes_1 = nodes; _i < nodes_1.length; _i++) {
-            var c = nodes_1[_i];
+        for (var _i = 0; _i < nodes.length; _i++) {
+            var c = nodes[_i];
             if (c.$.name === name) {
                 return c;
             }
@@ -228,18 +263,18 @@ var GIR2TS;
                 }
             }
         var body = '';
-        for (var _b = 0, props_1 = props; _b < props_1.length; _b++) {
-            var f = props_1[_b];
+        for (var _b = 0; _b < props.length; _b++) {
+            var f = props[_b];
             body += '\t' + renderProperty(f) + '\n';
         }
         body += '\n';
-        for (var _c = 0, callback_fields_1 = callback_fields; _c < callback_fields_1.length; _c++) {
-            var c = callback_fields_1[_c];
+        for (var _c = 0; _c < callback_fields.length; _c++) {
+            var c = callback_fields[_c];
             body += '\t' + renderCallbackField(c) + '\n';
         }
         body += '\n';
-        for (var _d = 0, methods_1 = methods; _d < methods_1.length; _d++) {
-            var m = methods_1[_d];
+        for (var _d = 0; _d < methods.length; _d++) {
+            var m = methods[_d];
             body += '\t' + renderMethod(m) + '\n';
         }
         return "class " + rec_node.$.name + " {\n" + body + "}";
@@ -277,22 +312,27 @@ var GIR2TS;
             }
         }
         var header = '';
-        var body = '';
         header += (exclude_self ? '// ' : '') + "interface " + class_name;
         if (ifaces.length > 0) {
             header += " extends " + ifaces.join(', ');
         }
         var method_str_list = methods.map(function (m) {
             var method_str = renderMethod(m, false);
-            console.log(((exclude_method_list.length > 0 && exclude.indexOf(m.$.name) !== -1) || exclude_all_members));
             if ((exclude_method_list.length > 0 && exclude.indexOf(m.$.name) !== -1) || exclude_all_members) {
                 method_str = '// ' + method_str;
             }
             return method_str;
         });
-        body = method_str_list.join('\n\t');
-        body = " {\n\t" + body + "\n" + (exclude_self ? '// ' : '') + "}";
-        return header + body;
+        var body = method_str_list.join('\n\t');
+        body = " {\n\t" +
+            (body + "\n") +
+            ((exclude_self ? '// ' : '') + "}\n");
+        var iface_str = header + body;
+        var static_side = '\n' +
+            ("var " + class_name + ": {       \n") +
+            ("   new (): " + class_name + ";  \n") +
+            "}                          \n";
+        return iface_str + static_side;
     }
     GIR2TS.renderClassAsInterface = renderClassAsInterface;
     function renderClassWithInterfaceMembers(class_node, ns_list, my_ns) {
@@ -301,7 +341,8 @@ var GIR2TS;
         var props = [];
         var externIfaceMethods = [];
         if (class_node.implements) {
-            var _loop_1 = function(iface) {
+            for (var _i = 0, _a = class_node.implements; _i < _a.length; _i++) {
+                var iface = _a[_i];
                 var iface_name = iface.$.name;
                 var iface_list = [];
                 var iface_ns = '';
@@ -325,10 +366,6 @@ var GIR2TS;
                         };
                     }));
                 }
-            };
-            for (var _i = 0, _a = class_node.implements; _i < _a.length; _i++) {
-                var iface = _a[_i];
-                _loop_1(iface);
             }
         }
         methods = methods.concat(getAllMethods(class_node));
@@ -382,8 +419,8 @@ var GIR2TS;
         }
         var body = '\n\n';
         var methods = removeDuplicates(getAllMethods(iface_node), function (a, b) { return a.$.name === b.$.name; });
-        for (var _i = 0, methods_2 = methods; _i < methods_2.length; _i++) {
-            var m = methods_2[_i];
+        for (var _i = 0; _i < methods.length; _i++) {
+            var m = methods[_i];
             body += '\t' + renderMethod(m, false) + '\n';
         }
         return "interface " + iface_node.$.name + " {" + body + "}";
@@ -394,8 +431,8 @@ var GIR2TS;
         var class_nodes = [];
         if (ns_node.class)
             class_nodes = class_nodes.concat(ns_node.class);
-        for (var _i = 0, class_nodes_1 = class_nodes; _i < class_nodes_1.length; _i++) {
-            var class_node = class_nodes_1[_i];
+        for (var _i = 0; _i < class_nodes.length; _i++) {
+            var class_node = class_nodes[_i];
             var class_name = class_node.$.name;
             body += '\n\n' + GIR2TS.renderClassAsInterface(class_node, exclude ? exclude.exclude.class[class_name] : undefined) + '\n\n';
         }
@@ -434,6 +471,12 @@ var GIR2TS;
                 var alias_node = _p[_o];
                 body += '\n\n' + GIR2TS.renderAlias(alias_node) + '\n\n';
             }
+        if (ns_node.function)
+            for (var _q = 0, _r = ns_node.function; _q < _r.length; _q++) {
+                var func_node = _r[_q];
+                var exc = exclude && exclude.exclude.function ? exclude.exclude.function : undefined;
+                body += '\n\n' + renderFreeFunction(func_node, exc) + '\n\n';
+            }
         return "declare namespace imports.gi." + ns_node.$.name + " {" + body + "}";
     }
     GIR2TS.renderNamespace = renderNamespace;
@@ -457,7 +500,6 @@ var GIR2TS;
             this.exclude_json_map = {};
             this.lib_list = gir_xml_list;
             this.exclude_json_map = exclude_json_map;
-            console.log(this.exclude_json_map);
         }
         Generator.prototype.generateTypings = function (cb) {
             var _this = this;
@@ -469,7 +511,8 @@ var GIR2TS;
             }
             var xml2js = require('xml2js');
             var parser = new xml2js.Parser();
-            var _loop_2 = function(lib) {
+            for (var _i = 0, _a = this.lib_list; _i < _a.length; _i++) {
+                var lib = _a[_i];
                 parser.parseString(lib.xml_str, function (err, res) {
                     _this.ns_list.push({
                         lib_name: lib.lib_name,
@@ -477,17 +520,12 @@ var GIR2TS;
                     });
                     cb_counter();
                 });
-            };
-            for (var _i = 0, _a = this.lib_list; _i < _a.length; _i++) {
-                var lib = _a[_i];
-                _loop_2(lib);
             }
             function proceed() {
                 var res = [];
                 for (var _i = 0, _a = self.ns_list; _i < _a.length; _i++) {
                     var ns = _a[_i];
                     var ns_name = ns.ns_node.$.name;
-                    console.log(Object.keys(self.exclude_json_map));
                     var typing_str = renderNamespace(ns.ns_node, self.exclude_json_map[ns.lib_name]);
                     res.push({
                         gir_name: ns.lib_name,
@@ -510,6 +548,7 @@ function main() {
     var outdir = __dirname;
     var exclude_json_map = {};
     if (argv.outdir) {
+        console.log("Output typings directory: " + argv.outdir);
         outdir = path.join(__dirname, argv.outdir);
         if (fs.statSync(outdir).isDirectory()) {
         }
@@ -521,31 +560,32 @@ function main() {
         throw new Error("No out dir specified.");
     }
     if (argv.excludedir) {
+        console.log("Excludes directory: " + argv.excludedir);
         var dir = path.join(__dirname, argv.excludedir);
         var json_files = [];
         if (fs.statSync(dir).isDirectory()) {
             json_files = fs.readdirSync(dir).map(function (file) { return path.join(dir, file); });
         }
-        for (var _i = 0, json_files_1 = json_files; _i < json_files_1.length; _i++) {
-            var json_file = json_files_1[_i];
+        for (var _i = 0; _i < json_files.length; _i++) {
+            var json_file = json_files[_i];
             var lib_name = path.basename(json_file, '.json');
             var data = fs.readFileSync(json_file, 'utf8');
-            console.log('data: ' + JSON.parse(data));
             exclude_json_map[lib_name] = JSON.parse(data);
         }
     }
     if (argv.girdir) {
+        console.log("GIR directory: " + argv.girdir);
         var dir = path.join(__dirname, argv.girdir);
         if (fs.statSync(dir).isDirectory()) {
             gir_files = fs.readdirSync(dir).map(function (file) { return path.join(dir, file); });
         }
     }
     else {
-        gir_files.push(path.join(__dirname, argv._[0]));
+        gir_files = gir_files.concat(argv._.map(function (arg) { return path.join(__dirname, arg); }));
     }
     var gir_xml_list = [];
-    for (var _a = 0, gir_files_1 = gir_files; _a < gir_files_1.length; _a++) {
-        var file = gir_files_1[_a];
+    for (var _a = 0; _a < gir_files.length; _a++) {
+        var file = gir_files[_a];
         var gir_name = path.basename(file, '.gir');
         var data = '';
         try {
@@ -560,11 +600,10 @@ function main() {
             xml_str: data
         });
     }
-    console.log(exclude_json_map);
     var gen = new GIR2TS.Generator(gir_xml_list, exclude_json_map);
     gen.generateTypings(function (res) {
-        for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
-            var lib = res_1[_i];
+        for (var _i = 0; _i < res.length; _i++) {
+            var lib = res[_i];
             var outfile = path.join(outdir, lib.gir_name + '.d.ts');
             try {
                 fs.writeFileSync(outfile, lib.typing_str);

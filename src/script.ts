@@ -1,3 +1,5 @@
+'use strict'
+
 namespace GIR2TS {
 
     let js_reserved_words = `
@@ -101,6 +103,17 @@ namespace GIR2TS {
         parameters: ParametersNode[];
     }
 
+    interface Parameter {
+        type: string;
+        name: string;
+    }
+
+    interface FunctionInfo {
+        name: string;
+        return_type: string;
+        params : Parameter[];
+    }
+
     interface MemberNode extends Node {
         $: MemberAttributes;
     }
@@ -143,6 +156,7 @@ namespace GIR2TS {
         "enumeration": EnumNode[];
         "bitfield": EnumNode[];
         "callback": FunctionNode[];
+        "function": FunctionNode[];
         "union": Node[];
         "alias": ParameterNode[];
     }
@@ -217,6 +231,44 @@ namespace GIR2TS {
     }
 
 
+    function getFunctionInfo (func_node: FunctionNode) : FunctionInfo {
+        var func_name = func_node.$.name;
+        var return_type = getTypeFromParameterNode(func_node['return-value'][0])[0];
+        var params: Parameter[] = [];
+        //var has_params = "parameter" in method_node.parameters[0];
+
+        if (func_node.parameters && func_node.parameters[0].parameter) {
+            for (var param_node of func_node.parameters[0].parameter) {
+                if (param_node.$.name === '...') continue;
+                let param_name = param_node.$.name;
+                if (js_reserved_words.indexOf(param_name) !== -1) { // if clashes with JS reserved word.
+                    param_name = '_' + param_name;
+                }
+                let [type, is_primitive] = getTypeFromParameterNode(param_node);
+                params.push({
+                    name: param_name,
+                    type: type
+                });
+            }
+        }
+
+        return {
+            name: func_name,
+            return_type: return_type,
+            params: params
+        }
+    }
+
+    function renderFreeFunction (func_node: FunctionNode, exclude_list: string[] = null): string {
+        let {name, return_type, params} = getFunctionInfo(func_node);
+        let str = `function ${name} (${params.map((p) => `${p.name}: ${p.type}`).join(', ')}): ${return_type};`;
+        if (exclude_list && exclude_list.indexOf(name) !== -1) {
+            str = '// ' + str;
+        }
+        return str;
+    }
+
+
     /*
         Produces the TS string declaring the method represented by method_node.
     */
@@ -227,10 +279,10 @@ namespace GIR2TS {
             forExternalInterfaceInNamespace: string = null
     ): string {
 
-        interface Parameter {
-            type: string;
-            name: string;
-        }
+        // interface Parameter {
+        //     type: string;
+        //     name: string;
+        // }
 
         var method_name = method_node.$.name;
         var return_type = getTypeFromParameterNode(method_node['return-value'][0])[0];
@@ -417,7 +469,8 @@ namespace GIR2TS {
         methods.
         @exclude_list : An array of member names to exclude.
     */
-    export function renderClassAsInterface (class_node: ClassNode, exclude: "self"|"all"|string[]) : string {
+    export function renderClassAsInterface (class_node: ClassNode, exclude: string|string[]) : string {
+
         const class_name = class_node.$.name;
         const ifaces: string[] = [];
         const methods: FunctionNode[] = [];
@@ -449,7 +502,6 @@ namespace GIR2TS {
         }
 
         let header = '';
-        let body = '';
 
         header += `${exclude_self?'// ':''}interface ${class_name}`;
         if (ifaces.length > 0) {
@@ -460,18 +512,26 @@ namespace GIR2TS {
             let method_str = renderMethod(m, false);
 
             // if method is present in exclude_list
-            console.log(((exclude_method_list.length > 0 && exclude.indexOf(m.$.name) !== -1) || exclude_all_members));
             if ((exclude_method_list.length > 0 && exclude.indexOf(m.$.name) !== -1) || exclude_all_members) {
                 method_str = '// ' + method_str;
             }
             return method_str;
         });
 
-        body = method_str_list.join('\n\t');
+        let body = method_str_list.join('\n\t');
 
-        body = ` {\n\t${body}\n${exclude_self?'// ':''}}`;
+        body = ` {\n\t` +
+        `${body}\n` +
+        `${exclude_self?'// ':''}}\n`;
 
-        return header + body;
+        let iface_str = header + body;
+
+        let static_side = '\n' +
+        `var ${class_name}: {       \n` +
+        `   new (): ${class_name};  \n` +
+        `}                          \n`;
+
+        return iface_str + static_side;
 
     }
 
@@ -574,7 +634,7 @@ namespace GIR2TS {
     }
 
 
-    export function renderInterface (iface_node: InterfaceNode, exclude: "self"|"all"|string[]) : string {
+    export function renderInterface (iface_node: InterfaceNode, exclude: string|string[]) : string {
 
         let exclude_method_list : string[] = [];
         let exclude_self = false;
@@ -601,8 +661,9 @@ namespace GIR2TS {
     export interface ExcludeDesc {
         "exclude": {
             "class": {
-                [klass: string]: "self"|"all"|string[];
-            }
+                [klass: string]: string|string[];
+            },
+            "function": string[]
         }
     }
 
@@ -644,6 +705,11 @@ namespace GIR2TS {
         if (ns_node.alias)
             for (let alias_node of ns_node.alias) {
                 body += '\n\n' + GIR2TS.renderAlias(alias_node) + '\n\n';
+            }
+        if (ns_node.function)
+            for (let func_node of ns_node.function) {
+                let exc = exclude && exclude.exclude.function? exclude.exclude.function:undefined;
+                body += '\n\n' + renderFreeFunction(func_node, exc) + '\n\n';
             }
         return `declare namespace imports.gi.${ns_node.$.name} {${body}}`;
     }
@@ -688,7 +754,6 @@ namespace GIR2TS {
         constructor (gir_xml_list: {lib_name: string; xml_str: string}[], exclude_json_map: {[class_name: string]:any} = {}) {
             this.lib_list = gir_xml_list;
             this.exclude_json_map = exclude_json_map;
-            console.log(this.exclude_json_map);
         }
 
 
@@ -719,7 +784,6 @@ namespace GIR2TS {
                 const res: GeneratorResult[] = [];
                 for (let ns of self.ns_list) {
                     const ns_name = ns.ns_node.$.name;
-                    console.log(Object.keys(self.exclude_json_map));
                     const typing_str = renderNamespace(ns.ns_node, self.exclude_json_map[ns.lib_name]);
                     res.push({
                         gir_name: ns.lib_name,
@@ -754,6 +818,7 @@ function main () {
     let outdir = __dirname;
     let exclude_json_map: {[class_name: string]:any} = {};
     if (argv.outdir) {
+        console.log("Output typings directory: " + argv.outdir);
         outdir = path.join(__dirname, argv.outdir);
         if (fs.statSync(outdir).isDirectory()) {
         } else {
@@ -763,6 +828,7 @@ function main () {
         throw new Error("No out dir specified.");
     }
     if (argv.excludedir) {
+        console.log("Excludes directory: " + argv.excludedir);
         let dir = path.join(__dirname , argv.excludedir);
         let json_files: string[] = [];
         if (fs.statSync(dir).isDirectory()) {
@@ -771,17 +837,18 @@ function main () {
         for (let json_file of json_files) {
             let lib_name = path.basename(json_file, '.json');
             let data = fs.readFileSync(json_file, 'utf8');
-            console.log('data: ' + JSON.parse(data))
             exclude_json_map[lib_name] = JSON.parse(data);
         }
     }
     if (argv.girdir) {
+        console.log("GIR directory: " + argv.girdir);
         let dir = path.join(__dirname , argv.girdir);
         if (fs.statSync(dir).isDirectory()) {
             gir_files = fs.readdirSync(dir).map((file) => path.join(dir, file));
         }
     } else {
-        gir_files.push(path.join(__dirname, argv._[0]));
+        // gir_files.push(path.join(__dirname, argv._[0]));
+        gir_files = gir_files.concat(argv._.map((arg) => path.join(__dirname, arg)));
     }
     const gir_xml_list: {lib_name: string; xml_str: string}[] = [];
     for (let file of gir_files) {
@@ -798,7 +865,6 @@ function main () {
             xml_str: data
         });
     }
-    console.log(exclude_json_map);
     const gen = new GIR2TS.Generator(gir_xml_list, exclude_json_map);
     gen.generateTypings((res) => {
         for (let lib of res) {

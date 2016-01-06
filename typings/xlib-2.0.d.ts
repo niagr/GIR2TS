@@ -117,4 +117,8 @@ type XID = number;
 
 type Pixmap = number;
 
+
+
+function open_display (): void;
+
 }
