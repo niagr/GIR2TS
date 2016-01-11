@@ -4,9 +4,10 @@ interface GObjectAccessible extends Object {
 	get_object () : GObject.Object;
 }
 
-var GObjectAccessible: {       
-   new (): GObjectAccessible;  
-}                          
+var GObjectAccessible: {
+	
+	
+}
 
 
 
@@ -22,9 +23,10 @@ interface Hyperlink extends GObject.Object, Action {
 	is_valid () : boolean;
 }
 
-var Hyperlink: {       
-   new (): Hyperlink;  
-}                          
+var Hyperlink: {
+	
+	
+}
 
 
 
@@ -34,20 +36,22 @@ interface Misc extends GObject.Object {
 	threads_leave () : void;
 }
 
-var Misc: {       
-   new (): Misc;  
-}                          
-
-
-
-
-// interface NoOpObject extends Object, Action, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value, Window {
+var Misc: {
 	
-// }
+	
+}
 
-var NoOpObject: {       
-   new (): NoOpObject;  
-}                          
+
+
+
+interface NoOpObject extends Object, Action, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value, Window {
+	
+}
+
+var NoOpObject: {
+	new (obj: GObject.Object) : Object;
+	
+}
 
 
 
@@ -56,9 +60,10 @@ interface NoOpObjectFactory extends ObjectFactory {
 	
 }
 
-var NoOpObjectFactory: {       
-   new (): NoOpObjectFactory;  
-}                          
+var NoOpObjectFactory: {
+	new () : ObjectFactory;
+	
+}
 
 
 
@@ -67,7 +72,7 @@ interface Object extends GObject.Object {
 	add_relationship (relationship: RelationType, target: Object) : boolean;
 	connect_property_change_handler (handler: PropertyChangeHandler) : number;
 	get_attributes () : AttributeSet;
-	// get_description () : string;
+	get_description () : string;
 	get_index_in_parent () : number;
 	get_layer () : Layer;
 	get_mdi_zorder () : number;
@@ -90,9 +95,10 @@ interface Object extends GObject.Object {
 	set_role (role: Role) : void;
 }
 
-var Object: {       
-   new (): Object;  
-}                          
+var Object: {
+	
+	
+}
 
 
 
@@ -103,9 +109,10 @@ interface ObjectFactory extends GObject.Object {
 	invalidate () : void;
 }
 
-var ObjectFactory: {       
-   new (): ObjectFactory;  
-}                          
+var ObjectFactory: {
+	
+	
+}
 
 
 
@@ -114,9 +121,10 @@ interface Plug extends Object, Component {
 	get_id () : string;
 }
 
-var Plug: {       
-   new (): Plug;  
-}                          
+var Plug: {
+	new () : Object;
+	
+}
 
 
 
@@ -127,9 +135,10 @@ interface Registry extends GObject.Object {
 	set_factory_type (_type: GObject.Type, factory_type: GObject.Type) : void;
 }
 
-var Registry: {       
-   new (): Registry;  
-}                          
+var Registry: {
+	
+	
+}
 
 
 
@@ -141,9 +150,10 @@ interface Relation extends GObject.Object {
 	remove_target (target: Object) : boolean;
 }
 
-var Relation: {       
-   new (): Relation;  
-}                          
+var Relation: {
+	new (targets: Object[], n_targets: number, relationship: RelationType) : Relation;
+	
+}
 
 
 
@@ -159,9 +169,10 @@ interface RelationSet extends GObject.Object {
 	remove (relation: Relation) : void;
 }
 
-var RelationSet: {       
-   new (): RelationSet;  
-}                          
+var RelationSet: {
+	new () : RelationSet;
+	
+}
 
 
 
@@ -171,9 +182,10 @@ interface Socket extends Object, Component {
 	is_occupied () : boolean;
 }
 
-var Socket: {       
-   new (): Socket;  
-}                          
+var Socket: {
+	new () : Object;
+	
+}
 
 
 
@@ -191,9 +203,10 @@ interface StateSet extends GObject.Object {
 	xor_sets (compare_set: StateSet) : StateSet;
 }
 
-var StateSet: {       
-   new (): StateSet;  
-}                          
+var StateSet: {
+	new () : StateSet;
+	
+}
 
 
 
@@ -202,9 +215,10 @@ interface Util extends GObject.Object {
 	
 }
 
-var Util: {       
-   new (): Util;  
-}                          
+var Util: {
+	
+	
+}
 
 
 
@@ -717,18 +731,19 @@ class WindowIface {
 
 
 interface Action {
-	// do_action (_i: number) : boolean;
-	// get_description (_i: number) : string;
-	// get_keybinding (_i: number) : string;
-	// get_localized_name (_i: number) : string;
-	// get_n_actions () : number;
-	// get_name (_i: number) : string;
-	// set_description (_i: number, desc: string) : boolean;
+	do_action (_i: number) : boolean;
+	get_description (_i: number) : string;
+	get_keybinding (_i: number) : string;
+	get_localized_name (_i: number) : string;
+	get_n_actions () : number;
+	get_name (_i: number) : string;
+	set_description (_i: number, desc: string) : boolean;
 }
 
-var Action: {       
-   new (): Action;  
-}                          
+var Action: {
+	
+	
+}
 
 
 
@@ -742,7 +757,7 @@ interface Component {
 	get_mdi_zorder () : number;
 	get_position (_x: number, _y: number, coord_type: CoordType) : void;
 	get_size (width: number, height: number) : void;
-	// grab_focus () : boolean;
+	grab_focus () : boolean;
 	ref_accessible_at_point (_x: number, _y: number, coord_type: CoordType) : Object;
 	remove_focus_handler (handler_id: number) : void;
 	set_extents (_x: number, _y: number, width: number, height: number, coord_type: CoordType) : boolean;
@@ -750,9 +765,10 @@ interface Component {
 	set_size (width: number, height: number) : boolean;
 }
 
-var Component: {       
-   new (): Component;  
-}                          
+var Component: {
+	
+	
+}
 
 
 
@@ -768,9 +784,10 @@ interface Document {
 	set_attribute_value (attribute_name: string, attribute_value: string) : boolean;
 }
 
-var Document: {       
-   new (): Document;  
-}                          
+var Document: {
+	
+	
+}
 
 
 
@@ -785,9 +802,10 @@ interface EditableText {
 	set_text_contents (string: string) : void;
 }
 
-var EditableText: {       
-   new (): EditableText;  
-}                          
+var EditableText: {
+	
+	
+}
 
 
 
@@ -796,9 +814,10 @@ interface HyperlinkImpl {
 	get_hyperlink () : Hyperlink;
 }
 
-var HyperlinkImpl: {       
-   new (): HyperlinkImpl;  
-}                          
+var HyperlinkImpl: {
+	
+	
+}
 
 
 
@@ -809,9 +828,10 @@ interface Hypertext {
 	get_n_links () : number;
 }
 
-var Hypertext: {       
-   new (): Hypertext;  
-}                          
+var Hypertext: {
+	
+	
+}
 
 
 
@@ -824,9 +844,10 @@ interface Image {
 	set_image_description (description: string) : boolean;
 }
 
-var Image: {       
-   new (): Image;  
-}                          
+var Image: {
+	
+	
+}
 
 
 
@@ -835,9 +856,10 @@ interface ImplementorIface {
 	
 }
 
-var ImplementorIface: {       
-   new (): ImplementorIface;  
-}                          
+var ImplementorIface: {
+	
+	
+}
 
 
 
@@ -852,9 +874,10 @@ interface Selection {
 	select_all_selection () : boolean;
 }
 
-var Selection: {       
-   new (): Selection;  
-}                          
+var Selection: {
+	
+	
+}
 
 
 
@@ -866,9 +889,10 @@ interface StreamableContent {
 	get_uri (mime_type: string) : string;
 }
 
-var StreamableContent: {       
-   new (): StreamableContent;  
-}                          
+var StreamableContent: {
+	
+	
+}
 
 
 
@@ -905,9 +929,10 @@ interface Table {
 	set_summary (accessible: Object) : void;
 }
 
-var Table: {       
-   new (): Table;  
-}                          
+var Table: {
+	
+	
+}
 
 
 
@@ -922,9 +947,10 @@ interface TableCell {
 	get_table () : Object;
 }
 
-var TableCell: {       
-   new (): TableCell;  
-}                          
+var TableCell: {
+	
+	
+}
 
 
 
@@ -952,9 +978,10 @@ interface Text {
 	set_selection (selection_num: number, start_offset: number, end_offset: number) : boolean;
 }
 
-var Text: {       
-   new (): Text;  
-}                          
+var Text: {
+	
+	
+}
 
 
 
@@ -972,9 +999,10 @@ interface Value {
 	set_value (new_value: number) : void;
 }
 
-var Value: {       
-   new (): Value;  
-}                          
+var Value: {
+	
+	
+}
 
 
 
@@ -983,9 +1011,10 @@ interface Window {
 	
 }
 
-var Window: {       
-   new (): Window;  
-}                          
+var Window: {
+	
+	
+}
 
 
 

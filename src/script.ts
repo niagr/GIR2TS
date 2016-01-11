@@ -134,7 +134,7 @@ namespace GIR2TS {
     interface ClassNode extends Node {
         $: ClassAttributes;
         "implements": Node[];
-        "constructor": Node[];
+        "constructor": FunctionNode[];
         "function": FunctionNode[];
         //"field": NodeWithType[];
         "glib-signal": Node[];
@@ -288,6 +288,8 @@ namespace GIR2TS {
         var return_type = getTypeFromParameterNode(method_node['return-value'][0])[0];
         var params: Parameter[] = [];
         //var has_params = "parameter" in method_node.parameters[0];
+
+        console.log('rendering ' + method_name);
 
         if (method_node.parameters && "parameter" in method_node.parameters[0]) {
             for (var param_node of method_node.parameters[0].parameter) {
@@ -474,6 +476,8 @@ namespace GIR2TS {
         const class_name = class_node.$.name;
         const ifaces: string[] = [];
         const methods: FunctionNode[] = [];
+        const ctors: FunctionNode[] = [];
+        const static_funcs: FunctionNode[] =[];
         let exclude_method_list : string[] = [];
         let exclude_self = false;
         let exclude_all_members = false;
@@ -501,6 +505,21 @@ namespace GIR2TS {
             }
         }
 
+        // console.log('rendering ' + class_node.$.name);
+        if (class_node.hasOwnProperty('constructor')) {
+            // console.log(class_node.constructor);
+            for (let c of class_node.constructor) {
+                if (typeof c !== 'function')
+                    ctors.push(c);
+            }
+        }
+
+        if (class_node.function) {
+            for (let f of class_node.function) {
+                static_funcs.push(f);
+            }
+        }
+
         let header = '';
 
         header += `${exclude_self?'// ':''}interface ${class_name}`;
@@ -521,15 +540,27 @@ namespace GIR2TS {
         let body = method_str_list.join('\n\t');
 
         body = ` {\n\t` +
-        `${body}\n` +
-        `${exclude_self?'// ':''}}\n`;
+            `${body}\n` +
+            `${exclude_self?'// ':''}}\n`;
 
         let iface_str = header + body;
 
-        let static_side = '\n' +
-        `var ${class_name}: {       \n` +
-        `   new (): ${class_name};  \n` +
-        `}                          \n`;
+        const ctor_str_list: string[] = ctors.map((c) => {
+            // console.log(c);
+            return renderMethod(c, false);
+        });
+        const ctors_body = ctor_str_list.join('\n\t');
+
+        const static_func_str_list: string[] = static_funcs.map((sf) => {
+            return renderMethod(sf, false);
+        });
+        const static_func_body = static_func_str_list.join('\n\t');
+
+        const static_side = '\n' +
+            `var ${class_name}: {\n` +
+            `\t${ctors_body}\n` +
+            `\t${static_func_body}\n` +
+            `}\n`;
 
         return iface_str + static_side;
 
@@ -773,6 +804,7 @@ namespace GIR2TS {
             //let ns_list: NamespaceNode[] = [];
             for (let lib of this.lib_list) {
                 parser.parseString(lib.xml_str, (err: Error, res: ParseGIRResult) => {
+                    // console.log(res.repository.namespace[0].class[4].constructor)
                     this.ns_list.push({
                         lib_name: lib.lib_name,
                         ns_node: res.repository.namespace[0]
@@ -805,15 +837,6 @@ function main () {
     console.log(__dirname);
     var argv = require('minimist')(process.argv.slice(2));
 
-    // let file_path = path.join(__dirname, argv._[0]);
-    // GIR2TS.parseGIR(file_path, (err, res) => {
-    //     let str = GIR2TS.renderNamespace(res.repository.namespace[0], res.repository.namespace);
-    //     fs.writeFileSync('Gtk-3.0.d.ts', str);
-    // });
-    //
-    // return;
-
-
     let gir_files: string[] = [];
     let outdir = __dirname;
     let exclude_json_map: {[class_name: string]:any} = {};
@@ -827,9 +850,9 @@ function main () {
     } else {
         throw new Error("No out dir specified.");
     }
-    if (argv.excludedir) {
-        console.log("Excludes directory: " + argv.excludedir);
-        let dir = path.join(__dirname , argv.excludedir);
+    if (argv.overridesdir) {
+        console.log("Excludes directory: " + argv.overridesdir);
+        let dir = path.join(__dirname , argv.overridesdir);
         let json_files: string[] = [];
         if (fs.statSync(dir).isDirectory()) {
             json_files = fs.readdirSync(dir).map((file) => path.join(dir, file));
@@ -863,6 +886,7 @@ function main () {
         gir_xml_list.push({
             lib_name: gir_name,
             xml_str: data
+
         });
     }
     const gen = new GIR2TS.Generator(gir_xml_list, exclude_json_map);
@@ -878,8 +902,6 @@ function main () {
             console.log("wrote to " + outfile);
         }
     });
-
-
 }
 
 main();

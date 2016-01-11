@@ -41,9 +41,22 @@ interface Pixbuf extends GObject.Object, Gio.Icon, Gio.LoadableIcon {
 	unref () : void;
 }
 
-var Pixbuf: {       
-   new (): Pixbuf;  
-}                          
+var Pixbuf: {
+	new (colorspace: Colorspace, has_alpha: boolean, bits_per_sample: number, width: number, height: number) : Pixbuf;
+	new_from_bytes (data: GLib.Bytes, colorspace: Colorspace, has_alpha: boolean, bits_per_sample: number, width: number, height: number, rowstride: number) : Pixbuf;
+	new_from_data (data: number[], colorspace: Colorspace, has_alpha: boolean, bits_per_sample: number, width: number, height: number, rowstride: number, destroy_fn: PixbufDestroyNotify, destroy_fn_data: any) : Pixbuf;
+	new_from_file (filename: string) : Pixbuf;
+	new_from_file_at_scale (filename: string, width: number, height: number, preserve_aspect_ratio: boolean) : Pixbuf;
+	new_from_file_at_size (filename: string, width: number, height: number) : Pixbuf;
+	new_from_inline (data_length: number, data: number[], copy_pixels: boolean) : Pixbuf;
+	new_from_resource (resource_path: string) : Pixbuf;
+	new_from_resource_at_scale (resource_path: string, width: number, height: number, preserve_aspect_ratio: boolean) : Pixbuf;
+	new_from_stream (stream: Gio.InputStream, cancellable: Gio.Cancellable) : Pixbuf;
+	new_from_stream_at_scale (stream: Gio.InputStream, width: number, height: number, preserve_aspect_ratio: boolean, cancellable: Gio.Cancellable) : Pixbuf;
+	new_from_stream_finish (async_result: Gio.AsyncResult) : Pixbuf;
+	new_from_xpm_data (data: string[]) : Pixbuf;
+	
+}
 
 
 
@@ -58,9 +71,13 @@ interface PixbufAnimation extends GObject.Object {
 	unref () : void;
 }
 
-var PixbufAnimation: {       
-   new (): PixbufAnimation;  
-}                          
+var PixbufAnimation: {
+	new_from_file (filename: string) : PixbufAnimation;
+	new_from_resource (resource_path: string) : PixbufAnimation;
+	new_from_stream (stream: Gio.InputStream, cancellable: Gio.Cancellable) : PixbufAnimation;
+	new_from_stream_finish (async_result: Gio.AsyncResult) : PixbufAnimation;
+	
+}
 
 
 
@@ -72,9 +89,10 @@ interface PixbufAnimationIter extends GObject.Object {
 	on_currently_loading_frame () : boolean;
 }
 
-var PixbufAnimationIter: {       
-   new (): PixbufAnimationIter;  
-}                          
+var PixbufAnimationIter: {
+	
+	
+}
 
 
 
@@ -89,9 +107,12 @@ interface PixbufLoader extends GObject.Object {
 	write_bytes (buffer: GLib.Bytes) : boolean;
 }
 
-var PixbufLoader: {       
-   new (): PixbufLoader;  
-}                          
+var PixbufLoader: {
+	new () : PixbufLoader;
+	new_with_mime_type (mime_type: string) : PixbufLoader;
+	new_with_type (image_type: string) : PixbufLoader;
+	
+}
 
 
 
@@ -102,9 +123,10 @@ interface PixbufSimpleAnim extends PixbufAnimation {
 	set_loop (loop: boolean) : void;
 }
 
-var PixbufSimpleAnim: {       
-   new (): PixbufSimpleAnim;  
-}                          
+var PixbufSimpleAnim: {
+	new (width: number, height: number, rate: number) : PixbufSimpleAnim;
+	
+}
 
 
 
@@ -113,9 +135,10 @@ interface PixbufSimpleAnimIter extends PixbufAnimationIter {
 	
 }
 
-var PixbufSimpleAnimIter: {       
-   new (): PixbufSimpleAnimIter;  
-}                          
+var PixbufSimpleAnimIter: {
+	
+	
+}
 
 
 

@@ -9,9 +9,10 @@ interface AppLaunchContext extends Gio.AppLaunchContext {
 	set_timestamp (timestamp: number) : void;
 }
 
-var AppLaunchContext: {       
-   new (): AppLaunchContext;  
-}                          
+var AppLaunchContext: {
+	new () : AppLaunchContext;
+	
+}
 
 
 
@@ -25,9 +26,14 @@ interface Cursor extends GObject.Object {
 	unref () : void;
 }
 
-var Cursor: {       
-   new (): Cursor;  
-}                          
+var Cursor: {
+	new (cursor_type: CursorType) : Cursor;
+	new_for_display (display: Display, cursor_type: CursorType) : Cursor;
+	new_from_name (display: Display, name: string) : Cursor;
+	new_from_pixbuf (display: Display, pixbuf: GdkPixbuf.Pixbuf, _x: number, _y: number) : Cursor;
+	new_from_surface (display: Display, surface: cairo.Surface, _x: number, _y: number) : Cursor;
+	
+}
 
 
 
@@ -65,9 +71,10 @@ interface Device extends GObject.Object {
 	warp (screen: Screen, _x: number, _y: number) : void;
 }
 
-var Device: {       
-   new (): Device;  
-}                          
+var Device: {
+	
+	
+}
 
 
 
@@ -78,9 +85,10 @@ interface DeviceManager extends GObject.Object {
 	list_devices (_type: DeviceType) : GLib.List;
 }
 
-var DeviceManager: {       
-   new (): DeviceManager;  
-}                          
+var DeviceManager: {
+	
+	
+}
 
 
 
@@ -126,9 +134,10 @@ interface Display extends GObject.Object {
 	warp_pointer (screen: Screen, _x: number, _y: number) : void;
 }
 
-var Display: {       
-   new (): Display;  
-}                          
+var Display: {
+	
+	
+}
 
 
 
@@ -140,9 +149,10 @@ interface DisplayManager extends GObject.Object {
 	set_default_display (display: Display) : void;
 }
 
-var DisplayManager: {       
-   new (): DisplayManager;  
-}                          
+var DisplayManager: {
+	
+	
+}
 
 
 
@@ -159,9 +169,10 @@ interface DragContext extends GObject.Object {
 	set_device (device: Device) : void;
 }
 
-var DragContext: {       
-   new (): DragContext;  
-}                          
+var DragContext: {
+	
+	
+}
 
 
 
@@ -178,9 +189,10 @@ interface FrameClock extends GObject.Object {
 	request_phase (phase: FrameClockPhase) : void;
 }
 
-var FrameClock: {       
-   new (): FrameClock;  
-}                          
+var FrameClock: {
+	
+	
+}
 
 
 
@@ -200,9 +212,10 @@ interface GLContext extends GObject.Object {
 	set_required_version (major: number, minor: number) : void;
 }
 
-var GLContext: {       
-   new (): GLContext;  
-}                          
+var GLContext: {
+	
+	
+}
 
 
 
@@ -223,9 +236,10 @@ interface Keymap extends GObject.Object {
 	translate_keyboard_state (hardware_keycode: number, state: ModifierType, group: number, keyval: number, effective_group: number, level: number, consumed_modifiers: ModifierType) : boolean;
 }
 
-var Keymap: {       
-   new (): Keymap;  
-}                          
+var Keymap: {
+	
+	
+}
 
 
 
@@ -263,9 +277,10 @@ interface Screen extends GObject.Object {
 	set_resolution (dpi: number) : void;
 }
 
-var Screen: {       
-   new (): Screen;  
-}                          
+var Screen: {
+	
+	
+}
 
 
 
@@ -282,9 +297,10 @@ interface Visual extends GObject.Object {
 	get_visual_type () : VisualType;
 }
 
-var Visual: {       
-   new (): Visual;  
-}                          
+var Visual: {
+	
+	
+}
 
 
 
@@ -446,9 +462,10 @@ interface Window extends GObject.Object {
 	withdraw () : void;
 }
 
-var Window: {       
-   new (): Window;  
-}                          
+var Window: {
+	new (parent: Window, attributes: WindowAttr, attributes_mask: WindowAttributesType) : Window;
+	
+}
 
 
 

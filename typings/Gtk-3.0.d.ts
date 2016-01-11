@@ -34,9 +34,10 @@ interface AboutDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	set_wrap_license (wrap_license: boolean) : void;
 }
 
-var AboutDialog: {       
-   new (): AboutDialog;  
-}                          
+var AboutDialog: {
+	new () : Widget;
+	
+}
 
 
 
@@ -55,9 +56,10 @@ interface AccelGroup extends GObject.Object {
 	unlock () : void;
 }
 
-var AccelGroup: {       
-   new (): AccelGroup;  
-}                          
+var AccelGroup: {
+	new () : AccelGroup;
+	from_accel_closure (closure: GObject.Closure) : AccelGroup;
+}
 
 
 
@@ -72,9 +74,10 @@ interface AccelLabel extends Label, Atk.ImplementorIface, Buildable {
 	set_accel_widget (accel_widget: Widget) : void;
 }
 
-var AccelLabel: {       
-   new (): AccelLabel;  
-}                          
+var AccelLabel: {
+	new (string: string) : Widget;
+	
+}
 
 
 
@@ -83,9 +86,23 @@ interface AccelMap extends GObject.Object {
 	
 }
 
-var AccelMap: {       
-   new (): AccelMap;  
-}                          
+var AccelMap: {
+	
+	add_entry (accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType) : void;
+	add_filter (filter_pattern: string) : void;
+	change_entry (accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType, replace: boolean) : boolean;
+	foreach (data: any, foreach_func: AccelMapForeach) : void;
+	foreach_unfiltered (data: any, foreach_func: AccelMapForeach) : void;
+	get () : AccelMap;
+	load (file_name: string) : void;
+	load_fd (fd: number) : void;
+	load_scanner (scanner: GLib.Scanner) : void;
+	lock_path (accel_path: string) : void;
+	lookup_entry (accel_path: string, key: AccelKey) : boolean;
+	save (file_name: string) : void;
+	save_fd (fd: number) : void;
+	unlock_path (accel_path: string) : void;
+}
 
 
 
@@ -96,9 +113,10 @@ interface Accessible extends Atk.Object {
 	set_widget (widget: Widget) : void;
 }
 
-var Accessible: {       
-   new (): Accessible;  
-}                          
+var Accessible: {
+	
+	
+}
 
 
 
@@ -147,9 +165,10 @@ interface Action extends GObject.Object, Buildable {
 	unblock_activate () : void;
 }
 
-var Action: {       
-   new (): Action;  
-}                          
+var Action: {
+	new (name: string, label: string, tooltip: string, stock_id: string) : Action;
+	
+}
 
 
 
@@ -161,9 +180,10 @@ interface ActionBar extends Bin, Atk.ImplementorIface, Buildable {
 	set_center_widget (center_widget: Widget) : void;
 }
 
-var ActionBar: {       
-   new (): ActionBar;  
-}                          
+var ActionBar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -192,9 +212,10 @@ interface ActionGroup extends GObject.Object, Buildable {
 	translate_string (string: string) : string;
 }
 
-var ActionGroup: {       
-   new (): ActionGroup;  
-}                          
+var ActionGroup: {
+	new (name: string) : ActionGroup;
+	
+}
 
 
 
@@ -219,9 +240,10 @@ interface Adjustment extends GObject.InitiallyUnowned {
 	value_changed () : void;
 }
 
-var Adjustment: {       
-   new (): Adjustment;  
-}                          
+var Adjustment: {
+	new (value: number, lower: number, upper: number, step_increment: number, page_increment: number, page_size: number) : Adjustment;
+	
+}
 
 
 
@@ -232,9 +254,10 @@ interface Alignment extends Bin, Atk.ImplementorIface, Buildable {
 	set_padding (padding_top: number, padding_bottom: number, padding_left: number, padding_right: number) : void;
 }
 
-var Alignment: {       
-   new (): Alignment;  
-}                          
+var Alignment: {
+	new (xalign: number, yalign: number, xscale: number, yscale: number) : Widget;
+	
+}
 
 
 
@@ -251,9 +274,10 @@ interface AppChooserButton extends ComboBox, Atk.ImplementorIface, AppChooser, B
 	set_show_dialog_item (setting: boolean) : void;
 }
 
-var AppChooserButton: {       
-   new (): AppChooserButton;  
-}                          
+var AppChooserButton: {
+	new (content_type: string) : Widget;
+	
+}
 
 
 
@@ -264,9 +288,11 @@ interface AppChooserDialog extends Dialog, Atk.ImplementorIface, AppChooser, Bui
 	set_heading (heading: string) : void;
 }
 
-var AppChooserDialog: {       
-   new (): AppChooserDialog;  
-}                          
+var AppChooserDialog: {
+	new (parent: Window, flags: DialogFlags, file: Gio.File) : Widget;
+	new_for_content_type (parent: Window, flags: DialogFlags, content_type: string) : Widget;
+	
+}
 
 
 
@@ -286,9 +312,10 @@ interface AppChooserWidget extends Box, Atk.ImplementorIface, AppChooser, Builda
 	set_show_recommended (setting: boolean) : void;
 }
 
-var AppChooserWidget: {       
-   new (): AppChooserWidget;  
-}                          
+var AppChooserWidget: {
+	new (content_type: string) : Widget;
+	
+}
 
 
 
@@ -316,9 +343,10 @@ interface Application extends Gio.Application, Gio.ActionGroup, Gio.ActionMap {
 	uninhibit (cookie: number) : void;
 }
 
-var Application: {       
-   new (): Application;  
-}                          
+var Application: {
+	new (application_id: string, flags: Gio.ApplicationFlags) : Application;
+	
+}
 
 
 
@@ -329,9 +357,10 @@ interface ApplicationWindow extends Window, Atk.ImplementorIface, Gio.ActionGrou
 	set_show_menubar (show_menubar: boolean) : void;
 }
 
-var ApplicationWindow: {       
-   new (): ApplicationWindow;  
-}                          
+var ApplicationWindow: {
+	new (application: Application) : Widget;
+	
+}
 
 
 
@@ -340,9 +369,10 @@ interface Arrow extends Misc, Atk.ImplementorIface, Buildable {
 	set (arrow_type: ArrowType, shadow_type: ShadowType) : void;
 }
 
-var Arrow: {       
-   new (): Arrow;  
-}                          
+var Arrow: {
+	new (arrow_type: ArrowType, shadow_type: ShadowType) : Widget;
+	
+}
 
 
 
@@ -351,9 +381,10 @@ interface ArrowAccessible extends WidgetAccessible, Atk.Component, Atk.Image {
 	
 }
 
-var ArrowAccessible: {       
-   new (): ArrowAccessible;  
-}                          
+var ArrowAccessible: {
+	
+	
+}
 
 
 
@@ -362,9 +393,10 @@ interface AspectFrame extends Frame, Atk.ImplementorIface, Buildable {
 	set (xalign: number, yalign: number, ratio: number, obey_child: boolean) : void;
 }
 
-var AspectFrame: {       
-   new (): AspectFrame;  
-}                          
+var AspectFrame: {
+	new (label: string, xalign: number, yalign: number, ratio: number, obey_child: boolean) : Widget;
+	
+}
 
 
 
@@ -399,9 +431,10 @@ interface Assistant extends Window, Atk.ImplementorIface, Buildable {
 	update_buttons_state () : void;
 }
 
-var Assistant: {       
-   new (): Assistant;  
-}                          
+var Assistant: {
+	new () : Widget;
+	
+}
 
 
 
@@ -410,9 +443,10 @@ interface Bin extends Container, Atk.ImplementorIface, Buildable {
 	get_child () : Widget;
 }
 
-var Bin: {       
-   new (): Bin;  
-}                          
+var Bin: {
+	
+	
+}
 
 
 
@@ -421,9 +455,10 @@ interface BooleanCellAccessible extends RendererCellAccessible, Atk.Action, Atk.
 	
 }
 
-var BooleanCellAccessible: {       
-   new (): BooleanCellAccessible;  
-}                          
+var BooleanCellAccessible: {
+	
+	
+}
 
 
 
@@ -444,9 +479,10 @@ interface Box extends Container, Atk.ImplementorIface, Buildable, Orientable {
 	set_spacing (spacing: number) : void;
 }
 
-var Box: {       
-   new (): Box;  
-}                          
+var Box: {
+	new (orientation: Orientation, spacing: number) : Widget;
+	
+}
 
 
 
@@ -475,9 +511,13 @@ interface Builder extends GObject.Object {
 	value_from_string_type (_type: GObject.Type, string: string, value: GObject.Value) : boolean;
 }
 
-var Builder: {       
-   new (): Builder;  
-}                          
+var Builder: {
+	new () : Builder;
+	new_from_file (filename: string) : Builder;
+	new_from_resource (resource_path: string) : Builder;
+	new_from_string (string: string, length: number) : Builder;
+	
+}
 
 
 
@@ -509,9 +549,14 @@ interface Button extends Bin, Atk.ImplementorIface, Actionable, Activatable, Bui
 	set_use_underline (use_underline: boolean) : void;
 }
 
-var Button: {       
-   new (): Button;  
-}                          
+var Button: {
+	new () : Widget;
+	new_from_icon_name (icon_name: string, size: number) : Widget;
+	new_from_stock (stock_id: string) : Widget;
+	new_with_label (label: string) : Widget;
+	new_with_mnemonic (label: string) : Widget;
+	
+}
 
 
 
@@ -520,9 +565,10 @@ interface ButtonAccessible extends ContainerAccessible, Atk.Action, Atk.Componen
 	
 }
 
-var ButtonAccessible: {       
-   new (): ButtonAccessible;  
-}                          
+var ButtonAccessible: {
+	
+	
+}
 
 
 
@@ -536,9 +582,10 @@ interface ButtonBox extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	set_layout (layout_style: ButtonBoxStyle) : void;
 }
 
-var ButtonBox: {       
-   new (): ButtonBox;  
-}                          
+var ButtonBox: {
+	new (orientation: Orientation) : Widget;
+	
+}
 
 
 
@@ -560,9 +607,10 @@ interface Calendar extends Widget, Atk.ImplementorIface, Buildable {
 	unmark_day (day: number) : void;
 }
 
-var Calendar: {       
-   new (): Calendar;  
-}                          
+var Calendar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -571,9 +619,10 @@ interface CellAccessible extends Accessible, Atk.Action, Atk.Component {
 	
 }
 
-var CellAccessible: {       
-   new (): CellAccessible;  
-}                          
+var CellAccessible: {
+	
+	
+}
 
 
 
@@ -625,23 +674,25 @@ interface CellArea extends GObject.InitiallyUnowned, Buildable, CellLayout {
 	stop_editing (canceled: boolean) : void;
 }
 
-var CellArea: {       
-   new (): CellArea;  
-}                          
+var CellArea: {
+	
+	
+}
 
 
 
 
 interface CellAreaBox extends CellArea, Buildable, CellLayout, Orientable {
 	get_spacing () : number;
-	// pack_end (renderer: CellRenderer, expand: boolean, align: boolean, fixed: boolean) : void;
-	// pack_start (renderer: CellRenderer, expand: boolean, align: boolean, fixed: boolean) : void;
+	pack_end (renderer: CellRenderer, expand: boolean, align: boolean, fixed: boolean) : void;
+	pack_start (renderer: CellRenderer, expand: boolean, align: boolean, fixed: boolean) : void;
 	set_spacing (spacing: number) : void;
 }
 
-var CellAreaBox: {       
-   new (): CellAreaBox;  
-}                          
+var CellAreaBox: {
+	new () : CellArea;
+	
+}
 
 
 
@@ -659,9 +710,10 @@ interface CellAreaContext extends GObject.Object {
 	reset () : void;
 }
 
-var CellAreaContext: {       
-   new (): CellAreaContext;  
-}                          
+var CellAreaContext: {
+	
+	
+}
 
 
 
@@ -693,9 +745,10 @@ interface CellRenderer extends GObject.InitiallyUnowned {
 	stop_editing (canceled: boolean) : void;
 }
 
-var CellRenderer: {       
-   new (): CellRenderer;  
-}                          
+var CellRenderer: {
+	
+	
+}
 
 
 
@@ -704,9 +757,10 @@ interface CellRendererAccel extends CellRendererText {
 	
 }
 
-var CellRendererAccel: {       
-   new (): CellRendererAccel;  
-}                          
+var CellRendererAccel: {
+	new () : CellRenderer;
+	
+}
 
 
 
@@ -715,9 +769,10 @@ interface CellRendererCombo extends CellRendererText {
 	
 }
 
-var CellRendererCombo: {       
-   new (): CellRendererCombo;  
-}                          
+var CellRendererCombo: {
+	new () : CellRenderer;
+	
+}
 
 
 
@@ -726,9 +781,10 @@ interface CellRendererPixbuf extends CellRenderer {
 	
 }
 
-var CellRendererPixbuf: {       
-   new (): CellRendererPixbuf;  
-}                          
+var CellRendererPixbuf: {
+	new () : CellRenderer;
+	
+}
 
 
 
@@ -737,9 +793,10 @@ interface CellRendererProgress extends CellRenderer, Orientable {
 	
 }
 
-var CellRendererProgress: {       
-   new (): CellRendererProgress;  
-}                          
+var CellRendererProgress: {
+	new () : CellRenderer;
+	
+}
 
 
 
@@ -748,9 +805,10 @@ interface CellRendererSpin extends CellRendererText {
 	
 }
 
-var CellRendererSpin: {       
-   new (): CellRendererSpin;  
-}                          
+var CellRendererSpin: {
+	new () : CellRenderer;
+	
+}
 
 
 
@@ -759,9 +817,10 @@ interface CellRendererSpinner extends CellRenderer {
 	
 }
 
-var CellRendererSpinner: {       
-   new (): CellRendererSpinner;  
-}                          
+var CellRendererSpinner: {
+	new () : CellRenderer;
+	
+}
 
 
 
@@ -770,9 +829,10 @@ interface CellRendererText extends CellRenderer {
 	set_fixed_height_from_font (number_of_rows: number) : void;
 }
 
-var CellRendererText: {       
-   new (): CellRendererText;  
-}                          
+var CellRendererText: {
+	new () : CellRenderer;
+	
+}
 
 
 
@@ -786,9 +846,10 @@ interface CellRendererToggle extends CellRenderer {
 	set_radio (radio: boolean) : void;
 }
 
-var CellRendererToggle: {       
-   new (): CellRendererToggle;  
-}                          
+var CellRendererToggle: {
+	new () : CellRenderer;
+	
+}
 
 
 
@@ -807,9 +868,14 @@ interface CellView extends Widget, Atk.ImplementorIface, Buildable, CellLayout, 
 	set_model (model: TreeModel) : void;
 }
 
-var CellView: {       
-   new (): CellView;  
-}                          
+var CellView: {
+	new () : Widget;
+	new_with_context (area: CellArea, context: CellAreaContext) : Widget;
+	new_with_markup (markup: string) : Widget;
+	new_with_pixbuf (pixbuf: GdkPixbuf.Pixbuf) : Widget;
+	new_with_text (text: string) : Widget;
+	
+}
 
 
 
@@ -818,9 +884,12 @@ interface CheckButton extends ToggleButton, Atk.ImplementorIface, Actionable, Ac
 	
 }
 
-var CheckButton: {       
-   new (): CheckButton;  
-}                          
+var CheckButton: {
+	new () : Widget;
+	new_with_label (label: string) : Widget;
+	new_with_mnemonic (label: string) : Widget;
+	
+}
 
 
 
@@ -835,9 +904,12 @@ interface CheckMenuItem extends MenuItem, Atk.ImplementorIface, Actionable, Acti
 	toggled () : void;
 }
 
-var CheckMenuItem: {       
-   new (): CheckMenuItem;  
-}                          
+var CheckMenuItem: {
+	new () : Widget;
+	new_with_label (label: string) : Widget;
+	new_with_mnemonic (label: string) : Widget;
+	
+}
 
 
 
@@ -846,9 +918,10 @@ interface CheckMenuItemAccessible extends MenuItemAccessible, Atk.Action, Atk.Co
 	
 }
 
-var CheckMenuItemAccessible: {       
-   new (): CheckMenuItemAccessible;  
-}                          
+var CheckMenuItemAccessible: {
+	
+	
+}
 
 
 
@@ -882,9 +955,12 @@ interface Clipboard extends GObject.Object {
 	wait_is_uris_available () : boolean;
 }
 
-var Clipboard: {       
-   new (): Clipboard;  
-}                          
+var Clipboard: {
+	
+	get (selection: Gdk.Atom) : Clipboard;
+	get_default (display: Gdk.Display) : Clipboard;
+	get_for_display (display: Gdk.Display, selection: Gdk.Atom) : Clipboard;
+}
 
 
 
@@ -902,9 +978,12 @@ interface ColorButton extends Button, Atk.ImplementorIface, Actionable, Activata
 	set_use_alpha (use_alpha: boolean) : void;
 }
 
-var ColorButton: {       
-   new (): ColorButton;  
-}                          
+var ColorButton: {
+	new () : Widget;
+	new_with_color (color: Gdk.Color) : Widget;
+	new_with_rgba (rgba: Gdk.RGBA) : Widget;
+	
+}
 
 
 
@@ -913,9 +992,10 @@ interface ColorChooserDialog extends Dialog, Atk.ImplementorIface, Buildable, Co
 	
 }
 
-var ColorChooserDialog: {       
-   new (): ColorChooserDialog;  
-}                          
+var ColorChooserDialog: {
+	new (title: string, parent: Window) : Widget;
+	
+}
 
 
 
@@ -924,9 +1004,10 @@ interface ColorChooserWidget extends Box, Atk.ImplementorIface, Buildable, Color
 	
 }
 
-var ColorChooserWidget: {       
-   new (): ColorChooserWidget;  
-}                          
+var ColorChooserWidget: {
+	new () : Widget;
+	
+}
 
 
 
@@ -951,9 +1032,12 @@ interface ColorSelection extends Box, Atk.ImplementorIface, Buildable, Orientabl
 	set_previous_rgba (rgba: Gdk.RGBA) : void;
 }
 
-var ColorSelection: {       
-   new (): ColorSelection;  
-}                          
+var ColorSelection: {
+	new () : Widget;
+	palette_from_string (_str: string, colors: Gdk.Color[], n_colors: number) : boolean;
+	palette_to_string (colors: Gdk.Color[], n_colors: number) : string;
+	set_change_palette_with_screen_hook (_func: ColorSelectionChangePaletteWithScreenFunc) : ColorSelectionChangePaletteWithScreenFunc;
+}
 
 
 
@@ -962,9 +1046,10 @@ interface ColorSelectionDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	get_color_selection () : Widget;
 }
 
-var ColorSelectionDialog: {       
-   new (): ColorSelectionDialog;  
-}                          
+var ColorSelectionDialog: {
+	new (title: string) : Widget;
+	
+}
 
 
 
@@ -1007,9 +1092,15 @@ interface ComboBox extends Bin, Atk.ImplementorIface, Buildable, CellEditable, C
 	set_wrap_width (width: number) : void;
 }
 
-var ComboBox: {       
-   new (): ComboBox;  
-}                          
+var ComboBox: {
+	new () : Widget;
+	new_with_area (area: CellArea) : Widget;
+	new_with_area_and_entry (area: CellArea) : Widget;
+	new_with_entry () : Widget;
+	new_with_model (model: TreeModel) : Widget;
+	new_with_model_and_entry (model: TreeModel) : Widget;
+	
+}
 
 
 
@@ -1018,9 +1109,10 @@ interface ComboBoxAccessible extends ContainerAccessible, Atk.Action, Atk.Compon
 	
 }
 
-var ComboBoxAccessible: {       
-   new (): ComboBoxAccessible;  
-}                          
+var ComboBoxAccessible: {
+	
+	
+}
 
 
 
@@ -1037,9 +1129,11 @@ interface ComboBoxText extends ComboBox, Atk.ImplementorIface, Buildable, CellEd
 	remove_all () : void;
 }
 
-var ComboBoxText: {       
-   new (): ComboBoxText;  
-}                          
+var ComboBoxText: {
+	new () : Widget;
+	new_with_entry () : Widget;
+	
+}
 
 
 
@@ -1068,7 +1162,7 @@ interface Container extends Widget, Atk.ImplementorIface, Buildable {
 	get_path_for_child (child: Widget) : WidgetPath;
 	get_resize_mode () : ResizeMode;
 	propagate_draw (child: Widget, cr: cairo.Context) : void;
-	// remove (widget: Widget) : void;
+	remove (widget: Widget) : void;
 	resize_children () : void;
 	set_border_width (border_width: number) : void;
 	set_focus_chain (focusable_widgets: GLib.List) : void;
@@ -1080,9 +1174,10 @@ interface Container extends Widget, Atk.ImplementorIface, Buildable {
 	unset_focus_chain () : void;
 }
 
-var Container: {       
-   new (): Container;  
-}                          
+var Container: {
+	
+	
+}
 
 
 
@@ -1091,9 +1186,10 @@ interface ContainerAccessible extends WidgetAccessible, Atk.Component {
 	
 }
 
-var ContainerAccessible: {       
-   new (): ContainerAccessible;  
-}                          
+var ContainerAccessible: {
+	
+	
+}
 
 
 
@@ -1104,9 +1200,10 @@ interface ContainerCellAccessible extends CellAccessible, Atk.Action, Atk.Compon
 	remove_child (child: CellAccessible) : void;
 }
 
-var ContainerCellAccessible: {       
-   new (): ContainerCellAccessible;  
-}                          
+var ContainerCellAccessible: {
+	new () : ContainerCellAccessible;
+	
+}
 
 
 
@@ -1119,9 +1216,11 @@ interface CssProvider extends GObject.Object, StyleProvider {
 	to_string () : string;
 }
 
-var CssProvider: {       
-   new (): CssProvider;  
-}                          
+var CssProvider: {
+	new () : CssProvider;
+	get_default () : CssProvider;
+	get_named (name: string, variant: string) : CssProvider;
+}
 
 
 
@@ -1143,9 +1242,11 @@ interface Dialog extends Window, Atk.ImplementorIface, Buildable {
 	set_response_sensitive (response_id: number, setting: boolean) : void;
 }
 
-var Dialog: {       
-   new (): Dialog;  
-}                          
+var Dialog: {
+	new () : Widget;
+	new_with_buttons (title: string, parent: Window, flags: DialogFlags, first_button_text: string) : Widget;
+	
+}
 
 
 
@@ -1154,9 +1255,10 @@ interface DrawingArea extends Widget, Atk.ImplementorIface, Buildable {
 	
 }
 
-var DrawingArea: {       
-   new (): DrawingArea;  
-}                          
+var DrawingArea: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1238,9 +1340,11 @@ interface Entry extends Widget, Atk.ImplementorIface, Buildable, CellEditable, E
 	unset_invisible_char () : void;
 }
 
-var Entry: {       
-   new (): Entry;  
-}                          
+var Entry: {
+	new () : Widget;
+	new_with_buffer (buffer: EntryBuffer) : Widget;
+	
+}
 
 
 
@@ -1249,9 +1353,10 @@ interface EntryAccessible extends WidgetAccessible, Atk.Action, Atk.Component, A
 	
 }
 
-var EntryAccessible: {       
-   new (): EntryAccessible;  
-}                          
+var EntryAccessible: {
+	
+	
+}
 
 
 
@@ -1269,9 +1374,10 @@ interface EntryBuffer extends GObject.Object {
 	set_text (chars: string, n_chars: number) : void;
 }
 
-var EntryBuffer: {       
-   new (): EntryBuffer;  
-}                          
+var EntryBuffer: {
+	new (initial_chars: string, n_initial_chars: number) : EntryBuffer;
+	
+}
 
 
 
@@ -1304,9 +1410,11 @@ interface EntryCompletion extends GObject.Object, Buildable, CellLayout {
 	set_text_column (column: number) : void;
 }
 
-var EntryCompletion: {       
-   new (): EntryCompletion;  
-}                          
+var EntryCompletion: {
+	new () : EntryCompletion;
+	new_with_area (area: CellArea) : EntryCompletion;
+	
+}
 
 
 
@@ -1315,9 +1423,10 @@ interface EntryIconAccessible extends Atk.Object, Atk.Action, Atk.Component {
 	
 }
 
-var EntryIconAccessible: {       
-   new (): EntryIconAccessible;  
-}                          
+var EntryIconAccessible: {
+	
+	
+}
 
 
 
@@ -1329,9 +1438,10 @@ interface EventBox extends Bin, Atk.ImplementorIface, Buildable {
 	set_visible_window (visible_window: boolean) : void;
 }
 
-var EventBox: {       
-   new (): EventBox;  
-}                          
+var EventBox: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1344,9 +1454,10 @@ interface EventController extends GObject.Object {
 	set_propagation_phase (phase: PropagationPhase) : void;
 }
 
-var EventController: {       
-   new (): EventController;  
-}                          
+var EventController: {
+	
+	
+}
 
 
 
@@ -1370,9 +1481,11 @@ interface Expander extends Bin, Atk.ImplementorIface, Buildable {
 	set_use_underline (use_underline: boolean) : void;
 }
 
-var Expander: {       
-   new (): Expander;  
-}                          
+var Expander: {
+	new (label: string) : Widget;
+	new_with_mnemonic (label: string) : Widget;
+	
+}
 
 
 
@@ -1381,9 +1494,10 @@ interface ExpanderAccessible extends ContainerAccessible, Atk.Action, Atk.Compon
 	
 }
 
-var ExpanderAccessible: {       
-   new (): ExpanderAccessible;  
-}                          
+var ExpanderAccessible: {
+	
+	
+}
 
 
 
@@ -1397,9 +1511,11 @@ interface FileChooserButton extends Box, Atk.ImplementorIface, Buildable, FileCh
 	set_width_chars (n_chars: number) : void;
 }
 
-var FileChooserButton: {       
-   new (): FileChooserButton;  
-}                          
+var FileChooserButton: {
+	new (title: string, action: FileChooserAction) : Widget;
+	new_with_dialog (dialog: Dialog) : Widget;
+	
+}
 
 
 
@@ -1408,9 +1524,10 @@ interface FileChooserDialog extends Dialog, Atk.ImplementorIface, Buildable, Fil
 	
 }
 
-var FileChooserDialog: {       
-   new (): FileChooserDialog;  
-}                          
+var FileChooserDialog: {
+	new (title: string, parent: Window, action: FileChooserAction, first_button_text: string) : Widget;
+	
+}
 
 
 
@@ -1419,9 +1536,10 @@ interface FileChooserWidget extends Box, Atk.ImplementorIface, Buildable, FileCh
 	
 }
 
-var FileChooserWidget: {       
-   new (): FileChooserWidget;  
-}                          
+var FileChooserWidget: {
+	new (action: FileChooserAction) : Widget;
+	
+}
 
 
 
@@ -1437,9 +1555,10 @@ interface FileFilter extends GObject.InitiallyUnowned, Buildable {
 	set_name (name: string) : void;
 }
 
-var FileFilter: {       
-   new (): FileFilter;  
-}                          
+var FileFilter: {
+	new () : FileFilter;
+	
+}
 
 
 
@@ -1449,9 +1568,10 @@ interface Fixed extends Container, Atk.ImplementorIface, Buildable {
 	put (widget: Widget, _x: number, _y: number) : void;
 }
 
-var Fixed: {       
-   new (): Fixed;  
-}                          
+var Fixed: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1488,9 +1608,10 @@ interface FlowBox extends Container, Atk.ImplementorIface, Buildable, Orientable
 	unselect_child (child: FlowBoxChild) : void;
 }
 
-var FlowBox: {       
-   new (): FlowBox;  
-}                          
+var FlowBox: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1499,9 +1620,10 @@ interface FlowBoxAccessible extends ContainerAccessible, Atk.Component, Atk.Sele
 	
 }
 
-var FlowBoxAccessible: {       
-   new (): FlowBoxAccessible;  
-}                          
+var FlowBoxAccessible: {
+	
+	
+}
 
 
 
@@ -1512,9 +1634,10 @@ interface FlowBoxChild extends Bin, Atk.ImplementorIface, Buildable {
 	is_selected () : boolean;
 }
 
-var FlowBoxChild: {       
-   new (): FlowBoxChild;  
-}                          
+var FlowBoxChild: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1523,9 +1646,10 @@ interface FlowBoxChildAccessible extends ContainerAccessible, Atk.Component {
 	
 }
 
-var FlowBoxChildAccessible: {       
-   new (): FlowBoxChildAccessible;  
-}                          
+var FlowBoxChildAccessible: {
+	
+	
+}
 
 
 
@@ -1545,9 +1669,11 @@ interface FontButton extends Button, Atk.ImplementorIface, Actionable, Activatab
 	set_use_size (use_size: boolean) : void;
 }
 
-var FontButton: {       
-   new (): FontButton;  
-}                          
+var FontButton: {
+	new () : Widget;
+	new_with_font (fontname: string) : Widget;
+	
+}
 
 
 
@@ -1556,9 +1682,10 @@ interface FontChooserDialog extends Dialog, Atk.ImplementorIface, Buildable, Fon
 	
 }
 
-var FontChooserDialog: {       
-   new (): FontChooserDialog;  
-}                          
+var FontChooserDialog: {
+	new (title: string, parent: Window) : Widget;
+	
+}
 
 
 
@@ -1567,9 +1694,10 @@ interface FontChooserWidget extends Box, Atk.ImplementorIface, Buildable, FontCh
 	
 }
 
-var FontChooserWidget: {       
-   new (): FontChooserWidget;  
-}                          
+var FontChooserWidget: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1589,9 +1717,10 @@ interface FontSelection extends Box, Atk.ImplementorIface, Buildable, Orientable
 	set_preview_text (text: string) : void;
 }
 
-var FontSelection: {       
-   new (): FontSelection;  
-}                          
+var FontSelection: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1606,9 +1735,10 @@ interface FontSelectionDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	set_preview_text (text: string) : void;
 }
 
-var FontSelectionDialog: {       
-   new (): FontSelectionDialog;  
-}                          
+var FontSelectionDialog: {
+	new (title: string) : Widget;
+	
+}
 
 
 
@@ -1624,9 +1754,10 @@ interface Frame extends Bin, Atk.ImplementorIface, Buildable {
 	set_shadow_type (_type: ShadowType) : void;
 }
 
-var Frame: {       
-   new (): Frame;  
-}                          
+var Frame: {
+	new (label: string) : Widget;
+	
+}
 
 
 
@@ -1635,9 +1766,10 @@ interface FrameAccessible extends ContainerAccessible, Atk.Component {
 	
 }
 
-var FrameAccessible: {       
-   new (): FrameAccessible;  
-}                          
+var FrameAccessible: {
+	
+	
+}
 
 
 
@@ -1661,9 +1793,10 @@ interface GLArea extends Widget, Atk.ImplementorIface, Buildable {
 	set_required_version (major: number, minor: number) : void;
 }
 
-var GLArea: {       
-   new (): GLArea;  
-}                          
+var GLArea: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1690,9 +1823,10 @@ interface Gesture extends EventController {
 	ungroup () : void;
 }
 
-var Gesture: {       
-   new (): Gesture;  
-}                          
+var Gesture: {
+	
+	
+}
 
 
 
@@ -1702,9 +1836,10 @@ interface GestureDrag extends GestureSingle {
 	get_start_point (_x: number, _y: number) : boolean;
 }
 
-var GestureDrag: {       
-   new (): GestureDrag;  
-}                          
+var GestureDrag: {
+	new (widget: Widget) : Gesture;
+	
+}
 
 
 
@@ -1713,9 +1848,10 @@ interface GestureLongPress extends GestureSingle {
 	
 }
 
-var GestureLongPress: {       
-   new (): GestureLongPress;  
-}                          
+var GestureLongPress: {
+	new (widget: Widget) : Gesture;
+	
+}
 
 
 
@@ -1725,9 +1861,10 @@ interface GestureMultiPress extends GestureSingle {
 	set_area (rect: Gdk.Rectangle) : void;
 }
 
-var GestureMultiPress: {       
-   new (): GestureMultiPress;  
-}                          
+var GestureMultiPress: {
+	new (widget: Widget) : Gesture;
+	
+}
 
 
 
@@ -1737,9 +1874,10 @@ interface GesturePan extends GestureDrag {
 	set_orientation (orientation: Orientation) : void;
 }
 
-var GesturePan: {       
-   new (): GesturePan;  
-}                          
+var GesturePan: {
+	new (widget: Widget, orientation: Orientation) : Gesture;
+	
+}
 
 
 
@@ -1748,9 +1886,10 @@ interface GestureRotate extends Gesture {
 	get_angle_delta () : number;
 }
 
-var GestureRotate: {       
-   new (): GestureRotate;  
-}                          
+var GestureRotate: {
+	new (widget: Widget) : Gesture;
+	
+}
 
 
 
@@ -1766,9 +1905,10 @@ interface GestureSingle extends Gesture {
 	set_touch_only (touch_only: boolean) : void;
 }
 
-var GestureSingle: {       
-   new (): GestureSingle;  
-}                          
+var GestureSingle: {
+	
+	
+}
 
 
 
@@ -1777,9 +1917,10 @@ interface GestureSwipe extends GestureSingle {
 	get_velocity (velocity_x: number, velocity_y: number) : boolean;
 }
 
-var GestureSwipe: {       
-   new (): GestureSwipe;  
-}                          
+var GestureSwipe: {
+	new (widget: Widget) : Gesture;
+	
+}
 
 
 
@@ -1788,9 +1929,10 @@ interface GestureZoom extends Gesture {
 	get_scale_delta () : number;
 }
 
-var GestureZoom: {       
-   new (): GestureZoom;  
-}                          
+var GestureZoom: {
+	new (widget: Widget) : Gesture;
+	
+}
 
 
 
@@ -1818,9 +1960,10 @@ interface Grid extends Container, Atk.ImplementorIface, Buildable, Orientable {
 	set_row_spacing (spacing: number) : void;
 }
 
-var Grid: {       
-   new (): Grid;  
-}                          
+var Grid: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1829,9 +1972,10 @@ interface HBox extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	
 }
 
-var HBox: {       
-   new (): HBox;  
-}                          
+var HBox: {
+	new (homogeneous: boolean, spacing: number) : Widget;
+	
+}
 
 
 
@@ -1840,9 +1984,10 @@ interface HButtonBox extends ButtonBox, Atk.ImplementorIface, Buildable, Orienta
 	
 }
 
-var HButtonBox: {       
-   new (): HButtonBox;  
-}                          
+var HButtonBox: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1851,9 +1996,10 @@ interface HPaned extends Paned, Atk.ImplementorIface, Buildable, Orientable {
 	
 }
 
-var HPaned: {       
-   new (): HPaned;  
-}                          
+var HPaned: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1866,9 +2012,10 @@ interface HSV extends Widget, Atk.ImplementorIface, Buildable {
 	set_metrics (size: number, ring_width: number) : void;
 }
 
-var HSV: {       
-   new (): HSV;  
-}                          
+var HSV: {
+	new () : Widget;
+	to_rgb (_h: number, _s: number, _v: number, _r: number, _g: number, _b: number) : void;
+}
 
 
 
@@ -1877,9 +2024,11 @@ interface HScale extends Scale, Atk.ImplementorIface, Buildable, Orientable {
 	
 }
 
-var HScale: {       
-   new (): HScale;  
-}                          
+var HScale: {
+	new (adjustment: Adjustment) : Widget;
+	new_with_range (min: number, max: number, step: number) : Widget;
+	
+}
 
 
 
@@ -1888,9 +2037,10 @@ interface HScrollbar extends Scrollbar, Atk.ImplementorIface, Buildable, Orienta
 	
 }
 
-var HScrollbar: {       
-   new (): HScrollbar;  
-}                          
+var HScrollbar: {
+	new (adjustment: Adjustment) : Widget;
+	
+}
 
 
 
@@ -1899,9 +2049,10 @@ interface HSeparator extends Separator, Atk.ImplementorIface, Buildable, Orienta
 	
 }
 
-var HSeparator: {       
-   new (): HSeparator;  
-}                          
+var HSeparator: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1916,9 +2067,10 @@ interface HandleBox extends Bin, Atk.ImplementorIface, Buildable {
 	set_snap_edge (edge: PositionType) : void;
 }
 
-var HandleBox: {       
-   new (): HandleBox;  
-}                          
+var HandleBox: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1940,9 +2092,10 @@ interface HeaderBar extends Container, Atk.ImplementorIface, Buildable {
 	set_title (title: string) : void;
 }
 
-var HeaderBar: {       
-   new (): HeaderBar;  
-}                          
+var HeaderBar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -1961,9 +2114,10 @@ interface IMContext extends GObject.Object {
 	set_use_preedit (use_preedit: boolean) : void;
 }
 
-var IMContext: {       
-   new (): IMContext;  
-}                          
+var IMContext: {
+	
+	
+}
 
 
 
@@ -1972,9 +2126,10 @@ interface IMContextSimple extends IMContext {
 	add_table (data: number[], max_seq_len: number, n_seqs: number) : void;
 }
 
-var IMContextSimple: {       
-   new (): IMContextSimple;  
-}                          
+var IMContextSimple: {
+	new () : IMContext;
+	
+}
 
 
 
@@ -1985,9 +2140,10 @@ interface IMMulticontext extends IMContext {
 	set_context_id (context_id: string) : void;
 }
 
-var IMMulticontext: {       
-   new (): IMMulticontext;  
-}                          
+var IMMulticontext: {
+	new () : IMContext;
+	
+}
 
 
 
@@ -1999,9 +2155,10 @@ interface IconFactory extends GObject.Object, Buildable {
 	remove_default () : void;
 }
 
-var IconFactory: {       
-   new (): IconFactory;  
-}                          
+var IconFactory: {
+	new () : IconFactory;
+	lookup_default (stock_id: string) : IconSet;
+}
 
 
 
@@ -2031,9 +2188,10 @@ interface IconInfo extends GObject.Object {
 	set_raw_coordinates (raw_coordinates: boolean) : void;
 }
 
-var IconInfo: {       
-   new (): IconInfo;  
-}                          
+var IconInfo: {
+	new_for_pixbuf (icon_theme: IconTheme, pixbuf: GdkPixbuf.Pixbuf) : IconInfo;
+	
+}
 
 
 
@@ -2063,9 +2221,12 @@ interface IconTheme extends GObject.Object {
 	set_search_path (path: string[], n_elements: number) : void;
 }
 
-var IconTheme: {       
-   new (): IconTheme;  
-}                          
+var IconTheme: {
+	new () : IconTheme;
+	add_builtin_icon (icon_name: string, size: number, pixbuf: GdkPixbuf.Pixbuf) : void;
+	get_default () : IconTheme;
+	get_for_screen (screen: Gdk.Screen) : IconTheme;
+}
 
 
 
@@ -2134,9 +2295,12 @@ interface IconView extends Container, Atk.ImplementorIface, Buildable, CellLayou
 	unset_model_drag_source () : void;
 }
 
-var IconView: {       
-   new (): IconView;  
-}                          
+var IconView: {
+	new () : Widget;
+	new_with_area (area: CellArea) : Widget;
+	new_with_model (model: TreeModel) : Widget;
+	
+}
 
 
 
@@ -2145,9 +2309,10 @@ interface IconViewAccessible extends ContainerAccessible, Atk.Component, Atk.Sel
 	
 }
 
-var IconViewAccessible: {       
-   new (): IconViewAccessible;  
-}                          
+var IconViewAccessible: {
+	
+	
+}
 
 
 
@@ -2174,9 +2339,19 @@ interface Image extends Misc, Atk.ImplementorIface, Buildable {
 	set_pixel_size (pixel_size: number) : void;
 }
 
-var Image: {       
-   new (): Image;  
-}                          
+var Image: {
+	new () : Widget;
+	new_from_animation (animation: GdkPixbuf.PixbufAnimation) : Widget;
+	new_from_file (filename: string) : Widget;
+	new_from_gicon (icon: Gio.Icon, size: number) : Widget;
+	new_from_icon_name (icon_name: string, size: number) : Widget;
+	new_from_icon_set (icon_set: IconSet, size: number) : Widget;
+	new_from_pixbuf (pixbuf: GdkPixbuf.Pixbuf) : Widget;
+	new_from_resource (resource_path: string) : Widget;
+	new_from_stock (stock_id: string, size: number) : Widget;
+	new_from_surface (surface: cairo.Surface) : Widget;
+	
+}
 
 
 
@@ -2185,9 +2360,10 @@ interface ImageAccessible extends WidgetAccessible, Atk.Component, Atk.Image {
 	
 }
 
-var ImageAccessible: {       
-   new (): ImageAccessible;  
-}                          
+var ImageAccessible: {
+	
+	
+}
 
 
 
@@ -2196,9 +2372,10 @@ interface ImageCellAccessible extends RendererCellAccessible, Atk.Action, Atk.Co
 	
 }
 
-var ImageCellAccessible: {       
-   new (): ImageCellAccessible;  
-}                          
+var ImageCellAccessible: {
+	
+	
+}
 
 
 
@@ -2213,9 +2390,13 @@ interface ImageMenuItem extends MenuItem, Atk.ImplementorIface, Actionable, Acti
 	set_use_stock (use_stock: boolean) : void;
 }
 
-var ImageMenuItem: {       
-   new (): ImageMenuItem;  
-}                          
+var ImageMenuItem: {
+	new () : Widget;
+	new_from_stock (stock_id: string, accel_group: AccelGroup) : Widget;
+	new_with_label (label: string) : Widget;
+	new_with_mnemonic (label: string) : Widget;
+	
+}
 
 
 
@@ -2235,9 +2416,11 @@ interface InfoBar extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	set_show_close_button (setting: boolean) : void;
 }
 
-var InfoBar: {       
-   new (): InfoBar;  
-}                          
+var InfoBar: {
+	new () : Widget;
+	new_with_buttons (first_button_text: string) : Widget;
+	
+}
 
 
 
@@ -2247,9 +2430,11 @@ interface Invisible extends Widget, Atk.ImplementorIface, Buildable {
 	set_screen (screen: Gdk.Screen) : void;
 }
 
-var Invisible: {       
-   new (): Invisible;  
-}                          
+var Invisible: {
+	new () : Widget;
+	new_for_screen (screen: Gdk.Screen) : Widget;
+	
+}
 
 
 
@@ -2305,9 +2490,11 @@ interface Label extends Misc, Atk.ImplementorIface, Buildable {
 	set_yalign (yalign: number) : void;
 }
 
-var Label: {       
-   new (): Label;  
-}                          
+var Label: {
+	new (_str: string) : Widget;
+	new_with_mnemonic (_str: string) : Widget;
+	
+}
 
 
 
@@ -2316,9 +2503,10 @@ interface LabelAccessible extends WidgetAccessible, Atk.Component, Atk.Hypertext
 	
 }
 
-var LabelAccessible: {       
-   new (): LabelAccessible;  
-}                          
+var LabelAccessible: {
+	
+	
+}
 
 
 
@@ -2335,9 +2523,10 @@ interface Layout extends Container, Atk.ImplementorIface, Buildable, Scrollable 
 	set_vadjustment (adjustment: Adjustment) : void;
 }
 
-var Layout: {       
-   new (): Layout;  
-}                          
+var Layout: {
+	new (hadjustment: Adjustment, vadjustment: Adjustment) : Widget;
+	
+}
 
 
 
@@ -2358,9 +2547,11 @@ interface LevelBar extends Widget, Atk.ImplementorIface, Buildable, Orientable {
 	set_value (value: number) : void;
 }
 
-var LevelBar: {       
-   new (): LevelBar;  
-}                          
+var LevelBar: {
+	new () : Widget;
+	new_for_interval (min_value: number, max_value: number) : Widget;
+	
+}
 
 
 
@@ -2369,9 +2560,10 @@ interface LevelBarAccessible extends WidgetAccessible, Atk.Component, Atk.Value 
 	
 }
 
-var LevelBarAccessible: {       
-   new (): LevelBarAccessible;  
-}                          
+var LevelBarAccessible: {
+	
+	
+}
 
 
 
@@ -2383,9 +2575,11 @@ interface LinkButton extends Button, Atk.ImplementorIface, Actionable, Activatab
 	set_visited (visited: boolean) : void;
 }
 
-var LinkButton: {       
-   new (): LinkButton;  
-}                          
+var LinkButton: {
+	new (uri: string) : Widget;
+	new_with_label (uri: string, label: string) : Widget;
+	
+}
 
 
 
@@ -2394,9 +2588,10 @@ interface LinkButtonAccessible extends ButtonAccessible, Atk.Action, Atk.Compone
 	
 }
 
-var LinkButtonAccessible: {       
-   new (): LinkButtonAccessible;  
-}                          
+var LinkButtonAccessible: {
+	
+	
+}
 
 
 
@@ -2431,9 +2626,10 @@ interface ListBox extends Container, Atk.ImplementorIface, Buildable {
 	unselect_row (_row: ListBoxRow) : void;
 }
 
-var ListBox: {       
-   new (): ListBox;  
-}                          
+var ListBox: {
+	new () : Widget;
+	
+}
 
 
 
@@ -2442,9 +2638,10 @@ interface ListBoxAccessible extends ContainerAccessible, Atk.Component, Atk.Sele
 	
 }
 
-var ListBoxAccessible: {       
-   new (): ListBoxAccessible;  
-}                          
+var ListBoxAccessible: {
+	
+	
+}
 
 
 
@@ -2461,9 +2658,10 @@ interface ListBoxRow extends Bin, Atk.ImplementorIface, Buildable {
 	set_selectable (selectable: boolean) : void;
 }
 
-var ListBoxRow: {       
-   new (): ListBoxRow;  
-}                          
+var ListBoxRow: {
+	new () : Widget;
+	
+}
 
 
 
@@ -2472,9 +2670,10 @@ interface ListBoxRowAccessible extends ContainerAccessible, Atk.Component {
 	
 }
 
-var ListBoxRowAccessible: {       
-   new (): ListBoxRowAccessible;  
-}                          
+var ListBoxRowAccessible: {
+	
+	
+}
 
 
 
@@ -2501,9 +2700,11 @@ interface ListStore extends GObject.Object, Buildable, TreeDragDest, TreeDragSou
 	swap (_a: TreeIter, _b: TreeIter) : void;
 }
 
-var ListStore: {       
-   new (): ListStore;  
-}                          
+var ListStore: {
+	new (n_columns: number) : ListStore;
+	newv (n_columns: number, types: GObject.Type[]) : ListStore;
+	
+}
 
 
 
@@ -2513,9 +2714,10 @@ interface LockButton extends Button, Atk.ImplementorIface, Actionable, Activatab
 	set_permission (permission: Gio.Permission) : void;
 }
 
-var LockButton: {       
-   new (): LockButton;  
-}                          
+var LockButton: {
+	new (permission: Gio.Permission) : Widget;
+	
+}
 
 
 
@@ -2524,9 +2726,10 @@ interface LockButtonAccessible extends ButtonAccessible, Atk.Action, Atk.Compone
 	
 }
 
-var LockButtonAccessible: {       
-   new (): LockButtonAccessible;  
-}                          
+var LockButtonAccessible: {
+	
+	
+}
 
 
 
@@ -2558,9 +2761,11 @@ interface Menu extends MenuShell, Atk.ImplementorIface, Buildable {
 	set_title (title: string) : void;
 }
 
-var Menu: {       
-   new (): Menu;  
-}                          
+var Menu: {
+	new () : Widget;
+	new_from_model (model: Gio.MenuModel) : Widget;
+	get_for_attach_widget (widget: Widget) : GLib.List;
+}
 
 
 
@@ -2569,9 +2774,10 @@ interface MenuAccessible extends MenuShellAccessible, Atk.Component, Atk.Selecti
 	
 }
 
-var MenuAccessible: {       
-   new (): MenuAccessible;  
-}                          
+var MenuAccessible: {
+	
+	
+}
 
 
 
@@ -2583,9 +2789,11 @@ interface MenuBar extends MenuShell, Atk.ImplementorIface, Buildable {
 	set_pack_direction (pack_dir: PackDirection) : void;
 }
 
-var MenuBar: {       
-   new (): MenuBar;  
-}                          
+var MenuBar: {
+	new () : Widget;
+	new_from_model (model: Gio.MenuModel) : Widget;
+	
+}
 
 
 
@@ -2605,9 +2813,10 @@ interface MenuButton extends ToggleButton, Atk.ImplementorIface, Actionable, Act
 	set_use_popover (use_popover: boolean) : void;
 }
 
-var MenuButton: {       
-   new (): MenuButton;  
-}                          
+var MenuButton: {
+	new () : Widget;
+	
+}
 
 
 
@@ -2616,9 +2825,10 @@ interface MenuButtonAccessible extends ToggleButtonAccessible, Atk.Action, Atk.C
 	
 }
 
-var MenuButtonAccessible: {       
-   new (): MenuButtonAccessible;  
-}                          
+var MenuButtonAccessible: {
+	
+	
+}
 
 
 
@@ -2643,9 +2853,12 @@ interface MenuItem extends Bin, Atk.ImplementorIface, Actionable, Activatable, B
 	toggle_size_request (requisition: number) : void;
 }
 
-var MenuItem: {       
-   new (): MenuItem;  
-}                          
+var MenuItem: {
+	new () : Widget;
+	new_with_label (label: string) : Widget;
+	new_with_mnemonic (label: string) : Widget;
+	
+}
 
 
 
@@ -2654,9 +2867,10 @@ interface MenuItemAccessible extends ContainerAccessible, Atk.Action, Atk.Compon
 	
 }
 
-var MenuItemAccessible: {       
-   new (): MenuItemAccessible;  
-}                          
+var MenuItemAccessible: {
+	
+	
+}
 
 
 
@@ -2678,9 +2892,10 @@ interface MenuShell extends Container, Atk.ImplementorIface, Buildable {
 	set_take_focus (take_focus: boolean) : void;
 }
 
-var MenuShell: {       
-   new (): MenuShell;  
-}                          
+var MenuShell: {
+	
+	
+}
 
 
 
@@ -2689,9 +2904,10 @@ interface MenuShellAccessible extends ContainerAccessible, Atk.Component, Atk.Se
 	
 }
 
-var MenuShellAccessible: {       
-   new (): MenuShellAccessible;  
-}                          
+var MenuShellAccessible: {
+	
+	
+}
 
 
 
@@ -2703,9 +2919,11 @@ interface MenuToolButton extends ToolButton, Atk.ImplementorIface, Actionable, A
 	set_menu (menu: Widget) : void;
 }
 
-var MenuToolButton: {       
-   new (): MenuToolButton;  
-}                          
+var MenuToolButton: {
+	new (icon_widget: Widget, label: string) : ToolItem;
+	new_from_stock (stock_id: string) : ToolItem;
+	
+}
 
 
 
@@ -2719,9 +2937,11 @@ interface MessageDialog extends Dialog, Atk.ImplementorIface, Buildable {
 	set_markup (_str: string) : void;
 }
 
-var MessageDialog: {       
-   new (): MessageDialog;  
-}                          
+var MessageDialog: {
+	new (parent: Window, flags: DialogFlags, _type: MessageType, buttons: ButtonsType, message_format: string) : Widget;
+	new_with_markup (parent: Window, flags: DialogFlags, _type: MessageType, buttons: ButtonsType, message_format: string) : Widget;
+	
+}
 
 
 
@@ -2733,9 +2953,10 @@ interface Misc extends Widget, Atk.ImplementorIface, Buildable {
 	set_padding (xpad: number, ypad: number) : void;
 }
 
-var Misc: {       
-   new (): Misc;  
-}                          
+var Misc: {
+	
+	
+}
 
 
 
@@ -2744,9 +2965,10 @@ interface ModelButton extends Button, Atk.ImplementorIface, Actionable, Activata
 	
 }
 
-var ModelButton: {       
-   new (): ModelButton;  
-}                          
+var ModelButton: {
+	new () : Widget;
+	
+}
 
 
 
@@ -2759,9 +2981,10 @@ interface MountOperation extends Gio.MountOperation {
 	set_screen (screen: Gdk.Screen) : void;
 }
 
-var MountOperation: {       
-   new (): MountOperation;  
-}                          
+var MountOperation: {
+	new (parent: Window) : Gio.MountOperation;
+	
+}
 
 
 
@@ -2813,9 +3036,10 @@ interface Notebook extends Container, Atk.ImplementorIface, Buildable {
 	set_tab_reorderable (child: Widget, reorderable: boolean) : void;
 }
 
-var Notebook: {       
-   new (): Notebook;  
-}                          
+var Notebook: {
+	new () : Widget;
+	
+}
 
 
 
@@ -2824,9 +3048,10 @@ interface NotebookAccessible extends ContainerAccessible, Atk.Component, Atk.Sel
 	
 }
 
-var NotebookAccessible: {       
-   new (): NotebookAccessible;  
-}                          
+var NotebookAccessible: {
+	
+	
+}
 
 
 
@@ -2835,9 +3060,10 @@ interface NotebookPageAccessible extends Atk.Object, Atk.Component {
 	invalidate () : void;
 }
 
-var NotebookPageAccessible: {       
-   new (): NotebookPageAccessible;  
-}                          
+var NotebookPageAccessible: {
+	new (notebook: NotebookAccessible, child: Widget) : Atk.Object;
+	
+}
 
 
 
@@ -2855,9 +3081,11 @@ interface NumerableIcon extends Gio.EmblemedIcon, Gio.Icon {
 	set_style_context (style: StyleContext) : void;
 }
 
-var NumerableIcon: {       
-   new (): NumerableIcon;  
-}                          
+var NumerableIcon: {
+	
+	new (base_icon: Gio.Icon) : Gio.Icon;
+	new_with_style_context (base_icon: Gio.Icon, context: StyleContext) : Gio.Icon;
+}
 
 
 
@@ -2867,9 +3095,10 @@ interface OffscreenWindow extends Window, Atk.ImplementorIface, Buildable {
 	get_surface () : cairo.Surface;
 }
 
-var OffscreenWindow: {       
-   new (): OffscreenWindow;  
-}                          
+var OffscreenWindow: {
+	new () : Widget;
+	
+}
 
 
 
@@ -2881,9 +3110,10 @@ interface Overlay extends Bin, Atk.ImplementorIface, Buildable {
 	set_overlay_pass_through (widget: Widget, pass_through: boolean) : void;
 }
 
-var Overlay: {       
-   new (): Overlay;  
-}                          
+var Overlay: {
+	new () : Widget;
+	
+}
 
 
 
@@ -2913,9 +3143,12 @@ interface PageSetup extends GObject.Object {
 	to_key_file (key_file: GLib.KeyFile, group_name: string) : void;
 }
 
-var PageSetup: {       
-   new (): PageSetup;  
-}                          
+var PageSetup: {
+	new () : PageSetup;
+	new_from_file (file_name: string) : PageSetup;
+	new_from_key_file (key_file: GLib.KeyFile, group_name: string) : PageSetup;
+	
+}
 
 
 
@@ -2934,9 +3167,10 @@ interface Paned extends Container, Atk.ImplementorIface, Buildable, Orientable {
 	set_wide_handle (wide: boolean) : void;
 }
 
-var Paned: {       
-   new (): Paned;  
-}                          
+var Paned: {
+	new (orientation: Orientation) : Widget;
+	
+}
 
 
 
@@ -2945,9 +3179,10 @@ interface PanedAccessible extends ContainerAccessible, Atk.Component, Atk.Value 
 	
 }
 
-var PanedAccessible: {       
-   new (): PanedAccessible;  
-}                          
+var PanedAccessible: {
+	
+	
+}
 
 
 
@@ -2978,9 +3213,10 @@ interface PlacesSidebar extends ScrolledWindow, Atk.ImplementorIface, Buildable 
 	set_show_trash (show_trash: boolean) : void;
 }
 
-var PlacesSidebar: {       
-   new (): PlacesSidebar;  
-}                          
+var PlacesSidebar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -2993,9 +3229,11 @@ interface Plug extends Window, Atk.ImplementorIface, Buildable {
 	get_socket_window () : Gdk.Window;
 }
 
-var Plug: {       
-   new (): Plug;  
-}                          
+var Plug: {
+	new (socket_id: xlib.Window) : Widget;
+	new_for_display (display: Gdk.Display, socket_id: xlib.Window) : Widget;
+	
+}
 
 
 
@@ -3016,9 +3254,11 @@ interface Popover extends Bin, Atk.ImplementorIface, Buildable {
 	set_transitions_enabled (transitions_enabled: boolean) : void;
 }
 
-var Popover: {       
-   new (): Popover;  
-}                          
+var Popover: {
+	new (relative_to: Widget) : Widget;
+	new_from_model (relative_to: Widget, model: Gio.MenuModel) : Widget;
+	
+}
 
 
 
@@ -3027,9 +3267,10 @@ interface PopoverAccessible extends ContainerAccessible, Atk.Component {
 	
 }
 
-var PopoverAccessible: {       
-   new (): PopoverAccessible;  
-}                          
+var PopoverAccessible: {
+	
+	
+}
 
 
 
@@ -3038,9 +3279,10 @@ interface PopoverMenu extends Popover, Atk.ImplementorIface, Buildable {
 	open_submenu (name: string) : void;
 }
 
-var PopoverMenu: {       
-   new (): PopoverMenu;  
-}                          
+var PopoverMenu: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3059,9 +3301,10 @@ interface PrintContext extends GObject.Object {
 	set_cairo_context (cr: cairo.Context, dpi_x: number, dpi_y: number) : void;
 }
 
-var PrintContext: {       
-   new (): PrintContext;  
-}                          
+var PrintContext: {
+	
+	
+}
 
 
 
@@ -3098,9 +3341,10 @@ interface PrintOperation extends GObject.Object, PrintOperationPreview {
 	set_use_full_page (full_page: boolean) : void;
 }
 
-var PrintOperation: {       
-   new (): PrintOperation;  
-}                          
+var PrintOperation: {
+	new () : PrintOperation;
+	
+}
 
 
 
@@ -3179,9 +3423,12 @@ interface PrintSettings extends GObject.Object {
 	unset (key: string) : void;
 }
 
-var PrintSettings: {       
-   new (): PrintSettings;  
-}                          
+var PrintSettings: {
+	new () : PrintSettings;
+	new_from_file (file_name: string) : PrintSettings;
+	new_from_key_file (key_file: GLib.KeyFile, group_name: string) : PrintSettings;
+	
+}
 
 
 
@@ -3202,9 +3449,10 @@ interface ProgressBar extends Widget, Atk.ImplementorIface, Buildable, Orientabl
 	set_text (text: string) : void;
 }
 
-var ProgressBar: {       
-   new (): ProgressBar;  
-}                          
+var ProgressBar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3213,9 +3461,10 @@ interface ProgressBarAccessible extends WidgetAccessible, Atk.Component, Atk.Val
 	
 }
 
-var ProgressBarAccessible: {       
-   new (): ProgressBarAccessible;  
-}                          
+var ProgressBarAccessible: {
+	
+	
+}
 
 
 
@@ -3228,9 +3477,10 @@ interface RadioAction extends ToggleAction, Buildable {
 	set_group (group: GLib.SList) : void;
 }
 
-var RadioAction: {       
-   new (): RadioAction;  
-}                          
+var RadioAction: {
+	new (name: string, label: string, tooltip: string, stock_id: string, value: number) : RadioAction;
+	
+}
 
 
 
@@ -3241,9 +3491,15 @@ interface RadioButton extends CheckButton, Atk.ImplementorIface, Actionable, Act
 	set_group (group: GLib.SList) : void;
 }
 
-var RadioButton: {       
-   new (): RadioButton;  
-}                          
+var RadioButton: {
+	new (group: GLib.SList) : Widget;
+	new_from_widget (radio_group_member: RadioButton) : Widget;
+	new_with_label (group: GLib.SList, label: string) : Widget;
+	new_with_label_from_widget (radio_group_member: RadioButton, label: string) : Widget;
+	new_with_mnemonic (group: GLib.SList, label: string) : Widget;
+	new_with_mnemonic_from_widget (radio_group_member: RadioButton, label: string) : Widget;
+	
+}
 
 
 
@@ -3252,9 +3508,10 @@ interface RadioButtonAccessible extends ToggleButtonAccessible, Atk.Action, Atk.
 	
 }
 
-var RadioButtonAccessible: {       
-   new (): RadioButtonAccessible;  
-}                          
+var RadioButtonAccessible: {
+	
+	
+}
 
 
 
@@ -3265,9 +3522,15 @@ interface RadioMenuItem extends CheckMenuItem, Atk.ImplementorIface, Actionable,
 	set_group (group: GLib.SList) : void;
 }
 
-var RadioMenuItem: {       
-   new (): RadioMenuItem;  
-}                          
+var RadioMenuItem: {
+	new (group: GLib.SList) : Widget;
+	new_from_widget (group: RadioMenuItem) : Widget;
+	new_with_label (group: GLib.SList, label: string) : Widget;
+	new_with_label_from_widget (group: RadioMenuItem, label: string) : Widget;
+	new_with_mnemonic (group: GLib.SList, label: string) : Widget;
+	new_with_mnemonic_from_widget (group: RadioMenuItem, label: string) : Widget;
+	
+}
 
 
 
@@ -3276,9 +3539,10 @@ interface RadioMenuItemAccessible extends CheckMenuItemAccessible, Atk.Action, A
 	
 }
 
-var RadioMenuItemAccessible: {       
-   new (): RadioMenuItemAccessible;  
-}                          
+var RadioMenuItemAccessible: {
+	
+	
+}
 
 
 
@@ -3288,9 +3552,13 @@ interface RadioToolButton extends ToggleToolButton, Atk.ImplementorIface, Action
 	set_group (group: GLib.SList) : void;
 }
 
-var RadioToolButton: {       
-   new (): RadioToolButton;  
-}                          
+var RadioToolButton: {
+	new (group: GLib.SList) : ToolItem;
+	new_from_stock (group: GLib.SList, stock_id: string) : ToolItem;
+	new_from_widget (group: RadioToolButton) : ToolItem;
+	new_with_stock_from_widget (group: RadioToolButton, stock_id: string) : ToolItem;
+	
+}
 
 
 
@@ -3326,9 +3594,10 @@ interface Range extends Widget, Atk.ImplementorIface, Buildable, Orientable {
 	set_value (value: number) : void;
 }
 
-var Range: {       
-   new (): Range;  
-}                          
+var Range: {
+	
+	
+}
 
 
 
@@ -3337,9 +3606,10 @@ interface RangeAccessible extends WidgetAccessible, Atk.Component, Atk.Value {
 	
 }
 
-var RangeAccessible: {       
-   new (): RangeAccessible;  
-}                          
+var RangeAccessible: {
+	
+	
+}
 
 
 
@@ -3348,9 +3618,10 @@ interface RcStyle extends GObject.Object {
 	copy () : RcStyle;
 }
 
-var RcStyle: {       
-   new (): RcStyle;  
-}                          
+var RcStyle: {
+	new () : RcStyle;
+	
+}
 
 
 
@@ -3360,9 +3631,11 @@ interface RecentAction extends Action, Buildable, RecentChooser {
 	set_show_numbers (show_numbers: boolean) : void;
 }
 
-var RecentAction: {       
-   new (): RecentAction;  
-}                          
+var RecentAction: {
+	new (name: string, label: string, tooltip: string, stock_id: string) : Action;
+	new_for_manager (name: string, label: string, tooltip: string, stock_id: string, manager: RecentManager) : Action;
+	
+}
 
 
 
@@ -3371,9 +3644,11 @@ interface RecentChooserDialog extends Dialog, Atk.ImplementorIface, Buildable, R
 	
 }
 
-var RecentChooserDialog: {       
-   new (): RecentChooserDialog;  
-}                          
+var RecentChooserDialog: {
+	new (title: string, parent: Window, first_button_text: string) : Widget;
+	new_for_manager (title: string, parent: Window, manager: RecentManager, first_button_text: string) : Widget;
+	
+}
 
 
 
@@ -3383,9 +3658,11 @@ interface RecentChooserMenu extends Menu, Atk.ImplementorIface, Activatable, Bui
 	set_show_numbers (show_numbers: boolean) : void;
 }
 
-var RecentChooserMenu: {       
-   new (): RecentChooserMenu;  
-}                          
+var RecentChooserMenu: {
+	new () : Widget;
+	new_for_manager (manager: RecentManager) : Widget;
+	
+}
 
 
 
@@ -3394,9 +3671,11 @@ interface RecentChooserWidget extends Box, Atk.ImplementorIface, Buildable, Orie
 	
 }
 
-var RecentChooserWidget: {       
-   new (): RecentChooserWidget;  
-}                          
+var RecentChooserWidget: {
+	new () : Widget;
+	new_for_manager (manager: RecentManager) : Widget;
+	
+}
 
 
 
@@ -3415,9 +3694,10 @@ interface RecentFilter extends GObject.InitiallyUnowned, Buildable {
 	set_name (name: string) : void;
 }
 
-var RecentFilter: {       
-   new (): RecentFilter;  
-}                          
+var RecentFilter: {
+	new () : RecentFilter;
+	
+}
 
 
 
@@ -3433,9 +3713,10 @@ interface RecentManager extends GObject.Object {
 	remove_item (uri: string) : boolean;
 }
 
-var RecentManager: {       
-   new (): RecentManager;  
-}                          
+var RecentManager: {
+	new () : RecentManager;
+	get_default () : RecentManager;
+}
 
 
 
@@ -3444,9 +3725,10 @@ interface RendererCellAccessible extends CellAccessible, Atk.Action, Atk.Compone
 	
 }
 
-var RendererCellAccessible: {       
-   new (): RendererCellAccessible;  
-}                          
+var RendererCellAccessible: {
+	new (renderer: CellRenderer) : Atk.Object;
+	
+}
 
 
 
@@ -3461,9 +3743,10 @@ interface Revealer extends Bin, Atk.ImplementorIface, Buildable {
 	set_transition_type (transition: RevealerTransitionType) : void;
 }
 
-var Revealer: {       
-   new (): Revealer;  
-}                          
+var Revealer: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3483,9 +3766,11 @@ interface Scale extends Range, Atk.ImplementorIface, Buildable, Orientable {
 	set_value_pos (pos: PositionType) : void;
 }
 
-var Scale: {       
-   new (): Scale;  
-}                          
+var Scale: {
+	new (orientation: Orientation, adjustment: Adjustment) : Widget;
+	new_with_range (orientation: Orientation, min: number, max: number, step: number) : Widget;
+	
+}
 
 
 
@@ -3494,9 +3779,10 @@ interface ScaleAccessible extends RangeAccessible, Atk.Component, Atk.Value {
 	
 }
 
-var ScaleAccessible: {       
-   new (): ScaleAccessible;  
-}                          
+var ScaleAccessible: {
+	
+	
+}
 
 
 
@@ -3512,9 +3798,10 @@ interface ScaleButton extends Button, Atk.ImplementorIface, Actionable, Activata
 	set_value (value: number) : void;
 }
 
-var ScaleButton: {       
-   new (): ScaleButton;  
-}                          
+var ScaleButton: {
+	new (size: number, min: number, max: number, step: number, icons: string[]) : Widget;
+	
+}
 
 
 
@@ -3523,9 +3810,10 @@ interface ScaleButtonAccessible extends ButtonAccessible, Atk.Action, Atk.Compon
 	
 }
 
-var ScaleButtonAccessible: {       
-   new (): ScaleButtonAccessible;  
-}                          
+var ScaleButtonAccessible: {
+	
+	
+}
 
 
 
@@ -3534,9 +3822,10 @@ interface Scrollbar extends Range, Atk.ImplementorIface, Buildable, Orientable {
 	
 }
 
-var Scrollbar: {       
-   new (): Scrollbar;  
-}                          
+var Scrollbar: {
+	new (orientation: Orientation, adjustment: Adjustment) : Widget;
+	
+}
 
 
 
@@ -3568,9 +3857,10 @@ interface ScrolledWindow extends Bin, Atk.ImplementorIface, Buildable {
 	unset_placement () : void;
 }
 
-var ScrolledWindow: {       
-   new (): ScrolledWindow;  
-}                          
+var ScrolledWindow: {
+	new (hadjustment: Adjustment, vadjustment: Adjustment) : Widget;
+	
+}
 
 
 
@@ -3579,9 +3869,10 @@ interface ScrolledWindowAccessible extends ContainerAccessible, Atk.Component {
 	
 }
 
-var ScrolledWindowAccessible: {       
-   new (): ScrolledWindowAccessible;  
-}                          
+var ScrolledWindowAccessible: {
+	
+	
+}
 
 
 
@@ -3595,9 +3886,10 @@ interface SearchBar extends Bin, Atk.ImplementorIface, Buildable {
 	set_show_close_button (visible: boolean) : void;
 }
 
-var SearchBar: {       
-   new (): SearchBar;  
-}                          
+var SearchBar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3606,9 +3898,10 @@ interface SearchEntry extends Entry, Atk.ImplementorIface, Buildable, CellEditab
 	handle_event (event: Gdk.Event) : boolean;
 }
 
-var SearchEntry: {       
-   new (): SearchEntry;  
-}                          
+var SearchEntry: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3617,9 +3910,10 @@ interface Separator extends Widget, Atk.ImplementorIface, Buildable, Orientable 
 	
 }
 
-var Separator: {       
-   new (): Separator;  
-}                          
+var Separator: {
+	new (orientation: Orientation) : Widget;
+	
+}
 
 
 
@@ -3628,9 +3922,10 @@ interface SeparatorMenuItem extends MenuItem, Atk.ImplementorIface, Actionable, 
 	
 }
 
-var SeparatorMenuItem: {       
-   new (): SeparatorMenuItem;  
-}                          
+var SeparatorMenuItem: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3640,9 +3935,10 @@ interface SeparatorToolItem extends ToolItem, Atk.ImplementorIface, Activatable,
 	set_draw (draw: boolean) : void;
 }
 
-var SeparatorToolItem: {       
-   new (): SeparatorToolItem;  
-}                          
+var SeparatorToolItem: {
+	new () : ToolItem;
+	
+}
 
 
 
@@ -3654,9 +3950,13 @@ interface Settings extends GObject.Object, StyleProvider {
 	set_string_property (name: string, v_string: string, origin: string) : void;
 }
 
-var Settings: {       
-   new (): Settings;  
-}                          
+var Settings: {
+	
+	get_default () : Settings;
+	get_for_screen (screen: Gdk.Screen) : Settings;
+	install_property (pspec: GObject.ParamSpec) : void;
+	install_property_parser (pspec: GObject.ParamSpec, parser: RcPropertyParser) : void;
+}
 
 
 
@@ -3671,9 +3971,10 @@ interface SizeGroup extends GObject.Object, Buildable {
 	set_mode (mode: SizeGroupMode) : void;
 }
 
-var SizeGroup: {       
-   new (): SizeGroup;  
-}                          
+var SizeGroup: {
+	new (mode: SizeGroupMode) : SizeGroup;
+	
+}
 
 
 
@@ -3684,9 +3985,10 @@ interface Socket extends Container, Atk.ImplementorIface, Buildable {
 	get_plug_window () : Gdk.Window;
 }
 
-var Socket: {       
-   new (): Socket;  
-}                          
+var Socket: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3716,9 +4018,11 @@ interface SpinButton extends Entry, Atk.ImplementorIface, Buildable, CellEditabl
 	update () : void;
 }
 
-var SpinButton: {       
-   new (): SpinButton;  
-}                          
+var SpinButton: {
+	new (adjustment: Adjustment, climb_rate: number, digits: number) : Widget;
+	new_with_range (min: number, max: number, step: number) : Widget;
+	
+}
 
 
 
@@ -3727,9 +4031,10 @@ interface SpinButtonAccessible extends EntryAccessible, Atk.Action, Atk.Componen
 	
 }
 
-var SpinButtonAccessible: {       
-   new (): SpinButtonAccessible;  
-}                          
+var SpinButtonAccessible: {
+	
+	
+}
 
 
 
@@ -3739,9 +4044,10 @@ interface Spinner extends Widget, Atk.ImplementorIface, Buildable {
 	stop () : void;
 }
 
-var Spinner: {       
-   new (): Spinner;  
-}                          
+var Spinner: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3750,9 +4056,10 @@ interface SpinnerAccessible extends WidgetAccessible, Atk.Component, Atk.Image {
 	
 }
 
-var SpinnerAccessible: {       
-   new (): SpinnerAccessible;  
-}                          
+var SpinnerAccessible: {
+	
+	
+}
 
 
 
@@ -3781,9 +4088,10 @@ interface Stack extends Container, Atk.ImplementorIface, Buildable {
 	set_visible_child_name (name: string) : void;
 }
 
-var Stack: {       
-   new (): Stack;  
-}                          
+var Stack: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3793,9 +4101,10 @@ interface StackSidebar extends Bin, Atk.ImplementorIface, Buildable {
 	set_stack (stack: Stack) : void;
 }
 
-var StackSidebar: {       
-   new (): StackSidebar;  
-}                          
+var StackSidebar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3805,9 +4114,10 @@ interface StackSwitcher extends Box, Atk.ImplementorIface, Buildable, Orientable
 	set_stack (stack: Stack) : void;
 }
 
-var StackSwitcher: {       
-   new (): StackSwitcher;  
-}                          
+var StackSwitcher: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3842,9 +4152,15 @@ interface StatusIcon extends GObject.Object {
 	set_visible (visible: boolean) : void;
 }
 
-var StatusIcon: {       
-   new (): StatusIcon;  
-}                          
+var StatusIcon: {
+	new () : StatusIcon;
+	new_from_file (filename: string) : StatusIcon;
+	new_from_gicon (icon: Gio.Icon) : StatusIcon;
+	new_from_icon_name (icon_name: string) : StatusIcon;
+	new_from_pixbuf (pixbuf: GdkPixbuf.Pixbuf) : StatusIcon;
+	new_from_stock (stock_id: string) : StatusIcon;
+	position_menu (menu: Menu, _x: number, _y: number, push_in: boolean, user_data: StatusIcon) : void;
+}
 
 
 
@@ -3858,9 +4174,10 @@ interface Statusbar extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	remove_all (context_id: number) : void;
 }
 
-var Statusbar: {       
-   new (): Statusbar;  
-}                          
+var Statusbar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3869,9 +4186,10 @@ interface StatusbarAccessible extends ContainerAccessible, Atk.Component {
 	
 }
 
-var StatusbarAccessible: {       
-   new (): StatusbarAccessible;  
-}                          
+var StatusbarAccessible: {
+	
+	
+}
 
 
 
@@ -3891,9 +4209,10 @@ interface Style extends GObject.Object {
 	set_background (window: Gdk.Window, state_type: StateType) : void;
 }
 
-var Style: {       
-   new (): Style;  
-}                          
+var Style: {
+	new () : Style;
+	
+}
 
 
 
@@ -3953,9 +4272,12 @@ interface StyleContext extends GObject.Object {
 	state_is_running (state: StateType, progress: number) : boolean;
 }
 
-var StyleContext: {       
-   new (): StyleContext;  
-}                          
+var StyleContext: {
+	new () : StyleContext;
+	add_provider_for_screen (screen: Gdk.Screen, provider: StyleProvider, priority: number) : void;
+	remove_provider_for_screen (screen: Gdk.Screen, provider: StyleProvider) : void;
+	reset_widgets (screen: Gdk.Screen) : void;
+}
 
 
 
@@ -3974,9 +4296,11 @@ interface StyleProperties extends GObject.Object, StyleProvider {
 	unset_property (property: string, state: StateFlags) : void;
 }
 
-var StyleProperties: {       
-   new (): StyleProperties;  
-}                          
+var StyleProperties: {
+	new () : StyleProperties;
+	lookup_property (property_name: string, parse_func: StylePropertyParser, pspec: GObject.ParamSpec) : boolean;
+	register_property (parse_func: StylePropertyParser, pspec: GObject.ParamSpec) : void;
+}
 
 
 
@@ -3988,9 +4312,10 @@ interface Switch extends Widget, Atk.ImplementorIface, Actionable, Activatable, 
 	set_state (state: boolean) : void;
 }
 
-var Switch: {       
-   new (): Switch;  
-}                          
+var Switch: {
+	new () : Widget;
+	
+}
 
 
 
@@ -3999,9 +4324,10 @@ interface SwitchAccessible extends WidgetAccessible, Atk.Action, Atk.Component {
 	
 }
 
-var SwitchAccessible: {       
-   new (): SwitchAccessible;  
-}                          
+var SwitchAccessible: {
+	
+	
+}
 
 
 
@@ -4023,9 +4349,10 @@ interface Table extends Container, Atk.ImplementorIface, Buildable {
 	set_row_spacings (spacing: number) : void;
 }
 
-var Table: {       
-   new (): Table;  
-}                          
+var Table: {
+	new (_rows: number, columns: number, homogeneous: boolean) : Widget;
+	
+}
 
 
 
@@ -4034,9 +4361,10 @@ interface TearoffMenuItem extends MenuItem, Atk.ImplementorIface, Actionable, Ac
 	
 }
 
-var TearoffMenuItem: {       
-   new (): TearoffMenuItem;  
-}                          
+var TearoffMenuItem: {
+	new () : Widget;
+	
+}
 
 
 
@@ -4117,9 +4445,10 @@ interface TextBuffer extends GObject.Object {
 	unregister_serialize_format (format: Gdk.Atom) : void;
 }
 
-var TextBuffer: {       
-   new (): TextBuffer;  
-}                          
+var TextBuffer: {
+	new (table: TextTagTable) : TextBuffer;
+	
+}
 
 
 
@@ -4128,9 +4457,10 @@ interface TextCellAccessible extends RendererCellAccessible, Atk.Action, Atk.Com
 	
 }
 
-var TextCellAccessible: {       
-   new (): TextCellAccessible;  
-}                          
+var TextCellAccessible: {
+	
+	
+}
 
 
 
@@ -4140,9 +4470,10 @@ interface TextChildAnchor extends GObject.Object {
 	get_widgets () : GLib.List;
 }
 
-var TextChildAnchor: {       
-   new (): TextChildAnchor;  
-}                          
+var TextChildAnchor: {
+	new () : TextChildAnchor;
+	
+}
 
 
 
@@ -4156,9 +4487,10 @@ interface TextMark extends GObject.Object {
 	set_visible (setting: boolean) : void;
 }
 
-var TextMark: {       
-   new (): TextMark;  
-}                          
+var TextMark: {
+	new (name: string, left_gravity: boolean) : TextMark;
+	
+}
 
 
 
@@ -4169,9 +4501,10 @@ interface TextTag extends GObject.Object {
 	set_priority (priority: number) : void;
 }
 
-var TextTag: {       
-   new (): TextTag;  
-}                          
+var TextTag: {
+	new (name: string) : TextTag;
+	
+}
 
 
 
@@ -4184,9 +4517,10 @@ interface TextTagTable extends GObject.Object, Buildable {
 	remove (tag: TextTag) : void;
 }
 
-var TextTagTable: {       
-   new (): TextTagTable;  
-}                          
+var TextTagTable: {
+	new () : TextTagTable;
+	
+}
 
 
 
@@ -4264,9 +4598,11 @@ interface TextView extends Container, Atk.ImplementorIface, Buildable, Scrollabl
 	window_to_buffer_coords (win: TextWindowType, window_x: number, window_y: number, buffer_x: number, buffer_y: number) : void;
 }
 
-var TextView: {       
-   new (): TextView;  
-}                          
+var TextView: {
+	new () : Widget;
+	new_with_buffer (buffer: TextBuffer) : Widget;
+	
+}
 
 
 
@@ -4275,9 +4611,10 @@ interface TextViewAccessible extends ContainerAccessible, Atk.Component, Atk.Edi
 	
 }
 
-var TextViewAccessible: {       
-   new (): TextViewAccessible;  
-}                          
+var TextViewAccessible: {
+	
+	
+}
 
 
 
@@ -4307,9 +4644,11 @@ interface ThemingEngine extends GObject.Object {
 	state_is_running (state: StateType, progress: number) : boolean;
 }
 
-var ThemingEngine: {       
-   new (): ThemingEngine;  
-}                          
+var ThemingEngine: {
+	
+	load (name: string) : ThemingEngine;
+	register_property (name_space: string, parse_func: StylePropertyParser, pspec: GObject.ParamSpec) : void;
+}
 
 
 
@@ -4322,9 +4661,10 @@ interface ToggleAction extends Action, Buildable {
 	toggled () : void;
 }
 
-var ToggleAction: {       
-   new (): ToggleAction;  
-}                          
+var ToggleAction: {
+	new (name: string, label: string, tooltip: string, stock_id: string) : ToggleAction;
+	
+}
 
 
 
@@ -4339,9 +4679,12 @@ interface ToggleButton extends Button, Atk.ImplementorIface, Actionable, Activat
 	toggled () : void;
 }
 
-var ToggleButton: {       
-   new (): ToggleButton;  
-}                          
+var ToggleButton: {
+	new () : Widget;
+	new_with_label (label: string) : Widget;
+	new_with_mnemonic (label: string) : Widget;
+	
+}
 
 
 
@@ -4350,9 +4693,10 @@ interface ToggleButtonAccessible extends ButtonAccessible, Atk.Action, Atk.Compo
 	
 }
 
-var ToggleButtonAccessible: {       
-   new (): ToggleButtonAccessible;  
-}                          
+var ToggleButtonAccessible: {
+	
+	
+}
 
 
 
@@ -4362,9 +4706,11 @@ interface ToggleToolButton extends ToolButton, Atk.ImplementorIface, Actionable,
 	set_active (is_active: boolean) : void;
 }
 
-var ToggleToolButton: {       
-   new (): ToggleToolButton;  
-}                          
+var ToggleToolButton: {
+	new () : ToolItem;
+	new_from_stock (stock_id: string) : ToolItem;
+	
+}
 
 
 
@@ -4384,9 +4730,11 @@ interface ToolButton extends ToolItem, Atk.ImplementorIface, Actionable, Activat
 	set_use_underline (use_underline: boolean) : void;
 }
 
-var ToolButton: {       
-   new (): ToolButton;  
-}                          
+var ToolButton: {
+	new (icon_widget: Widget, label: string) : ToolItem;
+	new_from_stock (stock_id: string) : ToolItem;
+	
+}
 
 
 
@@ -4421,9 +4769,10 @@ interface ToolItem extends Bin, Atk.ImplementorIface, Activatable, Buildable {
 	toolbar_reconfigured () : void;
 }
 
-var ToolItem: {       
-   new (): ToolItem;  
-}                          
+var ToolItem: {
+	new () : ToolItem;
+	
+}
 
 
 
@@ -4447,9 +4796,10 @@ interface ToolItemGroup extends Container, Atk.ImplementorIface, Buildable, Tool
 	set_label_widget (label_widget: Widget) : void;
 }
 
-var ToolItemGroup: {       
-   new (): ToolItemGroup;  
-}                          
+var ToolItemGroup: {
+	new (label: string) : Widget;
+	
+}
 
 
 
@@ -4476,9 +4826,11 @@ interface ToolPalette extends Container, Atk.ImplementorIface, Buildable, Orient
 	unset_style () : void;
 }
 
-var ToolPalette: {       
-   new (): ToolPalette;  
-}                          
+var ToolPalette: {
+	new () : Widget;
+	get_drag_target_group () : TargetEntry;
+	get_drag_target_item () : TargetEntry;
+}
 
 
 
@@ -4501,9 +4853,10 @@ interface Toolbar extends Container, Atk.ImplementorIface, Buildable, Orientable
 	unset_style () : void;
 }
 
-var Toolbar: {       
-   new (): Toolbar;  
-}                          
+var Toolbar: {
+	new () : Widget;
+	
+}
 
 
 
@@ -4519,9 +4872,10 @@ interface Tooltip extends GObject.Object {
 	set_tip_area (rect: Gdk.Rectangle) : void;
 }
 
-var Tooltip: {       
-   new (): Tooltip;  
-}                          
+var Tooltip: {
+	
+	trigger_tooltip_query (display: Gdk.Display) : void;
+}
 
 
 
@@ -4530,9 +4884,10 @@ interface ToplevelAccessible extends Atk.Object {
 	get_children () : GLib.List;
 }
 
-var ToplevelAccessible: {       
-   new (): ToplevelAccessible;  
-}                          
+var ToplevelAccessible: {
+	
+	
+}
 
 
 
@@ -4550,9 +4905,10 @@ interface TreeModelFilter extends GObject.Object, TreeDragSource, TreeModel {
 	set_visible_func (_func: TreeModelFilterVisibleFunc, data: any, destroy: GLib.DestroyNotify) : void;
 }
 
-var TreeModelFilter: {       
-   new (): TreeModelFilter;  
-}                          
+var TreeModelFilter: {
+	
+	
+}
 
 
 
@@ -4568,9 +4924,10 @@ interface TreeModelSort extends GObject.Object, TreeDragSource, TreeModel, TreeS
 	reset_default_sort_func () : void;
 }
 
-var TreeModelSort: {       
-   new (): TreeModelSort;  
-}                          
+var TreeModelSort: {
+	
+	
+}
 
 
 
@@ -4598,9 +4955,10 @@ interface TreeSelection extends GObject.Object {
 	unselect_range (start_path: TreePath, end_path: TreePath) : void;
 }
 
-var TreeSelection: {       
-   new (): TreeSelection;  
-}                          
+var TreeSelection: {
+	
+	
+}
 
 
 
@@ -4629,9 +4987,11 @@ interface TreeStore extends GObject.Object, Buildable, TreeDragDest, TreeDragSou
 	swap (_a: TreeIter, _b: TreeIter) : void;
 }
 
-var TreeStore: {       
-   new (): TreeStore;  
-}                          
+var TreeStore: {
+	new (n_columns: number) : TreeStore;
+	newv (n_columns: number, types: GObject.Type[]) : TreeStore;
+	
+}
 
 
 
@@ -4738,9 +5098,11 @@ interface TreeView extends Container, Atk.ImplementorIface, Buildable, Scrollabl
 	unset_rows_drag_source () : void;
 }
 
-var TreeView: {       
-   new (): TreeView;  
-}                          
+var TreeView: {
+	new () : Widget;
+	new_with_model (model: TreeModel) : Widget;
+	
+}
 
 
 
@@ -4749,9 +5111,10 @@ interface TreeViewAccessible extends ContainerAccessible, Atk.Component, Atk.Sel
 	
 }
 
-var TreeViewAccessible: {       
-   new (): TreeViewAccessible;  
-}                          
+var TreeViewAccessible: {
+	
+	
+}
 
 
 
@@ -4809,9 +5172,12 @@ interface TreeViewColumn extends GObject.InitiallyUnowned, Buildable, CellLayout
 	set_widget (widget: Widget) : void;
 }
 
-var TreeViewColumn: {       
-   new (): TreeViewColumn;  
-}                          
+var TreeViewColumn: {
+	new () : TreeViewColumn;
+	new_with_area (area: CellArea) : TreeViewColumn;
+	new_with_attributes (title: string, cell: CellRenderer) : TreeViewColumn;
+	
+}
 
 
 
@@ -4836,9 +5202,10 @@ interface UIManager extends GObject.Object, Buildable {
 	set_add_tearoffs (add_tearoffs: boolean) : void;
 }
 
-var UIManager: {       
-   new (): UIManager;  
-}                          
+var UIManager: {
+	new () : UIManager;
+	
+}
 
 
 
@@ -4847,9 +5214,10 @@ interface VBox extends Box, Atk.ImplementorIface, Buildable, Orientable {
 	
 }
 
-var VBox: {       
-   new (): VBox;  
-}                          
+var VBox: {
+	new (homogeneous: boolean, spacing: number) : Widget;
+	
+}
 
 
 
@@ -4858,9 +5226,10 @@ interface VButtonBox extends ButtonBox, Atk.ImplementorIface, Buildable, Orienta
 	
 }
 
-var VButtonBox: {       
-   new (): VButtonBox;  
-}                          
+var VButtonBox: {
+	new () : Widget;
+	
+}
 
 
 
@@ -4869,9 +5238,10 @@ interface VPaned extends Paned, Atk.ImplementorIface, Buildable, Orientable {
 	
 }
 
-var VPaned: {       
-   new (): VPaned;  
-}                          
+var VPaned: {
+	new () : Widget;
+	
+}
 
 
 
@@ -4880,9 +5250,11 @@ interface VScale extends Scale, Atk.ImplementorIface, Buildable, Orientable {
 	
 }
 
-var VScale: {       
-   new (): VScale;  
-}                          
+var VScale: {
+	new (adjustment: Adjustment) : Widget;
+	new_with_range (min: number, max: number, step: number) : Widget;
+	
+}
 
 
 
@@ -4891,9 +5263,10 @@ interface VScrollbar extends Scrollbar, Atk.ImplementorIface, Buildable, Orienta
 	
 }
 
-var VScrollbar: {       
-   new (): VScrollbar;  
-}                          
+var VScrollbar: {
+	new (adjustment: Adjustment) : Widget;
+	
+}
 
 
 
@@ -4902,9 +5275,10 @@ interface VSeparator extends Separator, Atk.ImplementorIface, Buildable, Orienta
 	
 }
 
-var VSeparator: {       
-   new (): VSeparator;  
-}                          
+var VSeparator: {
+	new () : Widget;
+	
+}
 
 
 
@@ -4920,9 +5294,10 @@ interface Viewport extends Bin, Atk.ImplementorIface, Buildable, Scrollable {
 	set_vadjustment (adjustment: Adjustment) : void;
 }
 
-var Viewport: {       
-   new (): Viewport;  
-}                          
+var Viewport: {
+	new (hadjustment: Adjustment, vadjustment: Adjustment) : Widget;
+	
+}
 
 
 
@@ -4931,15 +5306,16 @@ interface VolumeButton extends ScaleButton, Atk.ImplementorIface, Actionable, Ac
 	
 }
 
-var VolumeButton: {       
-   new (): VolumeButton;  
-}                          
+var VolumeButton: {
+	new () : Widget;
+	
+}
 
 
 
 
 interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildable {
-	// activate () : boolean;
+	activate () : boolean;
 	add_accelerator (accel_signal: string, accel_group: AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: AccelFlags) : void;
 	add_device_events (device: Gdk.Device, events: Gdk.EventMask) : void;
 	add_events (events: number) : void;
@@ -4947,7 +5323,7 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	add_tick_callback (callback: TickCallback, user_data: any, notify: GLib.DestroyNotify) : number;
 	can_activate_accel (signal_id: number) : boolean;
 	child_focus (direction: DirectionType) : boolean;
-	// child_notify (child_property: string) : void;
+	child_notify (child_property: string) : void;
 	class_path (path_length: number, path: string, path_reversed: string) : void;
 	compute_expand (orientation: Orientation) : boolean;
 	create_pango_context () : Pango.Context;
@@ -5005,7 +5381,7 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	get_composite_name () : string;
 	get_device_enabled (device: Gdk.Device) : boolean;
 	get_device_events (device: Gdk.Device) : Gdk.EventMask;
-	// get_direction () : TextDirection;
+	get_direction () : TextDirection;
 	get_display () : Gdk.Display;
 	get_double_buffered () : boolean;
 	get_events () : number;
@@ -5050,9 +5426,9 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	get_sensitive () : boolean;
 	get_settings () : Settings;
 	get_size_request (width: number, height: number) : void;
-	// get_state () : StateType;
+	get_state () : StateType;
 	get_state_flags () : StateFlags;
-	// get_style () : Style;
+	get_style () : Style;
 	get_style_context () : StyleContext;
 	get_support_multidevice () : boolean;
 	get_template_child (widget_type: GObject.Type, name: string) : GObject.Object;
@@ -5066,10 +5442,10 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	get_vexpand_set () : boolean;
 	get_visible () : boolean;
 	get_visual () : Gdk.Visual;
-	// get_window () : Gdk.Window;
+	get_window () : Gdk.Window;
 	grab_add () : void;
 	grab_default () : void;
-	// grab_focus () : void;
+	grab_focus () : void;
 	grab_remove () : void;
 	has_default () : boolean;
 	has_focus () : boolean;
@@ -5096,7 +5472,7 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	list_action_prefixes () : string[];
 	list_mnemonic_labels () : GLib.List;
 	map () : void;
-	// mnemonic_activate (group_cycling: boolean) : boolean;
+	mnemonic_activate (group_cycling: boolean) : boolean;
 	modify_base (state: StateType, color: Gdk.Color) : void;
 	modify_bg (state: StateType, color: Gdk.Color) : void;
 	modify_cursor (primary: Gdk.Color, secondary: Gdk.Color) : void;
@@ -5139,7 +5515,7 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	set_composite_name (name: string) : void;
 	set_device_enabled (device: Gdk.Device, enabled: boolean) : void;
 	set_device_events (device: Gdk.Device, events: Gdk.EventMask) : void;
-	// set_direction (dir: TextDirection) : void;
+	set_direction (dir: TextDirection) : void;
 	set_double_buffered (double_buffered: boolean) : void;
 	set_events (events: number) : void;
 	set_font_map (font_map: Pango.FontMap) : void;
@@ -5166,9 +5542,9 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	set_redraw_on_allocate (redraw_on_allocate: boolean) : void;
 	set_sensitive (sensitive: boolean) : void;
 	set_size_request (width: number, height: number) : void;
-	// set_state (state: StateType) : void;
+	set_state (state: StateType) : void;
 	set_state_flags (flags: StateFlags, clear: boolean) : void;
-	// set_style (style: Style) : void;
+	set_style (style: Style) : void;
 	set_support_multidevice (support_multidevice: boolean) : void;
 	set_tooltip_markup (markup: string) : void;
 	set_tooltip_text (text: string) : void;
@@ -5200,9 +5576,14 @@ interface Widget extends GObject.InitiallyUnowned, Atk.ImplementorIface, Buildab
 	unset_state_flags (flags: StateFlags) : void;
 }
 
-var Widget: {       
-   new (): Widget;  
-}                          
+var Widget: {
+	new (_type: GObject.Type, first_property_name: string) : Widget;
+	get_default_direction () : TextDirection;
+	get_default_style () : Style;
+	pop_composite_child () : void;
+	push_composite_child () : void;
+	set_default_direction (dir: TextDirection) : void;
+}
 
 
 
@@ -5211,9 +5592,10 @@ interface WidgetAccessible extends Accessible, Atk.Component {
 	
 }
 
-var WidgetAccessible: {       
-   new (): WidgetAccessible;  
-}                          
+var WidgetAccessible: {
+	
+	
+}
 
 
 
@@ -5330,9 +5712,18 @@ interface Window extends Bin, Atk.ImplementorIface, Buildable {
 	unstick () : void;
 }
 
-var Window: {       
-   new (): Window;  
-}                          
+var Window: {
+	new (_type: WindowType) : Widget;
+	get_default_icon_list () : GLib.List;
+	get_default_icon_name () : string;
+	list_toplevels () : GLib.List;
+	set_auto_startup_notification (setting: boolean) : void;
+	set_default_icon (icon: GdkPixbuf.Pixbuf) : void;
+	set_default_icon_from_file (filename: string) : boolean;
+	set_default_icon_list (list: GLib.List) : void;
+	set_default_icon_name (name: string) : void;
+	set_interactive_debugging (enable: boolean) : void;
+}
 
 
 
@@ -5341,9 +5732,10 @@ interface WindowAccessible extends ContainerAccessible, Atk.Component, Atk.Windo
 	
 }
 
-var WindowAccessible: {       
-   new (): WindowAccessible;  
-}                          
+var WindowAccessible: {
+	
+	
+}
 
 
 
@@ -5356,9 +5748,10 @@ interface WindowGroup extends GObject.Object {
 	remove_window (window: Window) : void;
 }
 
-var WindowGroup: {       
-   new (): WindowGroup;  
-}                          
+var WindowGroup: {
+	new () : WindowGroup;
+	
+}
 
 
 
@@ -10974,9 +11367,10 @@ interface Actionable {
 	set_detailed_action_name (detailed_action_name: string) : void;
 }
 
-var Actionable: {       
-   new (): Actionable;  
-}                          
+var Actionable: {
+	
+	
+}
 
 
 
@@ -10990,9 +11384,10 @@ interface Activatable {
 	sync_action_properties (action: Action) : void;
 }
 
-var Activatable: {       
-   new (): Activatable;  
-}                          
+var Activatable: {
+	
+	
+}
 
 
 
@@ -11003,9 +11398,10 @@ interface AppChooser {
 	refresh () : void;
 }
 
-var AppChooser: {       
-   new (): AppChooser;  
-}                          
+var AppChooser: {
+	
+	
+}
 
 
 
@@ -11023,9 +11419,10 @@ interface Buildable {
 	set_name (name: string) : void;
 }
 
-var Buildable: {       
-   new (): Buildable;  
-}                          
+var Buildable: {
+	
+	
+}
 
 
 
@@ -11042,9 +11439,10 @@ interface CellAccessibleParent {
 	update_relationset (cell: CellAccessible, relationset: Atk.RelationSet) : void;
 }
 
-var CellAccessibleParent: {       
-   new (): CellAccessibleParent;  
-}                          
+var CellAccessibleParent: {
+	
+	
+}
 
 
 
@@ -11055,9 +11453,10 @@ interface CellEditable {
 	start_editing (event: Gdk.Event) : void;
 }
 
-var CellEditable: {       
-   new (): CellEditable;  
-}                          
+var CellEditable: {
+	
+	
+}
 
 
 
@@ -11075,9 +11474,10 @@ interface CellLayout {
 	set_cell_data_func (cell: CellRenderer, _func: CellLayoutDataFunc, func_data: any, destroy: GLib.DestroyNotify) : void;
 }
 
-var CellLayout: {       
-   new (): CellLayout;  
-}                          
+var CellLayout: {
+	
+	
+}
 
 
 
@@ -11090,9 +11490,10 @@ interface ColorChooser {
 	set_use_alpha (use_alpha: boolean) : void;
 }
 
-var ColorChooser: {       
-   new (): ColorChooser;  
-}                          
+var ColorChooser: {
+	
+	
+}
 
 
 
@@ -11113,9 +11514,10 @@ interface Editable {
 	set_position (position: number) : void;
 }
 
-var Editable: {       
-   new (): Editable;  
-}                          
+var Editable: {
+	
+	
+}
 
 
 
@@ -11182,9 +11584,10 @@ interface FileChooser {
 	unselect_uri (uri: string) : void;
 }
 
-var FileChooser: {       
-   new (): FileChooser;  
-}                          
+var FileChooser: {
+	
+	
+}
 
 
 
@@ -11206,9 +11609,10 @@ interface FontChooser {
 	set_show_preview_entry (show_preview_entry: boolean) : void;
 }
 
-var FontChooser: {       
-   new (): FontChooser;  
-}                          
+var FontChooser: {
+	
+	
+}
 
 
 
@@ -11218,9 +11622,10 @@ interface Orientable {
 	set_orientation (orientation: Orientation) : void;
 }
 
-var Orientable: {       
-   new (): Orientable;  
-}                          
+var Orientable: {
+	
+	
+}
 
 
 
@@ -11231,9 +11636,10 @@ interface PrintOperationPreview {
 	render_page (page_nr: number) : void;
 }
 
-var PrintOperationPreview: {       
-   new (): PrintOperationPreview;  
-}                          
+var PrintOperationPreview: {
+	
+	
+}
 
 
 
@@ -11272,9 +11678,10 @@ interface RecentChooser {
 	unselect_uri (uri: string) : void;
 }
 
-var RecentChooser: {       
-   new (): RecentChooser;  
-}                          
+var RecentChooser: {
+	
+	
+}
 
 
 
@@ -11291,9 +11698,10 @@ interface Scrollable {
 	set_vscroll_policy (policy: ScrollablePolicy) : void;
 }
 
-var Scrollable: {       
-   new (): Scrollable;  
-}                          
+var Scrollable: {
+	
+	
+}
 
 
 
@@ -11304,9 +11712,10 @@ interface StyleProvider {
 	get_style_property (path: WidgetPath, state: StateFlags, pspec: GObject.ParamSpec, value: GObject.Value) : boolean;
 }
 
-var StyleProvider: {       
-   new (): StyleProvider;  
-}                          
+var StyleProvider: {
+	
+	
+}
 
 
 
@@ -11323,9 +11732,10 @@ interface ToolShell {
 	rebuild_menu () : void;
 }
 
-var ToolShell: {       
-   new (): ToolShell;  
-}                          
+var ToolShell: {
+	
+	
+}
 
 
 
@@ -11335,9 +11745,10 @@ interface TreeDragDest {
 	row_drop_possible (dest_path: TreePath, selection_data: SelectionData) : boolean;
 }
 
-var TreeDragDest: {       
-   new (): TreeDragDest;  
-}                          
+var TreeDragDest: {
+	
+	
+}
 
 
 
@@ -11348,9 +11759,10 @@ interface TreeDragSource {
 	row_draggable (path: TreePath) : boolean;
 }
 
-var TreeDragSource: {       
-   new (): TreeDragSource;  
-}                          
+var TreeDragSource: {
+	
+	
+}
 
 
 
@@ -11387,9 +11799,10 @@ interface TreeModel {
 	unref_node (iter: TreeIter) : void;
 }
 
-var TreeModel: {       
-   new (): TreeModel;  
-}                          
+var TreeModel: {
+	
+	
+}
 
 
 
@@ -11403,9 +11816,10 @@ interface TreeSortable {
 	sort_column_changed () : void;
 }
 
-var TreeSortable: {       
-   new (): TreeSortable;  
-}                          
+var TreeSortable: {
+	
+	
+}
 
 
 
@@ -13167,7 +13581,7 @@ function events_pending (): boolean;
 
 
 
-// function false (): boolean;
+function false (): boolean;
 
 
 
@@ -13775,6 +14189,6 @@ function tree_set_row_drag_data (selection_data: SelectionData, tree_model: Tree
 
 
 
-// function true (): boolean;
+function true (): boolean;
 
 }

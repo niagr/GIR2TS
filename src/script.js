@@ -112,6 +112,7 @@ var GIR2TS;
         var method_name = method_node.$.name;
         var return_type = getTypeFromParameterNode(method_node['return-value'][0])[0];
         var params = [];
+        console.log('rendering ' + method_name);
         if (method_node.parameters && "parameter" in method_node.parameters[0]) {
             for (var _i = 0, _a = method_node.parameters[0].parameter; _i < _a.length; _i++) {
                 var param_node = _a[_i];
@@ -140,8 +141,8 @@ var GIR2TS;
         }
         str += '(';
         if (params.length > 0) {
-            for (var _c = 0; _c < params.length; _c++) {
-                var param = params[_c];
+            for (var _c = 0, params_1 = params; _c < params_1.length; _c++) {
+                var param = params_1[_c];
                 str += param.name + ': ' + param.type + ', ';
             }
             str = str.slice(0, -2);
@@ -158,8 +159,8 @@ var GIR2TS;
     GIR2TS.renderCallback = renderCallback;
     function arrayMinus(first, second, equals) {
         return first.filter(function (a) {
-            for (var _i = 0; _i < second.length; _i++) {
-                var b = second[_i];
+            for (var _i = 0, second_1 = second; _i < second_1.length; _i++) {
+                var b = second_1[_i];
                 if (equals(a, b)) {
                     return false;
                 }
@@ -171,8 +172,8 @@ var GIR2TS;
         var unique_arr = [];
         arr.forEach(function (elem) {
             var dup = false;
-            for (var _i = 0; _i < unique_arr.length; _i++) {
-                var e = unique_arr[_i];
+            for (var _i = 0, unique_arr_1 = unique_arr; _i < unique_arr_1.length; _i++) {
+                var e = unique_arr_1[_i];
                 if (equals(e, elem)) {
                     dup = true;
                     break;
@@ -185,8 +186,8 @@ var GIR2TS;
     }
     GIR2TS.removeDuplicates = removeDuplicates;
     function searchNodeByName(nodes, name) {
-        for (var _i = 0; _i < nodes.length; _i++) {
-            var c = nodes[_i];
+        for (var _i = 0, nodes_1 = nodes; _i < nodes_1.length; _i++) {
+            var c = nodes_1[_i];
             if (c.$.name === name) {
                 return c;
             }
@@ -263,18 +264,18 @@ var GIR2TS;
                 }
             }
         var body = '';
-        for (var _b = 0; _b < props.length; _b++) {
-            var f = props[_b];
+        for (var _b = 0, props_1 = props; _b < props_1.length; _b++) {
+            var f = props_1[_b];
             body += '\t' + renderProperty(f) + '\n';
         }
         body += '\n';
-        for (var _c = 0; _c < callback_fields.length; _c++) {
-            var c = callback_fields[_c];
+        for (var _c = 0, callback_fields_1 = callback_fields; _c < callback_fields_1.length; _c++) {
+            var c = callback_fields_1[_c];
             body += '\t' + renderCallbackField(c) + '\n';
         }
         body += '\n';
-        for (var _d = 0; _d < methods.length; _d++) {
-            var m = methods[_d];
+        for (var _d = 0, methods_1 = methods; _d < methods_1.length; _d++) {
+            var m = methods_1[_d];
             body += '\t' + renderMethod(m) + '\n';
         }
         return "class " + rec_node.$.name + " {\n" + body + "}";
@@ -284,6 +285,8 @@ var GIR2TS;
         var class_name = class_node.$.name;
         var ifaces = [];
         var methods = [];
+        var ctors = [];
+        var static_funcs = [];
         var exclude_method_list = [];
         var exclude_self = false;
         var exclude_all_members = false;
@@ -311,6 +314,19 @@ var GIR2TS;
                 methods.push(m);
             }
         }
+        if (class_node.hasOwnProperty('constructor')) {
+            for (var _d = 0, _e = class_node.constructor; _d < _e.length; _d++) {
+                var c = _e[_d];
+                if (typeof c !== 'function')
+                    ctors.push(c);
+            }
+        }
+        if (class_node.function) {
+            for (var _f = 0, _g = class_node.function; _f < _g.length; _f++) {
+                var f = _g[_f];
+                static_funcs.push(f);
+            }
+        }
         var header = '';
         header += (exclude_self ? '// ' : '') + "interface " + class_name;
         if (ifaces.length > 0) {
@@ -328,10 +344,19 @@ var GIR2TS;
             (body + "\n") +
             ((exclude_self ? '// ' : '') + "}\n");
         var iface_str = header + body;
+        var ctor_str_list = ctors.map(function (c) {
+            return renderMethod(c, false);
+        });
+        var ctors_body = ctor_str_list.join('\n\t');
+        var static_func_str_list = static_funcs.map(function (sf) {
+            return renderMethod(sf, false);
+        });
+        var static_func_body = static_func_str_list.join('\n\t');
         var static_side = '\n' +
-            ("var " + class_name + ": {       \n") +
-            ("   new (): " + class_name + ";  \n") +
-            "}                          \n";
+            ("var " + class_name + ": {\n") +
+            ("\t" + ctors_body + "\n") +
+            ("\t" + static_func_body + "\n") +
+            "}\n";
         return iface_str + static_side;
     }
     GIR2TS.renderClassAsInterface = renderClassAsInterface;
@@ -341,8 +366,7 @@ var GIR2TS;
         var props = [];
         var externIfaceMethods = [];
         if (class_node.implements) {
-            for (var _i = 0, _a = class_node.implements; _i < _a.length; _i++) {
-                var iface = _a[_i];
+            var _loop_1 = function(iface) {
                 var iface_name = iface.$.name;
                 var iface_list = [];
                 var iface_ns = '';
@@ -366,6 +390,10 @@ var GIR2TS;
                         };
                     }));
                 }
+            };
+            for (var _i = 0, _a = class_node.implements; _i < _a.length; _i++) {
+                var iface = _a[_i];
+                _loop_1(iface);
             }
         }
         methods = methods.concat(getAllMethods(class_node));
@@ -419,8 +447,8 @@ var GIR2TS;
         }
         var body = '\n\n';
         var methods = removeDuplicates(getAllMethods(iface_node), function (a, b) { return a.$.name === b.$.name; });
-        for (var _i = 0; _i < methods.length; _i++) {
-            var m = methods[_i];
+        for (var _i = 0, methods_2 = methods; _i < methods_2.length; _i++) {
+            var m = methods_2[_i];
             body += '\t' + renderMethod(m, false) + '\n';
         }
         return "interface " + iface_node.$.name + " {" + body + "}";
@@ -431,8 +459,8 @@ var GIR2TS;
         var class_nodes = [];
         if (ns_node.class)
             class_nodes = class_nodes.concat(ns_node.class);
-        for (var _i = 0; _i < class_nodes.length; _i++) {
-            var class_node = class_nodes[_i];
+        for (var _i = 0, class_nodes_1 = class_nodes; _i < class_nodes_1.length; _i++) {
+            var class_node = class_nodes_1[_i];
             var class_name = class_node.$.name;
             body += '\n\n' + GIR2TS.renderClassAsInterface(class_node, exclude ? exclude.exclude.class[class_name] : undefined) + '\n\n';
         }
@@ -511,8 +539,7 @@ var GIR2TS;
             }
             var xml2js = require('xml2js');
             var parser = new xml2js.Parser();
-            for (var _i = 0, _a = this.lib_list; _i < _a.length; _i++) {
-                var lib = _a[_i];
+            var _loop_2 = function(lib) {
                 parser.parseString(lib.xml_str, function (err, res) {
                     _this.ns_list.push({
                         lib_name: lib.lib_name,
@@ -520,6 +547,10 @@ var GIR2TS;
                     });
                     cb_counter();
                 });
+            };
+            for (var _i = 0, _a = this.lib_list; _i < _a.length; _i++) {
+                var lib = _a[_i];
+                _loop_2(lib);
             }
             function proceed() {
                 var res = [];
@@ -536,7 +567,7 @@ var GIR2TS;
             }
         };
         return Generator;
-    })();
+    }());
     GIR2TS.Generator = Generator;
 })(GIR2TS || (GIR2TS = {}));
 var fs = require('fs');
@@ -559,15 +590,15 @@ function main() {
     else {
         throw new Error("No out dir specified.");
     }
-    if (argv.excludedir) {
-        console.log("Excludes directory: " + argv.excludedir);
-        var dir = path.join(__dirname, argv.excludedir);
+    if (argv.overridesdir) {
+        console.log("Excludes directory: " + argv.overridesdir);
+        var dir = path.join(__dirname, argv.overridesdir);
         var json_files = [];
         if (fs.statSync(dir).isDirectory()) {
             json_files = fs.readdirSync(dir).map(function (file) { return path.join(dir, file); });
         }
-        for (var _i = 0; _i < json_files.length; _i++) {
-            var json_file = json_files[_i];
+        for (var _i = 0, json_files_1 = json_files; _i < json_files_1.length; _i++) {
+            var json_file = json_files_1[_i];
             var lib_name = path.basename(json_file, '.json');
             var data = fs.readFileSync(json_file, 'utf8');
             exclude_json_map[lib_name] = JSON.parse(data);
@@ -584,8 +615,8 @@ function main() {
         gir_files = gir_files.concat(argv._.map(function (arg) { return path.join(__dirname, arg); }));
     }
     var gir_xml_list = [];
-    for (var _a = 0; _a < gir_files.length; _a++) {
-        var file = gir_files[_a];
+    for (var _a = 0, gir_files_1 = gir_files; _a < gir_files_1.length; _a++) {
+        var file = gir_files_1[_a];
         var gir_name = path.basename(file, '.gir');
         var data = '';
         try {
@@ -602,8 +633,8 @@ function main() {
     }
     var gen = new GIR2TS.Generator(gir_xml_list, exclude_json_map);
     gen.generateTypings(function (res) {
-        for (var _i = 0; _i < res.length; _i++) {
-            var lib = res[_i];
+        for (var _i = 0, res_1 = res; _i < res_1.length; _i++) {
+            var lib = res_1[_i];
             var outfile = path.join(outdir, lib.gir_name + '.d.ts');
             try {
                 fs.writeFileSync(outfile, lib.typing_str);

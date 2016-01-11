@@ -21,7 +21,6 @@
     ],
     "files": [
         "src/node.d.ts",
-        "src/sample.ts",
         "src/script.ts",
         "typings/Atk-1.0.d.ts",
         "typings/cairo-1.0.d.ts",

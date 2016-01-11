@@ -9,9 +9,10 @@ interface Binding extends Object {
 	unbind () : void;
 }
 
-var Binding: {       
-   new (): Binding;  
-}                          
+var Binding: {
+	
+	
+}
 
 
 
@@ -20,9 +21,10 @@ interface InitiallyUnowned extends Object {
 	
 }
 
-var InitiallyUnowned: {       
-   new (): InitiallyUnowned;  
-}                          
+var InitiallyUnowned: {
+	
+	
+}
 
 
 
@@ -38,9 +40,9 @@ interface Object {
 	force_floating () : void;
 	freeze_notify () : void;
 	get_data (key: string) : any;
-	// get_property (property_name: string, value: Value) : void;
+	get_property (property_name: string, value: Value) : void;
 	get_qdata (quark: GLib.Quark) : any;
-	// get_valist (first_property_name: string, var_args: any[]) : void;
+	get_valist (first_property_name: string, var_args: any[]) : void;
 	is_floating () : boolean;
 	notify (property_name: string) : void;
 	notify_by_pspec (pspec: ParamSpec) : void;
@@ -53,10 +55,10 @@ interface Object {
 	run_dispose () : void;
 	set_data (key: string, data: any) : void;
 	set_data_full (key: string, data: any, destroy: GLib.DestroyNotify) : void;
-	// set_property (property_name: string, value: Value) : void;
+	set_property (property_name: string, value: Value) : void;
 	set_qdata (quark: GLib.Quark, data: any) : void;
 	set_qdata_full (quark: GLib.Quark, data: any, destroy: GLib.DestroyNotify) : void;
-	// set_valist (first_property_name: string, var_args: any[]) : void;
+	set_valist (first_property_name: string, var_args: any[]) : void;
 	steal_data (key: string) : any;
 	steal_qdata (quark: GLib.Quark) : any;
 	thaw_notify () : void;
@@ -66,9 +68,11 @@ interface Object {
 	weak_unref (notify: WeakNotify, data: any) : void;
 }
 
-var Object: {       
-   new (): Object;  
-}                          
+var Object: {
+	new_valist (object_type: GObject.Type, first_property_name: string, var_args: any[]) : Object;
+	newv (object_type: GObject.Type, n_parameters: number, parameters: Parameter[]) : Object;
+	
+}
 
 
 
@@ -89,9 +93,10 @@ interface ParamSpec {
 	unref () : void;
 }
 
-var ParamSpec: {       
-   new (): ParamSpec;  
-}                          
+var ParamSpec: {
+	
+	
+}
 
 
 
@@ -100,9 +105,10 @@ interface ParamSpecBoolean extends ParamSpec {
 	
 }
 
-var ParamSpecBoolean: {       
-   new (): ParamSpecBoolean;  
-}                          
+var ParamSpecBoolean: {
+	
+	
+}
 
 
 
@@ -111,9 +117,10 @@ interface ParamSpecBoxed extends ParamSpec {
 	
 }
 
-var ParamSpecBoxed: {       
-   new (): ParamSpecBoxed;  
-}                          
+var ParamSpecBoxed: {
+	
+	
+}
 
 
 
@@ -122,9 +129,10 @@ interface ParamSpecChar extends ParamSpec {
 	
 }
 
-var ParamSpecChar: {       
-   new (): ParamSpecChar;  
-}                          
+var ParamSpecChar: {
+	
+	
+}
 
 
 
@@ -133,9 +141,10 @@ interface ParamSpecDouble extends ParamSpec {
 	
 }
 
-var ParamSpecDouble: {       
-   new (): ParamSpecDouble;  
-}                          
+var ParamSpecDouble: {
+	
+	
+}
 
 
 
@@ -144,9 +153,10 @@ interface ParamSpecEnum extends ParamSpec {
 	
 }
 
-var ParamSpecEnum: {       
-   new (): ParamSpecEnum;  
-}                          
+var ParamSpecEnum: {
+	
+	
+}
 
 
 
@@ -155,9 +165,10 @@ interface ParamSpecFlags extends ParamSpec {
 	
 }
 
-var ParamSpecFlags: {       
-   new (): ParamSpecFlags;  
-}                          
+var ParamSpecFlags: {
+	
+	
+}
 
 
 
@@ -166,9 +177,10 @@ interface ParamSpecFloat extends ParamSpec {
 	
 }
 
-var ParamSpecFloat: {       
-   new (): ParamSpecFloat;  
-}                          
+var ParamSpecFloat: {
+	
+	
+}
 
 
 
@@ -177,9 +189,10 @@ interface ParamSpecGType extends ParamSpec {
 	
 }
 
-var ParamSpecGType: {       
-   new (): ParamSpecGType;  
-}                          
+var ParamSpecGType: {
+	
+	
+}
 
 
 
@@ -188,9 +201,10 @@ interface ParamSpecInt extends ParamSpec {
 	
 }
 
-var ParamSpecInt: {       
-   new (): ParamSpecInt;  
-}                          
+var ParamSpecInt: {
+	
+	
+}
 
 
 
@@ -199,9 +213,10 @@ interface ParamSpecInt64 extends ParamSpec {
 	
 }
 
-var ParamSpecInt64: {       
-   new (): ParamSpecInt64;  
-}                          
+var ParamSpecInt64: {
+	
+	
+}
 
 
 
@@ -210,9 +225,10 @@ interface ParamSpecLong extends ParamSpec {
 	
 }
 
-var ParamSpecLong: {       
-   new (): ParamSpecLong;  
-}                          
+var ParamSpecLong: {
+	
+	
+}
 
 
 
@@ -221,9 +237,10 @@ interface ParamSpecObject extends ParamSpec {
 	
 }
 
-var ParamSpecObject: {       
-   new (): ParamSpecObject;  
-}                          
+var ParamSpecObject: {
+	
+	
+}
 
 
 
@@ -232,9 +249,10 @@ interface ParamSpecOverride extends ParamSpec {
 	
 }
 
-var ParamSpecOverride: {       
-   new (): ParamSpecOverride;  
-}                          
+var ParamSpecOverride: {
+	
+	
+}
 
 
 
@@ -243,9 +261,10 @@ interface ParamSpecParam extends ParamSpec {
 	
 }
 
-var ParamSpecParam: {       
-   new (): ParamSpecParam;  
-}                          
+var ParamSpecParam: {
+	
+	
+}
 
 
 
@@ -254,9 +273,10 @@ interface ParamSpecPointer extends ParamSpec {
 	
 }
 
-var ParamSpecPointer: {       
-   new (): ParamSpecPointer;  
-}                          
+var ParamSpecPointer: {
+	
+	
+}
 
 
 
@@ -265,9 +285,10 @@ interface ParamSpecString extends ParamSpec {
 	
 }
 
-var ParamSpecString: {       
-   new (): ParamSpecString;  
-}                          
+var ParamSpecString: {
+	
+	
+}
 
 
 
@@ -276,9 +297,10 @@ interface ParamSpecUChar extends ParamSpec {
 	
 }
 
-var ParamSpecUChar: {       
-   new (): ParamSpecUChar;  
-}                          
+var ParamSpecUChar: {
+	
+	
+}
 
 
 
@@ -287,9 +309,10 @@ interface ParamSpecUInt extends ParamSpec {
 	
 }
 
-var ParamSpecUInt: {       
-   new (): ParamSpecUInt;  
-}                          
+var ParamSpecUInt: {
+	
+	
+}
 
 
 
@@ -298,9 +321,10 @@ interface ParamSpecUInt64 extends ParamSpec {
 	
 }
 
-var ParamSpecUInt64: {       
-   new (): ParamSpecUInt64;  
-}                          
+var ParamSpecUInt64: {
+	
+	
+}
 
 
 
@@ -309,9 +333,10 @@ interface ParamSpecULong extends ParamSpec {
 	
 }
 
-var ParamSpecULong: {       
-   new (): ParamSpecULong;  
-}                          
+var ParamSpecULong: {
+	
+	
+}
 
 
 
@@ -320,9 +345,10 @@ interface ParamSpecUnichar extends ParamSpec {
 	
 }
 
-var ParamSpecUnichar: {       
-   new (): ParamSpecUnichar;  
-}                          
+var ParamSpecUnichar: {
+	
+	
+}
 
 
 
@@ -331,9 +357,10 @@ interface ParamSpecValueArray extends ParamSpec {
 	
 }
 
-var ParamSpecValueArray: {       
-   new (): ParamSpecValueArray;  
-}                          
+var ParamSpecValueArray: {
+	
+	
+}
 
 
 
@@ -342,9 +369,10 @@ interface ParamSpecVariant extends ParamSpec {
 	
 }
 
-var ParamSpecVariant: {       
-   new (): ParamSpecVariant;  
-}                          
+var ParamSpecVariant: {
+	
+	
+}
 
 
 
@@ -359,9 +387,10 @@ interface TypeModule extends Object, TypePlugin {
 	use () : boolean;
 }
 
-var TypeModule: {       
-   new (): TypeModule;  
-}                          
+var TypeModule: {
+	
+	
+}
 
 
 
@@ -816,9 +845,10 @@ interface TypePlugin {
 	use () : void;
 }
 
-var TypePlugin: {       
-   new (): TypePlugin;  
-}                          
+var TypePlugin: {
+	
+	
+}
 
 
 

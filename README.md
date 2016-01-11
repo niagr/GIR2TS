@@ -11,10 +11,12 @@ Currently generates the bindings hosted on [GJS-TS].
 
 ## Usage
 
+Put the .gir files in a directory. In this case it's ../gir.
+
 ```
 git clone https://github.com/niagr/GIR2TS.git
 cd GIR2TS/src
-node ./sctipt.js --excludedir=../exceptions --outdir=../typings --girdir=../gir
+node ./sctipt.js --overridesdir=../exceptions --outdir=../typings --girdir=../gir
 ```
 
 ### Options:
@@ -22,7 +24,10 @@ node ./sctipt.js --excludedir=../exceptions --outdir=../typings --girdir=../gir
 
 ```--girdir```      The directory to read the .gir files from
 
-```--excludedir```  The directory from which to read the json files describing the manual overrides
+```--overridesdir```  The directory from which to read the json files describing the manual overrides
+
+
+## Working
 
 Currently applies the following mappings:
 
@@ -109,6 +114,7 @@ For example, this is the overrides file for Gtk:
 [GJS-TS]: https://github.com/niagr/gjs-ts
 
 ## TODO
-* constructor support
+* <del>constructor support</del>
+* static functions for <del>classes and</del> records
 * in out parameter
 * signals

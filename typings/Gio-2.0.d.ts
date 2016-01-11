@@ -4,9 +4,10 @@ interface AppInfoMonitor extends GObject.Object {
 	
 }
 
-var AppInfoMonitor: {       
-   new (): AppInfoMonitor;  
-}                          
+var AppInfoMonitor: {
+	
+	
+}
 
 
 
@@ -20,9 +21,10 @@ interface AppLaunchContext extends GObject.Object {
 	unsetenv (variable: string) : void;
 }
 
-var AppLaunchContext: {       
-   new (): AppLaunchContext;  
-}                          
+var AppLaunchContext: {
+	new () : AppLaunchContext;
+	
+}
 
 
 
@@ -61,9 +63,10 @@ interface Application extends GObject.Object, ActionGroup, ActionMap {
 	withdraw_notification (_id: string) : void;
 }
 
-var Application: {       
-   new (): Application;  
-}                          
+var Application: {
+	new (application_id: string, flags: ApplicationFlags) : Application;
+	
+}
 
 
 
@@ -84,9 +87,10 @@ interface ApplicationCommandLine extends GObject.Object {
 	set_exit_status (exit_status: number) : void;
 }
 
-var ApplicationCommandLine: {       
-   new (): ApplicationCommandLine;  
-}                          
+var ApplicationCommandLine: {
+	
+	
+}
 
 
 
@@ -103,9 +107,11 @@ interface BufferedInputStream extends FilterInputStream, Seekable {
 	set_buffer_size (size: number) : void;
 }
 
-var BufferedInputStream: {       
-   new (): BufferedInputStream;  
-}                          
+var BufferedInputStream: {
+	new (base_stream: InputStream) : InputStream;
+	new_sized (base_stream: InputStream, size: number) : InputStream;
+	
+}
 
 
 
@@ -117,9 +123,11 @@ interface BufferedOutputStream extends FilterOutputStream, Seekable {
 	set_buffer_size (size: number) : void;
 }
 
-var BufferedOutputStream: {       
-   new (): BufferedOutputStream;  
-}                          
+var BufferedOutputStream: {
+	new (base_stream: OutputStream) : OutputStream;
+	new_sized (base_stream: OutputStream, size: number) : OutputStream;
+	
+}
 
 
 
@@ -128,9 +136,10 @@ interface BytesIcon extends GObject.Object, Icon, LoadableIcon {
 	get_bytes () : GLib.Bytes;
 }
 
-var BytesIcon: {       
-   new (): BytesIcon;  
-}                          
+var BytesIcon: {
+	new (bytes: GLib.Bytes) : BytesIcon;
+	
+}
 
 
 
@@ -150,9 +159,10 @@ interface Cancellable extends GObject.Object {
 	source_new () : GLib.Source;
 }
 
-var Cancellable: {       
-   new (): Cancellable;  
-}                          
+var Cancellable: {
+	new () : Cancellable;
+	
+}
 
 
 
@@ -163,9 +173,10 @@ interface CharsetConverter extends GObject.Object, Converter, Initable {
 	set_use_fallback (use_fallback: boolean) : void;
 }
 
-var CharsetConverter: {       
-   new (): CharsetConverter;  
-}                          
+var CharsetConverter: {
+	new (to_charset: string, from_charset: string) : CharsetConverter;
+	
+}
 
 
 
@@ -174,9 +185,10 @@ interface ConverterInputStream extends FilterInputStream, PollableInputStream {
 	get_converter () : Converter;
 }
 
-var ConverterInputStream: {       
-   new (): ConverterInputStream;  
-}                          
+var ConverterInputStream: {
+	new (base_stream: InputStream, converter: Converter) : InputStream;
+	
+}
 
 
 
@@ -185,9 +197,10 @@ interface ConverterOutputStream extends FilterOutputStream, PollableOutputStream
 	get_converter () : Converter;
 }
 
-var ConverterOutputStream: {       
-   new (): ConverterOutputStream;  
-}                          
+var ConverterOutputStream: {
+	new (base_stream: OutputStream, converter: Converter) : OutputStream;
+	
+}
 
 
 
@@ -202,9 +215,10 @@ interface Credentials extends GObject.Object {
 	to_string () : string;
 }
 
-var Credentials: {       
-   new (): Credentials;  
-}                          
+var Credentials: {
+	new () : Credentials;
+	
+}
 
 
 
@@ -213,9 +227,10 @@ interface DBusActionGroup extends GObject.Object, ActionGroup, RemoteActionGroup
 	
 }
 
-var DBusActionGroup: {       
-   new (): DBusActionGroup;  
-}                          
+var DBusActionGroup: {
+	
+	
+}
 
 
 
@@ -225,9 +240,10 @@ interface DBusAuthObserver extends GObject.Object {
 	authorize_authenticated_peer (stream: IOStream, credentials: Credentials) : boolean;
 }
 
-var DBusAuthObserver: {       
-   new (): DBusAuthObserver;  
-}                          
+var DBusAuthObserver: {
+	new () : DBusAuthObserver;
+	
+}
 
 
 
@@ -274,9 +290,13 @@ interface DBusConnection extends GObject.Object, AsyncInitable, Initable {
 	unregister_subtree (registration_id: number) : boolean;
 }
 
-var DBusConnection: {       
-   new (): DBusConnection;  
-}                          
+var DBusConnection: {
+	new_finish (res: AsyncResult) : DBusConnection;
+	new_for_address_finish (res: AsyncResult) : DBusConnection;
+	new_for_address_sync (address: string, flags: DBusConnectionFlags, observer: DBusAuthObserver, cancellable: Cancellable) : DBusConnection;
+	new_sync (stream: IOStream, guid: string, flags: DBusConnectionFlags, observer: DBusAuthObserver, cancellable: Cancellable) : DBusConnection;
+	
+}
 
 
 
@@ -297,9 +317,10 @@ interface DBusInterfaceSkeleton extends GObject.Object, DBusInterface {
 	unexport_from_connection (connection: DBusConnection) : void;
 }
 
-var DBusInterfaceSkeleton: {       
-   new (): DBusInterfaceSkeleton;  
-}                          
+var DBusInterfaceSkeleton: {
+	
+	
+}
 
 
 
@@ -308,9 +329,10 @@ interface DBusMenuModel extends MenuModel {
 	
 }
 
-var DBusMenuModel: {       
-   new (): DBusMenuModel;  
-}                          
+var DBusMenuModel: {
+	
+	
+}
 
 
 
@@ -362,9 +384,13 @@ interface DBusMessage extends GObject.Object {
 	to_gerror () : boolean;
 }
 
-var DBusMessage: {       
-   new (): DBusMessage;  
-}                          
+var DBusMessage: {
+	new () : DBusMessage;
+	new_from_blob (blob: number[], blob_len: number, capabilities: DBusCapabilityFlags) : DBusMessage;
+	new_method_call (name: string, path: string, interface_: string, method: string) : DBusMessage;
+	new_signal (path: string, interface_: string, signal: string) : DBusMessage;
+	
+}
 
 
 
@@ -390,9 +416,10 @@ interface DBusMethodInvocation extends GObject.Object {
 	take_error (error: GLib.Error) : void;
 }
 
-var DBusMethodInvocation: {       
-   new (): DBusMethodInvocation;  
-}                          
+var DBusMethodInvocation: {
+	
+	
+}
 
 
 
@@ -404,9 +431,13 @@ interface DBusObjectManagerClient extends GObject.Object, AsyncInitable, DBusObj
 	get_name_owner () : string;
 }
 
-var DBusObjectManagerClient: {       
-   new (): DBusObjectManagerClient;  
-}                          
+var DBusObjectManagerClient: {
+	new_finish (res: AsyncResult) : DBusObjectManagerClient;
+	new_for_bus_finish (res: AsyncResult) : DBusObjectManagerClient;
+	new_for_bus_sync (bus_type: BusType, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: DBusProxyTypeFunc, get_proxy_type_user_data: any, get_proxy_type_destroy_notify: GLib.DestroyNotify, cancellable: Cancellable) : DBusObjectManagerClient;
+	new_sync (connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string, object_path: string, get_proxy_type_func: DBusProxyTypeFunc, get_proxy_type_user_data: any, get_proxy_type_destroy_notify: GLib.DestroyNotify, cancellable: Cancellable) : DBusObjectManagerClient;
+	
+}
 
 
 
@@ -420,9 +451,10 @@ interface DBusObjectManagerServer extends GObject.Object, DBusObjectManager {
 	unexport (object_path: string) : boolean;
 }
 
-var DBusObjectManagerServer: {       
-   new (): DBusObjectManagerServer;  
-}                          
+var DBusObjectManagerServer: {
+	new (object_path: string) : DBusObjectManagerServer;
+	
+}
 
 
 
@@ -431,9 +463,10 @@ interface DBusObjectProxy extends GObject.Object, DBusObject {
 	get_connection () : DBusConnection;
 }
 
-var DBusObjectProxy: {       
-   new (): DBusObjectProxy;  
-}                          
+var DBusObjectProxy: {
+	new (connection: DBusConnection, object_path: string) : DBusObjectProxy;
+	
+}
 
 
 
@@ -446,9 +479,10 @@ interface DBusObjectSkeleton extends GObject.Object, DBusObject {
 	set_object_path (object_path: string) : void;
 }
 
-var DBusObjectSkeleton: {       
-   new (): DBusObjectSkeleton;  
-}                          
+var DBusObjectSkeleton: {
+	new (object_path: string) : DBusObjectSkeleton;
+	
+}
 
 
 
@@ -475,9 +509,13 @@ interface DBusProxy extends GObject.Object, AsyncInitable, DBusInterface, Initab
 	set_interface_info (info: DBusInterfaceInfo) : void;
 }
 
-var DBusProxy: {       
-   new (): DBusProxy;  
-}                          
+var DBusProxy: {
+	new_finish (res: AsyncResult) : DBusProxy;
+	new_for_bus_finish (res: AsyncResult) : DBusProxy;
+	new_for_bus_sync (bus_type: BusType, flags: DBusProxyFlags, info: DBusInterfaceInfo, name: string, object_path: string, interface_name: string, cancellable: Cancellable) : DBusProxy;
+	new_sync (connection: DBusConnection, flags: DBusProxyFlags, info: DBusInterfaceInfo, name: string, object_path: string, interface_name: string, cancellable: Cancellable) : DBusProxy;
+	
+}
 
 
 
@@ -491,9 +529,10 @@ interface DBusServer extends GObject.Object, Initable {
 	stop () : void;
 }
 
-var DBusServer: {       
-   new (): DBusServer;  
-}                          
+var DBusServer: {
+	new_sync (address: string, flags: DBusServerFlags, guid: string, observer: DBusAuthObserver, cancellable: Cancellable) : DBusServer;
+	
+}
 
 
 
@@ -523,9 +562,10 @@ interface DataInputStream extends BufferedInputStream, Seekable {
 	set_newline_type (_type: DataStreamNewlineType) : void;
 }
 
-var DataInputStream: {       
-   new (): DataInputStream;  
-}                          
+var DataInputStream: {
+	new (base_stream: InputStream) : DataInputStream;
+	
+}
 
 
 
@@ -543,9 +583,10 @@ interface DataOutputStream extends FilterOutputStream, Seekable {
 	set_byte_order (order: DataStreamByteOrder) : void;
 }
 
-var DataOutputStream: {       
-   new (): DataOutputStream;  
-}                          
+var DataOutputStream: {
+	new (base_stream: OutputStream) : DataOutputStream;
+	
+}
 
 
 
@@ -568,9 +609,12 @@ interface DesktopAppInfo extends GObject.Object, AppInfo {
 	list_actions () : string[];
 }
 
-var DesktopAppInfo: {       
-   new (): DesktopAppInfo;  
-}                          
+var DesktopAppInfo: {
+	new (desktop_id: string) : DesktopAppInfo;
+	new_from_filename (filename: string) : DesktopAppInfo;
+	new_from_keyfile (key_file: GLib.KeyFile) : DesktopAppInfo;
+	
+}
 
 
 
@@ -580,9 +624,11 @@ interface Emblem extends GObject.Object, Icon {
 	get_origin () : EmblemOrigin;
 }
 
-var Emblem: {       
-   new (): Emblem;  
-}                          
+var Emblem: {
+	new (icon: Icon) : Emblem;
+	new_with_origin (icon: Icon, origin: EmblemOrigin) : Emblem;
+	
+}
 
 
 
@@ -594,9 +640,10 @@ interface EmblemedIcon extends GObject.Object, Icon {
 	get_icon () : Icon;
 }
 
-var EmblemedIcon: {       
-   new (): EmblemedIcon;  
-}                          
+var EmblemedIcon: {
+	new (icon: Icon, emblem: Emblem) : EmblemedIcon;
+	
+}
 
 
 
@@ -616,9 +663,10 @@ interface FileEnumerator extends GObject.Object {
 	set_pending (pending: boolean) : void;
 }
 
-var FileEnumerator: {       
-   new (): FileEnumerator;  
-}                          
+var FileEnumerator: {
+	
+	
+}
 
 
 
@@ -630,9 +678,10 @@ interface FileIOStream extends IOStream, Seekable {
 	query_info_finish (result: AsyncResult) : FileInfo;
 }
 
-var FileIOStream: {       
-   new (): FileIOStream;  
-}                          
+var FileIOStream: {
+	
+	
+}
 
 
 
@@ -641,9 +690,10 @@ interface FileIcon extends GObject.Object, Icon, LoadableIcon {
 	get_file () : File;
 }
 
-var FileIcon: {       
-   new (): FileIcon;  
-}                          
+var FileIcon: {
+	new (file: File) : FileIcon;
+	
+}
 
 
 
@@ -713,9 +763,10 @@ interface FileInfo extends GObject.Object {
 	unset_attribute_mask () : void;
 }
 
-var FileInfo: {       
-   new (): FileInfo;  
-}                          
+var FileInfo: {
+	new () : FileInfo;
+	
+}
 
 
 
@@ -726,9 +777,10 @@ interface FileInputStream extends InputStream, Seekable {
 	query_info_finish (result: AsyncResult) : FileInfo;
 }
 
-var FileInputStream: {       
-   new (): FileInputStream;  
-}                          
+var FileInputStream: {
+	
+	
+}
 
 
 
@@ -740,9 +792,10 @@ interface FileMonitor extends GObject.Object {
 	set_rate_limit (limit_msecs: number) : void;
 }
 
-var FileMonitor: {       
-   new (): FileMonitor;  
-}                          
+var FileMonitor: {
+	
+	
+}
 
 
 
@@ -754,9 +807,10 @@ interface FileOutputStream extends OutputStream, Seekable {
 	query_info_finish (result: AsyncResult) : FileInfo;
 }
 
-var FileOutputStream: {       
-   new (): FileOutputStream;  
-}                          
+var FileOutputStream: {
+	
+	
+}
 
 
 
@@ -767,9 +821,10 @@ interface FilenameCompleter extends GObject.Object {
 	set_dirs_only (dirs_only: boolean) : void;
 }
 
-var FilenameCompleter: {       
-   new (): FilenameCompleter;  
-}                          
+var FilenameCompleter: {
+	new () : FilenameCompleter;
+	
+}
 
 
 
@@ -780,9 +835,10 @@ interface FilterInputStream extends InputStream {
 	set_close_base_stream (close_base: boolean) : void;
 }
 
-var FilterInputStream: {       
-   new (): FilterInputStream;  
-}                          
+var FilterInputStream: {
+	
+	
+}
 
 
 
@@ -793,9 +849,10 @@ interface FilterOutputStream extends OutputStream {
 	set_close_base_stream (close_base: boolean) : void;
 }
 
-var FilterOutputStream: {       
-   new (): FilterOutputStream;  
-}                          
+var FilterOutputStream: {
+	
+	
+}
 
 
 
@@ -805,9 +862,10 @@ interface IOModule extends GObject.TypeModule, GObject.TypePlugin {
 	unload () : void;
 }
 
-var IOModule: {       
-   new (): IOModule;  
-}                          
+var IOModule: {
+	new (filename: string) : IOModule;
+	
+}
 
 
 
@@ -825,9 +883,10 @@ interface IOStream extends GObject.Object {
 	splice_async (stream2: IOStream, flags: IOStreamSpliceFlags, io_priority: number, cancellable: Cancellable, callback: AsyncReadyCallback, user_data: any) : void;
 }
 
-var IOStream: {       
-   new (): IOStream;  
-}                          
+var IOStream: {
+	
+	
+}
 
 
 
@@ -850,9 +909,13 @@ interface InetAddress extends GObject.Object {
 	to_string () : string;
 }
 
-var InetAddress: {       
-   new (): InetAddress;  
-}                          
+var InetAddress: {
+	new_any (family: SocketFamily) : InetAddress;
+	new_from_bytes (bytes: number[], family: SocketFamily) : InetAddress;
+	new_from_string (string: string) : InetAddress;
+	new_loopback (family: SocketFamily) : InetAddress;
+	
+}
 
 
 
@@ -866,9 +929,11 @@ interface InetAddressMask extends GObject.Object, Initable {
 	to_string () : string;
 }
 
-var InetAddressMask: {       
-   new (): InetAddressMask;  
-}                          
+var InetAddressMask: {
+	new (addr: InetAddress, length: number) : InetAddressMask;
+	new_from_string (mask_string: string) : InetAddressMask;
+	
+}
 
 
 
@@ -880,9 +945,11 @@ interface InetSocketAddress extends SocketAddress, SocketConnectable {
 	get_scope_id () : number;
 }
 
-var InetSocketAddress: {       
-   new (): InetSocketAddress;  
-}                          
+var InetSocketAddress: {
+	new (address: InetAddress, _port: number) : SocketAddress;
+	new_from_string (address: string, _port: number) : SocketAddress;
+	
+}
 
 
 
@@ -909,9 +976,10 @@ interface InputStream extends GObject.Object {
 	skip_finish (result: AsyncResult) : number;
 }
 
-var InputStream: {       
-   new (): InputStream;  
-}                          
+var InputStream: {
+	
+	
+}
 
 
 
@@ -925,9 +993,10 @@ interface ListStore extends GObject.Object, ListModel {
 	splice (position: number, n_removals: number, additions: any[], n_additions: number) : void;
 }
 
-var ListStore: {       
-   new (): ListStore;  
-}                          
+var ListStore: {
+	new (item_type: GObject.Type) : ListStore;
+	
+}
 
 
 
@@ -937,9 +1006,12 @@ interface MemoryInputStream extends InputStream, PollableInputStream, Seekable {
 	add_data (data: number[], len: number, destroy: GLib.DestroyNotify) : void;
 }
 
-var MemoryInputStream: {       
-   new (): MemoryInputStream;  
-}                          
+var MemoryInputStream: {
+	new () : InputStream;
+	new_from_bytes (bytes: GLib.Bytes) : InputStream;
+	new_from_data (data: number[], len: number, destroy: GLib.DestroyNotify) : InputStream;
+	
+}
 
 
 
@@ -952,9 +1024,11 @@ interface MemoryOutputStream extends OutputStream, PollableOutputStream, Seekabl
 	steal_data () : any;
 }
 
-var MemoryOutputStream: {       
-   new (): MemoryOutputStream;  
-}                          
+var MemoryOutputStream: {
+	new (data: any, size: number, realloc_function: ReallocFunc, destroy_function: GLib.DestroyNotify) : OutputStream;
+	new_resizable () : OutputStream;
+	
+}
 
 
 
@@ -977,9 +1051,10 @@ interface Menu extends MenuModel {
 	remove_all () : void;
 }
 
-var Menu: {       
-   new (): Menu;  
-}                          
+var Menu: {
+	new () : Menu;
+	
+}
 
 
 
@@ -991,9 +1066,10 @@ interface MenuAttributeIter extends GObject.Object {
 	next () : boolean;
 }
 
-var MenuAttributeIter: {       
-   new (): MenuAttributeIter;  
-}                          
+var MenuAttributeIter: {
+	
+	
+}
 
 
 
@@ -1014,9 +1090,13 @@ interface MenuItem extends GObject.Object {
 	set_submenu (submenu: MenuModel) : void;
 }
 
-var MenuItem: {       
-   new (): MenuItem;  
-}                          
+var MenuItem: {
+	new (label: string, detailed_action: string) : MenuItem;
+	new_from_model (model: MenuModel, item_index: number) : MenuItem;
+	new_section (label: string, section: MenuModel) : MenuItem;
+	new_submenu (label: string, submenu: MenuModel) : MenuItem;
+	
+}
 
 
 
@@ -1028,9 +1108,10 @@ interface MenuLinkIter extends GObject.Object {
 	next () : boolean;
 }
 
-var MenuLinkIter: {       
-   new (): MenuLinkIter;  
-}                          
+var MenuLinkIter: {
+	
+	
+}
 
 
 
@@ -1046,9 +1127,10 @@ interface MenuModel extends GObject.Object {
 	iterate_item_links (item_index: number) : MenuLinkIter;
 }
 
-var MenuModel: {       
-   new (): MenuModel;  
-}                          
+var MenuModel: {
+	
+	
+}
 
 
 
@@ -1069,9 +1151,10 @@ interface MountOperation extends GObject.Object {
 	set_username (username: string) : void;
 }
 
-var MountOperation: {       
-   new (): MountOperation;  
-}                          
+var MountOperation: {
+	new () : MountOperation;
+	
+}
 
 
 
@@ -1080,9 +1163,10 @@ interface NativeVolumeMonitor extends VolumeMonitor {
 	
 }
 
-var NativeVolumeMonitor: {       
-   new (): NativeVolumeMonitor;  
-}                          
+var NativeVolumeMonitor: {
+	
+	
+}
 
 
 
@@ -1093,9 +1177,11 @@ interface NetworkAddress extends GObject.Object, SocketConnectable {
 	get_scheme () : string;
 }
 
-var NetworkAddress: {       
-   new (): NetworkAddress;  
-}                          
+var NetworkAddress: {
+	new (hostname: string, _port: number) : NetworkAddress;
+	new_loopback (_port: number) : NetworkAddress;
+	
+}
 
 
 
@@ -1108,9 +1194,10 @@ interface NetworkService extends GObject.Object, SocketConnectable {
 	set_scheme (scheme: string) : void;
 }
 
-var NetworkService: {       
-   new (): NetworkService;  
-}                          
+var NetworkService: {
+	new (service: string, protocol: string, domain: string) : NetworkService;
+	
+}
 
 
 
@@ -1129,9 +1216,10 @@ interface Notification extends GObject.Object {
 	set_urgent (urgent: boolean) : void;
 }
 
-var Notification: {       
-   new (): Notification;  
-}                          
+var Notification: {
+	new (title: string) : Notification;
+	
+}
 
 
 
@@ -1164,9 +1252,10 @@ interface OutputStream extends GObject.Object {
 	write_finish (result: AsyncResult) : number;
 }
 
-var OutputStream: {       
-   new (): OutputStream;  
-}                          
+var OutputStream: {
+	
+	
+}
 
 
 
@@ -1184,9 +1273,10 @@ interface Permission extends GObject.Object {
 	release_finish (result: AsyncResult) : boolean;
 }
 
-var Permission: {       
-   new (): Permission;  
-}                          
+var Permission: {
+	
+	
+}
 
 
 
@@ -1195,9 +1285,10 @@ interface PropertyAction extends GObject.Object, Action {
 	
 }
 
-var PropertyAction: {       
-   new (): PropertyAction;  
-}                          
+var PropertyAction: {
+	new (name: string, object: GObject.Object, property_name: string) : PropertyAction;
+	
+}
 
 
 
@@ -1212,9 +1303,10 @@ interface ProxyAddress extends InetSocketAddress, SocketConnectable {
 	get_username () : string;
 }
 
-var ProxyAddress: {       
-   new (): ProxyAddress;  
-}                          
+var ProxyAddress: {
+	new (inetaddr: InetAddress, _port: number, protocol: string, dest_hostname: string, dest_port: number, username: string, password: string) : SocketAddress;
+	
+}
 
 
 
@@ -1223,9 +1315,10 @@ interface ProxyAddressEnumerator extends SocketAddressEnumerator {
 	
 }
 
-var ProxyAddressEnumerator: {       
-   new (): ProxyAddressEnumerator;  
-}                          
+var ProxyAddressEnumerator: {
+	
+	
+}
 
 
 
@@ -1246,9 +1339,10 @@ interface Resolver extends GObject.Object {
 	set_default () : void;
 }
 
-var Resolver: {       
-   new (): Resolver;  
-}                          
+var Resolver: {
+	
+	
+}
 
 
 
@@ -1294,9 +1388,14 @@ interface Settings extends GObject.Object {
 	set_value (key: string, value: GLib.Variant) : boolean;
 }
 
-var Settings: {       
-   new (): Settings;  
-}                          
+var Settings: {
+	new (schema_id: string) : Settings;
+	new_full (schema: SettingsSchema, backend: SettingsBackend, path: string) : Settings;
+	new_with_backend (schema_id: string, backend: SettingsBackend) : Settings;
+	new_with_backend_and_path (schema_id: string, backend: SettingsBackend, path: string) : Settings;
+	new_with_path (schema_id: string, path: string) : Settings;
+	
+}
 
 
 
@@ -1307,9 +1406,11 @@ interface SimpleAction extends GObject.Object, Action {
 	set_state_hint (state_hint: GLib.Variant) : void;
 }
 
-var SimpleAction: {       
-   new (): SimpleAction;  
-}                          
+var SimpleAction: {
+	new (name: string, parameter_type: GLib.VariantType) : SimpleAction;
+	new_stateful (name: string, parameter_type: GLib.VariantType, state: GLib.Variant) : SimpleAction;
+	
+}
 
 
 
@@ -1321,9 +1422,10 @@ interface SimpleActionGroup extends GObject.Object, ActionGroup, ActionMap {
 	remove (action_name: string) : void;
 }
 
-var SimpleActionGroup: {       
-   new (): SimpleActionGroup;  
-}                          
+var SimpleActionGroup: {
+	new () : SimpleActionGroup;
+	
+}
 
 
 
@@ -1348,9 +1450,13 @@ interface SimpleAsyncResult extends GObject.Object, AsyncResult {
 	take_error (error: GLib.Error) : void;
 }
 
-var SimpleAsyncResult: {       
-   new (): SimpleAsyncResult;  
-}                          
+var SimpleAsyncResult: {
+	new (source_object: GObject.Object, callback: AsyncReadyCallback, user_data: any, source_tag: any) : SimpleAsyncResult;
+	new_error (source_object: GObject.Object, callback: AsyncReadyCallback, user_data: any, domain: GLib.Quark, code: number, format: string) : SimpleAsyncResult;
+	new_from_error (source_object: GObject.Object, callback: AsyncReadyCallback, user_data: any, error: GLib.Error) : SimpleAsyncResult;
+	new_take_error (source_object: GObject.Object, callback: AsyncReadyCallback, user_data: any, error: GLib.Error) : SimpleAsyncResult;
+	
+}
 
 
 
@@ -1359,9 +1465,10 @@ interface SimpleIOStream extends IOStream {
 	
 }
 
-var SimpleIOStream: {       
-   new (): SimpleIOStream;  
-}                          
+var SimpleIOStream: {
+	new (input_stream: InputStream, output_stream: OutputStream) : IOStream;
+	
+}
 
 
 
@@ -1370,9 +1477,10 @@ interface SimplePermission extends Permission {
 	
 }
 
-var SimplePermission: {       
-   new (): SimplePermission;  
-}                          
+var SimplePermission: {
+	new (allowed: boolean) : Permission;
+	
+}
 
 
 
@@ -1383,9 +1491,10 @@ interface SimpleProxyResolver extends GObject.Object, ProxyResolver {
 	set_uri_proxy (uri_scheme: string, proxy: string) : void;
 }
 
-var SimpleProxyResolver: {       
-   new (): SimpleProxyResolver;  
-}                          
+var SimpleProxyResolver: {
+	
+	
+}
 
 
 
@@ -1445,9 +1554,11 @@ interface Socket extends GObject.Object, Initable {
 	speaks_ipv4 () : boolean;
 }
 
-var Socket: {       
-   new (): Socket;  
-}                          
+var Socket: {
+	new (family: SocketFamily, _type: SocketType, protocol: SocketProtocol) : Socket;
+	new_from_fd (fd: number) : Socket;
+	
+}
 
 
 
@@ -1458,9 +1569,10 @@ interface SocketAddress extends GObject.Object, SocketConnectable {
 	to_native (dest: any, destlen: number) : boolean;
 }
 
-var SocketAddress: {       
-   new (): SocketAddress;  
-}                          
+var SocketAddress: {
+	new_from_native (_native: any, len: number) : SocketAddress;
+	
+}
 
 
 
@@ -1471,9 +1583,10 @@ interface SocketAddressEnumerator extends GObject.Object {
 	next_finish (result: AsyncResult) : SocketAddress;
 }
 
-var SocketAddressEnumerator: {       
-   new (): SocketAddressEnumerator;  
-}                          
+var SocketAddressEnumerator: {
+	
+	
+}
 
 
 
@@ -1512,9 +1625,10 @@ interface SocketClient extends GObject.Object {
 	set_tls_validation_flags (flags: TlsCertificateFlags) : void;
 }
 
-var SocketClient: {       
-   new (): SocketClient;  
-}                          
+var SocketClient: {
+	new () : SocketClient;
+	
+}
 
 
 
@@ -1529,9 +1643,10 @@ interface SocketConnection extends IOStream {
 	is_connected () : boolean;
 }
 
-var SocketConnection: {       
-   new (): SocketConnection;  
-}                          
+var SocketConnection: {
+	
+	
+}
 
 
 
@@ -1543,9 +1658,10 @@ interface SocketControlMessage extends GObject.Object {
 	serialize (data: any) : void;
 }
 
-var SocketControlMessage: {       
-   new (): SocketControlMessage;  
-}                          
+var SocketControlMessage: {
+	
+	
+}
 
 
 
@@ -1565,9 +1681,10 @@ interface SocketListener extends GObject.Object {
 	set_backlog (listen_backlog: number) : void;
 }
 
-var SocketListener: {       
-   new (): SocketListener;  
-}                          
+var SocketListener: {
+	new () : SocketListener;
+	
+}
 
 
 
@@ -1578,9 +1695,10 @@ interface SocketService extends SocketListener {
 	stop () : void;
 }
 
-var SocketService: {       
-   new (): SocketService;  
-}                          
+var SocketService: {
+	new () : SocketService;
+	
+}
 
 
 
@@ -1612,9 +1730,11 @@ interface Subprocess extends GObject.Object, Initable {
 	wait_finish (result: AsyncResult) : boolean;
 }
 
-var Subprocess: {       
-   new (): Subprocess;  
-}                          
+var Subprocess: {
+	new (flags: SubprocessFlags, error: GLib.Error, argv0: string) : Subprocess;
+	newv (argv: string[], flags: SubprocessFlags) : Subprocess;
+	
+}
 
 
 
@@ -1638,9 +1758,10 @@ interface SubprocessLauncher extends GObject.Object {
 	unsetenv (variable: string) : void;
 }
 
-var SubprocessLauncher: {       
-   new (): SubprocessLauncher;  
-}                          
+var SubprocessLauncher: {
+	new (flags: SubprocessFlags) : SubprocessLauncher;
+	
+}
 
 
 
@@ -1675,9 +1796,10 @@ interface Task extends GObject.Object, AsyncResult {
 	set_task_data (task_data: any, task_data_destroy: GLib.DestroyNotify) : void;
 }
 
-var Task: {       
-   new (): Task;  
-}                          
+var Task: {
+	new (source_object: GObject.Object, cancellable: Cancellable, callback: AsyncReadyCallback, callback_data: any) : Task;
+	
+}
 
 
 
@@ -1687,9 +1809,10 @@ interface TcpConnection extends SocketConnection {
 	set_graceful_disconnect (graceful_disconnect: boolean) : void;
 }
 
-var TcpConnection: {       
-   new (): TcpConnection;  
-}                          
+var TcpConnection: {
+	
+	
+}
 
 
 
@@ -1698,9 +1821,10 @@ interface TcpWrapperConnection extends TcpConnection {
 	get_base_io_stream () : IOStream;
 }
 
-var TcpWrapperConnection: {       
-   new (): TcpWrapperConnection;  
-}                          
+var TcpWrapperConnection: {
+	new (base_io_stream: IOStream, socket: Socket) : SocketConnection;
+	
+}
 
 
 
@@ -1714,9 +1838,10 @@ interface TestDBus extends GObject.Object {
 	up () : void;
 }
 
-var TestDBus: {       
-   new (): TestDBus;  
-}                          
+var TestDBus: {
+	new (flags: TestDBusFlags) : TestDBus;
+	
+}
 
 
 
@@ -1727,9 +1852,12 @@ interface ThemedIcon extends GObject.Object, Icon {
 	prepend_name (iconname: string) : void;
 }
 
-var ThemedIcon: {       
-   new (): ThemedIcon;  
-}                          
+var ThemedIcon: {
+	new (iconname: string) : ThemedIcon;
+	new_from_names (iconnames: string[], len: number) : ThemedIcon;
+	new_with_default_fallbacks (iconname: string) : ThemedIcon;
+	
+}
 
 
 
@@ -1738,9 +1866,10 @@ interface ThreadedSocketService extends SocketService {
 	
 }
 
-var ThreadedSocketService: {       
-   new (): ThreadedSocketService;  
-}                          
+var ThreadedSocketService: {
+	new (max_threads: number) : SocketService;
+	
+}
 
 
 
@@ -1751,9 +1880,12 @@ interface TlsCertificate extends GObject.Object {
 	verify (identity: SocketConnectable, trusted_ca: TlsCertificate) : TlsCertificateFlags;
 }
 
-var TlsCertificate: {       
-   new (): TlsCertificate;  
-}                          
+var TlsCertificate: {
+	new_from_file (file: string) : TlsCertificate;
+	new_from_files (cert_file: string, key_file: string) : TlsCertificate;
+	new_from_pem (data: string, length: number) : TlsCertificate;
+	
+}
 
 
 
@@ -1779,9 +1911,10 @@ interface TlsConnection extends IOStream {
 	set_use_system_certdb (use_system_certdb: boolean) : void;
 }
 
-var TlsConnection: {       
-   new (): TlsConnection;  
-}                          
+var TlsConnection: {
+	
+	
+}
 
 
 
@@ -1802,9 +1935,10 @@ interface TlsDatabase extends GObject.Object {
 	verify_chain_finish (result: AsyncResult) : TlsCertificateFlags;
 }
 
-var TlsDatabase: {       
-   new (): TlsDatabase;  
-}                          
+var TlsDatabase: {
+	
+	
+}
 
 
 
@@ -1820,9 +1954,10 @@ interface TlsInteraction extends GObject.Object {
 	request_certificate_finish (result: AsyncResult) : TlsInteractionResult;
 }
 
-var TlsInteraction: {       
-   new (): TlsInteraction;  
-}                          
+var TlsInteraction: {
+	
+	
+}
 
 
 
@@ -1839,9 +1974,10 @@ interface TlsPassword extends GObject.Object {
 	set_warning (warning: string) : void;
 }
 
-var TlsPassword: {       
-   new (): TlsPassword;  
-}                          
+var TlsPassword: {
+	new (flags: TlsPasswordFlags, description: string) : TlsPassword;
+	
+}
 
 
 
@@ -1857,9 +1993,10 @@ interface UnixConnection extends SocketConnection {
 	send_fd (fd: number, cancellable: Cancellable) : boolean;
 }
 
-var UnixConnection: {       
-   new (): UnixConnection;  
-}                          
+var UnixConnection: {
+	
+	
+}
 
 
 
@@ -1868,9 +2005,11 @@ interface UnixCredentialsMessage extends SocketControlMessage {
 	get_credentials () : Credentials;
 }
 
-var UnixCredentialsMessage: {       
-   new (): UnixCredentialsMessage;  
-}                          
+var UnixCredentialsMessage: {
+	new () : SocketControlMessage;
+	new_with_credentials (credentials: Credentials) : SocketControlMessage;
+	
+}
 
 
 
@@ -1883,9 +2022,11 @@ interface UnixFDList extends GObject.Object {
 	steal_fds (length: number) : number[];
 }
 
-var UnixFDList: {       
-   new (): UnixFDList;  
-}                          
+var UnixFDList: {
+	new () : UnixFDList;
+	new_from_array (fds: number[], n_fds: number) : UnixFDList;
+	
+}
 
 
 
@@ -1896,9 +2037,11 @@ interface UnixFDMessage extends SocketControlMessage {
 	steal_fds (length: number) : number[];
 }
 
-var UnixFDMessage: {       
-   new (): UnixFDMessage;  
-}                          
+var UnixFDMessage: {
+	new () : SocketControlMessage;
+	new_with_fd_list (fd_list: UnixFDList) : SocketControlMessage;
+	
+}
 
 
 
@@ -1909,9 +2052,10 @@ interface UnixInputStream extends InputStream, FileDescriptorBased, PollableInpu
 	set_close_fd (close_fd: boolean) : void;
 }
 
-var UnixInputStream: {       
-   new (): UnixInputStream;  
-}                          
+var UnixInputStream: {
+	new (fd: number, close_fd: boolean) : InputStream;
+	
+}
 
 
 
@@ -1920,9 +2064,10 @@ interface UnixMountMonitor extends GObject.Object {
 	set_rate_limit (limit_msec: number) : void;
 }
 
-var UnixMountMonitor: {       
-   new (): UnixMountMonitor;  
-}                          
+var UnixMountMonitor: {
+	new () : UnixMountMonitor;
+	
+}
 
 
 
@@ -1933,9 +2078,10 @@ interface UnixOutputStream extends OutputStream, FileDescriptorBased, PollableOu
 	set_close_fd (close_fd: boolean) : void;
 }
 
-var UnixOutputStream: {       
-   new (): UnixOutputStream;  
-}                          
+var UnixOutputStream: {
+	new (fd: number, close_fd: boolean) : OutputStream;
+	
+}
 
 
 
@@ -1947,9 +2093,12 @@ interface UnixSocketAddress extends SocketAddress, SocketConnectable {
 	get_path_len () : number;
 }
 
-var UnixSocketAddress: {       
-   new (): UnixSocketAddress;  
-}                          
+var UnixSocketAddress: {
+	new (path: string) : SocketAddress;
+	new_abstract (path: string[], path_len: number) : SocketAddress;
+	new_with_type (path: string[], path_len: number, _type: UnixSocketAddressType) : SocketAddress;
+	
+}
 
 
 
@@ -1962,9 +2111,10 @@ interface Vfs extends GObject.Object {
 	parse_name (parse_name: string) : File;
 }
 
-var Vfs: {       
-   new (): Vfs;  
-}                          
+var Vfs: {
+	
+	
+}
 
 
 
@@ -1977,9 +2127,10 @@ interface VolumeMonitor extends GObject.Object {
 	get_volumes () : GLib.List;
 }
 
-var VolumeMonitor: {       
-   new (): VolumeMonitor;  
-}                          
+var VolumeMonitor: {
+	
+	
+}
 
 
 
@@ -1989,9 +2140,10 @@ interface ZlibCompressor extends GObject.Object, Converter {
 	set_file_info (file_info: FileInfo) : void;
 }
 
-var ZlibCompressor: {       
-   new (): ZlibCompressor;  
-}                          
+var ZlibCompressor: {
+	new (format: ZlibCompressorFormat, level: number) : ZlibCompressor;
+	
+}
 
 
 
@@ -2000,9 +2152,10 @@ interface ZlibDecompressor extends GObject.Object, Converter {
 	get_file_info () : FileInfo;
 }
 
-var ZlibDecompressor: {       
-   new (): ZlibDecompressor;  
-}                          
+var ZlibDecompressor: {
+	new (format: ZlibCompressorFormat) : ZlibDecompressor;
+	
+}
 
 
 
@@ -4516,9 +4669,10 @@ interface Action {
 	get_state_type () : GLib.VariantType;
 }
 
-var Action: {       
-   new (): Action;  
-}                          
+var Action: {
+	
+	
+}
 
 
 
@@ -4540,9 +4694,10 @@ interface ActionGroup {
 	query_action (action_name: string, enabled: boolean, parameter_type: GLib.VariantType, state_type: GLib.VariantType, state_hint: GLib.Variant, state: GLib.Variant) : boolean;
 }
 
-var ActionGroup: {       
-   new (): ActionGroup;  
-}                          
+var ActionGroup: {
+	
+	
+}
 
 
 
@@ -4554,9 +4709,10 @@ interface ActionMap {
 	remove_action (action_name: string) : void;
 }
 
-var ActionMap: {       
-   new (): ActionMap;  
-}                          
+var ActionMap: {
+	
+	
+}
 
 
 
@@ -4587,9 +4743,10 @@ interface AppInfo {
 	supports_uris () : boolean;
 }
 
-var AppInfo: {       
-   new (): AppInfo;  
-}                          
+var AppInfo: {
+	
+	
+}
 
 
 
@@ -4600,9 +4757,10 @@ interface AsyncInitable {
 	new_finish (res: AsyncResult) : GObject.Object;
 }
 
-var AsyncInitable: {       
-   new (): AsyncInitable;  
-}                          
+var AsyncInitable: {
+	
+	
+}
 
 
 
@@ -4614,9 +4772,10 @@ interface AsyncResult {
 	legacy_propagate_error () : boolean;
 }
 
-var AsyncResult: {       
-   new (): AsyncResult;  
-}                          
+var AsyncResult: {
+	
+	
+}
 
 
 
@@ -4626,9 +4785,10 @@ interface Converter {
 	reset () : void;
 }
 
-var Converter: {       
-   new (): Converter;  
-}                          
+var Converter: {
+	
+	
+}
 
 
 
@@ -4640,9 +4800,10 @@ interface DBusInterface {
 	set_object (object: DBusObject) : void;
 }
 
-var DBusInterface: {       
-   new (): DBusInterface;  
-}                          
+var DBusInterface: {
+	
+	
+}
 
 
 
@@ -4653,9 +4814,10 @@ interface DBusObject {
 	get_object_path () : string;
 }
 
-var DBusObject: {       
-   new (): DBusObject;  
-}                          
+var DBusObject: {
+	
+	
+}
 
 
 
@@ -4667,9 +4829,10 @@ interface DBusObjectManager {
 	get_objects () : GLib.List;
 }
 
-var DBusObjectManager: {       
-   new (): DBusObjectManager;  
-}                          
+var DBusObjectManager: {
+	
+	
+}
 
 
 
@@ -4678,9 +4841,10 @@ interface DesktopAppInfoLookup {
 	get_default_for_uri_scheme (uri_scheme: string) : AppInfo;
 }
 
-var DesktopAppInfoLookup: {       
-   new (): DesktopAppInfoLookup;  
-}                          
+var DesktopAppInfoLookup: {
+	
+	
+}
 
 
 
@@ -4715,9 +4879,10 @@ interface Drive {
 	stop_finish (result: AsyncResult) : boolean;
 }
 
-var Drive: {       
-   new (): Drive;  
-}                          
+var Drive: {
+	
+	
+}
 
 
 
@@ -4843,9 +5008,10 @@ interface File {
 	unmount_mountable_with_operation_finish (result: AsyncResult) : boolean;
 }
 
-var File: {       
-   new (): File;  
-}                          
+var File: {
+	
+	
+}
 
 
 
@@ -4854,9 +5020,10 @@ interface FileDescriptorBased {
 	get_fd () : number;
 }
 
-var FileDescriptorBased: {       
-   new (): FileDescriptorBased;  
-}                          
+var FileDescriptorBased: {
+	
+	
+}
 
 
 
@@ -4867,9 +5034,10 @@ interface Icon {
 	to_string () : string;
 }
 
-var Icon: {       
-   new (): Icon;  
-}                          
+var Icon: {
+	
+	
+}
 
 
 
@@ -4878,9 +5046,10 @@ interface Initable {
 	init (cancellable: Cancellable) : boolean;
 }
 
-var Initable: {       
-   new (): Initable;  
-}                          
+var Initable: {
+	
+	
+}
 
 
 
@@ -4893,9 +5062,10 @@ interface ListModel {
 	items_changed (position: number, removed: number, added: number) : void;
 }
 
-var ListModel: {       
-   new (): ListModel;  
-}                          
+var ListModel: {
+	
+	
+}
 
 
 
@@ -4906,9 +5076,10 @@ interface LoadableIcon {
 	load_finish (res: AsyncResult, _type: string) : InputStream;
 }
 
-var LoadableIcon: {       
-   new (): LoadableIcon;  
-}                          
+var LoadableIcon: {
+	
+	
+}
 
 
 
@@ -4943,9 +5114,10 @@ interface Mount {
 	unshadow () : void;
 }
 
-var Mount: {       
-   new (): Mount;  
-}                          
+var Mount: {
+	
+	
+}
 
 
 
@@ -4958,9 +5130,10 @@ interface NetworkMonitor {
 	get_network_available () : boolean;
 }
 
-var NetworkMonitor: {       
-   new (): NetworkMonitor;  
-}                          
+var NetworkMonitor: {
+	
+	
+}
 
 
 
@@ -4972,9 +5145,10 @@ interface PollableInputStream {
 	read_nonblocking (buffer: number[], count: number, cancellable: Cancellable) : number;
 }
 
-var PollableInputStream: {       
-   new (): PollableInputStream;  
-}                          
+var PollableInputStream: {
+	
+	
+}
 
 
 
@@ -4986,9 +5160,10 @@ interface PollableOutputStream {
 	write_nonblocking (buffer: number[], count: number, cancellable: Cancellable) : number;
 }
 
-var PollableOutputStream: {       
-   new (): PollableOutputStream;  
-}                          
+var PollableOutputStream: {
+	
+	
+}
 
 
 
@@ -5000,9 +5175,10 @@ interface Proxy {
 	supports_hostname () : boolean;
 }
 
-var Proxy: {       
-   new (): Proxy;  
-}                          
+var Proxy: {
+	
+	
+}
 
 
 
@@ -5014,9 +5190,10 @@ interface ProxyResolver {
 	lookup_finish (result: AsyncResult) : string[];
 }
 
-var ProxyResolver: {       
-   new (): ProxyResolver;  
-}                          
+var ProxyResolver: {
+	
+	
+}
 
 
 
@@ -5026,9 +5203,10 @@ interface RemoteActionGroup {
 	change_action_state_full (action_name: string, value: GLib.Variant, platform_data: GLib.Variant) : void;
 }
 
-var RemoteActionGroup: {       
-   new (): RemoteActionGroup;  
-}                          
+var RemoteActionGroup: {
+	
+	
+}
 
 
 
@@ -5041,9 +5219,10 @@ interface Seekable {
 	truncate (offset: number, cancellable: Cancellable) : boolean;
 }
 
-var Seekable: {       
-   new (): Seekable;  
-}                          
+var Seekable: {
+	
+	
+}
 
 
 
@@ -5053,9 +5232,10 @@ interface SocketConnectable {
 	proxy_enumerate () : SocketAddressEnumerator;
 }
 
-var SocketConnectable: {       
-   new (): SocketConnectable;  
-}                          
+var SocketConnectable: {
+	
+	
+}
 
 
 
@@ -5069,9 +5249,10 @@ interface TlsBackend {
 	supports_tls () : boolean;
 }
 
-var TlsBackend: {       
-   new (): TlsBackend;  
-}                          
+var TlsBackend: {
+	
+	
+}
 
 
 
@@ -5087,9 +5268,10 @@ interface TlsClientConnection {
 	set_validation_flags (flags: TlsCertificateFlags) : void;
 }
 
-var TlsClientConnection: {       
-   new (): TlsClientConnection;  
-}                          
+var TlsClientConnection: {
+	
+	
+}
 
 
 
@@ -5098,9 +5280,10 @@ interface TlsFileDatabase {
 	
 }
 
-var TlsFileDatabase: {       
-   new (): TlsFileDatabase;  
-}                          
+var TlsFileDatabase: {
+	
+	
+}
 
 
 
@@ -5109,9 +5292,10 @@ interface TlsServerConnection {
 	
 }
 
-var TlsServerConnection: {       
-   new (): TlsServerConnection;  
-}                          
+var TlsServerConnection: {
+	
+	
+}
 
 
 
@@ -5138,9 +5322,10 @@ interface Volume {
 	should_automount () : boolean;
 }
 
-var Volume: {       
-   new (): Volume;  
-}                          
+var Volume: {
+	
+	
+}
 
 
 

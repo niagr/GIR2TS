@@ -24,9 +24,10 @@ interface Context extends GObject.Object {
 	set_matrix (matrix: Matrix) : void;
 }
 
-var Context: {       
-   new (): Context;  
-}                          
+var Context: {
+	new () : Context;
+	
+}
 
 
 
@@ -35,9 +36,10 @@ interface Engine extends GObject.Object {
 	
 }
 
-var Engine: {       
-   new (): Engine;  
-}                          
+var Engine: {
+	
+	
+}
 
 
 
@@ -46,9 +48,10 @@ interface EngineLang extends Engine {
 	
 }
 
-var EngineLang: {       
-   new (): EngineLang;  
-}                          
+var EngineLang: {
+	
+	
+}
 
 
 
@@ -57,9 +60,10 @@ interface EngineShape extends Engine {
 	
 }
 
-var EngineShape: {       
-   new (): EngineShape;  
-}                          
+var EngineShape: {
+	
+	
+}
 
 
 
@@ -74,9 +78,10 @@ interface Font extends GObject.Object {
 	get_metrics (language: Language) : FontMetrics;
 }
 
-var Font: {       
-   new (): Font;  
-}                          
+var Font: {
+	
+	
+}
 
 
 
@@ -88,9 +93,10 @@ interface FontFace extends GObject.Object {
 	list_sizes (sizes: number[], n_sizes: number) : void;
 }
 
-var FontFace: {       
-   new (): FontFace;  
-}                          
+var FontFace: {
+	
+	
+}
 
 
 
@@ -101,9 +107,10 @@ interface FontFamily extends GObject.Object {
 	list_faces (faces: FontFace[], n_faces: number) : void;
 }
 
-var FontFamily: {       
-   new (): FontFamily;  
-}                          
+var FontFamily: {
+	
+	
+}
 
 
 
@@ -118,9 +125,10 @@ interface FontMap extends GObject.Object {
 	load_fontset (context: Context, desc: FontDescription, language: Language) : Fontset;
 }
 
-var FontMap: {       
-   new (): FontMap;  
-}                          
+var FontMap: {
+	
+	
+}
 
 
 
@@ -131,9 +139,10 @@ interface Fontset extends GObject.Object {
 	get_metrics () : FontMetrics;
 }
 
-var Fontset: {       
-   new (): Fontset;  
-}                          
+var Fontset: {
+	
+	
+}
 
 
 
@@ -143,9 +152,10 @@ interface FontsetSimple extends Fontset {
 	size () : number;
 }
 
-var FontsetSimple: {       
-   new (): FontsetSimple;  
-}                          
+var FontsetSimple: {
+	new (language: Language) : FontsetSimple;
+	
+}
 
 
 
@@ -209,9 +219,10 @@ interface Layout extends GObject.Object {
 	xy_to_index (_x: number, _y: number, index_: number, trailing: number) : boolean;
 }
 
-var Layout: {       
-   new (): Layout;  
-}                          
+var Layout: {
+	new (context: Context) : Layout;
+	
+}
 
 
 
@@ -238,9 +249,10 @@ interface Renderer extends GObject.Object {
 	set_matrix (matrix: Matrix) : void;
 }
 
-var Renderer: {       
-   new (): Renderer;  
-}                          
+var Renderer: {
+	
+	
+}
 
 
 
