@@ -52,7 +52,7 @@ var GIR2TS;
             type = convertToJSType(param_node.type[0].$.name);
             is_primitive = (type !== param_node.type[0].$.name);
         }
-        else if (param_node.array) {
+        else if (param_node.array && param_node.array.type) {
             type = convertToJSType(param_node.array[0].type[0].$.name) + '[]';
             is_primitive = (type !== (param_node.array[0].type[0].$.name + '[]'));
         }

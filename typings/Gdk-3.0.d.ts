@@ -40,13 +40,13 @@ var Cursor: {
 
 interface Device extends GObject.Object {
 	get_associated_device () : Device;
-	get_axis (axes: number[], use: AxisUse, value: number) : boolean;
+	get_axis (axes: , use: AxisUse, value: number) : boolean;
 	get_axis_use (index_: number) : AxisUse;
-	get_axis_value (axes: number[], axis_label: Atom, value: number) : boolean;
+	get_axis_value (axes: , axis_label: Atom, value: number) : boolean;
 	get_device_type () : DeviceType;
 	get_display () : Display;
 	get_has_cursor () : boolean;
-	get_history (window: Window, start: number, stop: number, events: TimeCoord[], n_events: number) : boolean;
+	get_history (window: Window, start: number, stop: number, events: , n_events: number) : boolean;
 	get_key (index_: number, keyval: number, modifiers: ModifierType) : boolean;
 	get_last_event_window () : Window;
 	get_mode () : InputMode;
@@ -57,7 +57,7 @@ interface Device extends GObject.Object {
 	get_position_double (screen: Screen, _x: number, _y: number) : void;
 	get_product_id () : string;
 	get_source () : InputSource;
-	get_state (window: Window, axes: number[], mask: ModifierType) : void;
+	get_state (window: Window, axes: , mask: ModifierType) : void;
 	get_vendor_id () : string;
 	get_window_at_position (win_x: number, win_y: number) : Window;
 	get_window_at_position_double (win_x: number, win_y: number) : Window;
@@ -73,7 +73,8 @@ interface Device extends GObject.Object {
 
 var Device: {
 	
-	
+	free_history (events: , n_events: number) : void;
+	grab_info_libgtk_only (display: Display, device: Device, grab_window: Window, owner_events: boolean) : boolean;
 }
 
 
@@ -122,7 +123,7 @@ interface Display extends GObject.Object {
 	request_selection_notification (selection: Atom) : boolean;
 	set_double_click_distance (distance: number) : void;
 	set_double_click_time (msec: number) : void;
-	store_clipboard (clipboard_window: Window, time_: number, targets: Atom[], n_targets: number) : void;
+	store_clipboard (clipboard_window: Window, time_: number, targets: , n_targets: number) : void;
 	supports_clipboard_persistence () : boolean;
 	supports_composite () : boolean;
 	supports_cursor_alpha () : boolean;
@@ -136,7 +137,9 @@ interface Display extends GObject.Object {
 
 var Display: {
 	
-	
+	get_default () : Display;
+	open (display_name: string) : Display;
+	open_default_libgtk_only () : Display;
 }
 
 
@@ -151,7 +154,7 @@ interface DisplayManager extends GObject.Object {
 
 var DisplayManager: {
 	
-	
+	get () : DisplayManager;
 }
 
 
@@ -214,7 +217,8 @@ interface GLContext extends GObject.Object {
 
 var GLContext: {
 	
-	
+	clear_current () : void;
+	get_current () : GLContext;
 }
 
 
@@ -224,8 +228,8 @@ interface Keymap extends GObject.Object {
 	add_virtual_modifiers (state: ModifierType) : void;
 	get_caps_lock_state () : boolean;
 	get_direction () : Pango.Direction;
-	get_entries_for_keycode (hardware_keycode: number, keys: KeymapKey[], keyvals: number[], n_entries: number) : boolean;
-	get_entries_for_keyval (keyval: number, keys: KeymapKey[], n_keys: number) : boolean;
+	get_entries_for_keycode (hardware_keycode: number, keys: , keyvals: , n_entries: number) : boolean;
+	get_entries_for_keyval (keyval: number, keys: , n_keys: number) : boolean;
 	get_modifier_mask (intent: ModifierIntent) : ModifierType;
 	get_modifier_state () : number;
 	get_num_lock_state () : boolean;
@@ -238,7 +242,8 @@ interface Keymap extends GObject.Object {
 
 var Keymap: {
 	
-	
+	get_default () : Keymap;
+	get_for_display (display: Display) : Keymap;
 }
 
 
@@ -279,7 +284,11 @@ interface Screen extends GObject.Object {
 
 var Screen: {
 	
-	
+	get_default () : Screen;
+	height () : number;
+	height_mm () : number;
+	width () : number;
+	width_mm () : number;
 }
 
 
@@ -299,7 +308,13 @@ interface Visual extends GObject.Object {
 
 var Visual: {
 	
-	
+	get_best () : Visual;
+	get_best_depth () : number;
+	get_best_type () : VisualType;
+	get_best_with_both (depth: number, visual_type: VisualType) : Visual;
+	get_best_with_depth (depth: number) : Visual;
+	get_best_with_type (visual_type: VisualType) : Visual;
+	get_system () : Visual;
 }
 
 
@@ -464,7 +479,10 @@ interface Window extends GObject.Object {
 
 var Window: {
 	new (parent: Window, attributes: WindowAttr, attributes_mask: WindowAttributesType) : Window;
-	
+	at_pointer (win_x: number, win_y: number) : Window;
+	constrain_size (geometry: Geometry, flags: WindowHints, width: number, height: number, new_width: number, new_height: number) : void;
+	process_all_updates () : void;
+	set_debug_updates (setting: boolean) : void;
 }
 
 
@@ -922,7 +940,7 @@ class Rectangle {
 
 class TimeCoord {
 	public time: number;
-	public axes: number[];
+	public axes: ;
 
 
 }
@@ -1769,11 +1787,11 @@ function gl_error_quark (): GLib.Quark;
 
 
 
-function init (argc: number, argv: string[]): void;
+function init (argc: number, argv: ): void;
 
 
 
-function init_check (argc: number, argv: string[]): boolean;
+function init_check (argc: number, argv: ): boolean;
 
 
 
@@ -1853,11 +1871,11 @@ function pango_layout_get_clip_region (layout: Pango.Layout, x_origin: number, y
 
 
 
-function pango_layout_line_get_clip_region (line: Pango.LayoutLine, x_origin: number, y_origin: number, index_ranges: number[], n_ranges: number): cairo.Region;
+function pango_layout_line_get_clip_region (line: Pango.LayoutLine, x_origin: number, y_origin: number, index_ranges: , n_ranges: number): cairo.Region;
 
 
 
-function parse_args (argc: number, argv: string[]): void;
+function parse_args (argc: number, argv: ): void;
 
 
 
@@ -1893,15 +1911,15 @@ function property_delete (window: Window, property: Atom): void;
 
 
 
-function property_get (window: Window, property: Atom, _type: Atom, offset: number, length: number, pdelete: number, actual_property_type: Atom, actual_format: number, actual_length: number, data: number[]): boolean;
+function property_get (window: Window, property: Atom, _type: Atom, offset: number, length: number, pdelete: number, actual_property_type: Atom, actual_format: number, actual_length: number, data: ): boolean;
 
 
 
-function query_depths (depths: number[], count: number): void;
+function query_depths (depths: , count: number): void;
 
 
 
-function query_visual_types (visual_types: VisualType[], count: number): void;
+function query_visual_types (visual_types: , count: number): void;
 
 
 
@@ -1973,7 +1991,7 @@ function test_simulate_key (window: Window, _x: number, _y: number, keyval: numb
 
 
 
-function text_property_to_utf8_list_for_display (display: Display, encoding: Atom, format: number, text: number[], length: number, list: string[]): number;
+function text_property_to_utf8_list_for_display (display: Display, encoding: Atom, format: number, text: , length: number, list: ): number;
 
 
 

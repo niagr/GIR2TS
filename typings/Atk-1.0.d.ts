@@ -6,7 +6,7 @@ interface GObjectAccessible extends Object {
 
 var GObjectAccessible: {
 	
-	
+	for_object (obj: GObject.Object) : Object;
 }
 
 
@@ -38,15 +38,15 @@ interface Misc extends GObject.Object {
 
 var Misc: {
 	
-	
+	get_instance () : Misc;
 }
 
 
 
 
-interface NoOpObject extends Object, Action, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value, Window {
+// interface NoOpObject extends Object, Action, Component, Document, EditableText, Hypertext, Image, Selection, Table, TableCell, Text, Value, Window {
 	
-}
+// }
 
 var NoOpObject: {
 	new (obj: GObject.Object) : Object;
@@ -72,7 +72,7 @@ interface Object extends GObject.Object {
 	add_relationship (relationship: RelationType, target: Object) : boolean;
 	connect_property_change_handler (handler: PropertyChangeHandler) : number;
 	get_attributes () : AttributeSet;
-	get_description () : string;
+	// get_description () : string;
 	get_index_in_parent () : number;
 	get_layer () : Layer;
 	get_mdi_zorder () : number;
@@ -146,12 +146,12 @@ var Registry: {
 interface Relation extends GObject.Object {
 	add_target (target: Object) : void;
 	get_relation_type () : RelationType;
-	get_target () : Object[];
+	get_target () : ;
 	remove_target (target: Object) : boolean;
 }
 
 var Relation: {
-	new (targets: Object[], n_targets: number, relationship: RelationType) : Relation;
+	new (targets: , n_targets: number, relationship: RelationType) : Relation;
 	
 }
 
@@ -192,11 +192,11 @@ var Socket: {
 
 interface StateSet extends GObject.Object {
 	add_state (_type: StateType) : boolean;
-	add_states (types: StateType[], n_types: number) : void;
+	add_states (types: , n_types: number) : void;
 	and_sets (compare_set: StateSet) : StateSet;
 	clear_states () : void;
 	contains_state (_type: StateType) : boolean;
-	contains_states (types: StateType[], n_types: number) : boolean;
+	contains_states (types: , n_types: number) : boolean;
 	is_empty () : boolean;
 	or_sets (compare_set: StateSet) : StateSet;
 	remove_state (_type: StateType) : boolean;
@@ -387,7 +387,7 @@ class KeyEventStruct {
 
 class MiscClass {
 	public parent: GObject.ObjectClass;
-	public vfuncs: any[];
+	public vfuncs: ;
 
 	threads_enter : {(misc: Misc) : void;};
 	threads_leave : {(misc: Misc) : void;};
@@ -580,10 +580,10 @@ class TableCellIface {
 	public parent: GObject.TypeInterface;
 
 	get_column_span : {(cell: TableCell) : number;};
-	get_column_header_cells : {(cell: TableCell) : Object[];};
+	get_column_header_cells : {(cell: TableCell) : ;};
 	get_position : {(cell: TableCell, _row: number, column: number) : boolean;};
 	get_row_span : {(cell: TableCell) : number;};
-	get_row_header_cells : {(cell: TableCell) : Object[];};
+	get_row_header_cells : {(cell: TableCell) : ;};
 	get_row_column_span : {(cell: TableCell, _row: number, column: number, row_span: number, column_span: number) : boolean;};
 	get_table : {(cell: TableCell) : Object;};
 
@@ -731,13 +731,13 @@ class WindowIface {
 
 
 interface Action {
-	do_action (_i: number) : boolean;
-	get_description (_i: number) : string;
-	get_keybinding (_i: number) : string;
-	get_localized_name (_i: number) : string;
-	get_n_actions () : number;
-	get_name (_i: number) : string;
-	set_description (_i: number, desc: string) : boolean;
+	// do_action (_i: number) : boolean;
+	// get_description (_i: number) : string;
+	// get_keybinding (_i: number) : string;
+	// get_localized_name (_i: number) : string;
+	// get_n_actions () : number;
+	// get_name (_i: number) : string;
+	// set_description (_i: number, desc: string) : boolean;
 }
 
 var Action: {
@@ -757,7 +757,7 @@ interface Component {
 	get_mdi_zorder () : number;
 	get_position (_x: number, _y: number, coord_type: CoordType) : void;
 	get_size (width: number, height: number) : void;
-	grab_focus () : boolean;
+	// grab_focus () : boolean;
 	ref_accessible_at_point (_x: number, _y: number, coord_type: CoordType) : Object;
 	remove_focus_handler (handler_id: number) : void;
 	set_extents (_x: number, _y: number, width: number, height: number, coord_type: CoordType) : boolean;
@@ -938,11 +938,11 @@ var Table: {
 
 
 interface TableCell {
-	get_column_header_cells () : Object[];
+	get_column_header_cells () : ;
 	get_column_span () : number;
 	get_position (_row: number, column: number) : boolean;
 	get_row_column_span (_row: number, column: number, row_span: number, column_span: number) : boolean;
-	get_row_header_cells () : Object[];
+	get_row_header_cells () : ;
 	get_row_span () : number;
 	get_table () : Object;
 }
@@ -957,7 +957,7 @@ var TableCell: {
 
 interface Text {
 	add_selection (start_offset: number, end_offset: number) : boolean;
-	get_bounded_ranges (rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType) : TextRange[];
+	get_bounded_ranges (rect: TextRectangle, coord_type: CoordType, x_clip_type: TextClipType, y_clip_type: TextClipType) : ;
 	get_caret_offset () : number;
 	get_character_at_offset (offset: number) : string;
 	get_character_count () : number;
@@ -980,7 +980,7 @@ interface Text {
 
 var Text: {
 	
-	
+	free_ranges (ranges: ) : void;
 }
 
 
@@ -1519,7 +1519,7 @@ function text_attribute_register (name: string): TextAttribute;
 
 
 
-function text_free_ranges (ranges: TextRange[]): void;
+function text_free_ranges (ranges: ): void;
 
 
 

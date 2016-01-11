@@ -46,16 +46,16 @@ class BookmarkFile {
 	public free () : void;
 	public get_added (uri: string) : number;
 	public get_app_info (uri: string, name: string, exec: string, count: number, stamp: number) : boolean;
-	public get_applications (uri: string, length: number) : string[];
+	public get_applications (uri: string, length: number) : ;
 	public get_description (uri: string) : string;
-	public get_groups (uri: string, length: number) : string[];
+	public get_groups (uri: string, length: number) : ;
 	public get_icon (uri: string, href: string, mime_type: string) : boolean;
 	public get_is_private (uri: string) : boolean;
 	public get_mime_type (uri: string) : string;
 	public get_modified (uri: string) : number;
 	public get_size () : number;
 	public get_title (uri: string) : string;
-	public get_uris (length: number) : string[];
+	public get_uris (length: number) : ;
 	public get_visited (uri: string) : number;
 	public has_application (uri: string, name: string) : boolean;
 	public has_group (uri: string, group: string) : boolean;
@@ -97,13 +97,13 @@ class Bytes {
 
 	public compare (bytes2: Bytes) : number;
 	public equal (bytes2: Bytes) : boolean;
-	public get_data (size: number) : number[];
+	public get_data (size: number) : ;
 	public get_size () : number;
 	public hash () : number;
 	public new_from_bytes (offset: number, length: number) : Bytes;
 	public ref () : Bytes;
 	public unref () : void;
-	public unref_to_array () : number[];
+	public unref_to_array () : ;
 	public unref_to_data (size: number) : any;
 }
 
@@ -117,14 +117,14 @@ class Checksum {
 	public get_digest (buffer: number, digest_len: number) : void;
 	public get_string () : string;
 	public reset () : void;
-	public update (data: number[], length: number) : void;
+	public update (data: , length: number) : void;
 }
 
 
 
 class Cond {
 	public p: any;
-	public i: number[];
+	public i: ;
 
 
 	public broadcast () : void;
@@ -298,7 +298,7 @@ class Hmac {
 	public get_string () : string;
 	public ref () : Hmac;
 	public unref () : void;
-	public update (data: number[], length: number) : void;
+	public update (data: , length: number) : void;
 }
 
 
@@ -326,7 +326,7 @@ class HookList {
 	public hooks: Hook;
 	public dummy3: any;
 	public finalize_hook: HookFinalizeFunc;
-	public dummy: any[];
+	public dummy: ;
 
 
 	public clear () : void;
@@ -360,7 +360,7 @@ class IOChannel {
 	public read_buf: String;
 	public encoded_read_buf: String;
 	public write_buf: String;
-	public partial_write_buf: string[];
+	public partial_write_buf: ;
 	public use_buffer: number;
 	public do_encode: number;
 	public close_on_unref: number;
@@ -382,10 +382,10 @@ class IOChannel {
 	public get_line_term (length: number) : string;
 	public init () : void;
 	public read (buf: string, count: number, bytes_read: number) : IOError;
-	public read_chars (buf: number[], count: number, bytes_read: number) : IOStatus;
+	public read_chars (buf: , count: number, bytes_read: number) : IOStatus;
 	public read_line (str_return: string, length: number, terminator_pos: number) : IOStatus;
 	public read_line_string (buffer: String, terminator_pos: number) : IOStatus;
-	public read_to_end (str_return: number[], length: number) : IOStatus;
+	public read_to_end (str_return: , length: number) : IOStatus;
 	public read_unichar (thechar: string) : IOStatus;
 	public ref () : IOChannel;
 	public seek (offset: number, _type: SeekType) : IOError;
@@ -400,7 +400,7 @@ class IOChannel {
 	public unix_get_fd () : number;
 	public unref () : void;
 	public write (buf: string, count: number, bytes_written: number) : IOError;
-	public write_chars (buf: number[], count: number, bytes_written: number) : IOStatus;
+	public write_chars (buf: , count: number, bytes_written: number) : IOStatus;
 	public write_unichar (thechar: string) : IOStatus;
 }
 
@@ -426,27 +426,27 @@ class KeyFile {
 
 	public free () : void;
 	public get_boolean (group_name: string, key: string) : boolean;
-	public get_boolean_list (group_name: string, key: string, length: number) : boolean[];
+	public get_boolean_list (group_name: string, key: string, length: number) : ;
 	public get_comment (group_name: string, key: string) : string;
 	public get_double (group_name: string, key: string) : number;
-	public get_double_list (group_name: string, key: string, length: number) : number[];
-	public get_groups (length: number) : string[];
+	public get_double_list (group_name: string, key: string, length: number) : ;
+	public get_groups (length: number) : ;
 	public get_int64 (group_name: string, key: string) : number;
 	public get_integer (group_name: string, key: string) : number;
-	public get_integer_list (group_name: string, key: string, length: number) : number[];
-	public get_keys (group_name: string, length: number) : string[];
+	public get_integer_list (group_name: string, key: string, length: number) : ;
+	public get_keys (group_name: string, length: number) : ;
 	public get_locale_string (group_name: string, key: string, locale: string) : string;
-	public get_locale_string_list (group_name: string, key: string, locale: string, length: number) : string[];
+	public get_locale_string_list (group_name: string, key: string, locale: string, length: number) : ;
 	public get_start_group () : string;
 	public get_string (group_name: string, key: string) : string;
-	public get_string_list (group_name: string, key: string, length: number) : string[];
+	public get_string_list (group_name: string, key: string, length: number) : ;
 	public get_uint64 (group_name: string, key: string) : number;
 	public get_value (group_name: string, key: string) : string;
 	public has_group (group_name: string) : boolean;
 	public has_key (group_name: string, key: string) : boolean;
 	public load_from_data (data: string, length: number, flags: KeyFileFlags) : boolean;
 	public load_from_data_dirs (file: string, full_path: string, flags: KeyFileFlags) : boolean;
-	public load_from_dirs (file: string, search_dirs: string[], full_path: string, flags: KeyFileFlags) : boolean;
+	public load_from_dirs (file: string, search_dirs: , full_path: string, flags: KeyFileFlags) : boolean;
 	public load_from_file (file: string, flags: KeyFileFlags) : boolean;
 	public ref () : KeyFile;
 	public remove_comment (group_name: string, key: string) : boolean;
@@ -454,18 +454,18 @@ class KeyFile {
 	public remove_key (group_name: string, key: string) : boolean;
 	public save_to_file (filename: string) : boolean;
 	public set_boolean (group_name: string, key: string, value: boolean) : void;
-	public set_boolean_list (group_name: string, key: string, list: boolean[], length: number) : void;
+	public set_boolean_list (group_name: string, key: string, list: , length: number) : void;
 	public set_comment (group_name: string, key: string, comment: string) : boolean;
 	public set_double (group_name: string, key: string, value: number) : void;
-	public set_double_list (group_name: string, key: string, list: number[], length: number) : void;
+	public set_double_list (group_name: string, key: string, list: , length: number) : void;
 	public set_int64 (group_name: string, key: string, value: number) : void;
 	public set_integer (group_name: string, key: string, value: number) : void;
-	public set_integer_list (group_name: string, key: string, list: number[], length: number) : void;
+	public set_integer_list (group_name: string, key: string, list: , length: number) : void;
 	public set_list_separator (separator: string) : void;
 	public set_locale_string (group_name: string, key: string, locale: string, string: string) : void;
-	public set_locale_string_list (group_name: string, key: string, locale: string, list: string[], length: number) : void;
+	public set_locale_string_list (group_name: string, key: string, locale: string, list: , length: number) : void;
 	public set_string (group_name: string, key: string, string: string) : void;
-	public set_string_list (group_name: string, key: string, list: string[], length: number) : void;
+	public set_string_list (group_name: string, key: string, list: , length: number) : void;
 	public set_uint64 (group_name: string, key: string, value: number) : void;
 	public set_value (group_name: string, key: string, value: string) : void;
 	public to_data (length: number) : string;
@@ -489,7 +489,7 @@ class MainContext {
 
 	public acquire () : boolean;
 	public add_poll (fd: PollFD, priority: number) : void;
-	public check (max_priority: number, fds: PollFD[], n_fds: number) : number;
+	public check (max_priority: number, fds: , n_fds: number) : number;
 	public dispatch () : void;
 	public find_source_by_funcs_user_data (funcs: SourceFuncs, user_data: any) : Source;
 	public find_source_by_id (source_id: number) : Source;
@@ -503,7 +503,7 @@ class MainContext {
 	public pop_thread_default () : void;
 	public prepare (priority: number) : boolean;
 	public push_thread_default () : void;
-	public query (max_priority: number, timeout_: number, fds: PollFD[], n_fds: number) : number;
+	public query (max_priority: number, timeout_: number, fds: , n_fds: number) : number;
 	public ref () : MainContext;
 	public release () : void;
 	public remove_poll (fd: PollFD) : void;
@@ -576,7 +576,7 @@ class MatchInfo {
 
 	public expand_references (string_to_expand: string) : string;
 	public fetch (match_num: number) : string;
-	public fetch_all () : string[];
+	public fetch_all () : ;
 	public fetch_named (name: string) : string;
 	public fetch_named_pos (name: string, start_pos: number, end_pos: number) : boolean;
 	public fetch_pos (match_num: number, start_pos: number, end_pos: number) : boolean;
@@ -666,8 +666,8 @@ class OptionContext {
 	public get_main_group () : OptionGroup;
 	public get_strict_posix () : boolean;
 	public get_summary () : string;
-	public parse (argc: number, argv: string[]) : boolean;
-	public parse_strv (_arguments: string[]) : boolean;
+	public parse (argc: number, argv: ) : boolean;
+	public parse_strv (_arguments: ) : boolean;
 	public set_description (description: string) : void;
 	public set_help_enabled (help_enabled: boolean) : void;
 	public set_ignore_unknown_options (ignore_unknown: boolean) : void;
@@ -731,7 +731,7 @@ class PollFD {
 class Private {
 	public p: any;
 	public notify: DestroyNotify;
-	public future: any[];
+	public future: ;
 
 
 	public get () : any;
@@ -801,7 +801,7 @@ class Queue {
 
 class RWLock {
 	public p: any;
-	public i: number[];
+	public i: ;
 
 
 	public clear () : void;
@@ -833,7 +833,7 @@ class Rand {
 
 class RecMutex {
 	public p: any;
-	public i: number[];
+	public i: ;
 
 
 	public clear () : void;
@@ -858,14 +858,14 @@ class Regex {
 	public get_string_number (name: string) : number;
 	public match (string: string, match_options: RegexMatchFlags, match_info: MatchInfo) : boolean;
 	public match_all (string: string, match_options: RegexMatchFlags, match_info: MatchInfo) : boolean;
-	public match_all_full (string: string[], string_len: number, start_position: number, match_options: RegexMatchFlags, match_info: MatchInfo) : boolean;
-	public match_full (string: string[], string_len: number, start_position: number, match_options: RegexMatchFlags, match_info: MatchInfo) : boolean;
+	public match_all_full (string: , string_len: number, start_position: number, match_options: RegexMatchFlags, match_info: MatchInfo) : boolean;
+	public match_full (string: , string_len: number, start_position: number, match_options: RegexMatchFlags, match_info: MatchInfo) : boolean;
 	public ref () : Regex;
-	public replace (string: string[], string_len: number, start_position: number, replacement: string, match_options: RegexMatchFlags) : string;
-	public replace_eval (string: string[], string_len: number, start_position: number, match_options: RegexMatchFlags, _eval: RegexEvalCallback, user_data: any) : string;
-	public replace_literal (string: string[], string_len: number, start_position: number, replacement: string, match_options: RegexMatchFlags) : string;
-	public split (string: string, match_options: RegexMatchFlags) : string[];
-	public split_full (string: string[], string_len: number, start_position: number, match_options: RegexMatchFlags, max_tokens: number) : string[];
+	public replace (string: , string_len: number, start_position: number, replacement: string, match_options: RegexMatchFlags) : string;
+	public replace_eval (string: , string_len: number, start_position: number, match_options: RegexMatchFlags, _eval: RegexEvalCallback, user_data: any) : string;
+	public replace_literal (string: , string_len: number, start_position: number, replacement: string, match_options: RegexMatchFlags) : string;
+	public split (string: string, match_options: RegexMatchFlags) : ;
+	public split_full (string: , string_len: number, start_position: number, match_options: RegexMatchFlags, max_tokens: number) : ;
 	public unref () : void;
 }
 
@@ -1293,33 +1293,33 @@ class Variant {
 	public check_format_string (format_string: string, copy_only: boolean) : boolean;
 	public classify () : VariantClass;
 	public compare (two: Variant) : number;
-	public dup_bytestring (length: number) : number[];
-	public dup_bytestring_array (length: number) : string[];
-	public dup_objv (length: number) : string[];
+	public dup_bytestring (length: number) : ;
+	public dup_bytestring_array (length: number) : ;
+	public dup_objv (length: number) : ;
 	public dup_string (length: number) : string;
-	public dup_strv (length: number) : string[];
+	public dup_strv (length: number) : ;
 	public equal (two: Variant) : boolean;
 	public get (format_string: string) : void;
 	public get_boolean () : boolean;
 	public get_byte () : number;
-	public get_bytestring () : number[];
-	public get_bytestring_array (length: number) : string[];
+	public get_bytestring () : ;
+	public get_bytestring_array (length: number) : ;
 	public get_child (index_: number, format_string: string) : void;
 	public get_child_value (index_: number) : Variant;
 	public get_data () : any;
 	public get_data_as_bytes () : Bytes;
 	public get_double () : number;
-	public get_fixed_array (n_elements: number, element_size: number) : any[];
+	public get_fixed_array (n_elements: number, element_size: number) : ;
 	public get_handle () : number;
 	public get_int16 () : number;
 	public get_int32 () : number;
 	public get_int64 () : number;
 	public get_maybe () : Variant;
 	public get_normal_form () : Variant;
-	public get_objv (length: number) : string[];
+	public get_objv (length: number) : ;
 	public get_size () : number;
 	public get_string (length: number) : string;
-	public get_strv (length: number) : string[];
+	public get_strv (length: number) : ;
 	public get_type () : VariantType;
 	public get_type_string () : string;
 	public get_uint16 () : number;
@@ -1348,7 +1348,7 @@ class Variant {
 
 
 class VariantBuilder {
-	public x: number[];
+	public x: ;
 
 
 	public add (format_string: string) : void;
@@ -1366,7 +1366,7 @@ class VariantBuilder {
 
 
 class VariantDict {
-	public x: number[];
+	public x: ;
 
 
 	public clear () : void;
@@ -1385,7 +1385,7 @@ class VariantDict {
 
 
 class VariantIter {
-	public x: number[];
+	public x: ;
 
 
 	public copy () : VariantIter;
@@ -2947,27 +2947,27 @@ function atomic_pointer_xor (atomic: any, _val: number): number;
 
 
 
-function base64_decode (text: string, out_len: number): number[];
+function base64_decode (text: string, out_len: number): ;
 
 
 
-function base64_decode_inplace (text: number[], out_len: number): number;
+function base64_decode_inplace (text: , out_len: number): number;
 
 
 
-function base64_decode_step (_in: number[], len: number, out: number[], state: number, save: number): number;
+function base64_decode_step (_in: , len: number, out: , state: number, save: number): number;
 
 
 
-function base64_encode (data: number[], len: number): string;
+function base64_encode (data: , len: number): string;
 
 
 
-function base64_encode_close (break_lines: boolean, out: number[], state: number, save: number): number;
+function base64_encode_close (break_lines: boolean, out: , state: number, save: number): number;
 
 
 
-function base64_encode_step (_in: number[], len: number, break_lines: boolean, out: number[], state: number, save: number): number;
+function base64_encode_step (_in: , len: number, break_lines: boolean, out: , state: number, save: number): number;
 
 
 
@@ -3007,7 +3007,7 @@ function build_filename (first_element: string): string;
 
 
 
-function build_filenamev (args: string[]): string;
+function build_filenamev (args: ): string;
 
 
 
@@ -3015,27 +3015,27 @@ function build_path (separator: string, first_element: string): string;
 
 
 
-function build_pathv (separator: string, args: string[]): string;
+function build_pathv (separator: string, args: ): string;
 
 
 
-function byte_array_free (array: number[], free_segment: boolean): number;
+function byte_array_free (array: , free_segment: boolean): number;
 
 
 
-function byte_array_free_to_bytes (array: number[]): Bytes;
+function byte_array_free_to_bytes (array: ): Bytes;
 
 
 
-function byte_array_new (): number[];
+function byte_array_new (): ;
 
 
 
-function byte_array_new_take (data: number[], len: number): number[];
+function byte_array_new_take (data: , len: number): ;
 
 
 
-function byte_array_unref (array: number[]): void;
+function byte_array_unref (array: ): void;
 
 
 
@@ -3079,7 +3079,7 @@ function compute_checksum_for_bytes (checksum_type: ChecksumType, data: Bytes): 
 
 
 
-function compute_checksum_for_data (checksum_type: ChecksumType, data: number[], length: number): string;
+function compute_checksum_for_data (checksum_type: ChecksumType, data: , length: number): string;
 
 
 
@@ -3087,11 +3087,11 @@ function compute_checksum_for_string (checksum_type: ChecksumType, _str: string,
 
 
 
-function compute_hmac_for_data (digest_type: ChecksumType, key: number[], key_len: number, data: number, length: number): string;
+function compute_hmac_for_data (digest_type: ChecksumType, key: , key_len: number, data: number, length: number): string;
 
 
 
-function compute_hmac_for_string (digest_type: ChecksumType, key: number[], key_len: number, _str: string, length: number): string;
+function compute_hmac_for_string (digest_type: ChecksumType, key: , key_len: number, _str: string, length: number): string;
 
 
 
@@ -3275,15 +3275,15 @@ function dpgettext2 (domain: string, context: string, msgid: string): string;
 
 
 
-function environ_getenv (envp: string[], variable: string): string;
+function environ_getenv (envp: , variable: string): string;
 
 
 
-function environ_setenv (envp: string[], variable: string, value: string, overwrite: boolean): string[];
+function environ_setenv (envp: , variable: string, value: string, overwrite: boolean): ;
 
 
 
-function environ_unsetenv (envp: string[], variable: string): string[];
+function environ_unsetenv (envp: , variable: string): ;
 
 
 
@@ -3295,7 +3295,7 @@ function file_error_quark (): Quark;
 
 
 
-function file_get_contents (filename: string, contents: number[], length: number): boolean;
+function file_get_contents (filename: string, contents: , length: number): boolean;
 
 
 
@@ -3307,7 +3307,7 @@ function file_read_link (filename: string): string;
 
 
 
-function file_set_contents (filename: string, contents: number[], length: number): boolean;
+function file_set_contents (filename: string, contents: , length: number): boolean;
 
 
 
@@ -3327,7 +3327,7 @@ function filename_from_uri (uri: string, hostname: string): string;
 
 
 
-function filename_from_utf8 (utf8string: string, len: number, bytes_read: number, bytes_written: number): number[];
+function filename_from_utf8 (utf8string: string, len: number, bytes_read: number, bytes_written: number): ;
 
 
 
@@ -3383,7 +3383,7 @@ function get_current_time (result: TimeVal): void;
 
 
 
-function get_environ (): string[];
+function get_environ (): ;
 
 
 
@@ -3399,11 +3399,11 @@ function get_host_name (): string;
 
 
 
-function get_language_names (): string[];
+function get_language_names (): ;
 
 
 
-function get_locale_variants (locale: string): string[];
+function get_locale_variants (locale: string): ;
 
 
 
@@ -3427,11 +3427,11 @@ function get_real_time (): number;
 
 
 
-function get_system_config_dirs (): string[];
+function get_system_config_dirs (): ;
 
 
 
-function get_system_data_dirs (): string[];
+function get_system_data_dirs (): ;
 
 
 
@@ -3627,7 +3627,7 @@ function key_file_error_quark (): Quark;
 
 
 
-function listenv (): string[];
+function listenv (): ;
 
 
 
@@ -3787,7 +3787,7 @@ function option_error_quark (): Quark;
 
 
 
-function parse_debug_string (string: string, keys: DebugKey[], nkeys: number): number;
+function parse_debug_string (string: string, keys: , nkeys: number): number;
 
 
 
@@ -3923,7 +3923,7 @@ function regex_escape_nul (string: string, length: number): string;
 
 
 
-function regex_escape_string (string: string[], length: number): string;
+function regex_escape_string (string: , length: number): string;
 
 
 
@@ -3931,7 +3931,7 @@ function regex_match_simple (pattern: string, string: string, compile_options: R
 
 
 
-function regex_split_simple (pattern: string, string: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags): string[];
+function regex_split_simple (pattern: string, string: string, compile_options: RegexCompileFlags, match_options: RegexMatchFlags): ;
 
 
 
@@ -4003,7 +4003,7 @@ function shell_error_quark (): Quark;
 
 
 
-function shell_parse_argv (command_line: string, argcp: number, argvp: string[]): boolean;
+function shell_parse_argv (command_line: string, argcp: number, argvp: ): boolean;
 
 
 
@@ -4071,11 +4071,11 @@ function spaced_primes_closest (_num: number): number;
 
 
 
-function spawn_async (working_directory: string, argv: string[], envp: string[], flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, child_pid: Pid): boolean;
+function spawn_async (working_directory: string, argv: , envp: , flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, child_pid: Pid): boolean;
 
 
 
-function spawn_async_with_pipes (working_directory: string, argv: string[], envp: string[], flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, child_pid: Pid, standard_input: number, standard_output: number, standard_error: number): boolean;
+function spawn_async_with_pipes (working_directory: string, argv: , envp: , flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, child_pid: Pid, standard_input: number, standard_output: number, standard_error: number): boolean;
 
 
 
@@ -4091,7 +4091,7 @@ function spawn_command_line_async (command_line: string): boolean;
 
 
 
-function spawn_command_line_sync (command_line: string, standard_output: number[], standard_error: number[], exit_status: number): boolean;
+function spawn_command_line_sync (command_line: string, standard_output: , standard_error: , exit_status: number): boolean;
 
 
 
@@ -4103,7 +4103,7 @@ function spawn_exit_error_quark (): Quark;
 
 
 
-function spawn_sync (working_directory: string, argv: string[], envp: string[], flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, standard_output: number[], standard_error: number[], exit_status: number): boolean;
+function spawn_sync (working_directory: string, argv: , envp: , flags: SpawnFlags, child_setup: SpawnChildSetupFunc, user_data: any, standard_output: , standard_error: , exit_status: number): boolean;
 
 
 
@@ -4143,7 +4143,7 @@ function str_to_ascii (_str: string, from_locale: string): string;
 
 
 
-function str_tokenize_and_fold (string: string, translit_locale: string, ascii_alternates: string[]): string[];
+function str_tokenize_and_fold (string: string, translit_locale: string, ascii_alternates: ): ;
 
 
 
@@ -4195,7 +4195,7 @@ function strdup_vprintf (format: string, args: any[]): string;
 
 
 
-function strdupv (str_array: string): string[];
+function strdupv (str_array: string): ;
 
 
 
@@ -4271,11 +4271,11 @@ function strsignal (signum: number): string;
 
 
 
-function strsplit (string: string, delimiter: string, max_tokens: number): string[];
+function strsplit (string: string, delimiter: string, max_tokens: number): ;
 
 
 
-function strsplit_set (string: string, delimiters: string, max_tokens: number): string[];
+function strsplit_set (string: string, delimiters: string, max_tokens: number): ;
 
 
 
@@ -4771,7 +4771,7 @@ function uri_escape_string (unescaped: string, reserved_chars_allowed: string, a
 
 
 
-function uri_list_extract_uris (uri_list: string): string[];
+function uri_list_extract_uris (uri_list: string): ;
 
 
 
@@ -4891,7 +4891,7 @@ function utf8_to_utf16 (_str: string, len: number, items_read: number, items_wri
 
 
 
-function utf8_validate (_str: number[], max_len: number, _end: string): boolean;
+function utf8_validate (_str: , max_len: number, _end: string): boolean;
 
 
 

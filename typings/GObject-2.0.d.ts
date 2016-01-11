@@ -40,9 +40,9 @@ interface Object {
 	force_floating () : void;
 	freeze_notify () : void;
 	get_data (key: string) : any;
-	get_property (property_name: string, value: Value) : void;
+	// get_property (property_name: string, value: Value) : void;
 	get_qdata (quark: GLib.Quark) : any;
-	get_valist (first_property_name: string, var_args: any[]) : void;
+	// get_valist (first_property_name: string, var_args: any[]) : void;
 	is_floating () : boolean;
 	notify (property_name: string) : void;
 	notify_by_pspec (pspec: ParamSpec) : void;
@@ -55,10 +55,10 @@ interface Object {
 	run_dispose () : void;
 	set_data (key: string, data: any) : void;
 	set_data_full (key: string, data: any, destroy: GLib.DestroyNotify) : void;
-	set_property (property_name: string, value: Value) : void;
+	// set_property (property_name: string, value: Value) : void;
 	set_qdata (quark: GLib.Quark, data: any) : void;
 	set_qdata_full (quark: GLib.Quark, data: any, destroy: GLib.DestroyNotify) : void;
-	set_valist (first_property_name: string, var_args: any[]) : void;
+	// set_valist (first_property_name: string, var_args: any[]) : void;
 	steal_data (key: string) : any;
 	steal_qdata (quark: GLib.Quark) : any;
 	thaw_notify () : void;
@@ -70,8 +70,16 @@ interface Object {
 
 var Object: {
 	new_valist (object_type: GObject.Type, first_property_name: string, var_args: any[]) : Object;
-	newv (object_type: GObject.Type, n_parameters: number, parameters: Parameter[]) : Object;
-	
+	newv (object_type: GObject.Type, n_parameters: number, parameters: ) : Object;
+	compat_control (what: number, data: any) : number;
+	connect (object: any, signal_spec: string) : any;
+	disconnect (object: any, signal_spec: string) : void;
+	get (object: any, first_property_name: string) : void;
+	interface_find_property (g_iface: any, property_name: string) : ParamSpec;
+	interface_install_property (g_iface: any, pspec: ParamSpec) : void;
+	interface_list_properties (g_iface: any, n_properties_p: number) : ;
+	new (object_type: GObject.Type, first_property_name: string) : any;
+	set (object: any, first_property_name: string) : void;
 }
 
 
@@ -95,7 +103,7 @@ interface ParamSpec {
 
 var ParamSpec: {
 	
-	
+	internal (param_type: GObject.Type, name: string, nick: string, blurb: string, flags: ParamFlags) : any;
 }
 
 
@@ -424,7 +432,7 @@ class Closure {
 	public add_invalidate_notifier (notify_data: any, notify_func: ClosureNotify) : void;
 	public add_marshal_guards (pre_marshal_data: any, pre_marshal_notify: ClosureNotify, post_marshal_data: any, post_marshal_notify: ClosureNotify) : void;
 	public invalidate () : void;
-	public invoke (return_value: Value, n_param_values: number, param_values: Value[], invocation_hint: any) : void;
+	public invoke (return_value: Value, n_param_values: number, param_values: , invocation_hint: any) : void;
 	public ref () : Closure;
 	public remove_finalize_notifier (notify_data: any, notify_func: ClosureNotify) : void;
 	public remove_invalidate_notifier (notify_data: any, notify_func: ClosureNotify) : void;
@@ -492,7 +500,7 @@ class InitiallyUnownedClass {
 	public g_type_class: TypeClass;
 	public construct_properties: GLib.SList;
 	public flags: number;
-	public pdummy: any[];
+	public pdummy: ;
 
 	constructor_ : {(_type: GObject.Type, n_construct_properties: number, construct_properties: ObjectConstructParam) : Object;};
 	set_property : {(object: Object, property_id: number, value: Value, pspec: ParamSpec) : void;};
@@ -521,7 +529,7 @@ class ObjectClass {
 	public g_type_class: TypeClass;
 	public construct_properties: GLib.SList;
 	public flags: number;
-	public pdummy: any[];
+	public pdummy: ;
 
 	constructor_ : {(_type: GObject.Type, n_construct_properties: number, construct_properties: ObjectConstructParam) : Object;};
 	set_property : {(object: Object, property_id: number, value: Value, pspec: ParamSpec) : void;};
@@ -533,9 +541,9 @@ class ObjectClass {
 	constructed : {(object: Object) : void;};
 
 	public find_property (property_name: string) : ParamSpec;
-	public install_properties (n_pspecs: number, pspecs: ParamSpec[]) : void;
+	public install_properties (n_pspecs: number, pspecs: ) : void;
 	public install_property (property_id: number, pspec: ParamSpec) : void;
-	public list_properties (n_properties: number) : ParamSpec[];
+	public list_properties (n_properties: number) : ;
 	public override_property (property_id: number, name: string) : void;
 }
 
@@ -553,7 +561,7 @@ class ObjectConstructParam {
 class ParamSpecClass {
 	public g_type_class: TypeClass;
 	public value_type: GObject.Type;
-	public dummy: any[];
+	public dummy: ;
 
 	finalize : {(pspec: ParamSpec) : void;};
 	value_set_default : {(pspec: ParamSpec, value: Value) : void;};
@@ -568,7 +576,7 @@ class ParamSpecPool {
 
 
 	public insert (pspec: ParamSpec, owner_type: GObject.Type) : void;
-	public list (owner_type: GObject.Type, n_pspecs_p: number) : ParamSpec[];
+	public list (owner_type: GObject.Type, n_pspecs_p: number) : ;
 	public list_owned (owner_type: GObject.Type) : GLib.List;
 	public lookup (param_name: string, owner_type: GObject.Type, walk_ancestors: boolean) : ParamSpec;
 	public remove (pspec: ParamSpec) : void;
@@ -617,7 +625,7 @@ class SignalQuery {
 	public signal_flags: SignalFlags;
 	public return_type: GObject.Type;
 	public n_params: number;
-	public param_types: GObject.Type[];
+	public param_types: ;
 
 
 }
@@ -734,7 +742,7 @@ class TypeValueTable {
 
 class Value {
 	public g_type: GObject.Type;
-	public data: _Value__data__union[];
+	public data: ;
 
 
 	public copy (dest_value: Value) : void;
@@ -986,7 +994,7 @@ interface ClassInitFunc {
 
 
 interface ClosureMarshal {
-	(closure: Closure, return_value: Value, n_param_values: number, param_values: Value[], invocation_hint: any, marshal_data: any) : void;
+	(closure: Closure, return_value: Value, n_param_values: number, param_values: , invocation_hint: any, marshal_data: any) : void;
 }
 
 
@@ -1040,7 +1048,7 @@ interface SignalAccumulator {
 
 
 interface SignalEmissionHook {
-	(ihint: SignalInvocationHint, n_param_values: number, param_values: Value[], data: any) : boolean;
+	(ihint: SignalInvocationHint, n_param_values: number, param_values: , data: any) : boolean;
 }
 
 
@@ -1088,7 +1096,7 @@ interface TypePluginUse {
 
 
 interface VaClosureMarshal {
-	(closure: Closure, return_value: Value, _instance: any, args: any[], marshal_data: any, n_params: number, param_types: GObject.Type[]) : void;
+	(closure: Closure, return_value: Value, _instance: any, args: any[], marshal_data: any, n_params: number, param_types: ) : void;
 }
 
 
@@ -1437,7 +1445,7 @@ function signal_add_emission_hook (signal_id: number, detail: GLib.Quark, hook_f
 
 
 
-function signal_chain_from_overridden (instance_and_params: Value[], return_value: Value): void;
+function signal_chain_from_overridden (instance_and_params: , return_value: Value): void;
 
 
 
@@ -1473,7 +1481,7 @@ function signal_emit_valist (_instance: any, signal_id: number, detail: GLib.Qua
 
 
 
-function signal_emitv (instance_and_params: Value[], signal_id: number, detail: GLib.Quark, return_value: Value): void;
+function signal_emitv (instance_and_params: , signal_id: number, detail: GLib.Quark, return_value: Value): void;
 
 
 
@@ -1521,7 +1529,7 @@ function signal_has_handler_pending (_instance: Object, signal_id: number, detai
 
 
 
-function signal_list_ids (itype: GObject.Type, n_ids: number): number[];
+function signal_list_ids (itype: GObject.Type, n_ids: number): ;
 
 
 
@@ -1545,7 +1553,7 @@ function signal_new_valist (signal_name: string, itype: GObject.Type, signal_fla
 
 
 
-function signal_newv (signal_name: string, itype: GObject.Type, signal_flags: SignalFlags, class_closure: Closure, accumulator: SignalAccumulator, accu_data: any, c_marshaller: SignalCMarshaller, return_type: GObject.Type, n_params: number, param_types: GObject.Type[]): number;
+function signal_newv (signal_name: string, itype: GObject.Type, signal_flags: SignalFlags, class_closure: Closure, accumulator: SignalAccumulator, accu_data: any, c_marshaller: SignalCMarshaller, return_type: GObject.Type, n_params: number, param_types: ): number;
 
 
 
@@ -1657,7 +1665,7 @@ function type_check_value_holds (value: Value, _type: GObject.Type): boolean;
 
 
 
-function type_children (_type: GObject.Type, n_children: number): GObject.Type[];
+function type_children (_type: GObject.Type, n_children: number): ;
 
 
 
@@ -1761,11 +1769,11 @@ function type_interface_peek (instance_class: TypeClass, iface_type: GObject.Typ
 
 
 
-function type_interface_prerequisites (interface_type: GObject.Type, n_prerequisites: number): GObject.Type[];
+function type_interface_prerequisites (interface_type: GObject.Type, n_prerequisites: number): ;
 
 
 
-function type_interfaces (_type: GObject.Type, n_interfaces: number): GObject.Type[];
+function type_interfaces (_type: GObject.Type, n_interfaces: number): ;
 
 
 

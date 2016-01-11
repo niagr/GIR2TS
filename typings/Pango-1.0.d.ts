@@ -12,7 +12,7 @@ interface Context extends GObject.Object {
 	get_matrix () : Matrix;
 	get_metrics (desc: FontDescription, language: Language) : FontMetrics;
 	get_serial () : number;
-	list_families (families: FontFamily[], n_families: number) : void;
+	list_families (families: , n_families: number) : void;
 	load_font (desc: FontDescription) : Font;
 	load_fontset (desc: FontDescription, language: Language) : Fontset;
 	set_base_dir (direction: Direction) : void;
@@ -80,7 +80,7 @@ interface Font extends GObject.Object {
 
 var Font: {
 	
-	
+	descriptions_free (descs: , n_descs: number) : void;
 }
 
 
@@ -90,7 +90,7 @@ interface FontFace extends GObject.Object {
 	describe () : FontDescription;
 	get_face_name () : string;
 	is_synthesized () : boolean;
-	list_sizes (sizes: number[], n_sizes: number) : void;
+	list_sizes (sizes: , n_sizes: number) : void;
 }
 
 var FontFace: {
@@ -104,7 +104,7 @@ var FontFace: {
 interface FontFamily extends GObject.Object {
 	get_name () : string;
 	is_monospace () : boolean;
-	list_faces (faces: FontFace[], n_faces: number) : void;
+	list_faces (faces: , n_faces: number) : void;
 }
 
 var FontFamily: {
@@ -120,7 +120,7 @@ interface FontMap extends GObject.Object {
 	create_context () : Context;
 	get_serial () : number;
 	get_shape_engine_type () : string;
-	list_families (families: FontFamily[], n_families: number) : void;
+	list_families (families: , n_families: number) : void;
 	load_font (context: Context, desc: FontDescription) : Font;
 	load_fontset (context: Context, desc: FontDescription, language: Language) : Fontset;
 }
@@ -182,8 +182,8 @@ interface Layout extends GObject.Object {
 	get_line_readonly (line: number) : LayoutLine;
 	get_lines () : GLib.SList;
 	get_lines_readonly () : GLib.SList;
-	get_log_attrs (attrs: LogAttr[], n_attrs: number) : void;
-	get_log_attrs_readonly (n_attrs: number) : LogAttr[];
+	get_log_attrs (attrs: , n_attrs: number) : void;
+	get_log_attrs_readonly (n_attrs: number) : ;
 	get_pixel_extents (ink_rect: Rectangle, logical_rect: Rectangle) : void;
 	get_pixel_size (width: number, height: number) : void;
 	get_serial () : number;
@@ -443,7 +443,7 @@ class Coverage {
 	public max (other: Coverage) : void;
 	public ref () : Coverage;
 	public set (index_: number, level: CoverageLevel) : void;
-	public to_bytes (bytes: number[], n_bytes: number) : void;
+	public to_bytes (bytes: , n_bytes: number) : void;
 	public unref () : void;
 }
 
@@ -555,7 +555,7 @@ class FontFaceClass {
 
 	get_face_name : {(_face: FontFace) : string;};
 	describe : {(_face: FontFace) : FontDescription;};
-	list_sizes : {(_face: FontFace, sizes: number[], n_sizes: number) : void;};
+	list_sizes : {(_face: FontFace, sizes: , n_sizes: number) : void;};
 	is_synthesized : {(_face: FontFace) : boolean;};
 	_pango_reserved3 : {() : void;};
 	_pango_reserved4 : {() : void;};
@@ -567,7 +567,7 @@ class FontFaceClass {
 class FontFamilyClass {
 	public parent_class: GObject.ObjectClass;
 
-	list_faces : {(family: FontFamily, faces: FontFace[], n_faces: number) : void;};
+	list_faces : {(family: FontFamily, faces: , n_faces: number) : void;};
 	get_name : {(family: FontFamily) : string;};
 	is_monospace : {(family: FontFamily) : boolean;};
 	_pango_reserved2 : {() : void;};
@@ -583,7 +583,7 @@ class FontMapClass {
 	public shape_engine_type: string;
 
 	load_font : {(fontmap: FontMap, context: Context, desc: FontDescription) : Font;};
-	list_families : {(fontmap: FontMap, families: FontFamily[], n_families: number) : void;};
+	list_families : {(fontmap: FontMap, families: , n_families: number) : void;};
 	load_fontset : {(fontmap: FontMap, context: Context, desc: FontDescription, language: Language) : Fontset;};
 	get_serial : {(fontmap: FontMap) : number;};
 	changed : {(fontmap: FontMap) : void;};
@@ -671,8 +671,8 @@ class GlyphItem {
 	public apply_attrs (text: string, list: AttrList) : GLib.SList;
 	public copy () : GlyphItem;
 	public free () : void;
-	public get_logical_widths (text: string, logical_widths: number[]) : void;
-	public letter_space (text: string, log_attrs: LogAttr[], letter_spacing: number) : void;
+	public get_logical_widths (text: string, logical_widths: ) : void;
+	public letter_space (text: string, log_attrs: , letter_spacing: number) : void;
 	public split (text: string, split_index: number) : GlyphItem;
 }
 
@@ -701,7 +701,7 @@ class GlyphItemIter {
 
 class GlyphString {
 	public num_glyphs: number;
-	public glyphs: GlyphInfo[];
+	public glyphs: ;
 	public log_clusters: number;
 	public space: number;
 
@@ -710,7 +710,7 @@ class GlyphString {
 	public extents (font: Font, ink_rect: Rectangle, logical_rect: Rectangle) : void;
 	public extents_range (start: number, _end: number, font: Font, ink_rect: Rectangle, logical_rect: Rectangle) : void;
 	public free () : void;
-	public get_logical_widths (text: string, length: number, embedding_level: number, logical_widths: number[]) : void;
+	public get_logical_widths (text: string, length: number, embedding_level: number, logical_widths: ) : void;
 	public get_width () : number;
 	public index_to_x (text: string, length: number, analysis: Analysis, index_: number, trailing: boolean, x_pos: number) : void;
 	public set_size (new_len: number) : void;
@@ -756,7 +756,7 @@ class Language {
 
 
 	public get_sample_string () : string;
-	public get_scripts (num_scripts: number) : Script[];
+	public get_scripts (num_scripts: number) : ;
 	public includes_script (script: Script) : boolean;
 	public matches (range_list: string) : boolean;
 	public to_string () : string;
@@ -809,7 +809,7 @@ class LayoutLine {
 
 	public get_extents (ink_rect: Rectangle, logical_rect: Rectangle) : void;
 	public get_pixel_extents (ink_rect: Rectangle, logical_rect: Rectangle) : void;
-	public get_x_ranges (start_index: number, end_index: number, ranges: number[], n_ranges: number) : void;
+	public get_x_ranges (start_index: number, end_index: number, ranges: , n_ranges: number) : void;
 	public index_to_x (index_: number, trailing: boolean, x_pos: number) : void;
 	public ref () : LayoutLine;
 	public unref () : void;
@@ -920,8 +920,8 @@ class RendererPrivate {
 
 
 class ScriptForLang {
-	public lang: string[];
-	public scripts: Script[];
+	public lang: ;
+	public scripts: ;
 
 
 }
@@ -946,7 +946,7 @@ class TabArray {
 	public get_positions_in_pixels () : boolean;
 	public get_size () : number;
 	public get_tab (tab_index: number, alignment: TabAlign, location: number) : void;
-	public get_tabs (alignments: TabAlign, locations: number[]) : void;
+	public get_tabs (alignments: TabAlign, locations: ) : void;
 	public resize (new_size: number) : void;
 	public set_tab (tab_index: number, alignment: TabAlign, location: number) : void;
 }
@@ -1367,7 +1367,7 @@ function bidi_type_for_unichar (_ch: string): BidiType;
 
 
 
-function break (text: string, length: number, analysis: Analysis, attrs: LogAttr[], attrs_len: number): void;
+function break (text: string, length: number, analysis: Analysis, attrs: , attrs_len: number): void;
 
 
 
@@ -1407,7 +1407,7 @@ function get_lib_subdirectory (): string;
 
 
 
-function get_log_attrs (text: string, length: number, level: number, language: Language, log_attrs: LogAttr[], attrs_len: number): void;
+function get_log_attrs (text: string, length: number, level: number, language: Language, log_attrs: , attrs_len: number): void;
 
 
 
@@ -1459,7 +1459,7 @@ function log2vis_get_embedding_levels (text: string, length: number, pbase_dir: 
 
 
 
-function lookup_aliases (fontname: string, families: string[], n_families: number): void;
+function lookup_aliases (fontname: string, families: , n_families: number): void;
 
 
 
@@ -1543,7 +1543,7 @@ function skip_space (pos: string): boolean;
 
 
 
-function split_file_list (_str: string): string[];
+function split_file_list (_str: string): ;
 
 
 
